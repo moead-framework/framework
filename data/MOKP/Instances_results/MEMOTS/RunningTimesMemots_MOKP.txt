@@ -1,0 +1,10 @@
+Running time in seconds on a Pentium IV with 3 Ghz CPUs and 512 MB of
+RAM (mean on 20 executions):
+
+250-2: 5
+500-2: 23
+750-2: 59
+
+250-3: 11
+500-3: 38
+750-3: 95
