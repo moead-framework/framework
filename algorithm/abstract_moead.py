@@ -51,6 +51,10 @@ class AbstractMoead(ABC):
         pass
 
     @abstractmethod
+    def sps_strategy(self):
+        pass
+
+    @abstractmethod
     def selection(self, sub_problem):
         pass
 

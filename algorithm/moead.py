@@ -33,7 +33,7 @@ class Moead(AbstractMoead):
         while self.current_eval < self.max_evaluation:
 
             # For each sub-problem i
-            for i in range(self.number_of_weight):
+            for i in self.sps_strategy():
 
                 self.update_current_sub_problem(sub_problem=i)
                 selected_population = self.selection(sub_problem=i)
@@ -44,6 +44,9 @@ class Moead(AbstractMoead):
                 self.current_eval += 1
 
         return self.ep
+
+    def sps_strategy(self):
+        return range(self.number_of_weight)
 
     def selection(self, sub_problem):
         return self.genetic_selector.select(sub_problem)
