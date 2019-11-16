@@ -1,16 +1,14 @@
 import random
 
-from genetic.mating.abstract_mating import GeneticMating
+from core.mating.abstract_mating import GeneticMating
 
 
-class TwoRandomParents(GeneticMating):
+class OneRandomAndCurrentParents(GeneticMating):
 
     def run(self, population_indexes):
-
-        index1 = population_indexes[random.randint(0, len(population_indexes) - 1)]
         index2 = population_indexes[random.randint(0, len(population_indexes) - 1)]
 
-        parent1 = self.algorithm.population[index1]
+        parent1 = self.algorithm.population[self.algorithm.current_sub_problem]
         parent2 = self.algorithm.population[index2]
 
         y_sol = self.algorithm.genetic_operator(solution1=parent1.solution,

@@ -1,5 +1,5 @@
 import random
-from genetic.operator.abstract_operator import GeneticOperator
+from core.genetic_operator.abstract_operator import GeneticOperator
 
 
 class Mutation(GeneticOperator):

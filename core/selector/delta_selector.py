@@ -1,9 +1,9 @@
 import random
 
-from genetic.selector.abstract_selector import GeneticSelector
+from core.selector.abstract_selector import MatingPoolSelector
 
 
-class DeltaSelector(GeneticSelector):
+class DeltaSelector(MatingPoolSelector):
     def select(self, sub_problem):
         """
         delta is the probability that parent solutions are selected from the neighborhood

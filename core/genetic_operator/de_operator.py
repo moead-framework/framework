@@ -1,6 +1,6 @@
 import random
 import numpy as np
-from genetic.operator.abstract_operator import GeneticOperator
+from core.genetic_operator.abstract_operator import GeneticOperator
 
 
 class DeCrossoverAndMut(GeneticOperator):
