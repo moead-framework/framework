@@ -10,12 +10,13 @@ class Moead(AbstractMoead):
                  number_of_weight,
                  number_of_weight_neighborhood,
                  number_of_crossover_points=2,
-                 genetic_selector=None,
+                 mating_pool_selector=None,
                  genetic_operator=None,
                  genetic_mating=None,
                  weight_file=None):
 
         self.current_eval = 1
+        self.mating_pool = []
 
         super().__init__(problem,
                          max_evaluation,
@@ -24,7 +25,7 @@ class Moead(AbstractMoead):
                          number_of_weight_neighborhood,
                          number_of_crossover_points,
                          genetic_operator=genetic_operator,
-                         genetic_selector=genetic_selector,
+                         mating_pool_selector=mating_pool_selector,
                          genetic_mating=genetic_mating,
                          weight_file=weight_file)
 
@@ -36,8 +37,8 @@ class Moead(AbstractMoead):
             for i in self.sps_strategy():
 
                 self.update_current_sub_problem(sub_problem=i)
-                selected_population = self.selection(sub_problem=i)
-                y = self.reproduction(population=selected_population)
+                self.mating_pool = self.mating_pool_selection(sub_problem=i)[:]
+                y = self.reproduction(population=self.mating_pool)
                 y = self.repair(solution=y)
                 self.update_z(solution=y)
                 self.update_solutions(solution=y, scal_function=g, sub_problem=i)
@@ -48,8 +49,8 @@ class Moead(AbstractMoead):
     def sps_strategy(self):
         return range(self.number_of_weight)
 
-    def selection(self, sub_problem):
-        return self.genetic_selector.select(sub_problem)
+    def mating_pool_selection(self, sub_problem):
+        return self.mating_pool_selector.select(sub_problem)
 
     def reproduction(self, population):
         return self.genetic_mating(algorithm_instance=self).run(population_indexes=population)

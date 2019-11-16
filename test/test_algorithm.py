@@ -28,6 +28,8 @@ class AlgorithmsTest(unittest.TestCase):
 
     def test_moead(self):
         """Test MOEA/D algorithm"""
+        print()
+        print("Test MOEA/D...")
 
         moead = Moead(problem=self.rmnk,
                       max_evaluation=self.number_of_evaluations,

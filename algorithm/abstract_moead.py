@@ -13,7 +13,7 @@ class AbstractMoead(ABC):
                  number_of_crossover_points=2,
                  genetic_operator=None,
                  genetic_mating=None,
-                 genetic_selector=None,
+                 mating_pool_selector=None,
                  weight_file=None):
         self.problem = problem
         self.max_evaluation = max_evaluation
@@ -29,10 +29,10 @@ class AbstractMoead(ABC):
         self.b = self.generate_closest_weight_vectors()
         self.current_sub_problem = -1
 
-        if genetic_selector is None:
-            self.genetic_selector = ClosestNeighborsSelector(algorithm_instance=self)
+        if mating_pool_selector is None:
+            self.mating_pool_selector = ClosestNeighborsSelector(algorithm_instance=self)
         else:
-            self.genetic_selector = genetic_selector
+            self.mating_pool_selector = mating_pool_selector
 
         if genetic_operator is None:
             self.genetic_operator = CrossoverAndMutation
@@ -55,7 +55,7 @@ class AbstractMoead(ABC):
         pass
 
     @abstractmethod
-    def selection(self, sub_problem):
+    def mating_pool_selection(self, sub_problem):
         pass
 
     @abstractmethod
