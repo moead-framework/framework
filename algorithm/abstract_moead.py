@@ -1,9 +1,9 @@
 import numpy as np
 from abc import ABC, abstractmethod
 
-from genetic.mating.two_random_parents import TwoRandomParents
-from genetic.operator.cross_mut import CrossoverAndMutation
-from genetic.selector.closest_neighbors_selector import ClosestNeighborsSelector
+from core.mating.two_random_parents import TwoRandomParents
+from core.genetic_operator.cross_mut import CrossoverAndMutation
+from core.selector.closest_neighbors_selector import ClosestNeighborsSelector
 from tool.mop import is_duplicated, get_non_dominated, generate_weight_vectors
 
 
@@ -12,7 +12,7 @@ class AbstractMoead(ABC):
     def __init__(self, problem, max_evaluation, number_of_objective, number_of_weight, number_of_weight_neighborhood,
                  number_of_crossover_points=2,
                  genetic_operator=None,
-                 genetic_mating=None,
+                 mating=None,
                  mating_pool_selector=None,
                  weight_file=None):
         self.problem = problem
@@ -39,10 +39,10 @@ class AbstractMoead(ABC):
         else:
             self.genetic_operator = genetic_operator
 
-        if (genetic_mating is None) | (not genetic_mating):
+        if (mating is None) | (not mating):
             self.genetic_mating = TwoRandomParents
         else:
-            self.genetic_mating = genetic_mating
+            self.genetic_mating = mating
 
         self.plots = {}
 

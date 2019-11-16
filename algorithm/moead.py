@@ -12,7 +12,7 @@ class Moead(AbstractMoead):
                  number_of_crossover_points=2,
                  mating_pool_selector=None,
                  genetic_operator=None,
-                 genetic_mating=None,
+                 mating=None,
                  weight_file=None):
 
         self.current_eval = 1
@@ -26,7 +26,7 @@ class Moead(AbstractMoead):
                          number_of_crossover_points,
                          genetic_operator=genetic_operator,
                          mating_pool_selector=mating_pool_selector,
-                         genetic_mating=genetic_mating,
+                         mating=mating,
                          weight_file=weight_file)
 
     def run(self, g, checkpoint=None):
