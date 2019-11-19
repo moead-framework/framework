@@ -40,9 +40,9 @@ class AbstractMoead(ABC):
             self.genetic_operator = genetic_operator
 
         if (mating is None) | (not mating):
-            self.genetic_mating = TwoRandomParents
+            self.mating = TwoRandomParents
         else:
-            self.genetic_mating = mating
+            self.mating = mating
 
         self.plots = {}
 

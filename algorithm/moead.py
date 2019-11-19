@@ -41,7 +41,7 @@ class Moead(AbstractMoead):
                 y = self.reproduction(population=self.mating_pool)
                 y = self.repair(solution=y)
                 self.update_z(solution=y)
-                self.update_solutions(solution=y, scal_function=g, sub_problem=i)
+                self.update_solutions(solution=y, aggregation_function=g, sub_problem=i)
                 self.current_eval += 1
 
         return self.ep
@@ -53,7 +53,7 @@ class Moead(AbstractMoead):
         return self.mating_pool_selector.select(sub_problem)
 
     def reproduction(self, population):
-        return self.genetic_mating(algorithm_instance=self).run(population_indexes=population)
+        return self.mating(algorithm_instance=self).run(population_indexes=population)
 
     def repair(self, solution):
         return solution
@@ -71,22 +71,22 @@ class Moead(AbstractMoead):
 
         return p
 
-    def update_solutions(self, solution, scal_function, sub_problem):
+    def update_solutions(self, solution, aggregation_function, sub_problem):
 
         for j in self.b[sub_problem]:
-            y_score = scal_function.run(solution=solution,
-                                        number_of_objective=self.number_of_objective,
-                                        weights=self.weights,
-                                        sub_problem=j,
-                                        z=self.z)
+            y_score = aggregation_function.run(solution=solution,
+                                               number_of_objective=self.number_of_objective,
+                                               weights=self.weights,
+                                               sub_problem=j,
+                                               z=self.z)
 
-            pop_j_score = scal_function.run(solution=self.population[j],
-                                            number_of_objective=self.number_of_objective,
-                                            weights=self.weights,
-                                            sub_problem=j,
-                                            z=self.z)
+            pop_j_score = aggregation_function.run(solution=self.population[j],
+                                                   number_of_objective=self.number_of_objective,
+                                                   weights=self.weights,
+                                                   sub_problem=j,
+                                                   z=self.z)
 
-            if scal_function.is_better(pop_j_score, y_score):
+            if aggregation_function.is_better(pop_j_score, y_score):
                 self.population[j] = solution
 
                 if not is_duplicated(x=solution, population=self.ep, number_of_objective=self.number_of_objective):
