@@ -1,7 +1,7 @@
 import random
 import numpy as np
-from problem.problem import Problem
-from solution.one_dimension_solution import OneDimensionSolution
+from .problem import Problem
+from ..solution.one_dimension_solution import OneDimensionSolution
 
 
 class Rmnk(Problem):

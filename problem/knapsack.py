@@ -1,7 +1,7 @@
 import numpy as np
 import random
-from problem.problem import Problem
-from solution.one_dimension_solution import OneDimensionSolution
+from .problem import Problem
+from ..solution.one_dimension_solution import OneDimensionSolution
 
 
 class KnapsackProblem(Problem):

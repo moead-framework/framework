@@ -1,4 +1,4 @@
-from solution.solution import Solution
+from .solution import Solution
 
 
 class OneDimensionSolution(Solution):

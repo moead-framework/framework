@@ -1,6 +1,6 @@
 import random
 
-from core.mating.abstract_mating import GeneticMating
+from .abstract_mating import GeneticMating
 
 
 class OneRandomAndCurrentParents(GeneticMating):

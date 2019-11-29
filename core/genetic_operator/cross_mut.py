@@ -1,6 +1,6 @@
-from core.genetic_operator.crossover import Crossover
-from core.genetic_operator.abstract_operator import GeneticOperator
-from core.genetic_operator.mutation import Mutation
+from .crossover import Crossover
+from .abstract_operator import GeneticOperator
+from .mutation import Mutation
 
 
 class CrossoverAndMutation(GeneticOperator):

@@ -1,4 +1,4 @@
-from core.selector.abstract_selector import MatingPoolSelector
+from .abstract_selector import MatingPoolSelector
 
 
 class ClosestNeighborsSelector(MatingPoolSelector):

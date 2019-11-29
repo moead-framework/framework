@@ -1,4 +1,4 @@
-from aggregation.functions import Function
+from .functions import Function
 
 
 class Tchebycheff(Function):
