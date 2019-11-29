@@ -53,18 +53,21 @@ class Rmnk(Problem):
 
         return accu
 
-    def generate_random_solution(self):
+    def generate_random_solution(self, evaluate=True):
         solution = []
         for i in range(0, self.n):
             solution.append(random.getrandbits(1))
 
         return self.generate_solution(solution)
 
-    def generate_solution(self, array):
+    def generate_solution(self, array, evaluate=True):
         x = OneDimensionSolution(array)
 
         for j in range(self.function_numbers):
-            x.F.append(self.f(j, x.solution))
+            if evaluate:
+                x.F.append(self.f(j, x.solution))
+            else:
+                x.F.append(None)
 
         return x
 
