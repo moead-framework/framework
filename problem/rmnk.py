@@ -1,4 +1,3 @@
-import random
 import numpy as np
 from .problem import Problem
 from ..solution.one_dimension_solution import OneDimensionSolution
@@ -53,12 +52,18 @@ class Rmnk(Problem):
 
         return accu
 
-    def generate_random_solution(self, evaluate=True):
-        solution = []
-        for i in range(0, self.n):
-            solution.append(random.getrandbits(1))
+    def generate_random_solution(self, evaluate=True, seed=None):
+        # solution = []
+        # for i in range(0, self.n):
+        #     solution.append(random.getrandbits(1))
 
-        return self.generate_solution(solution)
+        #print(solution)
+        # print(np.random.randint(0, 2, self.n).tolist())
+
+        if seed is not None:
+            np.random.seed(seed)
+
+        return self.generate_solution(np.random.randint(0, 2, self.n).tolist()[:])
 
     def generate_solution(self, array, evaluate=True):
         x = OneDimensionSolution(array)

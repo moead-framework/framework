@@ -40,7 +40,7 @@ def result_file_to_list(result_file):
 
 def save_population(file_name, population):
     file = open(file_name, "w")
-    file.write("Length of the list = " + str(len(population)) + "\n")
+    # file.write("Length of the list = " + str(len(population)) + "\n")
     for s in population:
         row = ""
         for coordinate in s.F:
