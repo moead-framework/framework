@@ -1,7 +1,7 @@
 import random
 import unittest
 
-from problem.rmnk import Rmnk
+from moead.problem.rmnk import Rmnk
 
 
 class RmnkTest(unittest.TestCase):
@@ -9,7 +9,7 @@ class RmnkTest(unittest.TestCase):
 
     def setUp(self):
         """Init"""
-        self.problem = Rmnk('data/RMNK/Instances/rmnk_0_2_100_1_0.dat')
+        self.problem = Rmnk('moead/data/RMNK/Instances/rmnk_0_2_100_1_0.dat')
 
     def test_instance(self):
         """Test parameters"""

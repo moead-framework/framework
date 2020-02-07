@@ -1,13 +1,14 @@
-from algorithm.moead import Moead
-from problem.rmnk import Rmnk
-from aggregation.tchebycheff import Tchebycheff
-from tool.result import save_population
+from moead.aggregation.tchebycheff import Tchebycheff
+from moead.algorithm.moead import Moead
+from moead.problem.rmnk import Rmnk
+
+from moead.tool.result import save_population
 
 
 ###############################
 #      Init the problem       #
 ###############################
-instance_file = "data/RMNK/Instances/rmnk_0_2_100_1_0.dat"
+instance_file = "moead/data/RMNK/Instances/rmnk_0_2_100_1_0.dat"
 rmnk = Rmnk(instance_file=instance_file)
 
 
@@ -19,7 +20,7 @@ number_of_weight = 10
 number_of_weight_neighborhood = 20
 number_of_crossover_points = 4
 number_of_evaluations = 10000
-weight_file = "data/weights/SOBOL-" + str(number_of_objective) + "objs-" + str(number_of_weight) + "wei.ws"
+weight_file = "moead/data/weights/SOBOL-" + str(number_of_objective) + "objs-" + str(number_of_weight) + "wei.ws"
 
 
 ###############################
@@ -40,7 +41,7 @@ population = moead.run(g=Tchebycheff())
 ###############################
 #       Save the result       #
 ###############################
-save_file = "data/RMNK/my_results/moead-rmnk" + str(number_of_objective) \
+save_file = "moead-rmnk" + str(number_of_objective) \
             + "-N" + str(number_of_weight) \
             + "-T" + str(number_of_weight_neighborhood) \
             + "-CP" + str(number_of_crossover_points) \

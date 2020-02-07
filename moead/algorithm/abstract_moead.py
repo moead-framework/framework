@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from ..core.mating.two_random_parents import TwoRandomParents
 from ..core.genetic_operator.cross_mut import CrossoverAndMutation
 from ..core.selector.closest_neighbors_selector import ClosestNeighborsSelector
-from ..tool.mop import is_duplicated, get_non_dominated, generate_weight_vectors
+from moead.tool.mop import is_duplicated, get_non_dominated, generate_weight_vectors
 
 
 class AbstractMoead(ABC):
@@ -40,7 +40,6 @@ class AbstractMoead(ABC):
             self.genetic_operator = genetic_operator
 
         if (mating is None) | (not mating):
-            print("ooo")
             self.mating = TwoRandomParents
         else:
             self.mating = mating

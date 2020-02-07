@@ -1,5 +1,5 @@
 from .abstract_moead import AbstractMoead
-from ..tool.mop import get_non_dominated, is_duplicated
+from moead.tool.mop import get_non_dominated, is_duplicated
 
 
 class Moead(AbstractMoead):
@@ -57,19 +57,6 @@ class Moead(AbstractMoead):
 
     def repair(self, solution):
         return solution
-    
-    def initial_population(self):
-        p = []
-        x_i = self.problem.generate_random_solution()
-
-        if not is_duplicated(x=x_i, population=self.ep, number_of_objective=self.number_of_objective):
-            self.ep.append(x_i)
-            self.ep = get_non_dominated(self.ep, self.number_of_objective)
-
-        for i in range(self.number_of_weight):
-            p.append(x_i)
-
-        return p
 
     def update_solutions(self, solution, aggregation_function, sub_problem):
 

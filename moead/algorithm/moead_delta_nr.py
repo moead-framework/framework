@@ -2,7 +2,7 @@ import random
 
 from .moead import Moead
 from ..core.selector.delta_selector import DeltaSelector
-from ..tool.mop import is_duplicated, get_non_dominated
+from moead.tool.mop import is_duplicated, get_non_dominated
 
 
 class MoeadDeltaNr(Moead):
