@@ -13,12 +13,17 @@ def get_non_dominated(population, number_of_objective):
     """
     to_remove = []
 
-    if len(population) > 2:
+    if len(population) > 1:
         arr = []
         for s in population:
             arr.append(s.F)
-        ndf, dl, dc, ndr = pg.fast_non_dominated_sorting(arr)
-        new_pop = list(population[i] for i in ndf[0])
+
+        if number_of_objective == 2:
+            new_pop = list(population[i] for i in pg.non_dominated_front_2d(arr))
+        else:
+            ndf, dl, dc, ndr = pg.fast_non_dominated_sorting(arr)
+            new_pop = list(population[i] for i in ndf[0])
+
     else:
         for i in range(len(population)):
             for j in range(len(population)):
