@@ -36,6 +36,9 @@ class Moead(AbstractMoead):
             # For each sub-problem i
             for i in self.sps_strategy():
 
+                if checkpoint is not None:
+                    checkpoint()
+
                 self.update_current_sub_problem(sub_problem=i)
                 self.mating_pool = self.mating_pool_selection(sub_problem=i)[:]
                 y = self.reproduction(population=self.mating_pool)
