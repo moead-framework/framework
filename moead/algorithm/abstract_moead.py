@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from ..core.mating.two_random_parents import TwoRandomParents
 from ..core.genetic_operator.cross_mut import CrossoverAndMutation
 from ..core.selector.closest_neighbors_selector import ClosestNeighborsSelector
-from moead.tool.mop import is_duplicated, get_non_dominated, generate_weight_vectors
+from ..tool.mop import is_duplicated, get_non_dominated, generate_weight_vectors
 
 
 class AbstractMoead(ABC):

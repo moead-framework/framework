@@ -1,5 +1,5 @@
 from .abstract_moead import AbstractMoead
-from moead.tool.mop import get_non_dominated, is_duplicated
+from ..tool.mop import get_non_dominated, is_duplicated
 
 
 class Moead(AbstractMoead):

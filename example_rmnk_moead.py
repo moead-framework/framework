@@ -19,7 +19,7 @@ number_of_objective = rmnk.function_numbers
 number_of_weight = 10
 number_of_weight_neighborhood = 20
 number_of_crossover_points = 4
-number_of_evaluations = 10000
+number_of_evaluations = 1000
 weight_file = "moead/data/weights/SOBOL-" + str(number_of_objective) + "objs-" + str(number_of_weight) + "wei.ws"
 
 
