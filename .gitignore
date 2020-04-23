@@ -2,5 +2,5 @@
 .idea/
 
 __pycache__/
-moead/data/my_results
+moead_framework/data/my_results
 *.txt
