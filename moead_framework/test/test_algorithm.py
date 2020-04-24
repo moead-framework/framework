@@ -1,5 +1,6 @@
 import unittest
 import random
+import os
 import numpy as np
 from moead_framework.algorithm.moead import Moead
 from moead_framework.algorithm.moead_dra import MoeadDRA
@@ -19,14 +20,14 @@ class AlgorithmsTest(unittest.TestCase):
         np.random.seed(1)
         self.number_of_evaluations = 100
 
-        instance_file = "moead-framework/data/RMNK/Instances/rmnk_0_2_100_1_0.dat"
-        self.rmnk = Rmnk(instance_file=instance_file)
+        project_path = os.path.dirname(os.path.abspath(__file__))
+        self.rmnk = Rmnk(instance_file=project_path + '/../data/RMNK/Instances/rmnk_0_2_100_1_0.dat')
 
         self.number_of_objective = self.rmnk.function_numbers
         self.number_of_weight = 10
         self.number_of_weight_neighborhood = 20
         self.number_of_crossover_points = 4
-        self.weight_file = "moead/data/weights/SOBOL-" \
+        self.weight_file = project_path + "/../data/weights/SOBOL-" \
                            + str(self.number_of_objective) \
                            + "objs-" + str(self.number_of_weight) \
                            + "wei.ws"
