@@ -19,7 +19,7 @@ class AlgorithmsTest(unittest.TestCase):
         np.random.seed(1)
         self.number_of_evaluations = 100
 
-        instance_file = "moead/data/RMNK/Instances/rmnk_0_2_100_1_0.dat"
+        instance_file = "moead-framework/data/RMNK/Instances/rmnk_0_2_100_1_0.dat"
         self.rmnk = Rmnk(instance_file=instance_file)
 
         self.number_of_objective = self.rmnk.function_numbers
