@@ -1,9 +1,8 @@
 import numpy as np
 import random
 
-
-from .problem import Problem
-from ..solution.one_dimension_solution import OneDimensionSolution
+from moead_framework.problem.problem import Problem
+from moead_framework.solution.one_dimension_solution import OneDimensionSolution
 
 
 class Zdt1(Problem):

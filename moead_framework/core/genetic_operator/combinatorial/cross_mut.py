@@ -1,6 +1,6 @@
-from .crossover import Crossover
-from .abstract_operator import GeneticOperator
-from .mutation import Mutation
+from moead_framework.core.genetic_operator.combinatorial.crossover import Crossover
+from moead_framework.core.genetic_operator.abstract_operator import GeneticOperator
+from moead_framework.core.genetic_operator.combinatorial.mutation import BinaryMutation
 
 
 class CrossoverAndMutation(GeneticOperator):
@@ -12,6 +12,6 @@ class CrossoverAndMutation(GeneticOperator):
 
     def run(self):
         child = Crossover(self.solution1, self.solution2, self.crossover_points).run()
-        child = Mutation(child).run()
+        child = BinaryMutation(child).run()
 
         return child

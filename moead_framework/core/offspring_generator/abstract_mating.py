@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class GeneticMating(ABC):
+class OffspringGenerator(ABC):
 
     def __init__(self, algorithm_instance):
         self.algorithm = algorithm_instance

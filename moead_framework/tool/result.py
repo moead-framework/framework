@@ -52,6 +52,23 @@ def save_population(file_name, population):
     file.close()
 
 
+def save_population_and_solution(file_name, population):
+    file = open(file_name, "w")
+    # file.write("Length of the list = " + str(len(population)) + "\n")
+    for s in population:
+        row = ""
+        x = ""
+        for coordinate in s.F:
+            row += str(coordinate) + " "
+
+        row += str(s.solution)
+
+        row = row + "\n"
+        file.write(row)
+
+    file.close()
+
+
 def save_value_file(file_name, evaluation, value):
     file = open(file_name, "a")
     file.write(str(evaluation) + " " + str(value) + "\n")

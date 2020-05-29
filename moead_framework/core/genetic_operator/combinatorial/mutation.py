@@ -1,8 +1,8 @@
 import random
-from .abstract_operator import GeneticOperator
+from moead_framework.core.genetic_operator.abstract_operator import GeneticOperator
 
 
-class Mutation(GeneticOperator):
+class BinaryMutation(GeneticOperator):
 
     def __init__(self, solution):
         self.solution = solution[:]

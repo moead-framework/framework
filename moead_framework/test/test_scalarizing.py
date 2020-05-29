@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from moead_framework.problem.rmnk import Rmnk
+from moead_framework.problem.combinatorial.rmnk import Rmnk
 from moead_framework.aggregation.tchebycheff import Tchebycheff
 from moead_framework.aggregation.weighted_sum import WeightedSum
 from moead_framework.tool.mop import generate_weight_vectors

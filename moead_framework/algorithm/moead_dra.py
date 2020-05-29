@@ -48,7 +48,7 @@ class MoeadDRA(MoeadDeltaNr):
 
                 self.update_current_sub_problem(sub_problem=i)
                 self.mating_pool = self.mating_pool_selection(sub_problem=i)[:]
-                y = self.reproduction(population=self.mating_pool)
+                y = self.generate_offspring(population=self.mating_pool)
                 y = self.repair(solution=y)
                 self.update_z(solution=y)
                 self.update_solutions(solution=y, aggregation_function=g, sub_problem=i)

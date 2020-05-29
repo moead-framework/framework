@@ -2,7 +2,7 @@ import random
 import os
 import unittest
 
-from moead_framework.problem.rmnk import Rmnk
+from moead_framework.problem.combinatorial.rmnk import Rmnk
 
 
 class RmnkTest(unittest.TestCase):

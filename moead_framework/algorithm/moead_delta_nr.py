@@ -15,7 +15,7 @@ class MoeadDeltaNr(Moead):
                  delta,
                  number_of_replacement,
                  number_of_crossover_points=2,
-                 mating=None,
+                 offspring_generator=None,
                  weight_file=None):
 
         mating_pool_selector = DeltaSelector(algorithm_instance=self)
@@ -29,7 +29,7 @@ class MoeadDeltaNr(Moead):
                          number_of_weight=number_of_weight,
                          number_of_weight_neighborhood=number_of_weight_neighborhood,
                          mating_pool_selector=mating_pool_selector,
-                         mating=mating,
+                         offspring_generator=offspring_generator,
                          number_of_crossover_points=number_of_crossover_points,
                          weight_file=weight_file)
 
