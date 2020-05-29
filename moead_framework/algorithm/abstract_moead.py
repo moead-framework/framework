@@ -2,7 +2,7 @@ import numpy as np
 from abc import ABC, abstractmethod
 
 from ..core.offspring_generator.two_random_parents import OffspringGeneratorWithTwoRandomParents
-from ..core.genetic_operator.cross_mut import CrossoverAndMutation
+from moead_framework.core.genetic_operator.combinatorial.cross_mut import CrossoverAndMutation
 from ..core.selector.closest_neighbors_selector import ClosestNeighborsSelector
 from ..tool.mop import is_duplicated, get_non_dominated, generate_weight_vectors
 

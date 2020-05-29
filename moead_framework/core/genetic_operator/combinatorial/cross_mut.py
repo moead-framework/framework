@@ -1,6 +1,6 @@
-from .crossover import Crossover
-from .abstract_operator import GeneticOperator
-from .mutation import Mutation
+from moead_framework.core.genetic_operator.combinatorial.crossover import Crossover
+from moead_framework.core.genetic_operator.abstract_operator import GeneticOperator
+from moead_framework.core.genetic_operator.combinatorial.mutation import Mutation
 
 
 class CrossoverAndMutation(GeneticOperator):
