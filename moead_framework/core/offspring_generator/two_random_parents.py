@@ -1,9 +1,9 @@
 import random
 
-from .abstract_mating import GeneticMating
+from .abstract_mating import OffspringGenerator
 
 
-class TwoRandomParents(GeneticMating):
+class OffspringGeneratorWithTwoRandomParents(OffspringGenerator):
 
     def run(self, population_indexes):
 
