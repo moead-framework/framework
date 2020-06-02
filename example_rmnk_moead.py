@@ -1,5 +1,5 @@
 from moead_framework.aggregation.tchebycheff import Tchebycheff
-from moead_framework.algorithm.moead import Moead
+from moead_framework.algorithm.combinatorial.moead import Moead
 from moead_framework.problem.combinatorial.rmnk import Rmnk
 
 from moead_framework.tool.result import save_population

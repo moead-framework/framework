@@ -1,7 +1,7 @@
 import random
 
 from .moead import Moead
-from ..core.selector.delta_selector import DeltaSelector
+from moead_framework.core.selector.delta_selector import DeltaSelector
 from moead_framework.tool.mop import is_duplicated, get_non_dominated
 
 

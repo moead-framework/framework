@@ -1,5 +1,8 @@
-from .abstract_moead import AbstractMoead
-from ..tool.mop import get_non_dominated, is_duplicated
+from moead_framework.algorithm.abstract_moead import AbstractMoead
+from moead_framework.core.genetic_operator.combinatorial.cross_mut import CrossoverAndMutation
+from moead_framework.core.offspring_generator.two_random_parents import OffspringGeneratorWithTwoRandomParents
+from moead_framework.core.selector.closest_neighbors_selector import ClosestNeighborsSelector
+from moead_framework.tool.mop import get_non_dominated, is_duplicated
 
 
 class Moead(AbstractMoead):
@@ -28,6 +31,21 @@ class Moead(AbstractMoead):
                          mating_pool_selector=mating_pool_selector,
                          offspring_generator=offspring_generator,
                          weight_file=weight_file)
+
+        if mating_pool_selector is None:
+            self.mating_pool_selector = ClosestNeighborsSelector(algorithm_instance=self)
+        else:
+            self.mating_pool_selector = mating_pool_selector
+
+        if genetic_operator is None:
+            self.genetic_operator = CrossoverAndMutation
+        else:
+            self.genetic_operator = genetic_operator
+
+        if (offspring_generator is None) | (not offspring_generator):
+            self.offspring_generator = OffspringGeneratorWithTwoRandomParents
+        else:
+            self.offspring_generator = offspring_generator
 
     def run(self, g, checkpoint=None):
 

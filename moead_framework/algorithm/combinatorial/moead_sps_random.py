@@ -1,5 +1,5 @@
 import random
-from moead_framework.algorithm.moead import Moead
+from moead_framework.algorithm.combinatorial.moead import Moead
 
 
 class MoeadSPSRandom(Moead):
