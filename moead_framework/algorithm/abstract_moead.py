@@ -64,7 +64,7 @@ class AbstractMoead(ABC):
             p.append(x_i)
             if not is_duplicated(x=x_i, population=self.ep, number_of_objective=self.number_of_objective):
                 self.ep.append(x_i)
-                self.ep = get_non_dominated(self.ep, self.number_of_objective)
+                self.ep = get_non_dominated(self.ep)
 
         return p
 

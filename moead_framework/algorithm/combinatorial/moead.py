@@ -99,5 +99,5 @@ class Moead(AbstractMoead):
 
                 if not is_duplicated(x=solution, population=self.ep, number_of_objective=self.number_of_objective):
                     self.ep.append(solution)
-                    self.ep = get_non_dominated(self.ep, self.number_of_objective)
+                    self.ep = get_non_dominated(self.ep)
 

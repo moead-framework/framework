@@ -1,41 +1,49 @@
 import random
-
+import warnings
 import numpy as np
-import pygmo as pg
 
 
-def get_non_dominated(population, number_of_objective):
+def is_pareto_efficient(costs, return_mask = True):
+    """
+    Find the pareto-efficient points
+    :param costs: An (n_points, n_costs) array
+    :param return_mask: True to return a mask
+    :return: An array of indices of pareto-efficient points.
+        If return_mask is True, this will be an (n_points, ) boolean array
+        Otherwise it will be a (n_efficient_points, ) integer array of indices.
+    """
+    is_efficient = np.arange(costs.shape[0])
+    n_points = costs.shape[0]
+    next_point_index = 0  # Next index in the is_efficient array to search for
+    while next_point_index < len(costs):
+        nondominated_point_mask = np.any(costs < costs[next_point_index], axis=1)
+        nondominated_point_mask[next_point_index] = True
+        is_efficient = is_efficient[nondominated_point_mask]  # Remove dominated points
+        costs = costs[nondominated_point_mask]
+        next_point_index = np.sum(nondominated_point_mask[:next_point_index])+1
+    if return_mask:
+        is_efficient_mask = np.zeros(n_points, dtype=bool)
+        is_efficient_mask[is_efficient] = True
+        return is_efficient_mask
+    else:
+        return is_efficient
+
+
+def get_non_dominated(population, number_of_objective=None):
     """
     return all non dominated solutions of the population
-    :param number_of_objective: integer
+    :param number_of_objective: integer deprecated
     :param population: list of solution
     :return: list of solution
     """
-    to_remove = []
+    if number_of_objective is not None:
+        warnings.warn("number_of_objective is deprecated and will be removed in a future version", DeprecationWarning)
 
-    if len(population) > 1:
-        arr = []
-        for s in population:
-            arr.append(s.F)
+    arr = []
+    for s in population:
+        arr.append(s.F)
 
-        if number_of_objective == 2:
-            new_pop = list(population[i] for i in pg.non_dominated_front_2d(arr))
-        else:
-            ndf, dl, dc, ndr = pg.fast_non_dominated_sorting(arr)
-            new_pop = list(population[i] for i in ndf[0])
-
-    else:
-        for i in range(len(population)):
-            for j in range(len(population)):
-                nb_dominated_functions = 0
-                for objective in range(number_of_objective):
-                    if population[i].F[objective] > population[j].F[objective]:
-                        nb_dominated_functions += 1
-
-                if nb_dominated_functions == number_of_objective:
-                    to_remove.append(population[i])
-
-        new_pop = list(set(population).difference(set(to_remove)))
+    new_pop = list(population[i] for i in is_pareto_efficient(np.array(arr), return_mask=False))
 
     return new_pop
 

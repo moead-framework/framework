@@ -19,11 +19,11 @@ class ToolsTest(unittest.TestCase):
 
     def test_PF(self):
         """Test get Non dominated"""
-        sols = []
+        solutions = []
         for i in range(20):
-            sols.append(self.rmnk.generate_random_solution())
+            solutions.append(self.rmnk.generate_random_solution())
 
-        non_dominated_pop = get_non_dominated(population=sols, number_of_objective=self.number_of_objective)
+        non_dominated_pop = get_non_dominated(population=solutions)
         non_dominated = []
         for s in non_dominated_pop:
             non_dominated.append(s.F)
@@ -33,4 +33,7 @@ class ToolsTest(unittest.TestCase):
                 [-0.5070678622999999, -0.5411136235], [-0.4660221059999998, -0.5569167061000001],
                 [-0.4493039854199998, -0.5587430658000001]]
 
-        self.assertListEqual(non_dominated, test)
+        self.assertEqual(len(non_dominated), len(test))
+
+        for elt in test:
+            self.assertIn(elt, non_dominated)
