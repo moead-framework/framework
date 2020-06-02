@@ -7,3 +7,5 @@ moead_framework/data/my_results
 build/
 
 moead_framework.egg-info/
+
+dist/
