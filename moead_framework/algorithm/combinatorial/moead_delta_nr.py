@@ -1,7 +1,7 @@
 import random
 
 from .moead import Moead
-from ..core.selector.delta_selector import DeltaSelector
+from moead_framework.core.selector.delta_selector import DeltaSelector
 from moead_framework.tool.mop import is_duplicated, get_non_dominated
 
 
@@ -67,7 +67,7 @@ class MoeadDeltaNr(Moead):
                 self.population[j] = solution
                 if not is_duplicated(x=solution, population=self.ep, number_of_objective=self.number_of_objective):
                     self.ep.append(solution)
-                    self.ep = get_non_dominated(self.ep, self.number_of_objective)
+                    self.ep = get_non_dominated(self.ep)
 
             # Step (3)
             self.mating_pool.remove(j)

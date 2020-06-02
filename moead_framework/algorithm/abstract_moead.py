@@ -1,9 +1,6 @@
 import numpy as np
 from abc import ABC, abstractmethod
 
-from ..core.offspring_generator.two_random_parents import OffspringGeneratorWithTwoRandomParents
-from moead_framework.core.genetic_operator.combinatorial.cross_mut import CrossoverAndMutation
-from ..core.selector.closest_neighbors_selector import ClosestNeighborsSelector
 from ..tool.mop import is_duplicated, get_non_dominated, generate_weight_vectors
 
 
@@ -29,22 +26,9 @@ class AbstractMoead(ABC):
         self.b = self.generate_closest_weight_vectors()
         self.current_sub_problem = -1
 
-        if mating_pool_selector is None:
-            self.mating_pool_selector = ClosestNeighborsSelector(algorithm_instance=self)
-        else:
-            self.mating_pool_selector = mating_pool_selector
-
-        if genetic_operator is None:
-            self.genetic_operator = CrossoverAndMutation
-        else:
-            self.genetic_operator = genetic_operator
-
-        if (offspring_generator is None) | (not offspring_generator):
-            self.offspring_generator = OffspringGeneratorWithTwoRandomParents
-        else:
-            self.offspring_generator = offspring_generator
-
-        self.plots = {}
+        self.mating_pool_selector = mating_pool_selector
+        self.genetic_operator = genetic_operator
+        self.offspring_generator = offspring_generator
 
     @abstractmethod
     def run(self, scalarizing_function, checkpoint=None):
@@ -80,7 +64,7 @@ class AbstractMoead(ABC):
             p.append(x_i)
             if not is_duplicated(x=x_i, population=self.ep, number_of_objective=self.number_of_objective):
                 self.ep.append(x_i)
-                self.ep = get_non_dominated(self.ep, self.number_of_objective)
+                self.ep = get_non_dominated(self.ep)
 
         return p
 

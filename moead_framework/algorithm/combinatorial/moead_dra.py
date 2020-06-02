@@ -1,6 +1,6 @@
 import random
 import numpy as np
-from moead_framework.algorithm.moead_delta_nr import MoeadDeltaNr
+from moead_framework.algorithm.combinatorial.moead_delta_nr import MoeadDeltaNr
 
 
 class MoeadDRA(MoeadDeltaNr):

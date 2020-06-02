@@ -2,10 +2,10 @@ import unittest
 import random
 import os
 import numpy as np
-from moead_framework.algorithm.moead import Moead
-from moead_framework.algorithm.moead_dra import MoeadDRA
-from moead_framework.algorithm.moead_delta_nr import MoeadDeltaNr
-from moead_framework.algorithm.moead_sps_random import MoeadSPSRandom
+from moead_framework.algorithm.combinatorial.moead import Moead
+from moead_framework.algorithm.combinatorial.moead_dra import MoeadDRA
+from moead_framework.algorithm.combinatorial.moead_delta_nr import MoeadDeltaNr
+from moead_framework.algorithm.combinatorial.moead_sps_random import MoeadSPSRandom
 from moead_framework.problem.combinatorial.rmnk import Rmnk
 from moead_framework.aggregation.tchebycheff import Tchebycheff
 from moead_framework.tool.result import compute_hypervolume

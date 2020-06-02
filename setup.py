@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="moead-framework",
-    version="0.0.2",
+    version="0.0.3",
     author="Geoffrey Pruvost",
     author_email="geoffrey@pruvost.xyz",
     description="MOEA/D Framework in Python 3",
@@ -13,6 +13,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/geoffreyp/moead",
     packages=setuptools.find_packages(),
+    install_requires=['numpy'],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
