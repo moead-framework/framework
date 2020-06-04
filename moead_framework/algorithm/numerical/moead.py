@@ -1,6 +1,6 @@
 from moead_framework.algorithm.abstract_moead import AbstractMoead
-from moead_framework.core.genetic_operator.combinatorial.cross_mut import CrossoverAndMutation
-from moead_framework.core.offspring_generator.two_random_parents import OffspringGeneratorWithTwoRandomParents
+from moead_framework.core.genetic_operator.numerical.moead_de_operators import DifferentialEvolutionCrossover
+from moead_framework.core.offspring_generator.two_random_and_current_parents import OffspringGeneratorWithTwoRandomAndCurrentParents
 from moead_framework.core.selector.closest_neighbors_selector import ClosestNeighborsSelector
 from moead_framework.tool.mop import get_non_dominated, is_duplicated
 
@@ -12,7 +12,6 @@ class Moead(AbstractMoead):
                  number_of_objective,
                  number_of_weight,
                  number_of_weight_neighborhood,
-                 number_of_crossover_points=2,
                  mating_pool_selector=None,
                  genetic_operator=None,
                  offspring_generator=None,
@@ -30,7 +29,6 @@ class Moead(AbstractMoead):
                          mating_pool_selector=mating_pool_selector,
                          offspring_generator=offspring_generator,
                          weight_file=weight_file)
-        self.number_of_crossover_points = number_of_crossover_points
 
         if mating_pool_selector is None:
             self.mating_pool_selector = ClosestNeighborsSelector(algorithm_instance=self)
@@ -38,12 +36,12 @@ class Moead(AbstractMoead):
             self.mating_pool_selector = mating_pool_selector
 
         if genetic_operator is None:
-            self.genetic_operator = CrossoverAndMutation
+            self.genetic_operator = DifferentialEvolutionCrossover
         else:
             self.genetic_operator = genetic_operator
 
         if (offspring_generator is None) | (not offspring_generator):
-            self.offspring_generator = OffspringGeneratorWithTwoRandomParents
+            self.offspring_generator = OffspringGeneratorWithTwoRandomAndCurrentParents
         else:
             self.offspring_generator = offspring_generator
 

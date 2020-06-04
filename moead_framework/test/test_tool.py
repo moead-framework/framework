@@ -14,7 +14,7 @@ class ToolsTest(unittest.TestCase):
         random.seed(1)
         np.random.seed(1)
         project_path = os.path.dirname(os.path.abspath(__file__))
-        self.rmnk = Rmnk(instance_file=project_path + '/../data/RMNK/Instances/rmnk_0_2_100_1_0.dat')
+        self.rmnk = Rmnk(instance_file=project_path + '/data/RMNK/Instances/rmnk_0_2_100_1_0.dat')
         self.number_of_objective = self.rmnk.function_numbers
 
     def test_PF(self):
