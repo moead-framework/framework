@@ -15,7 +15,6 @@ class AbstractMoead(ABC):
         self.problem = problem
         self.max_evaluation = max_evaluation
         self.number_of_objective = number_of_objective
-        self.number_of_crossover_points = number_of_crossover_points
         self.number_of_weight = number_of_weight
         self.t = number_of_weight_neighborhood
         self.ep = []
