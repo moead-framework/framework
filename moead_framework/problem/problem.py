@@ -13,9 +13,9 @@ class Problem(ABC):
         pass
 
     @abstractmethod
-    def generate_random_solution(self):
+    def generate_random_solution(self, evaluate=True):
         pass
 
     @abstractmethod
-    def generate_solution(self, array):
+    def generate_solution(self, array, evaluate=True):
         pass

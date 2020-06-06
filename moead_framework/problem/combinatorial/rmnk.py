@@ -52,18 +52,8 @@ class Rmnk(Problem):
 
         return accu
 
-    def generate_random_solution(self, evaluate=True, seed=None):
-        # solution = []
-        # for i in range(0, self.n):
-        #     solution.append(random.getrandbits(1))
-
-        #print(solution)
-        # print(np.random.randint(0, 2, self.n).tolist())
-
-        if seed is not None:
-            np.random.seed(seed)
-
-        return self.generate_solution(np.random.randint(0, 2, self.n).tolist()[:])
+    def generate_random_solution(self, evaluate=True):
+        return self.generate_solution(array=np.random.randint(0, 2, self.n).tolist()[:], evaluate=evaluate)
 
     def generate_solution(self, array, evaluate=True):
         x = OneDimensionSolution(array)

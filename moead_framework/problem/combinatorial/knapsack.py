@@ -75,22 +75,16 @@ class KnapsackProblem(Problem):
 
         return max_founded
 
-    def generate_random_solution(self):
-        solution = []
-        for i in range(0, self.object_number):
-            solution.append(random.getrandbits(1))
+    def generate_random_solution(self, evaluate=True):
+        return self.generate_solution(array=np.random.randint(0, 2, self.object_number).tolist()[:], evaluate=evaluate)
 
-        x = OneDimensionSolution(solution)
-
-        for j in range(self.function_numbers):
-            x.F.append(self.f(j, x.solution))
-
-        return x
-
-    def generate_solution(self, array):
+    def generate_solution(self, array, evaluate=True):
         x = OneDimensionSolution(array)
 
         for j in range(self.function_numbers):
-            x.F.append(self.f(j, x.solution))
+            if evaluate:
+                x.F.append(self.f(j, x.solution))
+            else:
+                x.F.append(None)
 
         return x
