@@ -7,7 +7,6 @@ from ..tool.mop import is_duplicated, get_non_dominated, generate_weight_vectors
 class AbstractMoead(ABC):
 
     def __init__(self, problem, max_evaluation, number_of_objective, number_of_weight, number_of_weight_neighborhood,
-                 number_of_crossover_points=2,
                  genetic_operator=None,
                  offspring_generator=None,
                  mating_pool_selector=None,
@@ -33,21 +32,17 @@ class AbstractMoead(ABC):
     def run(self, scalarizing_function, checkpoint=None):
         pass
 
-    @abstractmethod
     def sps_strategy(self):
-        pass
+        return range(self.number_of_weight)
 
-    @abstractmethod
     def mating_pool_selection(self, sub_problem):
-        pass
+        return self.mating_pool_selector.select(sub_problem)
 
-    @abstractmethod
     def generate_offspring(self, population):
-        pass
+        return self.offspring_generator(algorithm_instance=self).run(population_indexes=population)
 
-    @abstractmethod
     def repair(self, solution):
-        pass
+        return solution
 
     @abstractmethod
     def update_solutions(self, solution, scal_function, sub_problem):

@@ -65,18 +65,6 @@ class Moead(AbstractMoead):
 
         return self.ep
 
-    def sps_strategy(self):
-        return range(self.number_of_weight)
-
-    def mating_pool_selection(self, sub_problem):
-        return self.mating_pool_selector.select(sub_problem)
-
-    def generate_offspring(self, population):
-        return self.offspring_generator(algorithm_instance=self).run(population_indexes=population)
-
-    def repair(self, solution):
-        return solution
-
     def update_solutions(self, solution, aggregation_function, sub_problem):
 
         for j in self.b[sub_problem]:

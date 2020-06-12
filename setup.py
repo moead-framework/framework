@@ -11,7 +11,7 @@ setuptools.setup(
     description="MOEA/D Framework in Python 3",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://moead-framework.github.io/documentation/html/index.html",
+    url="https://github.com/moead-framework/framework",
     packages=setuptools.find_packages(),
     install_requires=['numpy'],
     classifiers=[
