@@ -1,5 +1,6 @@
 from moead_framework.aggregation.tchebycheff import Tchebycheff
 from moead_framework.algorithm.combinatorial.moead import Moead
+from moead_framework.core.termination_criteria.max_evaluation import MaxEvaluation
 from moead_framework.problem.combinatorial.rmnk import Rmnk
 
 from moead_framework.tool.result import save_population
@@ -20,22 +21,24 @@ number_of_weight = 10
 number_of_weight_neighborhood = 20
 number_of_crossover_points = 4
 number_of_evaluations = 1000
-weight_file = "moead_framework/data/weights/SOBOL-" + str(number_of_objective) + "objs-" + str(number_of_weight) + "wei.ws"
+weight_file = "moead_framework/test/data/weights/SOBOL-" + str(number_of_objective) + "objs-" + str(number_of_weight) + "wei.ws"
+
 
 
 ###############################
 #    Execute the algorithm    #
 ###############################
 moead = Moead(problem=rmnk,
-              max_evaluation = number_of_evaluations,
+              max_evaluation=number_of_evaluations,
               number_of_objective=number_of_objective,
               number_of_weight=number_of_weight,
               number_of_weight_neighborhood=number_of_weight_neighborhood,
               number_of_crossover_points=number_of_crossover_points,
               weight_file=weight_file,
+              aggregation_function=Tchebycheff,
               )
 
-population = moead.run(g=Tchebycheff())
+population = moead.run()
 
 
 ###############################

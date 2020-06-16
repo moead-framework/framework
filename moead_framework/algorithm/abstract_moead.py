@@ -1,17 +1,26 @@
 import numpy as np
 from abc import ABC, abstractmethod
 
+from ..core.termination_criteria.max_evaluation import MaxEvaluation
 from ..tool.mop import is_duplicated, get_non_dominated, generate_weight_vectors
 
 
 class AbstractMoead(ABC):
 
     def __init__(self, problem, max_evaluation, number_of_objective, number_of_weight, number_of_weight_neighborhood,
+                 aggregation_function,
+                 termination_criteria=None,
                  genetic_operator=None,
                  offspring_generator=None,
                  mating_pool_selector=None,
                  weight_file=None):
         self.problem = problem
+        self.aggregation_function = aggregation_function()
+        if termination_criteria is None:
+            self.termination_criteria = MaxEvaluation(algorithm_instance=self)
+        else:
+            self.termination_criteria = termination_criteria(algorithm_instance=self)
+
         self.max_evaluation = max_evaluation
         self.number_of_objective = number_of_objective
         self.number_of_weight = number_of_weight
@@ -29,7 +38,11 @@ class AbstractMoead(ABC):
         self.offspring_generator = offspring_generator
 
     @abstractmethod
-    def run(self, scalarizing_function, checkpoint=None):
+    def run(self, checkpoint=None):
+        pass
+
+    @abstractmethod
+    def update_solutions(self, solution, scal_function, sub_problem):
         pass
 
     def sps_strategy(self):
@@ -43,10 +56,6 @@ class AbstractMoead(ABC):
 
     def repair(self, solution):
         return solution
-
-    @abstractmethod
-    def update_solutions(self, solution, scal_function, sub_problem):
-        pass
 
     def update_current_sub_problem(self, sub_problem):
         self.current_sub_problem = sub_problem

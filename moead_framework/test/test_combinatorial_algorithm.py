@@ -39,12 +39,13 @@ class AlgorithmsTest(unittest.TestCase):
                       max_evaluation=self.number_of_evaluations,
                       number_of_objective=self.number_of_objective,
                       number_of_weight=self.number_of_weight,
+                      aggregation_function=Tchebycheff,
                       number_of_weight_neighborhood=self.number_of_weight_neighborhood,
                       number_of_crossover_points=self.number_of_crossover_points,
                       weight_file=self.weight_file,
                       )
 
-        non_dominated = moead.run(g=Tchebycheff())
+        non_dominated = moead.run()
         self.assertEqual(len(non_dominated), 5)  # test the number of non_dominated solutions
         self.assertEqual(compute_hypervolume(non_dominated, [0, 0]), 0.33248710736231335)  # test the hypervolume value
 
@@ -59,12 +60,13 @@ class AlgorithmsTest(unittest.TestCase):
                              number_of_weight=self.number_of_weight,
                              number_of_weight_neighborhood=self.number_of_weight_neighborhood,
                              number_of_crossover_points=self.number_of_crossover_points,
+                             aggregation_function=Tchebycheff,
                              weight_file=self.weight_file,
                              delta=delta,
                              number_of_replacement=nr
                              )
 
-        non_dominated = moead.run(g=Tchebycheff())
+        non_dominated = moead.run()
 
         self.assertEqual(len(non_dominated), 6)  # test the number of non_dominated solutions
         self.assertEqual(compute_hypervolume(non_dominated, [0, 0]), 0.3200990921863723)  # test the hypervolume value
@@ -76,13 +78,14 @@ class AlgorithmsTest(unittest.TestCase):
                                max_evaluation=self.number_of_evaluations,
                                number_of_objective=self.number_of_objective,
                                number_of_weight=self.number_of_weight,
+                               aggregation_function=Tchebycheff,
                                number_of_weight_neighborhood=self.number_of_weight_neighborhood,
                                number_of_crossover_points=self.number_of_crossover_points,
                                number_of_subproblem=number_of_subproblem,
                                weight_file=self.weight_file,
                                )
 
-        non_dominated = moead.run(g=Tchebycheff())
+        non_dominated = moead.run()
 
         self.assertEqual(len(non_dominated), 7)  # test the number of non_dominated solutions
         self.assertEqual(compute_hypervolume(non_dominated, [0, 0]), 0.35397501867058484)  # test the hypervolume value
@@ -96,13 +99,14 @@ class AlgorithmsTest(unittest.TestCase):
                          number_of_objective=self.number_of_objective,
                          number_of_weight=self.number_of_weight,
                          number_of_weight_neighborhood=self.number_of_weight_neighborhood,
+                         aggregation_function=Tchebycheff,
                          number_of_crossover_points=self.number_of_crossover_points,
                          weight_file=self.weight_file,
                          delta=delta,
                          number_of_replacement=nr
                          )
 
-        non_dominated = moead.run(g=Tchebycheff())
+        non_dominated = moead.run()
 
         self.assertEqual(len(non_dominated), 6)  # test the number of non_dominated solutions
         self.assertEqual(compute_hypervolume(non_dominated, [0, 0]), 0.3200990921863723)  # test the hypervolume value

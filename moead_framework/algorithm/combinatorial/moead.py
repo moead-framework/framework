@@ -12,6 +12,8 @@ class Moead(AbstractMoead):
                  number_of_objective,
                  number_of_weight,
                  number_of_weight_neighborhood,
+                 aggregation_function,
+                 termination_criteria=None,
                  number_of_crossover_points=2,
                  mating_pool_selector=None,
                  genetic_operator=None,
@@ -26,6 +28,8 @@ class Moead(AbstractMoead):
                          number_of_objective,
                          number_of_weight,
                          number_of_weight_neighborhood,
+                         termination_criteria=termination_criteria,
+                         aggregation_function=aggregation_function,
                          genetic_operator=genetic_operator,
                          mating_pool_selector=mating_pool_selector,
                          offspring_generator=offspring_generator,
@@ -47,9 +51,9 @@ class Moead(AbstractMoead):
         else:
             self.offspring_generator = offspring_generator
 
-    def run(self, g, checkpoint=None):
+    def run(self, checkpoint=None):
 
-        while self.current_eval < self.max_evaluation:
+        while self.termination_criteria.test():
 
             # For each sub-problem i
             for i in self.sps_strategy():
@@ -62,7 +66,7 @@ class Moead(AbstractMoead):
                 y = self.generate_offspring(population=self.mating_pool)
                 y = self.repair(solution=y)
                 self.update_z(solution=y)
-                self.update_solutions(solution=y, aggregation_function=g, sub_problem=i)
+                self.update_solutions(solution=y, aggregation_function=self.aggregation_function, sub_problem=i)
                 self.current_eval += 1
 
         return self.ep
