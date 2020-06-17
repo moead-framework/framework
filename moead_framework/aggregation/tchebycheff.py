@@ -1,7 +1,7 @@
-from .functions import Function
+from .functions import AggregationFunction
 
 
-class Tchebycheff(Function):
+class Tchebycheff(AggregationFunction):
     """
        Tchebycheff Approach
        Minimize the maximal distance |f_i(x) - z_i(x)| * w_i

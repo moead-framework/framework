@@ -1,8 +1,8 @@
 import numpy as np
 from abc import ABC, abstractmethod
 
-from ..core.termination_criteria.max_evaluation import MaxEvaluation
-from ..tool.mop import is_duplicated, get_non_dominated, generate_weight_vectors
+from moead_framework.core.termination_criteria.max_evaluation import MaxEvaluation
+from moead_framework.tool.mop import is_duplicated, get_non_dominated, generate_weight_vectors
 
 
 class AbstractMoead(ABC):

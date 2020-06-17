@@ -1,14 +1,13 @@
 from moead_framework.aggregation.tchebycheff import Tchebycheff
 from moead_framework.algorithm.combinatorial.moead import Moead
-from moead_framework.core.termination_criteria.max_evaluation import MaxEvaluation
 from moead_framework.problem.combinatorial.rmnk import Rmnk
-
 from moead_framework.tool.result import save_population
 
 
 ###############################
 #      Init the problem       #
 ###############################
+# Others instances are available here : https://github.com/moead-framework/data/tree/master/problem/RMNK/Instances
 instance_file = "moead_framework/test/data/RMNK/Instances/rmnk_0_2_100_1_0.dat"
 rmnk = Rmnk(instance_file=instance_file)
 
@@ -21,6 +20,7 @@ number_of_weight = 10
 number_of_weight_neighborhood = 20
 number_of_crossover_points = 4
 number_of_evaluations = 1000
+# Others weights files are available here : https://github.com/moead-framework/data/tree/master/weights
 weight_file = "moead_framework/test/data/weights/SOBOL-" + str(number_of_objective) + "objs-" + str(number_of_weight) + "wei.ws"
 
 
