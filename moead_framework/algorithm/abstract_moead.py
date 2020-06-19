@@ -1,6 +1,8 @@
 import numpy as np
 from abc import ABC, abstractmethod
 
+from moead_framework.core.offspring_generator.offspring_generator import OffspringGeneratorGeneric
+from moead_framework.core.selector.closest_neighbors_selector import ClosestNeighborsSelector
 from moead_framework.core.termination_criteria.max_evaluation import MaxEvaluation
 from moead_framework.tool.mop import is_duplicated, get_non_dominated, generate_weight_vectors
 
@@ -11,7 +13,7 @@ class AbstractMoead(ABC):
                  aggregation_function,
                  termination_criteria=None,
                  genetic_operator=None,
-                 offspring_generator=None,
+                 parent_selector=None,
                  mating_pool_selector=None,
                  weight_file=None):
         self.problem = problem
@@ -33,9 +35,15 @@ class AbstractMoead(ABC):
         self.b = self.generate_closest_weight_vectors()
         self.current_sub_problem = -1
 
-        self.mating_pool_selector = mating_pool_selector
+        if mating_pool_selector is None:
+            self.mating_pool_selector = ClosestNeighborsSelector(algorithm_instance=self)
+        else:
+            self.mating_pool_selector = mating_pool_selector
+
         self.genetic_operator = genetic_operator
-        self.offspring_generator = offspring_generator
+        self.parent_selector = parent_selector
+        self.offspring_generator = OffspringGeneratorGeneric(algorithm_instance=self)
+
 
     @abstractmethod
     def run(self, checkpoint=None):
@@ -52,7 +60,7 @@ class AbstractMoead(ABC):
         return self.mating_pool_selector.select(sub_problem)
 
     def generate_offspring(self, population):
-        return self.offspring_generator(algorithm_instance=self).run(population_indexes=population)
+        return self.offspring_generator.run(population_indexes=population) # useless d'utiliser une class si c'est générique
 
     def repair(self, solution):
         return solution

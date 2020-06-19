@@ -14,7 +14,7 @@ class MoeadSPSRandom(Moead):
                  number_of_crossover_points=2,
                  mating_pool_selector=None,
                  genetic_operator=None,
-                 offspring_generator=None,
+                 parent_selector=None,
                  weight_file=None
                  ):
 
@@ -27,7 +27,7 @@ class MoeadSPSRandom(Moead):
                          number_of_crossover_points=number_of_crossover_points,
                          genetic_operator=genetic_operator,
                          mating_pool_selector=mating_pool_selector,
-                         offspring_generator=offspring_generator,
+                         parent_selector=parent_selector,
                          weight_file=weight_file)
 
         self.current_eval = 1

@@ -1,7 +1,6 @@
 from moead_framework.algorithm.abstract_moead import AbstractMoead
 from moead_framework.core.genetic_operator.combinatorial.cross_mut import CrossoverAndMutation
-from moead_framework.core.offspring_generator.two_random_parents import OffspringGeneratorWithTwoRandomParents
-from moead_framework.core.selector.closest_neighbors_selector import ClosestNeighborsSelector
+from moead_framework.core.parent_selector.two_random_parent_selector import TwoRandomParentSelector
 from moead_framework.tool.mop import get_non_dominated, is_duplicated
 
 
@@ -17,7 +16,7 @@ class Moead(AbstractMoead):
                  number_of_crossover_points=2,
                  mating_pool_selector=None,
                  genetic_operator=None,
-                 offspring_generator=None,
+                 parent_selector=None,
                  weight_file=None):
 
         self.current_eval = 1
@@ -32,24 +31,19 @@ class Moead(AbstractMoead):
                          aggregation_function=aggregation_function,
                          genetic_operator=genetic_operator,
                          mating_pool_selector=mating_pool_selector,
-                         offspring_generator=offspring_generator,
+                         parent_selector=parent_selector,
                          weight_file=weight_file)
         self.number_of_crossover_points = number_of_crossover_points
-
-        if mating_pool_selector is None:
-            self.mating_pool_selector = ClosestNeighborsSelector(algorithm_instance=self)
-        else:
-            self.mating_pool_selector = mating_pool_selector
 
         if genetic_operator is None:
             self.genetic_operator = CrossoverAndMutation
         else:
             self.genetic_operator = genetic_operator
 
-        if (offspring_generator is None) | (not offspring_generator):
-            self.offspring_generator = OffspringGeneratorWithTwoRandomParents
+        if parent_selector is None:
+            self.parent_selector = TwoRandomParentSelector(algorithm=self)
         else:
-            self.offspring_generator = offspring_generator
+            self.parent_selector = parent_selector
 
     def run(self, checkpoint=None):
 

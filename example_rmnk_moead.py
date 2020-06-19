@@ -17,7 +17,7 @@ rmnk = Rmnk(instance_file=instance_file)
 ###############################
 number_of_objective = rmnk.function_numbers
 number_of_weight = 10
-number_of_weight_neighborhood = 20
+number_of_weight_neighborhood = 2
 number_of_crossover_points = 4
 number_of_evaluations = 1000
 # Others weights files are available here : https://github.com/moead-framework/data/tree/master/weights
