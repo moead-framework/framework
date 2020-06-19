@@ -20,7 +20,7 @@ class GeneticOperatorsTest(unittest.TestCase):
     def test_combinatorial_binary_mutation(self):
         """Test combinatorial binary mutation"""
         array_solution = [1, 0, 0, 1, 1, 0]
-        new_solution = BinaryMutation(array_solution).run()
+        new_solution = BinaryMutation(solutions=[array_solution]).run()
 
         self.assertEqual(new_solution, [1, 0, 0, 1, 1, 1])
 
@@ -28,8 +28,10 @@ class GeneticOperatorsTest(unittest.TestCase):
         """Test combinatorial crossover multi-points"""
         array_solution1 = [1, 2, 3, 4, 5]
         array_solution2 = [6, 7, 8, 9, 10]
-        new_solution_one_point = Crossover(array_solution1, array_solution2, crossover_points=1).run().tolist()
-        new_solution_three_point = Crossover(array_solution1, array_solution2, crossover_points=3).run().tolist()
+        new_solution_one_point = Crossover(solutions=[array_solution1, array_solution2],
+                                           crossover_points=1).run().tolist()
+        new_solution_three_point = Crossover(solutions=[array_solution1, array_solution2],
+                                             crossover_points=3).run().tolist()
 
         self.assertEqual(new_solution_one_point, [1, 2, 8, 9, 10])
         self.assertEqual(new_solution_three_point, [1, 7, 8, 4, 10])
@@ -38,7 +40,7 @@ class GeneticOperatorsTest(unittest.TestCase):
         """Test numerical polynomial mutation"""
         problem = Zdt1(20)
         array_solution = problem.generate_random_solution().solution
-        new_solution = PolynomialMutation(array_solution).run()
+        new_solution = PolynomialMutation(solutions=[array_solution]).run()
 
         self.assertEqual(new_solution, [0.13890427141075934, 0.95236226912859, 0.750939942185552, 0.21601593072335035,
                                         0.4874043369178731, 0.32275331169490873, 0.6136038214883794, 0.782426788735786,
@@ -54,7 +56,9 @@ class GeneticOperatorsTest(unittest.TestCase):
         array_solution2 = problem.generate_random_solution().solution
         array_solution3 = problem.generate_random_solution().solution
 
-        new_solution = DifferentialEvolutionCrossover(array_solution1, array_solution2, array_solution3).run()
+        new_solution = DifferentialEvolutionCrossover(solutions=[array_solution1,
+                                                                 array_solution2,
+                                                                 array_solution3]).run()
 
         self.assertEqual(new_solution, [0, 0.9568466893460874, 0.7769962533153996,
                                         0.3009457924509838, 0.2869152283255434])

@@ -1,7 +1,7 @@
-from .functions import Function
+from .functions import AggregationFunction
 
 
-class WeightedSum(Function):
+class WeightedSum(AggregationFunction):
 
     def is_better(self, old_value, new_value):
         """In minimization context only"""

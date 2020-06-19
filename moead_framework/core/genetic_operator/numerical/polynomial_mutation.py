@@ -5,11 +5,11 @@ from moead_framework.core.genetic_operator.abstract_operator import GeneticOpera
 
 class PolynomialMutation(GeneticOperator):
 
-    def __init__(self, solution):
-        self.solution = solution[:]
-
     def run(self):
-        return self.mutation(s=self.solution, rate=1/len(self.solution), n=len(self.solution))
+        self.number_of_solution_is_correct(n=1)
+        solution = self.solutions[0]
+
+        return self.mutation(s=solution, rate=1/len(solution), n=len(solution))
 
     def repair(self, s, mini=0, maxi=1):
         return [mini if x < mini else maxi if x > maxi else x for x in s]

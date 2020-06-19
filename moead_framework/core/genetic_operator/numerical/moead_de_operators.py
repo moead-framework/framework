@@ -8,14 +8,16 @@ from moead_framework.core.genetic_operator.numerical.polynomial_mutation import 
 
 class MoeadDeOperators(GeneticOperator):
 
-    def __init__(self, solution1, solution2, solution3):
-        self.solution1 = solution1[:]
-        self.solution2 = solution2[:]
-        self.solution3 = solution3[:]
-
     def run(self):
-        child_cross = DifferentialEvolutionCrossover(self.solution1, self.solution2, self.solution3).run()
-        child_mut = PolynomialMutation(child_cross)
+        self.number_of_solution_is_correct(n=3)
+        solution1 = self.solutions[0]
+        solution2 = self.solutions[1]
+        solution3 = self.solutions[2]
+
+        child_cross = DifferentialEvolutionCrossover(solutions=[solution1.solution,
+                                                                solution2.solution,
+                                                                solution3.solution]).run()
+        child_mut = PolynomialMutation(solution=[child_cross])
 
         return child_mut
 

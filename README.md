@@ -1,7 +1,10 @@
 # MOEA/D Framework
 
-![Python application](https://github.com/geoffreyp/moead/workflows/Python%20application/badge.svg?branch=master)
+![Python application](https://github.com/moead-framework/framework/workflows/Python%20application/badge.svg?branch=master)
 
+# Documentation
+
+Available here : [https://moead-framework.github.io/documentation/](https://moead-framework.github.io/documentation/html/index.html)
 
 # Install
 

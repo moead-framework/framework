@@ -37,8 +37,9 @@ class AlgorithmsNumericalTest(unittest.TestCase):
                       number_of_weight=self.number_of_weight,
                       number_of_weight_neighborhood=self.number_of_weight_neighborhood,
                       weight_file=self.weight_file,
+                      aggregation_function=Tchebycheff
                       )
 
-        non_dominated = moead.run(g=Tchebycheff())
+        non_dominated = moead.run()
         self.assertEqual(len(non_dominated), 6)  # test the number of non_dominated solutions
         self.assertEqual(compute_hypervolume(non_dominated, [11, 11]), 91.30063166767695)  # test the hypervolume value

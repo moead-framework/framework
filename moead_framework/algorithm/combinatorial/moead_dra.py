@@ -12,6 +12,7 @@ class MoeadDRA(MoeadDeltaNr):
                  number_of_weight_neighborhood,
                  delta,
                  number_of_replacement,
+                 aggregation_function,
                  number_of_crossover_points=2,
                  threshold_before_evaluate_subproblem_utility=50,
                  delta_threshold=0.001,
@@ -24,6 +25,7 @@ class MoeadDRA(MoeadDeltaNr):
                          number_of_weight_neighborhood=number_of_weight_neighborhood,
                          delta=delta,
                          number_of_replacement=number_of_replacement,
+                         aggregation_function=aggregation_function,
                          number_of_crossover_points=number_of_crossover_points,
                          weight_file=weight_file)
 
@@ -37,7 +39,7 @@ class MoeadDRA(MoeadDeltaNr):
         for i in range(self.number_of_weight):
             self.scores.append([0, 0])
 
-    def run(self, g, checkpoint=None):
+    def run(self, checkpoint=None):
 
         while self.current_eval < self.max_evaluation:
 
@@ -51,7 +53,7 @@ class MoeadDRA(MoeadDeltaNr):
                 y = self.generate_offspring(population=self.mating_pool)
                 y = self.repair(solution=y)
                 self.update_z(solution=y)
-                self.update_solutions(solution=y, aggregation_function=g, sub_problem=i)
+                self.update_solutions(solution=y, aggregation_function=self.aggregation_function, sub_problem=i)
                 self.current_eval += 1
 
             # update the score history of all sub_problem
@@ -60,11 +62,11 @@ class MoeadDRA(MoeadDeltaNr):
             if ((self.gen + 1) % self.threshold_before_evaluate_subproblem_utility == 0) | (self.gen == 0):
                 all_sub_problems = list(range(self.number_of_weight))
                 for i in all_sub_problems:
-                    score = g.run(solution=self.population[i],
-                                  number_of_objective=self.number_of_objective,
-                                  weights=self.weights,
-                                  sub_problem=i,
-                                  z=self.z)
+                    score = self.aggregation_function.run(solution=self.population[i],
+                                                          number_of_objective=self.number_of_objective,
+                                                          weights=self.weights,
+                                                          sub_problem=i,
+                                                          z=self.z)
                     self.update_scores(sub_problem=i, score=score)
 
             self.gen += 1
