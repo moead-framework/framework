@@ -15,6 +15,7 @@ class MoeadDeltaNr(Moead):
                  delta,
                  number_of_replacement,
                  aggregation_function,
+                 sps_strategy=None,
                  number_of_crossover_points=2,
                  parent_selector=None,
                  weight_file=None):
@@ -33,6 +34,7 @@ class MoeadDeltaNr(Moead):
                          mating_pool_selector=mating_pool_selector,
                          parent_selector=parent_selector,
                          number_of_crossover_points=number_of_crossover_points,
+                         sps_strategy=sps_strategy,
                          weight_file=weight_file)
 
     def update_solutions(self, solution, aggregation_function, sub_problem):

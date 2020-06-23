@@ -81,7 +81,7 @@ class AlgorithmsTest(unittest.TestCase):
                                aggregation_function=Tchebycheff,
                                number_of_weight_neighborhood=self.number_of_weight_neighborhood,
                                number_of_crossover_points=self.number_of_crossover_points,
-                               number_of_subproblem=number_of_subproblem,
+                               number_of_subproblem_to_visit=number_of_subproblem,
                                weight_file=self.weight_file,
                                )
 

@@ -17,6 +17,7 @@ class Moead(AbstractMoead):
                  mating_pool_selector=None,
                  genetic_operator=None,
                  parent_selector=None,
+                 sps_strategy=None,
                  weight_file=None):
 
         self.current_eval = 1
@@ -32,6 +33,7 @@ class Moead(AbstractMoead):
                          genetic_operator=genetic_operator,
                          mating_pool_selector=mating_pool_selector,
                          parent_selector=parent_selector,
+                         sps_strategy=sps_strategy,
                          weight_file=weight_file)
         self.number_of_crossover_points = number_of_crossover_points
 
@@ -50,7 +52,7 @@ class Moead(AbstractMoead):
         while self.termination_criteria.test():
 
             # For each sub-problem i
-            for i in self.sps_strategy():
+            for i in self.get_sub_problems_to_visit():
 
                 if checkpoint is not None:
                     checkpoint()
