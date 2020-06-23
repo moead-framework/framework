@@ -1,6 +1,7 @@
 import random
 import numpy as np
 from moead_framework.algorithm.combinatorial.moead_delta_nr import MoeadDeltaNr
+from moead_framework.core.sps_strategy.sps_dra import SpsDra
 
 
 class MoeadDRA(MoeadDeltaNr):
@@ -27,6 +28,7 @@ class MoeadDRA(MoeadDeltaNr):
                          number_of_replacement=number_of_replacement,
                          aggregation_function=aggregation_function,
                          number_of_crossover_points=number_of_crossover_points,
+                         sps_strategy=SpsDra,
                          weight_file=weight_file)
 
         self.pi = np.ones(self.number_of_weight)
@@ -43,7 +45,7 @@ class MoeadDRA(MoeadDeltaNr):
 
         while self.current_eval < self.max_evaluation:
 
-            for i in self.sps_strategy():
+            for i in self.get_sub_problems_to_visit():
 
                 if checkpoint is not None:
                     checkpoint(self.current_eval)
@@ -74,54 +76,6 @@ class MoeadDRA(MoeadDeltaNr):
                 self.update_pi()
 
         return self.ep
-
-    def get_xtrem_index(self):
-        xtrem_index = []
-        for i in range(self.number_of_weight):
-            weight = self.weights[i]
-            for j in range(self.number_of_objective):
-                if weight[j] == 1:
-                    xtrem_index.append(i)
-                    break
-
-        return xtrem_index
-
-    def sps_strategy(self):
-        """
-        Select at first the indexes of the sub problems whose objectives are MOP
-        individual objectives fi ([1, 0] and [0, 1] for example)
-        and add sub problems by a 10-tournament
-        :return:
-        """
-        selection = []
-
-        for w in range(self.number_of_weight):
-            count_zero = 0
-            for o in self.weights[w]:
-                if o == 0:
-                    count_zero += 1
-
-                if count_zero == self.number_of_objective - 1:
-                    selection.append(w)
-                    break
-
-        xtrem_index = self.get_xtrem_index()
-
-        #  10-tournament
-        for i in range(int((self.number_of_weight / 5) - self.number_of_objective)):
-            range_list = list(range(self.number_of_weight))
-            random_indexes = random.sample(list(set(range_list) - set(xtrem_index)), 10)
-
-            best_index = random_indexes[0]
-            best_pi = self.pi[random_indexes[0]]
-            for index in random_indexes:
-                if self.pi[index] > best_pi:
-                    best_index = index
-                    best_pi = self.pi[index]
-
-            selection.append(best_index)
-
-        return selection
 
     def update_scores(self, sub_problem, score):
         """

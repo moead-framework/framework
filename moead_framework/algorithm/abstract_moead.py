@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 
 from moead_framework.core.offspring_generator.offspring_generator import OffspringGeneratorGeneric
 from moead_framework.core.selector.closest_neighbors_selector import ClosestNeighborsSelector
+from moead_framework.core.sps_strategy.sps_all import SpsAllSubproblems
 from moead_framework.core.termination_criteria.max_evaluation import MaxEvaluation
 from moead_framework.tool.mop import is_duplicated, get_non_dominated, generate_weight_vectors
 
@@ -15,9 +16,11 @@ class AbstractMoead(ABC):
                  genetic_operator=None,
                  parent_selector=None,
                  mating_pool_selector=None,
+                 sps_strategy=None,
                  weight_file=None):
         self.problem = problem
         self.aggregation_function = aggregation_function()
+
         if termination_criteria is None:
             self.termination_criteria = MaxEvaluation(algorithm_instance=self)
         else:
@@ -35,6 +38,11 @@ class AbstractMoead(ABC):
         self.b = self.generate_closest_weight_vectors()
         self.current_sub_problem = -1
 
+        if sps_strategy is None:
+            self.sps_strategy = SpsAllSubproblems(algorithm_instance=self)
+        else:
+            self.sps_strategy = sps_strategy(algorithm_instance=self)
+
         if mating_pool_selector is None:
             self.mating_pool_selector = ClosestNeighborsSelector(algorithm_instance=self)
         else:
@@ -44,7 +52,6 @@ class AbstractMoead(ABC):
         self.parent_selector = parent_selector
         self.offspring_generator = OffspringGeneratorGeneric(algorithm_instance=self)
 
-
     @abstractmethod
     def run(self, checkpoint=None):
         pass
@@ -53,14 +60,14 @@ class AbstractMoead(ABC):
     def update_solutions(self, solution, scal_function, sub_problem):
         pass
 
-    def sps_strategy(self):
-        return range(self.number_of_weight)
+    def get_sub_problems_to_visit(self):
+        return self.sps_strategy.get_sub_problems()
 
     def mating_pool_selection(self, sub_problem):
         return self.mating_pool_selector.select(sub_problem)
 
     def generate_offspring(self, population):
-        return self.offspring_generator.run(population_indexes=population) # useless d'utiliser une class si c'est générique
+        return self.offspring_generator.run(population_indexes=population)
 
     def repair(self, solution):
         return solution
