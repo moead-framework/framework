@@ -56,7 +56,7 @@ class Rmnk(Problem):
         return self.generate_solution(array=np.random.randint(0, 2, self.n).tolist()[:], evaluate=evaluate)
 
     def generate_solution(self, array, evaluate=True):
-        x = OneDimensionSolution(array)
+        x = OneDimensionSolution(np.array(array, dtype=int))
 
         for j in range(self.function_numbers):
             if evaluate:
