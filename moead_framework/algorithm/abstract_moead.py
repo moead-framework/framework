@@ -17,6 +17,7 @@ class AbstractMoead(ABC):
                  parent_selector=None,
                  mating_pool_selector=None,
                  sps_strategy=None,
+                 offspring_generator=None,
                  weight_file=None):
         self.problem = problem
         self.aggregation_function = aggregation_function()
@@ -50,7 +51,11 @@ class AbstractMoead(ABC):
 
         self.genetic_operator = genetic_operator
         self.parent_selector = parent_selector
-        self.offspring_generator = OffspringGeneratorGeneric(algorithm_instance=self)
+
+        if offspring_generator is None:
+            self.offspring_generator = OffspringGeneratorGeneric(algorithm_instance=self)
+        else:
+            self.offspring_generator = offspring_generator
 
     @abstractmethod
     def run(self, checkpoint=None):
