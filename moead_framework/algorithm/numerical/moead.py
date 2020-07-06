@@ -18,6 +18,7 @@ class Moead(AbstractMoead):
                  genetic_operator=None,
                  parent_selector=None,
                  sps_strategy=None,
+                 offspring_generator=None,
                  weight_file=None):
 
         self.current_eval = 1
@@ -34,6 +35,7 @@ class Moead(AbstractMoead):
                          mating_pool_selector=mating_pool_selector,
                          parent_selector=parent_selector,
                          sps_strategy=sps_strategy,
+                         offspring_generator=offspring_generator,
                          weight_file=weight_file)
 
         if genetic_operator is None:
