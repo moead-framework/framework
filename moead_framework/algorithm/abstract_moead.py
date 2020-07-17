@@ -55,7 +55,7 @@ class AbstractMoead(ABC):
         if offspring_generator is None:
             self.offspring_generator = OffspringGeneratorGeneric(algorithm_instance=self)
         else:
-            self.offspring_generator = offspring_generator
+            self.offspring_generator = offspring_generator(algorithm_instance=self)
 
     @abstractmethod
     def run(self, checkpoint=None):
