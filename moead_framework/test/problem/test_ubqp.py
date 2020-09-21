@@ -42,8 +42,8 @@ class UbqpTest(unittest.TestCase):
 
         solution = self.problem.generate_solution(array)
 
-        self.assertEqual(solution.F[0], 290.0)
-        self.assertEqual(solution.F[1], 856.0)
+        self.assertEqual(solution.F[0], -290.0)
+        self.assertEqual(solution.F[1], -856.0)
 
 
 
