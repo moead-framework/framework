@@ -33,7 +33,7 @@ class Mubqp(Problem):
                     if solution[j] == 1:
                         fit += self.qs[function_id][i][j]
 
-        return fit
+        return - fit
 
     def generate_random_solution(self, evaluate=True):
         return self.generate_solution(array=np.random.randint(0, 2, self.n).tolist()[:], evaluate=evaluate)

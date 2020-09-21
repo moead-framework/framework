@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="moead-framework",
-    version="0.5.4",
+    version="0.5.5",
     author="Geoffrey Pruvost",
     author_email="geoffrey@pruvost.xyz",
     description="MOEA/D Framework in Python 3",
