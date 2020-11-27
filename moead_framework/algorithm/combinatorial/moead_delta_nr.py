@@ -20,7 +20,7 @@ class MoeadDeltaNr(Moead):
                  parent_selector=None,
                  weight_file=None):
 
-        mating_pool_selector = DeltaSelector(algorithm_instance=self)
+        mating_pool_selector = DeltaSelector
         self.delta = delta
         self.number_of_replacement = number_of_replacement
         self.mating_pool = []

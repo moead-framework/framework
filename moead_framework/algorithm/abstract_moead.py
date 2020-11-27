@@ -47,7 +47,7 @@ class AbstractMoead(ABC):
         if mating_pool_selector is None:
             self.mating_pool_selector = ClosestNeighborsSelector(algorithm_instance=self)
         else:
-            self.mating_pool_selector = mating_pool_selector
+            self.mating_pool_selector = mating_pool_selector(algorithm_instance=self)
 
         self.genetic_operator = genetic_operator
         self.parent_selector = parent_selector

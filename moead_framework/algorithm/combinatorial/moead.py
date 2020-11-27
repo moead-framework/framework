@@ -12,6 +12,7 @@ class Moead(AbstractMoead):
                  number_of_weight,
                  number_of_weight_neighborhood,
                  aggregation_function,
+                 weight_file,
                  termination_criteria=None,
                  number_of_crossover_points=2,
                  mating_pool_selector=None,
@@ -19,7 +20,7 @@ class Moead(AbstractMoead):
                  parent_selector=None,
                  sps_strategy=None,
                  offspring_generator=None,
-                 weight_file=None):
+                 ):
 
         self.current_eval = 1
         self.mating_pool = []

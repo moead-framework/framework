@@ -3,7 +3,6 @@ from abc import abstractmethod, ABC
 
 class Problem(ABC):
 
-    @abstractmethod
     def __init__(self, objective_number=2):
         self.function_numbers = objective_number
         pass
