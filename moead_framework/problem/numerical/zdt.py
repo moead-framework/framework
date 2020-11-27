@@ -21,7 +21,6 @@ class Zdt1(Problem):
             return g * (1 - np.power((x[0] / g), 0.5))
 
     def generate_random_solution(self, evaluate=True):
-        # todo : use the parameter evaluate
         solution = []
         for i in range(0, self.n):
             solution.append(random.random())
@@ -29,10 +28,12 @@ class Zdt1(Problem):
         return self.generate_solution(solution)
 
     def generate_solution(self, array, evaluate=True):
-        # todo : use the parameter evaluate
         x = OneDimensionSolution(array)
 
         for j in range(self.function_numbers):
-            x.F.append(self.f(j, x.solution))
+            if evaluate:
+                x.F.append(self.f(j, x.solution))
+            else:
+                x.F.append(None)
 
         return x
