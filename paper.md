@@ -14,7 +14,7 @@ authors:
   - name: Arnaud Liefooghe
     affiliation: "1, 2" 
 affiliations:
-  - name: Univ. Lille, CNRS, Centrale Lille, UMR 9189 CRIStAL, F-59000 Lille, France
+  - name: University of Lille, CNRS, Centrale Lille, UMR 9189 CRIStAL, F-59000 Lille, France
     index: 1
   - name: Inria Lille - Nord Europe
     index: 2
@@ -54,8 +54,8 @@ be limited by the software. For example, the paper "On the Combined Impact of Po
 and Sub-problem Selection in MOEA/D" [@gpruvost_evocop2020] uses this package to add a new component 
 in MOEA/D (the sub-problem selection strategy) and the paper 
 "Surrogate-assisted Multi-objective Combinatorial Optimization based on Decomposition and Walsh Basis" [@gpruvost_gecco2020] uses 
-the package to rewrite the offspring_generator component to implement a new framework to walsh surrogates
-with multi-objective optimization and decomposition technics.
+the package to rewrite the *offspring_generator* component to implement a new framework based on walsh surrogates and decomposition
+for multi-objective optimization.
 
 
 # Documentation
