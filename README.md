@@ -5,8 +5,9 @@
 ![GitHub](https://img.shields.io/github/license/moead-framework/framework?style=flat)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/moead-framework)
 
-This package is a modular framework for multi-objective evolutionary algorithms by decomposition. 
-This framework is designed to help researchers to study and design their own MOEA/D variants.
+This python package *moead-framework* is a modular framework for multi-objective evolutionary algorithms by decomposition. 
+The goal  is to provide a modular framework for scientists and researchers interested in 
+experimenting with MOEA/D and its numerous variants.
 
 The documentation is available here : [https://moead-framework.github.io/documentation/](https://moead-framework.github.io/documentation/html/index.html) and can be edited on this repository : [https://github.com/moead-framework/documentation](https://github.com/moead-framework/documentation).
 

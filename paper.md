@@ -8,16 +8,15 @@ tags:
   - framework
 authors:
   - name: Geoffrey Pruvost
-    affiliation: "1, 2" 
+    affiliation: "1" 
   - name: Bilel Derbel
-    affiliation: "1, 2" 
+    affiliation: "1" 
   - name: Arnaud Liefooghe
-    affiliation: "1, 2" 
+    affiliation: "1" 
 affiliations:
-  - name: University of Lille, CNRS, Centrale Lille, UMR 9189 CRIStAL, F-59000 Lille, France
+  - name: Univ. Lille, CNRS, Inria, Centrale Lille, UMR 9189 CRIStAL, F-59000 Lille, France
     index: 1
-  - name: Inria Lille - Nord Europe
-    index: 2
+
 
 date: 1 December 2020
 bibliography: paper.bib
@@ -30,42 +29,44 @@ bibliography: paper.bib
 
 # Summary
 
-The Multi-objective evolutionary algorithm based on decomposition (MOEA/D) is a general-purpose 
-algorithm framework [@moead]. It decomposes a multi-objective optimization problem into a number of 
+The Multi-objective evolutionary algorithm based on decomposition (MOEA/D) is a general-purpose algorithm 
+for approximating the Pareto set of multi-objective optimization problems [@moead]. It decomposes the original 
+multi-objective problem into a number of 
 single-objective optimization sub-problems and then uses an evolutionary process to optimize these 
 sub-problems simultaneously and cooperatively. MOEA/D is a state-of-art algorithm in aggregation-based 
 approaches for multi-objective optimization.
 
-The goal of the *moead-framework* python package is to provide a modular framework for researchers who 
-are working on variants of MOEA/D.
+The goal of the *moead-framework* python package is to provide a modular framework for scientists and 
+researchers interested in experimenting with MOEA/D and its numerous variants.
 
 
-# Motivation
+# Purpose
 
 The first version of MOEA/D and its most famous variants [@moead_de; @moead_dra] are implemented in recent multi-objective 
-optimization software such as pymoo [@pymoo], pygmo [@pygmo] and jMetal [@jmetal]. These software bring a lot of algorithms and problems but 
-don't allow us to test and analyse in detail each algorithms. 
-The modular R package MOEADr [@Campelo_2020] allows to use each components of MOEA/D with some variants but is not enough flexible 
-to add, remove or update the behavior of these components. 
+optimization software such as pymoo [@pymoo], pygmo [@pygmo] and jMetal [@jmetal]. These software offer 
+many state-of-art algorithms, visualization tools or parallelization abstraction but they do not enable to test 
+and analyse in detail the behavior of components implemented in each algorithm.
+The modular R package MOEADr [@Campelo_2020] focuses on MOEA/D and allows to define different variants for 
+each component of MOEA/D. 
 
-With this python package, we want to bring the modularity of the MOEADr package by using the flexibility of Python to 
-allow users to update the behavior of MOEA/D components in their research works to propose new variants without 
-be limited by the software. For example, the paper "On the Combined Impact of Population Size 
-and Sub-problem Selection in MOEA/D" [@gpruvost_evocop2020] uses this package to add a new component 
-in MOEA/D (the sub-problem selection strategy) and the paper 
-"Surrogate-assisted Multi-objective Combinatorial Optimization based on Decomposition and Walsh Basis" [@gpruvost_gecco2020] uses 
-the package to rewrite the *offspring_generator* component to implement a new framework based on walsh surrogates and decomposition
-for multi-objective optimization.
+With the *moead-framework* python package, we aim at bringing the modularity of the MOEADr package by using the flexibility of Python to 
+allow the user to update the behavior of MOEA/D components in their research works to propose new variants without 
+being limited by the software. The package is focused on a modular architecture to add, update or test components 
+of MOEA/D easily and allows to customize how each component reacts to each other.
+
+For example, in Pruvost et al. (2020a), the *moead-framework* package is used for creating novel 
+sub-problem selection strategies and analyzing them. In Pruvost et al. (2020b), the package is used to rewrite 
+the component used for generating new candidate (offspring) solutions with a variant based on Walsh surrogates.
 
 
 # Documentation
 
-The documentation is available online : [https://moead-framework.github.io/documentation/](https://moead-framework.github.io/documentation/html/index.html). 
+The documentation is available online at the following URL : [https://moead-framework.github.io/documentation/](https://moead-framework.github.io/documentation/html/index.html).
 
-A [full example](https://moead-framework.github.io/documentation/html/examples.html) 
-and [all components](https://moead-framework.github.io/documentation/html/documentation.html) are described.
-[Two tutorials](https://moead-framework.github.io/documentation/html/tuto.html) are available 
-to test your own problems and implement your own variants of MOEA/D.
+A [complete example](https://moead-framework.github.io/documentation/html/examples.html) and 
+[all components](https://moead-framework.github.io/documentation/html/documentation.html) are described in details,
+and [two tutorials](https://moead-framework.github.io/documentation/html/tuto.html) are made available for the user 
+to experiment with his/her own multi-objective optimization problem and to implement his/her own variants of MOEA/D.
 
 
 # Acknowledgements
