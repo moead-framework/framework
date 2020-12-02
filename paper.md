@@ -54,14 +54,15 @@ allow the user to update the behavior of MOEA/D components in their research wor
 being limited by the software. The package is focused on a modular architecture to add, update or test components 
 of MOEA/D easily and allows to customize how each component reacts to each other.
 
-For example, in Pruvost et al. (2020a), the *moead-framework* package is used for creating novel 
-sub-problem selection strategies and analyzing them. In Pruvost et al. (2020b), the package is used to rewrite 
+For example, in `@gpruvost_evocop2020`, the *moead-framework* package is used for creating novel 
+sub-problem selection strategies and analyzing them. In `@gpruvost_gecco2020`, the package is used to rewrite 
 the component used for generating new candidate (offspring) solutions with a variant based on Walsh surrogates.
 
 
 # Documentation
 
-The documentation is available online at the following URL : [https://moead-framework.github.io/documentation/](https://moead-framework.github.io/documentation/html/index.html).
+The documentation is available online at the following URL: 
+[moead-framework.github.io/documentation/](https://moead-framework.github.io/documentation/html/index.html).
 
 A [complete example](https://moead-framework.github.io/documentation/html/examples.html) and 
 [all components](https://moead-framework.github.io/documentation/html/documentation.html) are described in details,
