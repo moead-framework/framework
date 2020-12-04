@@ -18,8 +18,14 @@ class OffspringGeneratorGeneric(OffspringGenerator):
         else:
             crossover_point = None
 
+        if hasattr(self.algorithm, 'mutation_probability'):
+            mutation_probability = self.algorithm.mutation_probability
+        else:
+            mutation_probability = None
+
         y_sol = self.algorithm.genetic_operator(solutions=parents_solutions,
-                                                crossover_points=crossover_point
+                                                crossover_points=crossover_point,
+                                                mutation_probability=mutation_probability
                                                 ).run()
 
         return self.algorithm.problem.generate_solution(array=y_sol)

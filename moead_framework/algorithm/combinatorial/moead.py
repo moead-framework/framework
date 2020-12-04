@@ -15,6 +15,7 @@ class Moead(AbstractMoead):
                  weight_file,
                  termination_criteria=None,
                  number_of_crossover_points=2,
+                 mutation_probability=1,
                  mating_pool_selector=None,
                  genetic_operator=None,
                  parent_selector=None,
@@ -39,6 +40,7 @@ class Moead(AbstractMoead):
                          offspring_generator=offspring_generator,
                          weight_file=weight_file)
         self.number_of_crossover_points = number_of_crossover_points
+        self.mutation_probability = mutation_probability
 
         if genetic_operator is None:
             self.genetic_operator = CrossoverAndMutation
