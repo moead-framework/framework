@@ -23,7 +23,7 @@ class KnapsackProblem(Problem):
             indexes_to_split.append(index_to_split_one * (i+1) + 1)
 
         kps = np.split(np.array(file_content), indexes_to_split)
-        print(len(kps))
+
         for kp in kps:
             # print(kp)
             if kp[0] == "=":

@@ -3,9 +3,8 @@ from abc import ABC, abstractmethod
 
 class GeneticOperator(ABC):
 
-    def __init__(self, solutions, crossover_points=1):
+    def __init__(self, solutions, **kwargs):
         self.solutions = solutions
-        self.crossover_points = crossover_points
 
     @abstractmethod
     def run(self):
