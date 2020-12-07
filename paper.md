@@ -49,14 +49,15 @@ and analyse in detail the behavior of components implemented in each algorithm.
 The modular R package MOEADr [@Campelo_2020] focuses on MOEA/D and allows to define different variants for 
 each component of MOEA/D. 
 
-With the *moead-framework* python package, we aim at bringing the modularity of the MOEADr package by using the flexibility of Python to 
-allow the user to update the behavior of MOEA/D components in their research works to propose new variants without 
-being limited by the software. The package is focused on a modular architecture to add, update or test components 
-of MOEA/D easily and allows to customize how each component reacts to each other.
+With the *moead-framework* package, we aim at bringing the modularity of the MOEADr package by 
+using the flexibility of Python in order to allow the user to update the behavior of MOEA/D 
+components in their research works, and to propose new variants without being limited by the software. 
+The package is focused on a modular architecture for easily adding, updating or testing the components of 
+MOEA/D and for customizing how components interact with each other.
 
-For example, in @gpruvost_evocop2020, the *moead-framework* package is used for creating novel 
-sub-problem selection strategies and analyzing them. In @gpruvost_gecco2020, the package is used to rewrite 
-the component used for generating new candidate (offspring) solutions with a variant based on Walsh surrogates.
+For example, the *moead-framework* package was used for creating novel sub-problem selection strategies and 
+analyzing them [@gpruvost_gecco2020], and for rewriting the component used to generate 
+new candidate (offspring) solutions with a variant based on Walsh surrogates [@gpruvost_gecco2020].
 
 
 # Documentation
@@ -67,7 +68,7 @@ The documentation is available at the following URL:
 A [complete example](https://moead-framework.github.io/documentation/html/examples.html) and 
 [all components](https://moead-framework.github.io/documentation/html/documentation.html) are described in details,
 and [two tutorials](https://moead-framework.github.io/documentation/html/tuto.html) are made available for the user 
-to experiment with his/her own multi-objective optimization problem and to implement his/her own variants of MOEA/D.
+to experiment with his/her own multi-objective optimization problem and to implement his/her own MOEA/D variants.
 
 
 # Acknowledgements
