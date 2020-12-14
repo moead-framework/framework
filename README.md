@@ -9,17 +9,17 @@ This python package *moead-framework* is a modular framework for multi-objective
 The goal  is to provide a modular framework for scientists and researchers interested in 
 experimenting with MOEA/D and its numerous variants.
 
-The documentation is available here : [https://moead-framework.github.io/documentation/](https://moead-framework.github.io/documentation/html/index.html) and can be edited on this repository : [https://github.com/moead-framework/documentation](https://github.com/moead-framework/documentation).
+The documentation is available here: [https://moead-framework.github.io/documentation/](https://moead-framework.github.io/documentation/html/index.html) and can be edited on this repository: [https://github.com/moead-framework/documentation](https://github.com/moead-framework/documentation).
 
 # Installation instructions
 
 Create a virtual environment with [conda](https://docs.conda.io/en/latest/miniconda.html) or [virtualenv](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment)
 
-The package is available in pypi, you can install it with :
+The package is available in pypi, you can install it with:
 
     pip install moead-framework
     
-# Exemple
+# Example
 
     from moead_framework.aggregation.tchebycheff import Tchebycheff
     from moead_framework.algorithm.combinatorial.moead import Moead
@@ -36,9 +36,9 @@ The package is available in pypi, you can install it with :
     rmnk = Rmnk(instance_file=instance_file)
     
     
-    ###############################
-    #      Init the algorithm     #
-    ###############################
+    #####################################
+    #      Initialize the algorithm     #
+    #####################################
     number_of_objective = rmnk.function_numbers
     number_of_weight = 10
     number_of_weight_neighborhood = 20
@@ -79,14 +79,14 @@ The package is available in pypi, you can install it with :
 
 # For developers 
 
-## build : 
+## build: 
 
 You can execute unit test with the following command in the git repository: 
 
     python3 -m unittest 
 
 
-The package is build with a github action. If you want to create manually a new package : 
+The package is build with a github action. If you want to create manually a new package: 
 
     python3 setup.py sdist bdist_wheel
  
