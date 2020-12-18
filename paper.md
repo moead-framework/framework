@@ -40,8 +40,10 @@ The goal of the *moead-framework* python package is to provide a modular framewo
 researchers interested in experimenting with MOEA/D and its numerous variants.
 
 
-# Purpose
+# Statement of Need
 
+The MOEA/D algorithm is now considered as a framework. MOEA/D is the basis of many variants that improve or 
+add new components to improve MOEA/D performance.
 The first version of MOEA/D and its most famous variants [@moead_de; @moead_dra] are implemented in recent multi-objective 
 optimization software such as pymoo [@pymoo], pygmo [@pygmo] and jMetal [@jmetal]. These software offer 
 many state-of-art algorithms, visualization tools or parallelization abstraction but they do not enable to test 
