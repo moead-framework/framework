@@ -2,7 +2,7 @@ import unittest
 import random
 import os
 import numpy as np
-from moead_framework.problem.combinatorial.rmnk import Rmnk
+from moead_framework.problem.combinatorial import Rmnk
 from moead_framework.tool.mop import get_non_dominated
 
 

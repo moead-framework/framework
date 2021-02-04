@@ -21,14 +21,14 @@ The package is available in pypi, you can install it with:
     
 # Example
 
-    from moead_framework.aggregation.tchebycheff import Tchebycheff
-    from moead_framework.algorithm.combinatorial.moead import Moead
-    from moead_framework.problem.combinatorial.rmnk import Rmnk
+    from moead_framework.aggregation import Tchebycheff
+    from moead_framework.algorithm.combinatorial import Moead
+    from moead_framework.problem.combinatorial import Rmnk
     from moead_framework.tool.result import save_population
     
     
     ###############################
-    #      Init the problem       #
+    #   Initialize the problem    #
     ###############################
     # The file is available here : https://github.com/moead-framework/data/blob/master/problem/RMNK/Instances/rmnk_0_2_100_1_0.dat
     # Others instances are available here : https://github.com/moead-framework/data/tree/master/problem/RMNK/Instances

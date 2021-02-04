@@ -2,11 +2,9 @@ import unittest
 import random
 import numpy as np
 
-from moead_framework.core.genetic_operator.combinatorial.crossover import Crossover
-from moead_framework.core.genetic_operator.combinatorial.mutation import BinaryMutation
-from moead_framework.core.genetic_operator.numerical.differential_evolution_crossover import DifferentialEvolutionCrossover
-from moead_framework.core.genetic_operator.numerical.polynomial_mutation import PolynomialMutation
-from moead_framework.problem.numerical.zdt import Zdt1
+from moead_framework.core.genetic_operator.combinatorial import Crossover, BinaryMutation
+from moead_framework.core.genetic_operator.numerical import DifferentialEvolutionCrossover, PolynomialMutation
+from moead_framework.problem.numerical import Zdt1
 
 
 class GeneticOperatorsTest(unittest.TestCase):

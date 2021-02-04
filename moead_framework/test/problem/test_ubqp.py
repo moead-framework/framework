@@ -1,8 +1,7 @@
-import random
 import os
 import unittest
 
-from moead_framework.problem.combinatorial.mubqp import Mubqp
+from moead_framework.problem.combinatorial import Mubqp
 
 
 class UbqpTest(unittest.TestCase):
