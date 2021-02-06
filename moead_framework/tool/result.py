@@ -195,12 +195,6 @@ class HyperVolume:
         # write back to original list
         nodes[:] = [node for (_, node) in decorated]
 
-    def get_short_name(self) -> str:
-        return 'HV'
-
-    def get_name(self) -> str:
-        return "Hypervolume (Fonseca et al. implementation)"
-
 
 class MultiList:
     """A special front structure needed by FonsecaHyperVolume.
@@ -218,9 +212,6 @@ class MultiList:
             self.area = [0.0] * number_lists
             self.volume = [0.0] * number_lists
 
-        def __str__(self):
-            return str(self.cargo)
-
     def __init__(self, number_lists):
         """ Builds 'numberLists' doubly linked lists.
         """
@@ -229,33 +220,9 @@ class MultiList:
         self.sentinel.next = [self.sentinel] * number_lists
         self.sentinel.prev = [self.sentinel] * number_lists
 
-    def __str__(self):
-        strings = []
-        for i in range(self.number_lists):
-            current_list = []
-            node = self.sentinel.next[i]
-            while node != self.sentinel:
-                current_list.append(str(node))
-                node = node.next[i]
-            strings.append(str(current_list))
-        string_repr = ""
-        for string in strings:
-            string_repr += string + "\n"
-        return string_repr
-
     def __len__(self):
         """Returns the number of lists that are included in this MultiList."""
         return self.number_lists
-
-    def get_length(self, i):
-        """Returns the length of the i-th list."""
-        length = 0
-        sentinel = self.sentinel
-        node = sentinel.next[i]
-        while node != sentinel:
-            length += 1
-            node = node.next[i]
-        return length
 
     def append(self, node, index):
         """ Appends a node to the end of the list at the given index."""

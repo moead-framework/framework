@@ -4,7 +4,7 @@ import os
 import numpy as np
 from moead_framework.problem.combinatorial import Rmnk
 from moead_framework.tool.mop import get_non_dominated, population_size_without_duplicate, compute_crowding_distance
-from moead_framework.tool.result import save_population, save_population_full
+from moead_framework.tool.result import save_population, save_population_full, compute_hypervolume
 
 
 class ToolsTest(unittest.TestCase):
@@ -16,6 +16,7 @@ class ToolsTest(unittest.TestCase):
         np.random.seed(1)
         project_path = os.path.dirname(os.path.abspath(__file__))
         self.rmnk = Rmnk(instance_file=project_path + '/data/instances/rmnk_0_2_100_1_0.dat')
+        self.rmnk3D = Rmnk(instance_file=project_path + '/data/instances/rmnk_0_3_100_1_0.dat')
         self.number_of_objective = self.rmnk.function_numbers
 
     def test_PF(self):
@@ -52,6 +53,18 @@ class ToolsTest(unittest.TestCase):
 
         self.assertEqual(len(population), 12)
         self.assertEqual(population_size_without_duplicate(population=population), 10)
+
+    def test_hypervolume3D(self):
+        """test the hypervolume in 3D"""
+        population = []
+
+        for i in range(10):
+            population.append(self.rmnk3D.generate_random_solution())
+
+        self.assertEqual(compute_hypervolume(population, [0, 0, 0]), 0.16108679722159508)  # test the hypervolume value
+
+
+
 
     def test_compute_crowding_distance(self):
         """test the function compute_crowding_distance"""
