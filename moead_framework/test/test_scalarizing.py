@@ -13,7 +13,7 @@ class ScalarizingTest(unittest.TestCase):
     def setUp(self):
         """Init"""
         project_path = os.path.dirname(os.path.abspath(__file__))
-        self.problem = Rmnk(project_path + '/data/RMNK/Instances/rmnk_0_2_100_1_0.dat')
+        self.problem = Rmnk(project_path + '/data/instances/rmnk_0_2_100_1_0.dat')
         weight_file = project_path + "/data/weights/SOBOL-2objs-10wei.ws"
         self.weights = generate_weight_vectors(weight_file, False)
 

@@ -9,3 +9,7 @@ build/
 moead_framework.egg-info/
 
 dist/
+
+.coverage
+
+coverage.xml

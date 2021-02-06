@@ -8,7 +8,7 @@ from moead_framework.tool.result import save_population
 #   Initialize the problem    #
 ###############################
 # Others instances are available here : https://github.com/moead-framework/data/tree/master/problem/RMNK/Instances
-instance_file = "moead_framework/test/data/RMNK/Instances/rmnk_0_2_100_1_0.dat"
+instance_file = "moead_framework/test/data/instances/rmnk_0_2_100_1_0.dat"
 rmnk = Rmnk(instance_file=instance_file)
 
 
