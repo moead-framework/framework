@@ -12,7 +12,7 @@ class RmnkTest(unittest.TestCase):
         """Init"""
         project_path = os.path.dirname(os.path.abspath(__file__))
         number_of_objective = 2
-        instance = project_path + '/../data/instances/MOKP_250_2.txt'
+        instance = project_path + '/../data/instances/MOKP_250_2.dat'
         self.problem = KnapsackProblem(number_of_objective=number_of_objective, instance_file=instance)
 
     def test_instance(self):
