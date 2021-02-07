@@ -16,7 +16,7 @@ The documentation is available here: [https://moead-framework.github.io/document
 
 Create a virtual environment with [conda](https://docs.conda.io/en/latest/miniconda.html) or [virtualenv](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment)
 
-The package is available in pypi, you can install it with:
+The package is available in pypi with a linux environment for python 3.6, 3.7, 3.8 and 3.9, you can install it with:
 
     pip install moead-framework
     
