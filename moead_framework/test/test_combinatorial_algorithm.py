@@ -97,7 +97,7 @@ class AlgorithmsTest(unittest.TestCase):
         nr = 2
 
         moead = MoeadDRA(problem=self.rmnk,
-                         max_evaluation=self.number_of_evaluations,
+                         max_evaluation=500,
                          number_of_objective=self.number_of_objective,
                          number_of_weight=50,
                          number_of_weight_neighborhood=self.number_of_weight_neighborhood,
@@ -111,4 +111,4 @@ class AlgorithmsTest(unittest.TestCase):
         non_dominated = moead.run()
 
         self.assertEqual(len(non_dominated), 10)  # test the number of non_dominated solutions
-        self.assertEqual(compute_hypervolume(non_dominated, [0, 0]), 0.3174541832032949)  # test the hypervolume value
+        self.assertEqual(compute_hypervolume(non_dominated, [0, 0]), 0.3782449450992227)  # test the hypervolume value
