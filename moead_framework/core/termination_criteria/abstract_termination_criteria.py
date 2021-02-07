@@ -8,4 +8,7 @@ class TerminationCriteria(ABC):
 
     @abstractmethod
     def test(self):
-        pass
+        """
+        Test if the algorithm has to be stopped
+        :return: Boolean
+        """

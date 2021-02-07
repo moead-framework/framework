@@ -8,8 +8,17 @@ class GeneticOperator(ABC):
 
     @abstractmethod
     def run(self):
-        pass
+        """
+        Execute the genetic operator
+        :return: the child Solution
+        """
 
     def number_of_solution_is_correct(self, n):
+        """
+        Secure the number of solutions required by the operator.
+        it allows to check if the operator has the required number of solutions for the process in run()
+        :param n: (integer) number of solution required by the operator
+        :return:
+        """
         if len(self.solutions) < n:
             raise ValueError("The genetic operator needs more than "+str(n)+" solutions")

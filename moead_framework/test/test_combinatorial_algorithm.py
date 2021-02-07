@@ -28,6 +28,10 @@ class AlgorithmsTest(unittest.TestCase):
                            + str(self.number_of_objective) \
                            + "objs-" + str(self.number_of_weight) \
                            + "wei.ws"
+        self.weight_file50 = project_path + "/data/weights/SOBOL-" \
+                           + str(self.number_of_objective) \
+                           + "objs-" + str(50) \
+                           + "wei.ws"
 
     def test_moead(self):
         """Test MOEA/D algorithm"""
@@ -91,19 +95,20 @@ class AlgorithmsTest(unittest.TestCase):
         """Test MOEA/D algorithm with the random sps strategy"""
         delta = 0.9
         nr = 2
+
         moead = MoeadDRA(problem=self.rmnk,
                          max_evaluation=self.number_of_evaluations,
                          number_of_objective=self.number_of_objective,
-                         number_of_weight=self.number_of_weight,
+                         number_of_weight=50,
                          number_of_weight_neighborhood=self.number_of_weight_neighborhood,
                          aggregation_function=Tchebycheff,
                          number_of_crossover_points=self.number_of_crossover_points,
-                         weight_file=self.weight_file,
+                         weight_file=self.weight_file50,
                          delta=delta,
                          number_of_replacement=nr
                          )
 
         non_dominated = moead.run()
 
-        self.assertEqual(len(non_dominated), 7)  # test the number of non_dominated solutions
-        self.assertEqual(compute_hypervolume(non_dominated, [0, 0]), 0.3149799907430224)  # test the hypervolume value
+        self.assertEqual(len(non_dominated), 10)  # test the number of non_dominated solutions
+        self.assertEqual(compute_hypervolume(non_dominated, [0, 0]), 0.3174541832032949)  # test the hypervolume value

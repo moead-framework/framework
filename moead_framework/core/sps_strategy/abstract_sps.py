@@ -8,4 +8,7 @@ class SpsStrategy(ABC):
 
     @abstractmethod
     def get_sub_problems(self):
-        pass
+        """
+        get all sub-problems visited in the next generation
+        :return: list of index that represents weight vectors
+        """

@@ -8,4 +8,8 @@ class ParentSelector(ABC):
 
     @abstractmethod
     def select(self, indexes):
-        pass
+        """
+        Select parents in the neighborhood represented by indexes
+        :param indexes: list of index of solutions in the population
+        :return: a list of Solution object
+        """

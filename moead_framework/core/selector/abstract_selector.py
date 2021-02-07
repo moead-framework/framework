@@ -8,4 +8,8 @@ class MatingPoolSelector(ABC):
 
     @abstractmethod
     def select(self, sub_problem):
-        pass
+        """
+        select the set of solutions (the neighborhood) before to select parents
+        :param sub_problem:
+        :return: list of index that represents solutions in the population
+        """

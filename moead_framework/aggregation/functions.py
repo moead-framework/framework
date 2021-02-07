@@ -16,7 +16,6 @@ class AggregationFunction(ABC):
         :param z:
         :return: the aggregation value of the solution for the weight weights[sub-problem]
         """
-        pass
 
     @abstractmethod
     def is_better(self, old_value, new_value):
@@ -26,4 +25,3 @@ class AggregationFunction(ABC):
         :return: True if new_value (computed by run()) is better than old_value.
         The test depends of the aggregation function and of the context (minimization or maximization).
         """
-        pass

@@ -8,4 +8,8 @@ class OffspringGenerator(ABC):
 
     @abstractmethod
     def run(self, population_indexes):
-        pass
+        """
+        Execute the process to generate a new candidate solution
+        :param population_indexes: index vector of parents in the population used to generate the offspring
+        :return: Solution
+        """
