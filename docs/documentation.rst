@@ -1,4 +1,5 @@
 .. _components:
+
 Components of MOEA/D framework
 ===========================================
 
@@ -58,6 +59,7 @@ Example with the problem rho MNK-Landscapes:
 
 
 .. _components_algo:
+
 Algorithms
 --------------------------------------
 
