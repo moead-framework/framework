@@ -24,7 +24,7 @@ class Problem(ABC):
         Generate a random Solution for the current problem
 
         :param evaluate: Boolean: specify if the new solution is evaluated. The default value is True.
-        :return: {:class:`~moead_framework.solution.one_dimension_solution`}
+        :return: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}
         """
 
     @abstractmethod
@@ -34,5 +34,5 @@ class Problem(ABC):
 
         :param array: List: all decision variables of the Solution
         :param evaluate: Boolean: specify if the new solution is evaluated. The default value is True.
-        :return: {:class:`~moead_framework.solution.one_dimension_solution`}
+        :return: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}
         """

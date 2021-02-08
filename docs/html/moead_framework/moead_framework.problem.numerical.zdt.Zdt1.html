@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>moead_framework.problem.combinatorial.mubqp.Mubqp &mdash; The Moead Framework 1.0 documentation</title>
+  <title>moead_framework.problem.numerical.zdt.Zdt1 &mdash; The Moead Framework 1.0 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/custom_theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="moead_framework.problem.combinatorial.knapsack.KnapsackProblem" href="moead_framework.problem.combinatorial.knapsack.KnapsackProblem.html" />
-    <link rel="prev" title="moead_framework.problem.combinatorial.rmnk.Rmnk" href="moead_framework.problem.combinatorial.rmnk.Rmnk.html" /> 
+    <link rel="next" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html" />
+    <link rel="prev" title="moead_framework.problem.combinatorial.knapsack.KnapsackProblem" href="moead_framework.problem.combinatorial.knapsack.KnapsackProblem.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,9 +87,9 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html#problems">Problems</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="moead_framework.problem.combinatorial.rmnk.Rmnk.html">moead_framework.problem.combinatorial.rmnk.Rmnk</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">moead_framework.problem.combinatorial.mubqp.Mubqp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="moead_framework.problem.combinatorial.mubqp.Mubqp.html">moead_framework.problem.combinatorial.mubqp.Mubqp</a></li>
 <li class="toctree-l3"><a class="reference internal" href="moead_framework.problem.combinatorial.knapsack.KnapsackProblem.html">moead_framework.problem.combinatorial.knapsack.KnapsackProblem</a></li>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework.problem.numerical.zdt.Zdt1.html">moead_framework.problem.numerical.zdt.Zdt1</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">moead_framework.problem.numerical.zdt.Zdt1</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../api.html#solution">Solution</a></li>
@@ -147,13 +147,13 @@
         
           <li><a href="../api.html">API</a> &raquo;</li>
         
-      <li>moead_framework.problem.combinatorial.mubqp.Mubqp</li>
+      <li>moead_framework.problem.numerical.zdt.Zdt1</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/moead_framework/moead_framework.problem.combinatorial.mubqp.Mubqp.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/moead_framework/moead_framework.problem.numerical.zdt.Zdt1.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -166,21 +166,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="moead-framework-problem-combinatorial-mubqp-mubqp">
-<h1>moead_framework.problem.combinatorial.mubqp.Mubqp<a class="headerlink" href="#moead-framework-problem-combinatorial-mubqp-mubqp" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="moead-framework-problem-numerical-zdt-zdt1">
+<h1>moead_framework.problem.numerical.zdt.Zdt1<a class="headerlink" href="#moead-framework-problem-numerical-zdt-zdt1" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="moead_framework.problem.combinatorial.mubqp.Mubqp">
-<em class="property">class </em><code class="sig-prename descclassname">moead_framework.problem.combinatorial.mubqp.</code><code class="sig-name descname">Mubqp</code><span class="sig-paren">(</span><em class="sig-param">instance_file</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/combinatorial/mubqp.html#Mubqp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.combinatorial.mubqp.Mubqp" title="Permalink to this definition">¶</a></dt>
+<dt id="moead_framework.problem.numerical.zdt.Zdt1">
+<em class="property">class </em><code class="sig-prename descclassname">moead_framework.problem.numerical.zdt.</code><code class="sig-name descname">Zdt1</code><span class="sig-paren">(</span><em class="sig-param">size</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/numerical/zdt.html#Zdt1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.numerical.zdt.Zdt1" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.problem.problem.Problem</span></code></p>
-<p>Implementation of the Multiobjective Unconstrained Binary Quadratic Programming problem.
-The problem is compatible with files generated
-by the mocobench generator <a class="reference external" href="http://mocobench.sourceforge.net/index.php?n=Problem.MUBQP">http://mocobench.sourceforge.net/index.php?n=Problem.MUBQP</a></p>
+<p>Implementation of the Zdt1 problem.
+<a class="reference external" href="https://sop.tik.ee.ethz.ch/download/supplementary/testproblems/zdt1/index.php">https://sop.tik.ee.ethz.ch/download/supplementary/testproblems/zdt1/index.php</a></p>
+<ol class="upperalpha simple" start="5">
+<li><p>Zitzler, K. Deb, and L. Thiele. Comparison of Multiobjective Evolutionary Algorithms: Empirical Results. Evolutionary Computation, 8(2):173-195, 2000</p></li>
+</ol>
 <dl class="method">
-<dt id="moead_framework.problem.combinatorial.mubqp.Mubqp.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">instance_file</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/combinatorial/mubqp.html#Mubqp.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.combinatorial.mubqp.Mubqp.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="moead_framework.problem.numerical.zdt.Zdt1.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">size</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/numerical/zdt.html#Zdt1.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.numerical.zdt.Zdt1.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>instance_file</strong> – {string} text file generated by the mubqp generator : <a class="reference external" href="http://mocobench.sourceforge.net/index.php?n=Problem.RMNK#Code">http://mocobench.sourceforge.net/index.php?n=Problem.RMNK#Code</a></p>
+<dd class="field-odd"><p><strong>size</strong> – {integer} number of variables in a solution</p>
 </dd>
 </dl>
 </dd></dl>
@@ -192,31 +194,28 @@ by the mocobench generator <a class="reference external" href="http://mocobench.
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.problem.combinatorial.mubqp.Mubqp.__init__" title="moead_framework.problem.combinatorial.mubqp.Mubqp.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(instance_file)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.problem.numerical.zdt.Zdt1.__init__" title="moead_framework.problem.numerical.zdt.Zdt1.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(size)</p></td>
 <td><p><dl class="field-list simple">
-<dt class="field-odd">param instance_file</dt>
-<dd class="field-odd"><p>{string} text file generated by the mubqp generator : <a class="reference external" href="http://mocobench.sourceforge.net/index.php?n=Problem.RMNK#Code">http://mocobench.sourceforge.net/index.php?n=Problem.RMNK#Code</a></p>
+<dt class="field-odd">param size</dt>
+<dd class="field-odd"><p>{integer} number of variables in a solution</p>
 </dd>
 </dl>
 </p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.problem.combinatorial.mubqp.Mubqp.f" title="moead_framework.problem.combinatorial.mubqp.Mubqp.f"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f</span></code></a>(function_id, solution)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.problem.numerical.zdt.Zdt1.f" title="moead_framework.problem.numerical.zdt.Zdt1.f"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f</span></code></a>(function_id, solution)</p></td>
 <td><p>Evaluate the solution for the objective function_id</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.problem.combinatorial.mubqp.Mubqp.generate_random_solution" title="moead_framework.problem.combinatorial.mubqp.Mubqp.generate_random_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_random_solution</span></code></a>([evaluate])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.problem.numerical.zdt.Zdt1.generate_random_solution" title="moead_framework.problem.numerical.zdt.Zdt1.generate_random_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_random_solution</span></code></a>([evaluate])</p></td>
 <td><p>Generate a random Solution for the current problem</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.problem.combinatorial.mubqp.Mubqp.generate_solution" title="moead_framework.problem.combinatorial.mubqp.Mubqp.generate_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_solution</span></code></a>(array[, evaluate])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.problem.numerical.zdt.Zdt1.generate_solution" title="moead_framework.problem.numerical.zdt.Zdt1.generate_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_solution</span></code></a>(array[, evaluate])</p></td>
 <td><p>Generate a predefined Solution for the current problem with array</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_qs</span></code>(array)</p></td>
-<td><p></p></td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
-<dt id="moead_framework.problem.combinatorial.mubqp.Mubqp.f">
-<code class="sig-name descname">f</code><span class="sig-paren">(</span><em class="sig-param">function_id</em>, <em class="sig-param">solution</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/combinatorial/mubqp.html#Mubqp.f"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.combinatorial.mubqp.Mubqp.f" title="Permalink to this definition">¶</a></dt>
+<dt id="moead_framework.problem.numerical.zdt.Zdt1.f">
+<code class="sig-name descname">f</code><span class="sig-paren">(</span><em class="sig-param">function_id</em>, <em class="sig-param">solution</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/numerical/zdt.html#Zdt1.f"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.numerical.zdt.Zdt1.f" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate the solution for the objective function_id</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -232,8 +231,8 @@ by the mocobench generator <a class="reference external" href="http://mocobench.
 </dd></dl>
 
 <dl class="method">
-<dt id="moead_framework.problem.combinatorial.mubqp.Mubqp.generate_random_solution">
-<code class="sig-name descname">generate_random_solution</code><span class="sig-paren">(</span><em class="sig-param">evaluate=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/combinatorial/mubqp.html#Mubqp.generate_random_solution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.combinatorial.mubqp.Mubqp.generate_random_solution" title="Permalink to this definition">¶</a></dt>
+<dt id="moead_framework.problem.numerical.zdt.Zdt1.generate_random_solution">
+<code class="sig-name descname">generate_random_solution</code><span class="sig-paren">(</span><em class="sig-param">evaluate=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/numerical/zdt.html#Zdt1.generate_random_solution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.numerical.zdt.Zdt1.generate_random_solution" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a random Solution for the current problem</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -246,8 +245,8 @@ by the mocobench generator <a class="reference external" href="http://mocobench.
 </dd></dl>
 
 <dl class="method">
-<dt id="moead_framework.problem.combinatorial.mubqp.Mubqp.generate_solution">
-<code class="sig-name descname">generate_solution</code><span class="sig-paren">(</span><em class="sig-param">array</em>, <em class="sig-param">evaluate=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/combinatorial/mubqp.html#Mubqp.generate_solution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.combinatorial.mubqp.Mubqp.generate_solution" title="Permalink to this definition">¶</a></dt>
+<dt id="moead_framework.problem.numerical.zdt.Zdt1.generate_solution">
+<code class="sig-name descname">generate_solution</code><span class="sig-paren">(</span><em class="sig-param">array</em>, <em class="sig-param">evaluate=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/numerical/zdt.html#Zdt1.generate_solution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.numerical.zdt.Zdt1.generate_solution" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a predefined Solution for the current problem with array</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -274,10 +273,10 @@ by the mocobench generator <a class="reference external" href="http://mocobench.
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="moead_framework.problem.combinatorial.knapsack.KnapsackProblem.html" class="btn btn-neutral float-right" title="moead_framework.problem.combinatorial.knapsack.KnapsackProblem" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html" class="btn btn-neutral float-right" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="moead_framework.problem.combinatorial.rmnk.Rmnk.html" class="btn btn-neutral float-left" title="moead_framework.problem.combinatorial.rmnk.Rmnk" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="moead_framework.problem.combinatorial.knapsack.KnapsackProblem.html" class="btn btn-neutral float-left" title="moead_framework.problem.combinatorial.knapsack.KnapsackProblem" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

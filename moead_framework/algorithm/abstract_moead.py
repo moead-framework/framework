@@ -59,28 +59,76 @@ class AbstractMoead(ABC):
 
     @abstractmethod
     def run(self, checkpoint=None):
-        pass
+        """
+        Execute the algorithm.
+
+        :param checkpoint: {function} The default value is None. The checkpoint can be used to save data during the process
+        :return:
+        """
 
     @abstractmethod
     def update_solutions(self, solution, scal_function, sub_problem):
-        pass
+        """
+        Update solutions of the population and of the external archive ep
+
+        :param solution: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} the candidate solution also called offspring
+        :param scal_function: {:class:`~moead_framework.aggregation.functions.AggregationFunction`} Aggregation function used to compare solution in a multi-objective context
+        :param sub_problem: {integer} index of the sub-problem currently visited
+        :return:
+        """
 
     def get_sub_problems_to_visit(self):
+        """
+        Select sub-problems to visit for the next generation.
+        This function calls the component :class:`~moead_framework.core.sps_strategy.abstract_sps.SpsStrategy`
+
+        :return: {list} indexes of sub-problems
+        """
         return self.sps_strategy.get_sub_problems()
 
     def mating_pool_selection(self, sub_problem):
+        """
+        Select the set of solutions where future parents solutions will be selected according to the current sub-problem visited
+
+        :param sub_problem: {integer} index of the sub-problem currently visited
+        :return: {list} indexes of sub-problems
+        """
         return self.mating_pool_selector.select(sub_problem)
 
     def generate_offspring(self, population):
+        """
+        Generate a new offspring.
+        This function calls the component :class:`~moead_framework.core.offspring_generator.abstract_mating.py.OffspringGenerator`
+
+        :param population: {list<:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`>} set of solutions (parents) used to generate the offspring
+        :return: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} offspring
+        """
         return self.offspring_generator.run(population_indexes=population)
 
     def repair(self, solution):
+        """
+        Repair the solution in parameter.
+
+        :param solution: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}
+        :return: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} the repaired solution
+        """
         return solution
 
     def update_current_sub_problem(self, sub_problem):
+        """
+        Update the attribute current_sub_problem
+
+        :param sub_problem: {integer} index of sub-problem
+        :return:
+        """
         self.current_sub_problem = sub_problem
 
     def initial_population(self):
+        """
+        Initialize the population of :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`
+
+        :return: {List<:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`>}
+        """
         p = []
         for i in range(self.number_of_weight):
             x_i = self.problem.generate_random_solution()
@@ -92,6 +140,11 @@ class AbstractMoead(ABC):
         return p
 
     def init_z(self):
+        """
+        Initialize the reference point z
+
+        :return:
+        """
         z = np.zeros(self.number_of_objective)
 
         for i in range(self.number_of_weight):
@@ -104,11 +157,22 @@ class AbstractMoead(ABC):
         return z
 
     def update_z(self, solution):
+        """
+        Update the reference point z with coordinates of the solution in parameter if coordinates are better.
+
+        :param solution: :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`
+        :return:
+        """
         for i in range(self.number_of_objective):
             if self.z[i] > solution.F[i]:  # in minimisation context !
                 self.z[i] = solution.F[i]
 
     def generate_closest_weight_vectors(self):
+        """
+        Generate all neighborhood for each solution in the population
+
+        :return: {list<List<Integer>>} List of sub-problem (neighborhood) for each solution
+        """
         b = []
         for i in range(self.number_of_weight):
             b_i = np.zeros(self.t, int)
