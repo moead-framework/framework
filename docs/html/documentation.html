@@ -1,0 +1,606 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Components of MOEA/D framework &mdash; The Moead Framework 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom_theme.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API" href="api.html" />
+    <link rel="prev" title="Installation" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> The Moead Framework
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Components of MOEA/D framework</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#problems">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#algorithms">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#weight-vectors">Weight vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aggregation-function">Aggregation function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parent-selector">Parent Selector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#genetic-operator">Genetic operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#offspring-generator">Offspring Generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#termination-criteria">Termination criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sps-sub-problem-selection-strategy">SPS (Sub-Problem Selection) Strategy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tuto.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The Moead Framework</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Components of MOEA/D framework</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/documentation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="components-of-moea-d-framework">
+<span id="components"></span><h1>Components of MOEA/D framework<a class="headerlink" href="#components-of-moea-d-framework" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="problems">
+<h2>Problems<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 28%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Common Name</p></th>
+<th class="head"><p>Name in the framework</p></th>
+<th class="head"><p>Parameters</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>rho MNK-Landscapes <a class="bibtex reference internal" href="references.html#rmnk" id="id1">[VLJD11]</a></p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.problem.combinatorial.rmnk</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">instance_file</span></code> : path of the instance file</p></td>
+</tr>
+<tr class="row-odd"><td><p>MUBQP <a class="bibtex reference internal" href="references.html#mubqp" id="id2">[LVH14]</a></p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.problem.combinatorial.mubqp</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">instance_file</span></code> : path of the instance file</p></td>
+</tr>
+<tr class="row-even"><td><p>Multi-objective Knapsack <a class="bibtex reference internal" href="references.html#mokp" id="id3">[Lus]</a></p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.problem.combinatorial.knapsack</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">objective_number</span></code> : number of objective, <code class="code docutils literal notranslate"><span class="pre">instance_file</span></code> : path of the instance file</p></td>
+</tr>
+<tr class="row-odd"><td><p>Zdt1 <a class="bibtex reference internal" href="references.html#zdt" id="id4">[ZDT00]</a></p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.problem.numerical.zdt</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">size</span></code> : size of solutions</p></td>
+</tr>
+</tbody>
+</table>
+<p>Four benchmark problems are available in the framework. You can find file instances for combinatorial problems
+in this repository <a class="reference external" href="https://github.com/moead-framework/data/tree/master/problem">https://github.com/moead-framework/data/tree/master/problem</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can implement your own problem by following <a class="reference internal" href="tuto.html#tuto-problem"><span class="std std-ref">this tutoriel</span></a>.</p>
+</div>
+<p>Three functions are available in a problem object:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Function</p></th>
+<th class="head"><p>Comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">problem.generate_random_solution(evaluate)</span></code></p></td>
+<td><p>Generate a random solution. The parameter <code class="code docutils literal notranslate"><span class="pre">evaluate</span></code> is a boolean to specify if the solution have to be evaluated. The default value is <code class="code docutils literal notranslate"><span class="pre">True</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">problem.generate_solution(x,</span> <span class="pre">evaluate)</span></code></p></td>
+<td><p>Convert the list <code class="code docutils literal notranslate"><span class="pre">x</span></code> to a Solution object. The parameter <code class="code docutils literal notranslate"><span class="pre">evaluate</span></code> is a boolean to specify if the solution have to be evaluated. The default value is <code class="code docutils literal notranslate"><span class="pre">True</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">problem.f(i,</span> <span class="pre">solution)</span></code></p></td>
+<td><p>Return the fitness value of the <code class="code docutils literal notranslate"><span class="pre">solution</span></code> object for the function <code class="code docutils literal notranslate"><span class="pre">i</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>A solution is a <code class="code docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code> object. This object save the array in the attribute
+<code class="code docutils literal notranslate"><span class="pre">OneDimensionSolution.solution</span></code>, the fitness is saved in the array  <code class="code docutils literal notranslate"><span class="pre">OneDimensionSolution.F</span></code> if the
+parameter <code class="code docutils literal notranslate"><span class="pre">evaluate</span></code> is set to True.</p>
+<p>Example with the problem rho MNK-Landscapes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">moead_framework.problem.combinatorial</span> <span class="kn">import</span> <span class="n">Rmnk</span>
+
+<span class="c1"># the file is available here: https://github.com/moead-framework/data/blob/master/problem/RMNK/Instances/rmnk_0_2_20_1_0.dat</span>
+<span class="c1"># rmnk instance with parameters rho=0, m=2, n=20, k=1 and a seed of 0</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">file_rmnk</span> <span class="o">=</span> <span class="s2">&quot;rmnk_0_2_20_1_0.dat&quot;</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">problem</span> <span class="o">=</span> <span class="n">Rmnk</span><span class="p">(</span><span class="n">instance_file</span><span class="o">=</span><span class="n">file_rmnk</span><span class="p">)</span>
+
+<span class="c1"># Generate a random solution</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">solution</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">generate_random_solution</span><span class="p">()</span>
+
+<span class="c1"># Generate a solution with predefined values</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">solution</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">generate_solution</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Get objective value of the solution</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">array_of_fitness</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">F</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">f0</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">F</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="algorithms">
+<span id="components-algo"></span><h2>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 35%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Common Name</p></th>
+<th class="head"><p>Name in the framework</p></th>
+<th class="head"><p>Comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Original MOEA/D (combinatorial) <a class="bibtex reference internal" href="references.html#moead" id="id5">[ZhangLi07]</a></p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.algorithm.combinatorial.moead</span></code></p></td>
+<td><p>The original algorithm for combinatorial optimization</p></td>
+</tr>
+<tr class="row-odd"><td><p>Original MOEA/D (numerical) <a class="bibtex reference internal" href="references.html#moead" id="id6">[ZhangLi07]</a></p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.algorithm.numerical.moead</span></code></p></td>
+<td><p>The original algorithm for numerical optimization</p></td>
+</tr>
+<tr class="row-even"><td><p>MOEA/D with parameters delta / nr <a class="bibtex reference internal" href="references.html#moead-de" id="id7">[LZ09]</a></p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.algorithm.combinatorial.moead_delta_nr</span></code></p></td>
+<td><p>Variant with parameters delta &amp; nr of MOEA/D-DE</p></td>
+</tr>
+<tr class="row-odd"><td><p>MOEA/D-DRA <a class="bibtex reference internal" href="references.html#moead-dra" id="id8">[ZhangLiuLi09]</a></p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.algorithm.combinatorial.moead_dra</span></code></p></td>
+<td><p>Variant with a dynamic ressource allocation</p></td>
+</tr>
+</tbody>
+</table>
+<p>Each algorithm can be executed with the <code class="code docutils literal notranslate"><span class="pre">run()</span></code> function. This function returns all non dominated solutions found by the
+algorithm. Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">moead</span> <span class="o">=</span> <span class="n">Moead</span><span class="p">(</span><span class="n">problem</span><span class="o">=</span><span class="n">rmnk</span><span class="p">,</span>
+          <span class="n">max_evaluation</span> <span class="o">=</span> <span class="n">number_of_evaluations</span><span class="p">,</span>
+          <span class="n">number_of_objective</span><span class="o">=</span><span class="n">number_of_objective</span><span class="p">,</span>
+          <span class="n">number_of_weight</span><span class="o">=</span><span class="n">number_of_weight</span><span class="p">,</span>
+          <span class="n">number_of_weight_neighborhood</span><span class="o">=</span><span class="n">number_of_weight_neighborhood</span><span class="p">,</span>
+          <span class="n">weight_file</span><span class="o">=</span><span class="n">weight_file</span><span class="p">,</span>
+          <span class="n">aggregation_function</span><span class="o">=</span><span class="n">Tchebycheff</span><span class="p">,</span>
+          <span class="p">)</span>
+
+<span class="n">non_dominated_solutions</span> <span class="o">=</span> <span class="n">moead</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want know more about all algorithms already available in the framework, you can find their implementation in <a class="reference external" href="https://github.com/moead-framework/framework/tree/master/moead_framework/algorithm">https://github.com/moead-framework/framework/tree/master/moead_framework/algorithm</a>.</p>
+</div>
+</div>
+<div class="section" id="weight-vectors">
+<h2>Weight vectors<a class="headerlink" href="#weight-vectors" title="Permalink to this headline">¶</a></h2>
+<p>For the decomposition of the multi-objective problems, we need weight vectors.
+These weights are initialized by using a text file in the algorithm contructor with the parameter <code class="code docutils literal notranslate"><span class="pre">weight_file</span></code> and the parameter <code class="code docutils literal notranslate"><span class="pre">number_of_weight</span></code>.
+We propose some examples of weight files in this repository: <a class="reference external" href="https://github.com/moead-framework/data/tree/master/weights">https://github.com/moead-framework/data/tree/master/weights</a>.</p>
+</div>
+<div class="section" id="aggregation-function">
+<h2>Aggregation function<a class="headerlink" href="#aggregation-function" title="Permalink to this headline">¶</a></h2>
+<p>The aggregation function is set as the parameter <code class="code docutils literal notranslate"><span class="pre">aggregation_function</span></code> in the algorithm contructor.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Common Name</p></th>
+<th class="head"><p>Name in the framework</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Weighted Sum</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.aggregation.weighted_sum</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Tchebycheff</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.aggregation.tchebycheff</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>The aggregation function is used in MOEA/D to decompose the multi-objective problem into several mono-objective sub-problems.
+The two main functions used are the Weighted Sum and the Tchebycheff function. In our framework, the aggregation function
+is a required parameter of the algorithm. It is represented in the framework by a class with two methods :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AggregationFunction</span><span class="p">:</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solution</span><span class="p">,</span> <span class="n">number_of_objective</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">sub_problem</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param solution:</span>
+<span class="sd">        :param number_of_objective:</span>
+<span class="sd">        :param weights: array of weight vectors</span>
+<span class="sd">        :param sub_problem: index of the sub-problem currently visited</span>
+<span class="sd">        :param z: array of dimension &#39;number_of_objective&#39;, it is the reference point Z*</span>
+<span class="sd">        :return: the aggregation value of the solution for the weight weights[sub-problem]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">is_better</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">old_value</span><span class="p">,</span> <span class="n">new_value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param old_value:</span>
+<span class="sd">        :param new_value:</span>
+<span class="sd">        :return: True if new_value (computed by run()) is better than old_value.</span>
+<span class="sd">        The test depends of the aggregation function and of the context (minimization or maximization).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="parent-selector">
+<h2>Parent Selector<a class="headerlink" href="#parent-selector" title="Permalink to this headline">¶</a></h2>
+<p>The parent selector is set as the parameter <code class="code docutils literal notranslate"><span class="pre">parent_selector</span></code> in the algorithm contructor.</p>
+<p>The parent selector is the component used to select solutions in the neighborhood before to use genetic
+operators to generate new offspring. The parent selector is an optional
+parameter of the algorithm, a default operator is used if the parameter is not set (two random solutions).</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Common Name</p></th>
+<th class="head"><p>Name in the framework</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Two random solutions</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.core.parent_selector.two_random_parent_selector</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>One random and current solution</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.core.parent_selector.one_random_and_current_parent_selector</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Two random and current solution</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.core.parent_selector.two_random_and_current_parent_selector</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>The parent selector is executed with the function select, this function takes in parameter a set of index that represents
+solutions in the population, and more precisely, in the neighborhood. The select function returns solutions that will
+be used to generate new offspring with the genetic operator.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ParentSelector</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">algorithm</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span> <span class="o">=</span> <span class="n">algorithm</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indexes</span><span class="p">):</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="genetic-operator">
+<h2>Genetic operator<a class="headerlink" href="#genetic-operator" title="Permalink to this headline">¶</a></h2>
+<p>The genetic operator is set as the parameter <code class="code docutils literal notranslate"><span class="pre">genetic_operator</span></code> in the algorithm contructor.</p>
+<p>A genetic operator is a component used in genetic algorithms to generate offspring by
+using characteristics of parents solutions. In the framework, these operators are used in the component <strong>offspring_generator</strong>.
+The genetic operator is an optional parameter of the algorithm, a default operator (crossover) is used if the parameter is not set.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you call the genetic operator manually, pay attention to the potential additional parameters available in the table below, otherwise algorithms manage them automatically.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 42%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Common Name</p></th>
+<th class="head"><p>Name in the framework</p></th>
+<th class="head"><p>additional parameters in the constructor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Multi-point combinatorial crossover</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.core.genetic_operator.combinatorial.crossover</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">crossover_points</span></code> : number of crossover points</p></td>
+</tr>
+<tr class="row-odd"><td><p>Binary mutation</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.core.genetic_operator.combinatorial.mutation</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">mutation_probability</span></code> : the mutation rate is <code class="code docutils literal notranslate"><span class="pre">mutation_probability</span> <span class="pre">/</span> <span class="pre">n</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Differential Evolution Crossover</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.core.genetic_operator.numerical.differential_evolution_crossover</span></code></p></td>
+<td><p>/</p></td>
+</tr>
+<tr class="row-odd"><td><p>Polynomial mutation</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.core.genetic_operator.numerical.polynomial_mutation</span></code></p></td>
+<td><p>/</p></td>
+</tr>
+</tbody>
+</table>
+<p>It is represented in the framework by a class with two methods:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">GeneticOperator</span><span class="p">:</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solutions</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    take in parameter parent solutions required by the operator and potential additional parameters</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">solutions</span> <span class="o">=</span> <span class="n">solutions</span>
+
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :return: the new offspring generated by the operator with the parent solutions</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="offspring-generator">
+<h2>Offspring Generator<a class="headerlink" href="#offspring-generator" title="Permalink to this headline">¶</a></h2>
+<p>The offspring generator is set as the parameter <code class="code docutils literal notranslate"><span class="pre">offspring_generator</span></code> in the algorithm contructor.</p>
+<p>The offspring generator is the component that manage all the process to generate new offspring by
+using components <strong>Parent Selector</strong> and <strong>Genetic operator</strong>. By default, this component is fixed because
+it is generic for almost all MOEA/D variants when we need to generate one offspring. This component can be updated
+in parameter of the MOEAD class if you want to use new components to generate offspring such as surrogates models for example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">OffspringGeneratorGeneric</span><span class="p">(</span><span class="n">OffspringGenerator</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">population_indexes</span><span class="p">):</span>
+
+        <span class="n">parents</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">parent_selector</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">indexes</span><span class="o">=</span><span class="n">population_indexes</span><span class="p">)</span>
+
+        <span class="n">parents_solutions</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">parents</span><span class="p">:</span>
+            <span class="n">parents_solutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">solution</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="p">,</span> <span class="s1">&#39;number_of_crossover_points&#39;</span><span class="p">):</span>
+            <span class="n">crossover_point</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">number_of_crossover_points</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">crossover_point</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="p">,</span> <span class="s1">&#39;mutation_probability&#39;</span><span class="p">):</span>
+            <span class="n">mutation_probability</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">mutation_probability</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">mutation_probability</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="n">y_sol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">genetic_operator</span><span class="p">(</span><span class="n">solutions</span><span class="o">=</span><span class="n">parents_solutions</span><span class="p">,</span>
+                                                <span class="n">crossover_points</span><span class="o">=</span><span class="n">crossover_point</span><span class="p">,</span>
+                                                <span class="n">mutation_probability</span><span class="o">=</span><span class="n">mutation_probability</span>
+                                                <span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">generate_solution</span><span class="p">(</span><span class="n">array</span><span class="o">=</span><span class="n">y_sol</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="termination-criteria">
+<h2>Termination criteria<a class="headerlink" href="#termination-criteria" title="Permalink to this headline">¶</a></h2>
+<p>The termination criteria is set as the parameter <code class="code docutils literal notranslate"><span class="pre">termination_criteria</span></code> in the algorithm contructor.</p>
+<p>The termination criteria is the component used to determine when the algorithm ends. We implement in this framework
+a default criteria based on a maximum number of evaluation (a parameter of the algorithm) but we allow you to define new critera.
+The termination criteria is an optional parameter of the algorithm.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 39%" />
+<col style="width: 61%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Common Name</p></th>
+<th class="head"><p>Name in the framework</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Maximum number of evaluation</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.core.termination_criteria.max_evaluation</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sps-sub-problem-selection-strategy">
+<h2>SPS (Sub-Problem Selection) Strategy<a class="headerlink" href="#sps-sub-problem-selection-strategy" title="Permalink to this headline">¶</a></h2>
+<p>The sps strategy is set as the parameter <code class="code docutils literal notranslate"><span class="pre">sps_strategy</span></code> in the algorithm contructor.</p>
+<p>The SPS Strategy <a class="bibtex reference internal" href="references.html#gpruvost-evocop2020" id="id9">[PDL+20a]</a> is the component used to select sub-problems (or solutions of the population) that will be visited during the next
+generation of MOEA/D. The default SPS is the strategy of the classic MOEA/D where all
+sub-problems are visited during one generation.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Common Name</p></th>
+<th class="head"><p>Name in the framework</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SPS that iterate over all sub-problems</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.core.sps_strategy.sps_all</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>SPS Strategy used in MOEA/D-DRA</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.core.sps_strategy.sps_dra</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>SPS Strategy to select random and boundaries sub-problems</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.core.sps_strategy.sps_random_and_boundaries.py</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Geoffrey Pruvost
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
