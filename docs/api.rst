@@ -2,11 +2,13 @@
 API
 ===========================================
 
+Problems
+__________________________________________
 
+.. autosummary::
+   :nosignatures:
+   :toctree: moead_framework
 
-.. autoclass:: moead_framework.problem.combinatorial.rmnk.Rmnk
-
-.. automodule:: moead_framework.problem.combinatorial.rmnk.Problem
-   :imported-members:
-   :members:
-   :undoc-members:
+   moead_framework.problem.combinatorial.rmnk.Rmnk
+   moead_framework.problem.combinatorial.mubqp.Mubqp
+   moead_framework.problem.combinatorial.knapsack.KnapsackProblem

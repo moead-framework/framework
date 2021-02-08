@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="_static/custom_theme.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Tutorials" href="tuto.html" />
+    <link rel="next" title="moead_framework.problem.combinatorial.rmnk.Rmnk" href="moead_framework/moead_framework.problem.combinatorial.rmnk.Rmnk.html" />
     <link rel="prev" title="Components of MOEA/D framework" href="documentation.html" /> 
 </head>
 
@@ -84,7 +84,15 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">Components of MOEA/D framework</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#problems">Problems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.problem.combinatorial.rmnk.Rmnk.html">moead_framework.problem.combinatorial.rmnk.Rmnk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.problem.combinatorial.mubqp.Mubqp.html">moead_framework.problem.combinatorial.mubqp.Mubqp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.problem.combinatorial.knapsack.KnapsackProblem.html">moead_framework.problem.combinatorial.knapsack.KnapsackProblem</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="tuto.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
@@ -155,28 +163,26 @@
             
   <div class="section" id="api">
 <h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="moead_framework.problem.combinatorial.rmnk.Rmnk">
-<em class="property">class </em><code class="sig-prename descclassname">moead_framework.problem.combinatorial.rmnk.</code><code class="sig-name descname">Rmnk</code><span class="sig-paren">(</span><em class="sig-param">instance_file</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moead_framework/problem/combinatorial/rmnk.html#Rmnk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.combinatorial.rmnk.Rmnk" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<span class="target" id="module-moead_framework.problem.combinatorial.rmnk.Problem"></span><p>Helper class that provides a standard way to create an ABC using
-inheritance.</p>
-<dl class="function">
-<dt id="moead_framework.problem.combinatorial.rmnk.Problem.f">
-<code class="sig-prename descclassname">moead_framework.problem.combinatorial.rmnk.Problem.</code><code class="sig-name descname">f</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">function_id</em>, <em class="sig-param">solution</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.problem.combinatorial.rmnk.Problem.f" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="moead_framework.problem.combinatorial.rmnk.Problem.generate_random_solution">
-<code class="sig-prename descclassname">moead_framework.problem.combinatorial.rmnk.Problem.</code><code class="sig-name descname">generate_random_solution</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">evaluate=True</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.problem.combinatorial.rmnk.Problem.generate_random_solution" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="moead_framework.problem.combinatorial.rmnk.Problem.generate_solution">
-<code class="sig-prename descclassname">moead_framework.problem.combinatorial.rmnk.Problem.</code><code class="sig-name descname">generate_solution</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">array</em>, <em class="sig-param">evaluate=True</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.problem.combinatorial.rmnk.Problem.generate_solution" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<div class="section" id="problems">
+<h2>Problems<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.problem.combinatorial.rmnk.Rmnk.html#moead_framework.problem.combinatorial.rmnk.Rmnk" title="moead_framework.problem.combinatorial.rmnk.Rmnk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.problem.combinatorial.rmnk.Rmnk</span></code></a></p></td>
+<td><p>Implementation of the multiobjective NK landscapes with tunable objective correlation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="moead_framework/moead_framework.problem.combinatorial.mubqp.Mubqp.html#moead_framework.problem.combinatorial.mubqp.Mubqp" title="moead_framework.problem.combinatorial.mubqp.Mubqp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.problem.combinatorial.mubqp.Mubqp</span></code></a></p></td>
+<td><p>Implementation of the Multiobjective Unconstrained Binary Quadratic Programming problem.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.problem.combinatorial.knapsack.KnapsackProblem.html#moead_framework.problem.combinatorial.knapsack.KnapsackProblem" title="moead_framework.problem.combinatorial.knapsack.KnapsackProblem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.problem.combinatorial.knapsack.KnapsackProblem</span></code></a></p></td>
+<td><p>Implementation of the Multiobjective knapsack problem by Thibaut Lust.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
@@ -187,7 +193,7 @@ inheritance.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="tuto.html" class="btn btn-neutral float-right" title="Tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="moead_framework/moead_framework.problem.combinatorial.rmnk.Rmnk.html" class="btn btn-neutral float-right" title="moead_framework.problem.combinatorial.rmnk.Rmnk" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="documentation.html" class="btn btn-neutral float-left" title="Components of MOEA/D framework" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

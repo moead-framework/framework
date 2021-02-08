@@ -11,9 +11,10 @@ class Problem(ABC):
     def f(self, function_id, solution):
         """
         Evaluate the solution for the objective function_id
-        :param function_id: index of the objective
-        :param solution: Solution to evaluate
-        :return: (float) fitness value
+
+        :param function_id: {integer} index of the objective
+        :param solution: {:class:`~moead_framework.solution.one_dimension_solution`} solution to evaluate
+        :return: {float} fitness value
         """
 
 
@@ -21,15 +22,17 @@ class Problem(ABC):
     def generate_random_solution(self, evaluate=True):
         """
         Generate a random Solution for the current problem
-        :param evaluate: Boolean to specify if the new solution is evaluated
-        :return: Solution
+
+        :param evaluate: Boolean: specify if the new solution is evaluated. The default value is True.
+        :return: {:class:`~moead_framework.solution.one_dimension_solution`}
         """
 
     @abstractmethod
     def generate_solution(self, array, evaluate=True):
         """
         Generate a predefined Solution for the current problem with array
-        :param array: List with all decision variables of the Solution
-        :param evaluate: Boolean to specify if the new solution is evaluated
-        :return: Solution
+
+        :param array: List: all decision variables of the Solution
+        :param evaluate: Boolean: specify if the new solution is evaluated. The default value is True.
+        :return: {:class:`~moead_framework.solution.one_dimension_solution`}
         """

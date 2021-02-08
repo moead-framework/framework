@@ -50,6 +50,9 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
+autosummary_generate = True
+autodoc_default_flags = ['class', 'members', 'inherited-members', 'show-inheritance']
+autodoc_member_order = 'groupwise'
 
 # -- Options for HTML output -------------------------------------------------
 

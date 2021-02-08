@@ -4,8 +4,16 @@ from moead_framework.solution.one_dimension_solution import OneDimensionSolution
 
 
 class KnapsackProblem(Problem):
-
+    """
+    Implementation of the Multiobjective knapsack problem by Thibaut Lust.
+    The problem is compatible with files available on the
+    author website: http://www-desir.lip6.fr/~lustt/Research.html#MOKP
+    """
     def __init__(self, number_of_objective, instance_file):
+        """
+        :param number_of_objective: {integer}
+        :param instance_file: {string} txt file of the instance: http://www-desir.lip6.fr/~lustt/Research.html#MOKP
+        """
         super().__init__(number_of_objective)
 
         self.instance_file = instance_file
