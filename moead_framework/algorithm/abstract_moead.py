@@ -19,6 +19,23 @@ class AbstractMoead(ABC):
                  sps_strategy=None,
                  offspring_generator=None,
                  weight_file=None):
+        """
+        Constructor of the algorithm.
+
+        :param problem: {:class:`~moead_framework.problem.Problem`} problem to optimize
+        :param max_evaluation: {integer} maximum number of evaluation
+        :param number_of_objective: {integer} number of objective in the problem
+        :param number_of_weight: {integer} number of weight vector used to decompose the problem
+        :param number_of_weight_neighborhood: {integer} size of the neighborhood
+        :param aggregation_function: {:class:`~moead_framework.aggregation.functions.AggregationFunction`}
+        :param termination_criteria: Optional -- {:class:`~moead_framework.core.termination_criteria.abstract_termination_criteria.TerminationCriteria`} The default component is {:class:`~moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation`}
+        :param genetic_operator: Optional -- {:class:`~moead_framework.core.genetic_operator.abstract_operator.GeneticOperator`} The default operator depends of the problem type (combinatorial / numerical)
+        :param parent_selector: Optional -- {:class:`~moead_framework.core.parent_selector.abstract_parent_selector.ParentSelector`} The default operator depends of the number of solution required by the genetic operator
+        :param mating_pool_selector: Optional -- {:class:`~moead_framework.core.selector.abstract_selector.MatingPoolSelector`} The default selector is {:class:`~moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector`}
+        :param sps_strategy: Optional -- {:class:`~moead_framework.core.sps_strategy.abstract_sps.SpsStrategy`} The default strategy is {:class:`~moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems`}
+        :param offspring_generator: Optional -- {:class:`~moead_framework.core.offspring_generator.abstract_mating.OffspringGenerator`} The default generator is {:class:`~moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric`}
+        :param weight_file: todo need refactoring
+        """
         self.problem = problem
         self.aggregation_function = aggregation_function()
 
@@ -67,12 +84,12 @@ class AbstractMoead(ABC):
         """
 
     @abstractmethod
-    def update_solutions(self, solution, scal_function, sub_problem):
+    def update_solutions(self, solution, aggregation_function, sub_problem):
         """
         Update solutions of the population and of the external archive ep
 
         :param solution: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} the candidate solution also called offspring
-        :param scal_function: {:class:`~moead_framework.aggregation.functions.AggregationFunction`} Aggregation function used to compare solution in a multi-objective context
+        :param aggregation_function: {:class:`~moead_framework.aggregation.functions.AggregationFunction`} Aggregation function used to compare solution in a multi-objective context
         :param sub_problem: {integer} index of the sub-problem currently visited
         :return:
         """

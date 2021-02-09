@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>moead_framework.algorithm.combinatorial.moead.Moead &mdash; The Moead Framework 1.0 documentation</title>
+  <title>moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr &mdash; The Moead Framework 1.0 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/custom_theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="moead_framework.algorithm.numerical.moead.Moead" href="moead_framework.algorithm.numerical.moead.Moead.html" />
-    <link rel="prev" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html" /> 
+    <link rel="next" title="moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA" href="moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA.html" />
+    <link rel="prev" title="moead_framework.algorithm.numerical.moead.Moead" href="moead_framework.algorithm.numerical.moead.Moead.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -88,9 +88,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../api.html#problems">Problems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api.html#solution">Solution</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html#algorithms">Algorithms</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">moead_framework.algorithm.combinatorial.moead.Moead</a></li>
+<li class="toctree-l3"><a class="reference internal" href="moead_framework.algorithm.combinatorial.moead.Moead.html">moead_framework.algorithm.combinatorial.moead.Moead</a></li>
 <li class="toctree-l3"><a class="reference internal" href="moead_framework.algorithm.numerical.moead.Moead.html">moead_framework.algorithm.numerical.moead.Moead</a></li>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.html">moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr</a></li>
 <li class="toctree-l3"><a class="reference internal" href="moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA.html">moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA</a></li>
 <li class="toctree-l3"><a class="reference internal" href="moead_framework.algorithm.combinatorial.moead_sps_random.MoeadSPSRandom.html">moead_framework.algorithm.combinatorial.moead_sps_random.MoeadSPSRandom</a></li>
 </ul>
@@ -148,13 +148,13 @@
         
           <li><a href="../api.html">API</a> &raquo;</li>
         
-      <li>moead_framework.algorithm.combinatorial.moead.Moead</li>
+      <li>moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/moead_framework/moead_framework.algorithm.combinatorial.moead.Moead.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/moead_framework/moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -167,16 +167,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="moead-framework-algorithm-combinatorial-moead-moead">
-<h1>moead_framework.algorithm.combinatorial.moead.Moead<a class="headerlink" href="#moead-framework-algorithm-combinatorial-moead-moead" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="moead-framework-algorithm-combinatorial-moead-delta-nr-moeaddeltanr">
+<h1>moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr<a class="headerlink" href="#moead-framework-algorithm-combinatorial-moead-delta-nr-moeaddeltanr" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="moead_framework.algorithm.combinatorial.moead.Moead">
-<em class="property">class </em><code class="sig-prename descclassname">moead_framework.algorithm.combinatorial.moead.</code><code class="sig-name descname">Moead</code><span class="sig-paren">(</span><em class="sig-param">problem</em>, <em class="sig-param">max_evaluation</em>, <em class="sig-param">number_of_objective</em>, <em class="sig-param">number_of_weight</em>, <em class="sig-param">number_of_weight_neighborhood</em>, <em class="sig-param">aggregation_function</em>, <em class="sig-param">weight_file</em>, <em class="sig-param">termination_criteria=None</em>, <em class="sig-param">number_of_crossover_points=2</em>, <em class="sig-param">mutation_probability=1</em>, <em class="sig-param">mating_pool_selector=None</em>, <em class="sig-param">genetic_operator=None</em>, <em class="sig-param">parent_selector=None</em>, <em class="sig-param">sps_strategy=None</em>, <em class="sig-param">offspring_generator=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/algorithm/combinatorial/moead.html#Moead"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead.Moead" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.algorithm.abstract_moead.AbstractMoead</span></code></p>
-<p>Implementation of MOEA/D for combinatorial problems.</p>
+<dt id="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr">
+<em class="property">class </em><code class="sig-prename descclassname">moead_framework.algorithm.combinatorial.moead_delta_nr.</code><code class="sig-name descname">MoeadDeltaNr</code><span class="sig-paren">(</span><em class="sig-param">problem</em>, <em class="sig-param">max_evaluation</em>, <em class="sig-param">number_of_objective</em>, <em class="sig-param">number_of_weight</em>, <em class="sig-param">number_of_weight_neighborhood</em>, <em class="sig-param">delta</em>, <em class="sig-param">number_of_replacement</em>, <em class="sig-param">aggregation_function</em>, <em class="sig-param">sps_strategy=None</em>, <em class="sig-param">number_of_crossover_points=2</em>, <em class="sig-param">mutation_probability=1</em>, <em class="sig-param">parent_selector=None</em>, <em class="sig-param">weight_file=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/algorithm/combinatorial/moead_delta_nr.html#MoeadDeltaNr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="moead_framework.algorithm.combinatorial.moead.Moead.html#moead_framework.algorithm.combinatorial.moead.Moead" title="moead_framework.algorithm.combinatorial.moead.Moead"><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.algorithm.combinatorial.moead.Moead</span></code></a></p>
+<p>Implementation of MOEA/D with parameters delta / nr</p>
+<ol class="upperalpha simple" start="8">
+<li><p>Li and Q. Zhang. MOEA/D-DE : Multiobjective Optimization Problems With Complicated Pareto Sets, MOEA/D and NSGA-II. IEEE Transactions on Evolutionary Computation, 13(2):284–302, April 2009. doi:10.1109/TEVC.2008.925798</p></li>
+</ol>
 <dl class="method">
-<dt id="moead_framework.algorithm.combinatorial.moead.Moead.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">problem</em>, <em class="sig-param">max_evaluation</em>, <em class="sig-param">number_of_objective</em>, <em class="sig-param">number_of_weight</em>, <em class="sig-param">number_of_weight_neighborhood</em>, <em class="sig-param">aggregation_function</em>, <em class="sig-param">weight_file</em>, <em class="sig-param">termination_criteria=None</em>, <em class="sig-param">number_of_crossover_points=2</em>, <em class="sig-param">mutation_probability=1</em>, <em class="sig-param">mating_pool_selector=None</em>, <em class="sig-param">genetic_operator=None</em>, <em class="sig-param">parent_selector=None</em>, <em class="sig-param">sps_strategy=None</em>, <em class="sig-param">offspring_generator=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/algorithm/combinatorial/moead.html#Moead.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead.Moead.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">problem</em>, <em class="sig-param">max_evaluation</em>, <em class="sig-param">number_of_objective</em>, <em class="sig-param">number_of_weight</em>, <em class="sig-param">number_of_weight_neighborhood</em>, <em class="sig-param">delta</em>, <em class="sig-param">number_of_replacement</em>, <em class="sig-param">aggregation_function</em>, <em class="sig-param">sps_strategy=None</em>, <em class="sig-param">number_of_crossover_points=2</em>, <em class="sig-param">mutation_probability=1</em>, <em class="sig-param">parent_selector=None</em>, <em class="sig-param">weight_file=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/algorithm/combinatorial/moead_delta_nr.html#MoeadDeltaNr.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructor of the algorithm.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -186,13 +189,13 @@
 <li><p><strong>number_of_objective</strong> – {integer} number of objective in the problem</p></li>
 <li><p><strong>number_of_weight</strong> – {integer} number of weight vector used to decompose the problem</p></li>
 <li><p><strong>number_of_weight_neighborhood</strong> – {integer} size of the neighborhood</p></li>
+<li><p><strong>delta</strong> – {float} probability to use all the population as neighborhood</p></li>
+<li><p><strong>number_of_replacement</strong> – {integer} maximum number of solutions replaced in the population for each new offspring generated</p></li>
 <li><p><strong>aggregation_function</strong> – {<code class="xref py py-class docutils literal notranslate"><span class="pre">AggregationFunction</span></code>}</p></li>
-<li><p><strong>termination_criteria</strong> – Optional – {<code class="xref py py-class docutils literal notranslate"><span class="pre">TerminationCriteria</span></code>} The default component is {<code class="xref py py-class docutils literal notranslate"><span class="pre">MaxEvaluation</span></code>}</p></li>
-<li><p><strong>genetic_operator</strong> – Optional – {<code class="xref py py-class docutils literal notranslate"><span class="pre">GeneticOperator</span></code>} The default operator depends of the problem type (combinatorial / numerical)</p></li>
 <li><p><strong>parent_selector</strong> – Optional – {<code class="xref py py-class docutils literal notranslate"><span class="pre">ParentSelector</span></code>} The default operator depends of the number of solution required by the genetic operator</p></li>
-<li><p><strong>mating_pool_selector</strong> – Optional – {<code class="xref py py-class docutils literal notranslate"><span class="pre">MatingPoolSelector</span></code>} The default selector is {<code class="xref py py-class docutils literal notranslate"><span class="pre">ClosestNeighborsSelector</span></code>}</p></li>
 <li><p><strong>sps_strategy</strong> – Optional – {<code class="xref py py-class docutils literal notranslate"><span class="pre">SpsStrategy</span></code>} The default strategy is {<code class="xref py py-class docutils literal notranslate"><span class="pre">SpsAllSubproblems</span></code>}</p></li>
-<li><p><strong>offspring_generator</strong> – Optional – {<code class="xref py py-class docutils literal notranslate"><span class="pre">OffspringGenerator</span></code>} The default generator is {<code class="xref py py-class docutils literal notranslate"><span class="pre">OffspringGeneratorGeneric</span></code>}</p></li>
+<li><p><strong>number_of_crossover_points</strong> – {integer} number of crossover point</p></li>
+<li><p><strong>mutation_probability</strong> – {integer} probability of mutation used by the genetic operator</p></li>
 <li><p><strong>weight_file</strong> – todo need refactoring</p></li>
 </ul>
 </dd>
@@ -206,47 +209,47 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead.Moead.__init__" title="moead_framework.algorithm.combinatorial.moead.Moead.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(problem, max_evaluation, …[, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.__init__" title="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(problem, max_evaluation, …[, …])</p></td>
 <td><p>Constructor of the algorithm.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead.Moead.generate_closest_weight_vectors" title="moead_framework.algorithm.combinatorial.moead.Moead.generate_closest_weight_vectors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_closest_weight_vectors</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.generate_closest_weight_vectors" title="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.generate_closest_weight_vectors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_closest_weight_vectors</span></code></a>()</p></td>
 <td><p>Generate all neighborhood for each solution in the population</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead.Moead.generate_offspring" title="moead_framework.algorithm.combinatorial.moead.Moead.generate_offspring"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_offspring</span></code></a>(population)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.generate_offspring" title="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.generate_offspring"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_offspring</span></code></a>(population)</p></td>
 <td><p>Generate a new offspring.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead.Moead.get_sub_problems_to_visit" title="moead_framework.algorithm.combinatorial.moead.Moead.get_sub_problems_to_visit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_sub_problems_to_visit</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.get_sub_problems_to_visit" title="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.get_sub_problems_to_visit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_sub_problems_to_visit</span></code></a>()</p></td>
 <td><p>Select sub-problems to visit for the next generation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead.Moead.init_z" title="moead_framework.algorithm.combinatorial.moead.Moead.init_z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">init_z</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.init_z" title="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.init_z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">init_z</span></code></a>()</p></td>
 <td><p>Initialize the reference point z</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead.Moead.initial_population" title="moead_framework.algorithm.combinatorial.moead.Moead.initial_population"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initial_population</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.initial_population" title="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.initial_population"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initial_population</span></code></a>()</p></td>
 <td><p>Initialize the population of <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead.Moead.mating_pool_selection" title="moead_framework.algorithm.combinatorial.moead.Moead.mating_pool_selection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mating_pool_selection</span></code></a>(sub_problem)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.mating_pool_selection" title="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.mating_pool_selection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mating_pool_selection</span></code></a>(sub_problem)</p></td>
 <td><p>Select the set of solutions where future parents solutions will be selected according to the current sub-problem visited</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead.Moead.repair" title="moead_framework.algorithm.combinatorial.moead.Moead.repair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">repair</span></code></a>(solution)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.repair" title="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.repair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">repair</span></code></a>(solution)</p></td>
 <td><p>Repair the solution in parameter.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead.Moead.run" title="moead_framework.algorithm.combinatorial.moead.Moead.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a>([checkpoint])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.run" title="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a>([checkpoint])</p></td>
 <td><p>Execute the algorithm.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead.Moead.update_current_sub_problem" title="moead_framework.algorithm.combinatorial.moead.Moead.update_current_sub_problem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_current_sub_problem</span></code></a>(sub_problem)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.update_current_sub_problem" title="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.update_current_sub_problem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_current_sub_problem</span></code></a>(sub_problem)</p></td>
 <td><p>Update the attribute current_sub_problem</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead.Moead.update_solutions" title="moead_framework.algorithm.combinatorial.moead.Moead.update_solutions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_solutions</span></code></a>(solution, …)</p></td>
-<td><p>Update solutions of the population and of the external archive ep</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.update_solutions" title="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.update_solutions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_solutions</span></code></a>(solution, …)</p></td>
+<td><p>Update solutions of the population and of the external archive ep.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead.Moead.update_z" title="moead_framework.algorithm.combinatorial.moead.Moead.update_z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_z</span></code></a>(solution)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.update_z" title="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.update_z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_z</span></code></a>(solution)</p></td>
 <td><p>Update the reference point z with coordinates of the solution in parameter if coordinates are better.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
-<dt id="moead_framework.algorithm.combinatorial.moead.Moead.generate_closest_weight_vectors">
-<code class="sig-name descname">generate_closest_weight_vectors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead.Moead.generate_closest_weight_vectors" title="Permalink to this definition">¶</a></dt>
+<dt id="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.generate_closest_weight_vectors">
+<code class="sig-name descname">generate_closest_weight_vectors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.generate_closest_weight_vectors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate all neighborhood for each solution in the population</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -256,8 +259,8 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="moead_framework.algorithm.combinatorial.moead.Moead.generate_offspring">
-<code class="sig-name descname">generate_offspring</code><span class="sig-paren">(</span><em class="sig-param">population</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead.Moead.generate_offspring" title="Permalink to this definition">¶</a></dt>
+<dt id="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.generate_offspring">
+<code class="sig-name descname">generate_offspring</code><span class="sig-paren">(</span><em class="sig-param">population</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.generate_offspring" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a new offspring.
 This function calls the component <code class="xref py py-class docutils literal notranslate"><span class="pre">OffspringGenerator</span></code></p>
 <dl class="field-list simple">
@@ -271,8 +274,8 @@ This function calls the component <code class="xref py py-class docutils literal
 </dd></dl>
 
 <dl class="method">
-<dt id="moead_framework.algorithm.combinatorial.moead.Moead.get_sub_problems_to_visit">
-<code class="sig-name descname">get_sub_problems_to_visit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead.Moead.get_sub_problems_to_visit" title="Permalink to this definition">¶</a></dt>
+<dt id="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.get_sub_problems_to_visit">
+<code class="sig-name descname">get_sub_problems_to_visit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.get_sub_problems_to_visit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Select sub-problems to visit for the next generation.
 This function calls the component <code class="xref py py-class docutils literal notranslate"><span class="pre">SpsStrategy</span></code></p>
 <dl class="field-list simple">
@@ -283,8 +286,8 @@ This function calls the component <code class="xref py py-class docutils literal
 </dd></dl>
 
 <dl class="method">
-<dt id="moead_framework.algorithm.combinatorial.moead.Moead.init_z">
-<code class="sig-name descname">init_z</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead.Moead.init_z" title="Permalink to this definition">¶</a></dt>
+<dt id="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.init_z">
+<code class="sig-name descname">init_z</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.init_z" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize the reference point z</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -294,8 +297,8 @@ This function calls the component <code class="xref py py-class docutils literal
 </dd></dl>
 
 <dl class="method">
-<dt id="moead_framework.algorithm.combinatorial.moead.Moead.initial_population">
-<code class="sig-name descname">initial_population</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead.Moead.initial_population" title="Permalink to this definition">¶</a></dt>
+<dt id="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.initial_population">
+<code class="sig-name descname">initial_population</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.initial_population" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize the population of <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -305,8 +308,8 @@ This function calls the component <code class="xref py py-class docutils literal
 </dd></dl>
 
 <dl class="method">
-<dt id="moead_framework.algorithm.combinatorial.moead.Moead.mating_pool_selection">
-<code class="sig-name descname">mating_pool_selection</code><span class="sig-paren">(</span><em class="sig-param">sub_problem</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead.Moead.mating_pool_selection" title="Permalink to this definition">¶</a></dt>
+<dt id="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.mating_pool_selection">
+<code class="sig-name descname">mating_pool_selection</code><span class="sig-paren">(</span><em class="sig-param">sub_problem</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.mating_pool_selection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Select the set of solutions where future parents solutions will be selected according to the current sub-problem visited</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -319,8 +322,8 @@ This function calls the component <code class="xref py py-class docutils literal
 </dd></dl>
 
 <dl class="method">
-<dt id="moead_framework.algorithm.combinatorial.moead.Moead.repair">
-<code class="sig-name descname">repair</code><span class="sig-paren">(</span><em class="sig-param">solution</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead.Moead.repair" title="Permalink to this definition">¶</a></dt>
+<dt id="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.repair">
+<code class="sig-name descname">repair</code><span class="sig-paren">(</span><em class="sig-param">solution</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.repair" title="Permalink to this definition">¶</a></dt>
 <dd><p>Repair the solution in parameter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -333,8 +336,8 @@ This function calls the component <code class="xref py py-class docutils literal
 </dd></dl>
 
 <dl class="method">
-<dt id="moead_framework.algorithm.combinatorial.moead.Moead.run">
-<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">checkpoint=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/algorithm/combinatorial/moead.html#Moead.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead.Moead.run" title="Permalink to this definition">¶</a></dt>
+<dt id="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">checkpoint=None</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute the algorithm.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -347,8 +350,8 @@ This function calls the component <code class="xref py py-class docutils literal
 </dd></dl>
 
 <dl class="method">
-<dt id="moead_framework.algorithm.combinatorial.moead.Moead.update_current_sub_problem">
-<code class="sig-name descname">update_current_sub_problem</code><span class="sig-paren">(</span><em class="sig-param">sub_problem</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead.Moead.update_current_sub_problem" title="Permalink to this definition">¶</a></dt>
+<dt id="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.update_current_sub_problem">
+<code class="sig-name descname">update_current_sub_problem</code><span class="sig-paren">(</span><em class="sig-param">sub_problem</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.update_current_sub_problem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update the attribute current_sub_problem</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -361,9 +364,11 @@ This function calls the component <code class="xref py py-class docutils literal
 </dd></dl>
 
 <dl class="method">
-<dt id="moead_framework.algorithm.combinatorial.moead.Moead.update_solutions">
-<code class="sig-name descname">update_solutions</code><span class="sig-paren">(</span><em class="sig-param">solution</em>, <em class="sig-param">aggregation_function</em>, <em class="sig-param">sub_problem</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/algorithm/combinatorial/moead.html#Moead.update_solutions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead.Moead.update_solutions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update solutions of the population and of the external archive ep</p>
+<dt id="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.update_solutions">
+<code class="sig-name descname">update_solutions</code><span class="sig-paren">(</span><em class="sig-param">solution</em>, <em class="sig-param">aggregation_function</em>, <em class="sig-param">sub_problem</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/algorithm/combinatorial/moead_delta_nr.html#MoeadDeltaNr.update_solutions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.update_solutions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update solutions of the population and of the external archive ep.</p>
+<p>Integration of the parameter number_of_replacement (the maximal number of solutions replaced by each child solution
+to preserve the diversity)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -379,8 +384,8 @@ This function calls the component <code class="xref py py-class docutils literal
 </dd></dl>
 
 <dl class="method">
-<dt id="moead_framework.algorithm.combinatorial.moead.Moead.update_z">
-<code class="sig-name descname">update_z</code><span class="sig-paren">(</span><em class="sig-param">solution</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead.Moead.update_z" title="Permalink to this definition">¶</a></dt>
+<dt id="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.update_z">
+<code class="sig-name descname">update_z</code><span class="sig-paren">(</span><em class="sig-param">solution</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.update_z" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update the reference point z with coordinates of the solution in parameter if coordinates are better.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -404,10 +409,10 @@ This function calls the component <code class="xref py py-class docutils literal
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="moead_framework.algorithm.numerical.moead.Moead.html" class="btn btn-neutral float-right" title="moead_framework.algorithm.numerical.moead.Moead" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA.html" class="btn btn-neutral float-right" title="moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html" class="btn btn-neutral float-left" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="moead_framework.algorithm.numerical.moead.Moead.html" class="btn btn-neutral float-left" title="moead_framework.algorithm.numerical.moead.Moead" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

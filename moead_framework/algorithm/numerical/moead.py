@@ -6,7 +6,9 @@ from moead_framework.tool.mop import get_non_dominated, is_duplicated
 
 
 class Moead(AbstractMoead):
-
+    """
+    Implementation of MOEA/D for numerical problems.
+    """
     def __init__(self, problem,
                  max_evaluation,
                  number_of_objective,

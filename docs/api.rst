@@ -30,7 +30,10 @@ __________________________________________
 
 .. autosummary::
    :nosignatures:
-   :undoc-members:
    :toctree: moead_framework
 
    moead_framework.algorithm.combinatorial.moead.Moead
+   moead_framework.algorithm.numerical.moead.Moead
+   moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr
+   moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA
+   moead_framework.algorithm.combinatorial.moead_sps_random.MoeadSPSRandom

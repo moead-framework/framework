@@ -171,6 +171,23 @@
                  <span class="n">sps_strategy</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">offspring_generator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">weight_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor of the algorithm.</span>
+
+<span class="sd">        :param problem: {:class:`~moead_framework.problem.Problem`} problem to optimize</span>
+<span class="sd">        :param max_evaluation: {integer} maximum number of evaluation</span>
+<span class="sd">        :param number_of_objective: {integer} number of objective in the problem</span>
+<span class="sd">        :param number_of_weight: {integer} number of weight vector used to decompose the problem</span>
+<span class="sd">        :param number_of_weight_neighborhood: {integer} size of the neighborhood</span>
+<span class="sd">        :param aggregation_function: {:class:`~moead_framework.aggregation.functions.AggregationFunction`}</span>
+<span class="sd">        :param termination_criteria: Optional -- {:class:`~moead_framework.core.termination_criteria.abstract_termination_criteria.TerminationCriteria`} The default component is {:class:`~moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation`}</span>
+<span class="sd">        :param genetic_operator: Optional -- {:class:`~moead_framework.core.genetic_operator.abstract_operator.GeneticOperator`} The default operator depends of the problem type (combinatorial / numerical)</span>
+<span class="sd">        :param parent_selector: Optional -- {:class:`~moead_framework.core.parent_selector.abstract_parent_selector.ParentSelector`} The default operator depends of the number of solution required by the genetic operator</span>
+<span class="sd">        :param mating_pool_selector: Optional -- {:class:`~moead_framework.core.selector.abstract_selector.MatingPoolSelector`} The default selector is {:class:`~moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector`}</span>
+<span class="sd">        :param sps_strategy: Optional -- {:class:`~moead_framework.core.sps_strategy.abstract_sps.SpsStrategy`} The default strategy is {:class:`~moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems`}</span>
+<span class="sd">        :param offspring_generator: Optional -- {:class:`~moead_framework.core.offspring_generator.abstract_mating.OffspringGenerator`} The default generator is {:class:`~moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric`}</span>
+<span class="sd">        :param weight_file: todo need refactoring</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">problem</span> <span class="o">=</span> <span class="n">problem</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">aggregation_function</span> <span class="o">=</span> <span class="n">aggregation_function</span><span class="p">()</span>
 
@@ -219,12 +236,12 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">update_solutions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solution</span><span class="p">,</span> <span class="n">scal_function</span><span class="p">,</span> <span class="n">sub_problem</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">update_solutions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solution</span><span class="p">,</span> <span class="n">aggregation_function</span><span class="p">,</span> <span class="n">sub_problem</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update solutions of the population and of the external archive ep</span>
 
 <span class="sd">        :param solution: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} the candidate solution also called offspring</span>
-<span class="sd">        :param scal_function: {:class:`~moead_framework.aggregation.functions.AggregationFunction`} Aggregation function used to compare solution in a multi-objective context</span>
+<span class="sd">        :param aggregation_function: {:class:`~moead_framework.aggregation.functions.AggregationFunction`} Aggregation function used to compare solution in a multi-objective context</span>
 <span class="sd">        :param sub_problem: {integer} index of the sub-problem currently visited</span>
 <span class="sd">        :return:</span>
 <span class="sd">        &quot;&quot;&quot;</span>

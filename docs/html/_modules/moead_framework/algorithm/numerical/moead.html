@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>moead_framework.algorithm.combinatorial.moead &mdash; The Moead Framework 1.0 documentation</title>
+  <title>moead_framework.algorithm.numerical.moead &mdash; The Moead Framework 1.0 documentation</title>
   
 
   
@@ -134,7 +134,7 @@
         
           <li><a href="../../../index.html">Module code</a> &raquo;</li>
         
-      <li>moead_framework.algorithm.combinatorial.moead</li>
+      <li>moead_framework.algorithm.numerical.moead</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -149,34 +149,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for moead_framework.algorithm.combinatorial.moead</h1><div class="highlight"><pre>
+  <h1>Source code for moead_framework.algorithm.numerical.moead</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">moead_framework.algorithm.abstract_moead</span> <span class="kn">import</span> <span class="n">AbstractMoead</span>
-<span class="kn">from</span> <span class="nn">moead_framework.core.genetic_operator.combinatorial.cross_mut</span> <span class="kn">import</span> <span class="n">CrossoverAndMutation</span>
-<span class="kn">from</span> <span class="nn">moead_framework.core.parent_selector.two_random_parent_selector</span> <span class="kn">import</span> <span class="n">TwoRandomParentSelector</span>
+<span class="kn">from</span> <span class="nn">moead_framework.core.genetic_operator.numerical.moead_de_operators</span> <span class="kn">import</span> <span class="n">DifferentialEvolutionCrossover</span>
+<span class="kn">from</span> <span class="nn">moead_framework.core.parent_selector.two_random_and_current_parent_selector</span> <span class="kn">import</span> \
+    <span class="n">TwoRandomAndCurrentParentSelector</span>
 <span class="kn">from</span> <span class="nn">moead_framework.tool.mop</span> <span class="kn">import</span> <span class="n">get_non_dominated</span><span class="p">,</span> <span class="n">is_duplicated</span>
 
 
-<div class="viewcode-block" id="Moead"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.algorithm.combinatorial.moead.Moead.html#moead_framework.algorithm.combinatorial.moead.Moead">[docs]</a><span class="k">class</span> <span class="nc">Moead</span><span class="p">(</span><span class="n">AbstractMoead</span><span class="p">):</span>
+<div class="viewcode-block" id="Moead"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.algorithm.numerical.moead.Moead.html#moead_framework.algorithm.numerical.moead.Moead">[docs]</a><span class="k">class</span> <span class="nc">Moead</span><span class="p">(</span><span class="n">AbstractMoead</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Implementation of MOEA/D for combinatorial problems.</span>
+<span class="sd">    Implementation of MOEA/D for numerical problems.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
-<div class="viewcode-block" id="Moead.__init__"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.algorithm.combinatorial.moead.Moead.html#moead_framework.algorithm.combinatorial.moead.Moead.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span>
+<div class="viewcode-block" id="Moead.__init__"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.algorithm.numerical.moead.Moead.html#moead_framework.algorithm.numerical.moead.Moead.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span>
                  <span class="n">max_evaluation</span><span class="p">,</span>
                  <span class="n">number_of_objective</span><span class="p">,</span>
                  <span class="n">number_of_weight</span><span class="p">,</span>
                  <span class="n">number_of_weight_neighborhood</span><span class="p">,</span>
                  <span class="n">aggregation_function</span><span class="p">,</span>
-                 <span class="n">weight_file</span><span class="p">,</span>
                  <span class="n">termination_criteria</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">number_of_crossover_points</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-                 <span class="n">mutation_probability</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                  <span class="n">mating_pool_selector</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">genetic_operator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">parent_selector</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">sps_strategy</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">offspring_generator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="p">):</span>
+                 <span class="n">weight_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">current_eval</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mating_pool</span> <span class="o">=</span> <span class="p">[]</span>
@@ -186,28 +183,26 @@
                          <span class="n">number_of_objective</span><span class="p">,</span>
                          <span class="n">number_of_weight</span><span class="p">,</span>
                          <span class="n">number_of_weight_neighborhood</span><span class="p">,</span>
-                         <span class="n">termination_criteria</span><span class="o">=</span><span class="n">termination_criteria</span><span class="p">,</span>
                          <span class="n">aggregation_function</span><span class="o">=</span><span class="n">aggregation_function</span><span class="p">,</span>
+                         <span class="n">termination_criteria</span><span class="o">=</span><span class="n">termination_criteria</span><span class="p">,</span>
                          <span class="n">genetic_operator</span><span class="o">=</span><span class="n">genetic_operator</span><span class="p">,</span>
                          <span class="n">mating_pool_selector</span><span class="o">=</span><span class="n">mating_pool_selector</span><span class="p">,</span>
                          <span class="n">parent_selector</span><span class="o">=</span><span class="n">parent_selector</span><span class="p">,</span>
                          <span class="n">sps_strategy</span><span class="o">=</span><span class="n">sps_strategy</span><span class="p">,</span>
                          <span class="n">offspring_generator</span><span class="o">=</span><span class="n">offspring_generator</span><span class="p">,</span>
                          <span class="n">weight_file</span><span class="o">=</span><span class="n">weight_file</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">number_of_crossover_points</span> <span class="o">=</span> <span class="n">number_of_crossover_points</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mutation_probability</span> <span class="o">=</span> <span class="n">mutation_probability</span>
 
         <span class="k">if</span> <span class="n">genetic_operator</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">genetic_operator</span> <span class="o">=</span> <span class="n">CrossoverAndMutation</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">genetic_operator</span> <span class="o">=</span> <span class="n">DifferentialEvolutionCrossover</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">genetic_operator</span> <span class="o">=</span> <span class="n">genetic_operator</span>
 
         <span class="k">if</span> <span class="n">parent_selector</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">parent_selector</span> <span class="o">=</span> <span class="n">TwoRandomParentSelector</span><span class="p">(</span><span class="n">algorithm</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parent_selector</span> <span class="o">=</span> <span class="n">TwoRandomAndCurrentParentSelector</span><span class="p">(</span><span class="n">algorithm</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">parent_selector</span> <span class="o">=</span> <span class="n">parent_selector</span></div>
 
-<div class="viewcode-block" id="Moead.run"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.algorithm.combinatorial.moead.Moead.html#moead_framework.algorithm.combinatorial.moead.Moead.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Moead.run"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.algorithm.numerical.moead.Moead.html#moead_framework.algorithm.numerical.moead.Moead.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
         <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">termination_criteria</span><span class="o">.</span><span class="n">test</span><span class="p">():</span>
 
@@ -227,7 +222,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ep</span></div>
 
-<div class="viewcode-block" id="Moead.update_solutions"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.algorithm.combinatorial.moead.Moead.html#moead_framework.algorithm.combinatorial.moead.Moead.update_solutions">[docs]</a>    <span class="k">def</span> <span class="nf">update_solutions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solution</span><span class="p">,</span> <span class="n">aggregation_function</span><span class="p">,</span> <span class="n">sub_problem</span><span class="p">):</span>
+<div class="viewcode-block" id="Moead.update_solutions"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.algorithm.numerical.moead.Moead.html#moead_framework.algorithm.numerical.moead.Moead.update_solutions">[docs]</a>    <span class="k">def</span> <span class="nf">update_solutions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solution</span><span class="p">,</span> <span class="n">aggregation_function</span><span class="p">,</span> <span class="n">sub_problem</span><span class="p">):</span>
 
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">[</span><span class="n">sub_problem</span><span class="p">]:</span>
             <span class="n">y_score</span> <span class="o">=</span> <span class="n">aggregation_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">solution</span><span class="o">=</span><span class="n">solution</span><span class="p">,</span>

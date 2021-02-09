@@ -5,6 +5,11 @@ from moead_framework.core.sps_strategy.sps_dra import SpsDra
 
 
 class MoeadDRA(MoeadDeltaNr):
+    """
+    Implementation of MOEA/D-DRA
+
+    Q. Zhang, W. Liu, and H. Li. The performance of a new version of moea/d on cec09 unconstrained mop test instances. In 2009 IEEE Congress on Evolutionary Computation, volume, 203–208. 2009. doi:10.1109/CEC.2009.4982949.
+    """
 
     def __init__(self, problem,
                  max_evaluation,
@@ -18,6 +23,22 @@ class MoeadDRA(MoeadDeltaNr):
                  threshold_before_evaluate_subproblem_utility=50,
                  delta_threshold=0.001,
                  weight_file=None):
+        """
+        Constructor of the algorithm.
+
+        :param problem: {:class:`~moead_framework.problem.Problem`} problem to optimize
+        :param max_evaluation: {integer} maximum number of evaluation
+        :param number_of_objective: {integer} number of objective in the problem
+        :param number_of_weight: {integer} number of weight vector used to decompose the problem
+        :param number_of_weight_neighborhood: {integer} size of the neighborhood
+        :param delta: {float} probability to use all the population as neighborhood
+        :param number_of_replacement: {integer} maximum number of solutions replaced in the population for each new offspring generated
+        :param aggregation_function: {:class:`~moead_framework.aggregation.functions.AggregationFunction`}
+        :param number_of_crossover_points: {integer} number of crossover point
+        :param threshold_before_evaluate_subproblem_utility: Optional -- Threshold before evaluate the subproblem utility. The default value is 50
+        :param delta_threshold: Optional -- reset the utility if the relative decrease delta_i is under this treshold. The default value is 0.001
+        :param weight_file: todo need refactoring
+        """
 
         super().__init__(problem=problem,
                          max_evaluation=max_evaluation,
@@ -79,10 +100,13 @@ class MoeadDRA(MoeadDeltaNr):
 
     def update_scores(self, sub_problem, score):
         """
+        Update the score
+
         self.scores[sub_problem][0] = old score
         self.scores[sub_problem][1] = new score
-        :param sub_problem:
-        :param score:
+
+        :param sub_problem: {integer} index of the current sub-problem
+        :param score: {float}
         :return:
         """
         self.scores[sub_problem][0] = self.scores[sub_problem][1]
@@ -91,7 +115,8 @@ class MoeadDRA(MoeadDeltaNr):
     def compute_delta(self, i):
         """
         compute the relative decrease delta_i
-        :param i:
+
+        :param i: {integer} index of sub-problem
         :return:
         """
         old_value = self.scores[i][0]
@@ -106,6 +131,7 @@ class MoeadDRA(MoeadDeltaNr):
     def update_pi(self):
         """
         update the utility of each sub_problem
+
         :return:
         """
         # for each sub_problem

@@ -46,7 +46,6 @@ population = moead.run()
 save_file = "moead-rmnk" + str(number_of_objective) \
             + "-N" + str(number_of_weight) \
             + "-T" + str(number_of_weight_neighborhood) \
-            + "-CP" + str(number_of_crossover_points) \
             + "-iter" + str(number_of_evaluations) \
             + ".txt"
 
