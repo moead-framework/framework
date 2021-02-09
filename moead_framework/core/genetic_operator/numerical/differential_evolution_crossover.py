@@ -3,6 +3,11 @@ from moead_framework.core.genetic_operator.abstract_operator import GeneticOpera
 
 
 class DifferentialEvolutionCrossover(GeneticOperator):
+    """
+    Differential Evolution (DE) Crossover.
+
+    Require 3 solutions.
+    """
 
     def run(self):
         self.number_of_solution_is_correct(n=3)

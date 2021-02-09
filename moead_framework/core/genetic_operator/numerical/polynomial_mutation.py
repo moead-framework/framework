@@ -1,9 +1,13 @@
 import random
-import numpy as np
 from moead_framework.core.genetic_operator.abstract_operator import GeneticOperator
 
 
 class PolynomialMutation(GeneticOperator):
+    """
+    Polynomial Mutation operator.
+
+    Require only one solution.
+    """
 
     def run(self):
         self.number_of_solution_is_correct(n=1)

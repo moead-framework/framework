@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../_static/custom_theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Tutorials" href="../tuto.html" />
+    <link rel="next" title="moead_framework.algorithm.numerical.moead.Moead" href="moead_framework.algorithm.numerical.moead.Moead.html" />
     <link rel="prev" title="moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA" href="moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA.html" /> 
 </head>
 
@@ -88,13 +88,23 @@
 <li class="toctree-l2"><a class="reference internal" href="../api.html#problems">Problems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api.html#solution">Solution</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html#algorithms">Algorithms</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="moead_framework.algorithm.combinatorial.moead.Moead.html">moead_framework.algorithm.combinatorial.moead.Moead</a></li>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework.algorithm.numerical.moead.Moead.html">moead_framework.algorithm.numerical.moead.Moead</a></li>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.html">moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr</a></li>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA.html">moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">moead_framework.algorithm.combinatorial.moead_sps_random.MoeadSPSRandom</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../api.html#for-combinatorial-problems">For combinatorial problems</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="moead_framework.algorithm.combinatorial.moead.Moead.html">moead_framework.algorithm.combinatorial.moead.Moead</a></li>
+<li class="toctree-l4"><a class="reference internal" href="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.html">moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA.html">moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">moead_framework.algorithm.combinatorial.moead_sps_random.MoeadSPSRandom</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#for-numerical-problems">For numerical problems</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#aggregation-functions">Aggregation functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#genetic-operators">Genetic operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#offspring-generator">Offspring generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#parent-selector">Parent Selector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#mating-selector">Mating Selector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#sub-problem-selection-strategy">Sub-problem selection strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#termination-criteria">Termination criteria</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tuto.html">Tutorials</a></li>
@@ -190,7 +200,7 @@
 <li><p><strong>aggregation_function</strong> – {<code class="xref py py-class docutils literal notranslate"><span class="pre">AggregationFunction</span></code>}</p></li>
 <li><p><strong>genetic_operator</strong> – Optional – {<code class="xref py py-class docutils literal notranslate"><span class="pre">GeneticOperator</span></code>} The default operator depends of the problem type (combinatorial / numerical)</p></li>
 <li><p><strong>parent_selector</strong> – Optional – {<code class="xref py py-class docutils literal notranslate"><span class="pre">ParentSelector</span></code>} The default operator depends of the number of solution required by the genetic operator</p></li>
-<li><p><strong>mating_pool_selector</strong> – Optional – {<code class="xref py py-class docutils literal notranslate"><span class="pre">MatingPoolSelector</span></code>} The default selector is {<code class="xref py py-class docutils literal notranslate"><span class="pre">ClosestNeighborsSelector</span></code>}</p></li>
+<li><p><strong>mating_pool_selector</strong> – Optional – {<code class="xref py py-class docutils literal notranslate"><span class="pre">MatingPoolSelector</span></code>} The default selector is {<a class="reference internal" href="moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector.html#moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector" title="moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClosestNeighborsSelector</span></code></a>}</p></li>
 <li><p><strong>weight_file</strong> – todo need refactoring</p></li>
 </ul>
 </dd>
@@ -402,7 +412,7 @@ This function calls the component <code class="xref py py-class docutils literal
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../tuto.html" class="btn btn-neutral float-right" title="Tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="moead_framework.algorithm.numerical.moead.Moead.html" class="btn btn-neutral float-right" title="moead_framework.algorithm.numerical.moead.Moead" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA.html" class="btn btn-neutral float-left" title="moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

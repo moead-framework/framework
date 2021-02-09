@@ -5,6 +5,8 @@ from moead_framework.core.sps_strategy.abstract_sps import SpsStrategy
 
 class SpsDra(SpsStrategy):
     """
+    The strategy used in MOEA/D-DRA.
+
     Q. Zhang, W. Liu and H. Li,
     "The performance of a new version of MOEA/D on CEC09 unconstrained MOP test instances"
     2009 IEEE Congress on Evolutionary Computation
@@ -13,10 +15,11 @@ class SpsDra(SpsStrategy):
     """
     def get_sub_problems(self):
         """
-            Select at first the indexes of the sub problems whose objectives are MOP
-            individual objectives fi ([1, 0] and [0, 1] for example)
-            and add sub problems by a 10-tournament
-            :return:
+        Select at first the indexes of the sub problems whose objectives are MOP
+        individual objectives fi ([1, 0] and [0, 1] for example)
+        and add sub problems with a 10-tournament
+
+        :return: {list<integer>} indexes of sub-problems
         """
         selection = []
 

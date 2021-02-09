@@ -3,6 +3,11 @@ from moead_framework.core.genetic_operator.abstract_operator import GeneticOpera
 
 
 class BinaryMutation(GeneticOperator):
+    """
+    Binary Mutation operator.
+
+    Require only one solution. Try to mute each bit of the solution with the probability mutation_probability
+    """
 
     def __init__(self, solutions, **kwargs):
         super().__init__(solutions, **kwargs)

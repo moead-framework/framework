@@ -2,9 +2,17 @@ from .functions import AggregationFunction
 
 
 class WeightedSum(AggregationFunction):
-
+    """
+    Weighted Sum aggregation function
+    """
     def is_better(self, old_value, new_value):
-        """In minimization context only"""
+        """
+        Allow to compare 2 aggregations values for the weighted-sum function in a minimization context.
+
+        :param old_value: {float}
+        :param new_value: {float}
+        :return: {boolean} True if new_value is better than old_value.
+        """
         return new_value < old_value
 
     def run(self, solution, number_of_objective, weights, sub_problem, z):
@@ -12,20 +20,3 @@ class WeightedSum(AggregationFunction):
         for i in range(number_of_objective):
             res += solution.F[i] * weights[sub_problem][i]
         return res
-
-
-# def weighted_sum(**args):
-#     if not (("solution" in args)
-#             & ("number_of_objective" in args)
-#             & ("weights" in args)
-#             & ("sub_problem" in args)):
-#         raise KeyError("Parameters required : 'solution', 'number_of_objective', 'weights', 'sub_problem'")
-#
-#     solution = args["solution"]
-#     number_of_objective = args["number_of_objective"]
-#     weights = args["weights"]
-#     sub_problem = args["sub_problem"]
-#     res = 0
-#     for i in range(number_of_objective):
-#         res += solution.F[i] * weights[sub_problem][i]
-#     return res

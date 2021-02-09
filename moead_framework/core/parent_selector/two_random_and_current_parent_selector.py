@@ -3,6 +3,9 @@ from moead_framework.core.parent_selector.abstract_parent_selector import Parent
 
 
 class TwoRandomAndCurrentParentSelector(ParentSelector):
+    """
+    Select three parents: two random solutions in the list of index and the solution in the population linked to the current sub-problem visited.
+    """
 
     def select(self, indexes):
         index2 = indexes[random.randint(0, len(indexes) - 1)]

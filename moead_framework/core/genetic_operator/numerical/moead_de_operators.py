@@ -7,6 +7,11 @@ from moead_framework.core.genetic_operator.numerical.polynomial_mutation import 
 
 
 class MoeadDeOperators(GeneticOperator):
+    """
+    Operator used in the original paper of MOEA/D-DE
+
+    Require 3 solutions, run a Differential Evolution (DE) Crossover then a Polynomial Mutation.
+    """
 
     def run(self):
         self.number_of_solution_is_correct(n=3)

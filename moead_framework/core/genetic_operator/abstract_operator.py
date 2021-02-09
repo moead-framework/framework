@@ -10,14 +10,16 @@ class GeneticOperator(ABC):
     def run(self):
         """
         Execute the genetic operator
-        :return: the child Solution
+
+        :return: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} the offspring
         """
 
     def number_of_solution_is_correct(self, n):
         """
         Secure the number of solutions required by the operator.
         it allows to check if the operator has the required number of solutions for the process in run()
-        :param n: (integer) number of solution required by the operator
+
+        :param n: {integer} number of solution required by the operator
         :return:
         """
         if len(self.solutions) < n:
