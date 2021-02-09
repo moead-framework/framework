@@ -7,11 +7,9 @@ Welcome to Moead-Framework's documentation!
 ===========================================
 
 .. toctree::
-   :maxdepth: 2
    :hidden:
 
    install
-   documentation
    api
    tuto
    examples

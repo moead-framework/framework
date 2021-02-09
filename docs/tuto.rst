@@ -52,12 +52,12 @@ and also implement the 3 required functions :
 
 
 
-
+.. _tuto-algo:
 Implement your own algorithm
 --------------------------------------------------------------------
 
-:ref:`All components<components>` are set with default values to implement the first version of **MOEA/D**. 
-You can customize each :ref:`algorithms<components_algo>` of the framework with your own 
+All components are set with default values to implement the first version of **MOEA/D**.
+You can customize each algorithms of the framework with your own
 components that you can set in parameter of the algorithm contructor.
 
 Example for :class:`moead_framework.algorithm.combinatorial.moead` :
@@ -86,7 +86,7 @@ Example for :class:`moead_framework.algorithm.combinatorial.moead` :
     
     
 
-If you want manage the way to use all this :ref:`components<components>`, you have to create 
+If you want manage the way to use all this components, you have to create
 a new algorithm by extending an available algorithm. Examples are available in this repository : https://github.com/moead-framework/framework/tree/master/moead_framework/algorithm.
 
 For example with the implementation of MOEA/D-DE :cite:`moead_de` in the class :class:`moead_framework.algorithm.combinatorial.moead_delta_nr` that extends **Moead** to rewrite the 

@@ -3,3 +3,10 @@
     max-width: inherit;
 }
 
+.wy-menu-vertical li.toctree-l2 span.toctree-expand, .wy-menu-vertical li.current > a span.toctree-expand{
+    display: none;
+}
+
+.wy-menu-vertical li.toctree-l3{
+    display: none;
+}

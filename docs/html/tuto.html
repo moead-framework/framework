@@ -83,8 +83,7 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documentation.html">Components of MOEA/D framework</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Components of MOEA/D framework</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorials</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#implement-your-own-problem">Implement your own problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#implement-your-own-algorithm">Implement your own algorithm</a></li>
@@ -211,8 +210,8 @@ that determine if the solution save the fitness, the default value must be “Tr
 </div>
 <div class="section" id="implement-your-own-algorithm">
 <h2>Implement your own algorithm<a class="headerlink" href="#implement-your-own-algorithm" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="documentation.html#components"><span class="std std-ref">All components</span></a> are set with default values to implement the first version of <strong>MOEA/D</strong>.
-You can customize each <a class="reference internal" href="documentation.html#components-algo"><span class="std std-ref">algorithms</span></a> of the framework with your own
+<p>All components are set with default values to implement the first version of <strong>MOEA/D</strong>.
+You can customize each algorithms of the framework with your own
 components that you can set in parameter of the algorithm contructor.</p>
 <p>Example for <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.algorithm.combinatorial.moead</span></code> :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">moead</span> <span class="o">=</span> <span class="n">Moead</span><span class="p">(</span>
@@ -236,7 +235,7 @@ components that you can set in parameter of the algorithm contructor.</p>
           <span class="p">)</span>
 </pre></div>
 </div>
-<p>If you want manage the way to use all this <a class="reference internal" href="documentation.html#components"><span class="std std-ref">components</span></a>, you have to create
+<p>If you want manage the way to use all this components, you have to create
 a new algorithm by extending an available algorithm. Examples are available in this repository : <a class="reference external" href="https://github.com/moead-framework/framework/tree/master/moead_framework/algorithm">https://github.com/moead-framework/framework/tree/master/moead_framework/algorithm</a>.</p>
 <p>For example with the implementation of MOEA/D-DE <a class="bibtex reference internal" href="references.html#moead-de" id="id1">[LZ09]</a> in the class <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.algorithm.combinatorial.moead_delta_nr</span></code> that extends <strong>Moead</strong> to rewrite the
 function update_solutions() and add two new parameters.</p>

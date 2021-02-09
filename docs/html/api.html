@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API &mdash; The Moead Framework 1.0 documentation</title>
+  <title>Components of MOEA/D framework &mdash; The Moead Framework 1.0 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="moead_framework.problem.combinatorial.rmnk.Rmnk" href="moead_framework/moead_framework.problem.combinatorial.rmnk.Rmnk.html" />
-    <link rel="prev" title="Components of MOEA/D framework" href="documentation.html" /> 
+    <link rel="prev" title="Installation" href="install.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,8 +83,7 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documentation.html">Components of MOEA/D framework</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Components of MOEA/D framework</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#problems">Problems</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.problem.combinatorial.rmnk.Rmnk.html">moead_framework.problem.combinatorial.rmnk.Rmnk</a></li>
 <li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.problem.combinatorial.mubqp.Mubqp.html">moead_framework.problem.combinatorial.mubqp.Mubqp</a></li>
@@ -116,13 +115,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#genetic-operators">Genetic operators</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">For combinatorial problems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">For combinatorial problems</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="moead_framework/moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation.html">moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="moead_framework/moead_framework.core.genetic_operator.combinatorial.crossover.Crossover.html">moead_framework.core.genetic_operator.combinatorial.crossover.Crossover</a></li>
 <li class="toctree-l4"><a class="reference internal" href="moead_framework/moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation.html">moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">For numerical problems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">For numerical problems</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="moead_framework/moead_framework.core.genetic_operator.numerical.differential_evolution_crossover.DifferentialEvolutionCrossover.html">moead_framework.core.genetic_operator.numerical.differential_evolution_crossover.DifferentialEvolutionCrossover</a></li>
 <li class="toctree-l4"><a class="reference internal" href="moead_framework/moead_framework.core.genetic_operator.numerical.polynomial_mutation.PolynomialMutation.html">moead_framework.core.genetic_operator.numerical.polynomial_mutation.PolynomialMutation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="moead_framework/moead_framework.core.genetic_operator.numerical.moead_de_operators.MoeadDeOperators.html">moead_framework.core.genetic_operator.numerical.moead_de_operators.MoeadDeOperators</a></li>
@@ -206,7 +205,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>API</li>
+      <li>Components of MOEA/D framework</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -225,8 +224,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="api">
-<h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="components-of-moea-d-framework">
+<span id="components"></span><h1>Components of MOEA/D framework<a class="headerlink" href="#components-of-moea-d-framework" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="problems">
 <h2>Problems<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h2>
 <table class="longtable docutils align-default">
@@ -249,6 +248,12 @@
 </tr>
 </tbody>
 </table>
+<p>You can find examples of file instances for combinatorial problems
+in this repository <a class="reference external" href="https://github.com/moead-framework/data/tree/master/problem">https://github.com/moead-framework/data/tree/master/problem</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can implement your own problem by following <a class="reference internal" href="tuto.html#tuto-problem"><span class="std std-ref">this tutoriel</span></a>.</p>
+</div>
 </div>
 <div class="section" id="solution">
 <h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
@@ -266,6 +271,7 @@
 </div>
 <div class="section" id="algorithms">
 <h2>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h2>
+<p>These algorithms are implemented on the basis of the original papers (<a class="bibtex reference internal" href="references.html#moead" id="id1">[ZhangLi07]</a>, <a class="bibtex reference internal" href="references.html#moead-de" id="id2">[LZ09]</a>, <a class="bibtex reference internal" href="references.html#moead-dra" id="id3">[ZhangLiuLi09]</a>, <a class="bibtex reference internal" href="references.html#gpruvost-evocop2020" id="id4">[PDL+20a]</a>).</p>
 <div class="section" id="for-combinatorial-problems">
 <h3>For combinatorial problems<a class="headerlink" href="#for-combinatorial-problems" title="Permalink to this headline">¶</a></h3>
 <table class="longtable docutils align-default">
@@ -302,10 +308,17 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can implement your own algorithm by following <a class="reference internal" href="tuto.html#tuto-algo"><span class="std std-ref">this tutoriel</span></a>.</p>
+</div>
 </div>
 </div>
 <div class="section" id="aggregation-functions">
 <h2>Aggregation functions<a class="headerlink" href="#aggregation-functions" title="Permalink to this headline">¶</a></h2>
+<p>The aggregation function is used in MOEA/D to decompose the multi-objective problem into several mono-objective sub-problems.
+The two main functions used are the Weighted Sum and the Tchebycheff function. In our framework, the aggregation function
+is a required parameter of the algorithm.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -323,8 +336,10 @@
 </div>
 <div class="section" id="genetic-operators">
 <h2>Genetic operators<a class="headerlink" href="#genetic-operators" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id1">
-<h3>For combinatorial problems<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>A genetic operator is a component used in genetic algorithms to generate offspring by
+using characteristics of parents solutions. In the framework, these operators are used in the component <strong>offspring_generator</strong>.</p>
+<div class="section" id="id5">
+<h3>For combinatorial problems<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -343,8 +358,8 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="id2">
-<h3>For numerical problems<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>For numerical problems<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -366,6 +381,8 @@
 </div>
 <div class="section" id="offspring-generator">
 <h2>Offspring generator<a class="headerlink" href="#offspring-generator" title="Permalink to this headline">¶</a></h2>
+<p>The offspring generator is the component that manage all the process to generate new offspring by
+using components <strong>Parent Selector</strong> and <strong>Genetic operator</strong> for example.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -380,6 +397,8 @@
 </div>
 <div class="section" id="parent-selector">
 <h2>Parent Selector<a class="headerlink" href="#parent-selector" title="Permalink to this headline">¶</a></h2>
+<p>The parent selector is the component used to select solutions in the neighborhood before to use genetic
+operators to generate new offspring.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -400,6 +419,7 @@
 </div>
 <div class="section" id="mating-selector">
 <h2>Mating Selector<a class="headerlink" href="#mating-selector" title="Permalink to this headline">¶</a></h2>
+<p>The mating selector is the component used to select the set of solutions where we can find parents solutions.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -417,6 +437,9 @@
 </div>
 <div class="section" id="sub-problem-selection-strategy">
 <h2>Sub-problem selection strategy<a class="headerlink" href="#sub-problem-selection-strategy" title="Permalink to this headline">¶</a></h2>
+<p>The SPS Strategy <a class="bibtex reference internal" href="references.html#gpruvost-evocop2020" id="id7">[PDL+20a]</a> is the component used to select sub-problems
+(or solutions of the population) that will be visited during the next
+generation of MOEA/D.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -437,6 +460,7 @@
 </div>
 <div class="section" id="termination-criteria">
 <h2>Termination criteria<a class="headerlink" href="#termination-criteria" title="Permalink to this headline">¶</a></h2>
+<p>The termination criteria is the component used to determine when the algorithm has to stop.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -462,7 +486,7 @@
         <a href="moead_framework/moead_framework.problem.combinatorial.rmnk.Rmnk.html" class="btn btn-neutral float-right" title="moead_framework.problem.combinatorial.rmnk.Rmnk" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="documentation.html" class="btn btn-neutral float-left" title="Components of MOEA/D framework" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
