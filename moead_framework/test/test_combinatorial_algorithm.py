@@ -2,12 +2,9 @@ import unittest
 import random
 import os
 import numpy as np
-from moead_framework.algorithm.combinatorial.moead import Moead
-from moead_framework.algorithm.combinatorial.moead_dra import MoeadDRA
-from moead_framework.algorithm.combinatorial.moead_delta_nr import MoeadDeltaNr
-from moead_framework.algorithm.combinatorial.moead_sps_random import MoeadSPSRandom
-from moead_framework.problem.combinatorial.rmnk import Rmnk
 from moead_framework.aggregation.tchebycheff import Tchebycheff
+from moead_framework.algorithm.combinatorial import Moead, MoeadDeltaNr, MoeadSPSRandom, MoeadDRA
+from moead_framework.problem.combinatorial import Rmnk
 from moead_framework.tool.result import compute_hypervolume
 
 
@@ -21,7 +18,7 @@ class AlgorithmsTest(unittest.TestCase):
         self.number_of_evaluations = 100
 
         project_path = os.path.dirname(os.path.abspath(__file__))
-        self.rmnk = Rmnk(instance_file=project_path + '/data/RMNK/Instances/rmnk_0_2_100_1_0.dat')
+        self.rmnk = Rmnk(instance_file=project_path + '/data/instances/rmnk_0_2_100_1_0.dat')
 
         self.number_of_objective = self.rmnk.function_numbers
         self.number_of_weight = 10
@@ -30,6 +27,10 @@ class AlgorithmsTest(unittest.TestCase):
         self.weight_file = project_path + "/data/weights/SOBOL-" \
                            + str(self.number_of_objective) \
                            + "objs-" + str(self.number_of_weight) \
+                           + "wei.ws"
+        self.weight_file50 = project_path + "/data/weights/SOBOL-" \
+                           + str(self.number_of_objective) \
+                           + "objs-" + str(50) \
                            + "wei.ws"
 
     def test_moead(self):
@@ -57,7 +58,6 @@ class AlgorithmsTest(unittest.TestCase):
         moead = MoeadDeltaNr(problem=self.rmnk,
                              max_evaluation=self.number_of_evaluations,
                              number_of_objective=self.number_of_objective,
-                             number_of_weight=self.number_of_weight,
                              number_of_weight_neighborhood=self.number_of_weight_neighborhood,
                              number_of_crossover_points=self.number_of_crossover_points,
                              aggregation_function=Tchebycheff,
@@ -77,7 +77,6 @@ class AlgorithmsTest(unittest.TestCase):
         moead = MoeadSPSRandom(problem=self.rmnk,
                                max_evaluation=self.number_of_evaluations,
                                number_of_objective=self.number_of_objective,
-                               number_of_weight=self.number_of_weight,
                                aggregation_function=Tchebycheff,
                                number_of_weight_neighborhood=self.number_of_weight_neighborhood,
                                number_of_crossover_points=self.number_of_crossover_points,
@@ -94,19 +93,19 @@ class AlgorithmsTest(unittest.TestCase):
         """Test MOEA/D algorithm with the random sps strategy"""
         delta = 0.9
         nr = 2
+
         moead = MoeadDRA(problem=self.rmnk,
-                         max_evaluation=self.number_of_evaluations,
+                         max_evaluation=500,
                          number_of_objective=self.number_of_objective,
-                         number_of_weight=self.number_of_weight,
                          number_of_weight_neighborhood=self.number_of_weight_neighborhood,
                          aggregation_function=Tchebycheff,
                          number_of_crossover_points=self.number_of_crossover_points,
-                         weight_file=self.weight_file,
+                         weight_file=self.weight_file50,
                          delta=delta,
                          number_of_replacement=nr
                          )
 
         non_dominated = moead.run()
 
-        self.assertEqual(len(non_dominated), 7)  # test the number of non_dominated solutions
-        self.assertEqual(compute_hypervolume(non_dominated, [0, 0]), 0.3149799907430224)  # test the hypervolume value
+        self.assertEqual(len(non_dominated), 10)  # test the number of non_dominated solutions
+        self.assertEqual(compute_hypervolume(non_dominated, [0, 0]), 0.3782449450992227)  # test the hypervolume value

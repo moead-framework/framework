@@ -4,6 +4,9 @@ from .abstract_mating import OffspringGenerator
 
 
 class OffspringGeneratorGeneric(OffspringGenerator):
+    """
+    Generate a new offspring by using 2 components: the parent selector and the genetic operator
+    """
 
     def run(self, population_indexes):
 

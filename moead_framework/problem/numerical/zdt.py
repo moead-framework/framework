@@ -6,8 +6,17 @@ from moead_framework.solution.one_dimension_solution import OneDimensionSolution
 
 
 class Zdt1(Problem):
+    """
+    Implementation of the Zdt1 problem.
+    https://sop.tik.ee.ethz.ch/download/supplementary/testproblems/zdt1/index.php
+
+    E. Zitzler, K. Deb, and L. Thiele. Comparison of Multiobjective Evolutionary Algorithms: Empirical Results. Evolutionary Computation, 8(2):173-195, 2000
+    """
 
     def __init__(self, size):
+        """
+        :param size: {integer} number of variables in a solution
+        """
         self.n = size
         super().__init__()
 

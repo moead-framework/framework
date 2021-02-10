@@ -1,5 +1,4 @@
 import random
-import warnings
 import numpy as np
 
 
@@ -29,16 +28,12 @@ def is_pareto_efficient(costs, return_mask = True):
         return is_efficient
 
 
-def get_non_dominated(population, number_of_objective=None):
+def get_non_dominated(population):
     """
     return all non dominated solutions of the population
-    :param number_of_objective: integer deprecated
     :param population: list of solution
     :return: list of solution
     """
-    if number_of_objective is not None:
-        warnings.warn("number_of_objective is deprecated and will be removed in a future version", DeprecationWarning)
-
     arr = []
     for s in population:
         arr.append(s.F)

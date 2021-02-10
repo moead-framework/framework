@@ -1,0 +1,293 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>moead_framework.solution.one_dimension_solution.OneDimensionSolution &mdash; The Moead Framework 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="moead_framework.algorithm.combinatorial.moead.Moead" href="moead_framework.algorithm.combinatorial.moead.Moead.html" />
+    <link rel="prev" title="moead_framework.problem.numerical.zdt.Zdt1" href="moead_framework.problem.numerical.zdt.Zdt1.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> The Moead Framework
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tuto.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">Library Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../main_components.html">Main components</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../main_components.html#problems">Problems</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../main_components.html#solution">Solution</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">moead_framework.solution.one_dimension_solution.OneDimensionSolution</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../main_components.html#algorithms">Algorithms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../main_components.html#aggregation-functions">Aggregation functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../other_components.html">Other components</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">The Moead Framework</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">Library Reference</a> &raquo;</li>
+        
+          <li><a href="../main_components.html">Main components</a> &raquo;</li>
+        
+      <li>moead_framework.solution.one_dimension_solution.OneDimensionSolution</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/moead_framework/moead_framework.solution.one_dimension_solution.OneDimensionSolution.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="moead-framework-solution-one-dimension-solution-onedimensionsolution">
+<h1>moead_framework.solution.one_dimension_solution.OneDimensionSolution<a class="headerlink" href="#moead-framework-solution-one-dimension-solution-onedimensionsolution" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="moead_framework.solution.one_dimension_solution.OneDimensionSolution">
+<em class="property">class </em><code class="sig-prename descclassname">moead_framework.solution.one_dimension_solution.</code><code class="sig-name descname">OneDimensionSolution</code><span class="sig-paren">(</span><em class="sig-param">solution</em>, <em class="sig-param">f=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/solution/one_dimension_solution.html#OneDimensionSolution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.solution.solution.Solution</span></code></p>
+<p>Represent a one dimension solution for combinatorial and numerical problems</p>
+<dl class="method">
+<dt id="moead_framework.solution.one_dimension_solution.OneDimensionSolution.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">solution</em>, <em class="sig-param">f=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/solution/one_dimension_solution.html#OneDimensionSolution.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.solution.one_dimension_solution.OneDimensionSolution.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>solution</strong> – {list} all decision variables of the solution</p></li>
+<li><p><strong>f</strong> – {list} all objectives values of the solution. The default value</p></li>
+</ul>
+</dd>
+</dl>
+<p>is None if the solution is not evaluated.</p>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.solution.one_dimension_solution.OneDimensionSolution.__init__" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(solution[, f])</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param solution</dt>
+<dd class="field-odd"><p>{list} all decision variables of the solution</p>
+</dd>
+</dl>
+</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">F</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.solution.one_dimension_solution.OneDimensionSolution.distance" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance</span></code></a></p></td>
+<td><p>{integer} optional - can be used to compute a distance (crowding distance, …)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solution</span></code></a></p></td>
+<td><p>{list} all objectives values of the solution.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="moead_framework.solution.one_dimension_solution.OneDimensionSolution.distance">
+<code class="sig-name descname">distance</code><em class="property"> = 0</em><a class="headerlink" href="#moead_framework.solution.one_dimension_solution.OneDimensionSolution.distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>{integer} optional - can be used to compute a distance (crowding distance, …)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution">
+<code class="sig-name descname">solution</code><em class="property"> = []</em><a class="headerlink" href="#moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution" title="Permalink to this definition">¶</a></dt>
+<dd><p>{list} all objectives values of the solution.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="moead_framework.algorithm.combinatorial.moead.Moead.html" class="btn btn-neutral float-right" title="moead_framework.algorithm.combinatorial.moead.Moead" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="moead_framework.problem.numerical.zdt.Zdt1.html" class="btn btn-neutral float-left" title="moead_framework.problem.numerical.zdt.Zdt1" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Geoffrey Pruvost
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

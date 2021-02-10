@@ -1,0 +1,2 @@
+from moead_framework.aggregation.tchebycheff import Tchebycheff
+from moead_framework.aggregation.weighted_sum import WeightedSum

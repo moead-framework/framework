@@ -2,10 +2,20 @@ from .solution import Solution
 
 
 class OneDimensionSolution(Solution):
-    solution = []
-    distance = 0
+    """
+    Represent a one dimension solution for combinatorial and numerical problems
+    """
+    solution = []  #: :{list} all objectives values of the solution.
+    distance = 0  #: :{integer} optional - can be used to compute a distance (crowding distance, ...)
+    F = []  # : :{list} all objectives values of the solution. The default value is None if the solution is not evaluated.
 
     def __init__(self, solution, f=None):
+        """
+
+        :param solution: {list} all decision variables of the solution
+        :param f: {list} all objectives values of the solution. The default value
+        is None if the solution is not evaluated.
+        """
         super().__init__(solution, f)
         self.distance = 0
 

@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>moead_framework.core.sps_strategy.sps_dra.SpsDra &mdash; The Moead Framework 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries" href="moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries.html" />
+    <link rel="prev" title="moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems" href="moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> The Moead Framework
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tuto.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">Library Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../main_components.html">Main components</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../other_components.html">Other components</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../other_components.html#genetic-operators">Genetic operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../other_components.html#offspring-generator">Offspring generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../other_components.html#parent-selector">Parent Selector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../other_components.html#mating-selector">Mating Selector</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../other_components.html#sub-problem-selection-strategy">Sub-problem selection strategy</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems.html">moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">moead_framework.core.sps_strategy.sps_dra.SpsDra</a></li>
+<li class="toctree-l4"><a class="reference internal" href="moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries.html">moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../other_components.html#termination-criteria">Termination criteria</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">The Moead Framework</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">Library Reference</a> &raquo;</li>
+        
+          <li><a href="../other_components.html">Other components</a> &raquo;</li>
+        
+      <li>moead_framework.core.sps_strategy.sps_dra.SpsDra</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/moead_framework/moead_framework.core.sps_strategy.sps_dra.SpsDra.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="moead-framework-core-sps-strategy-sps-dra-spsdra">
+<h1>moead_framework.core.sps_strategy.sps_dra.SpsDra<a class="headerlink" href="#moead-framework-core-sps-strategy-sps-dra-spsdra" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="moead_framework.core.sps_strategy.sps_dra.SpsDra">
+<em class="property">class </em><code class="sig-prename descclassname">moead_framework.core.sps_strategy.sps_dra.</code><code class="sig-name descname">SpsDra</code><span class="sig-paren">(</span><em class="sig-param">algorithm_instance</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/sps_strategy/sps_dra.html#SpsDra"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.sps_strategy.sps_dra.SpsDra" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.core.sps_strategy.abstract_sps.SpsStrategy</span></code></p>
+<p>The strategy used in MOEA/D-DRA.</p>
+<p>Q. Zhang, W. Liu and H. Li,
+“The performance of a new version of MOEA/D on CEC09 unconstrained MOP test instances”
+2009 IEEE Congress on Evolutionary Computation
+Trondheim, 2009, pp. 203-208
+doi: 10.1109/CEC.2009.4982949.</p>
+<dl class="method">
+<dt id="moead_framework.core.sps_strategy.sps_dra.SpsDra.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">algorithm_instance</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.core.sps_strategy.sps_dra.SpsDra.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>algorithm_instance</strong> – {<code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractMoead</span></code>} instance of the algorithm</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.core.sps_strategy.sps_dra.SpsDra.__init__" title="moead_framework.core.sps_strategy.sps_dra.SpsDra.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(algorithm_instance)</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param algorithm_instance</dt>
+<dd class="field-odd"><p>{<code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractMoead</span></code>} instance of the algorithm</p>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.core.sps_strategy.sps_dra.SpsDra.get_sub_problems" title="moead_framework.core.sps_strategy.sps_dra.SpsDra.get_sub_problems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_sub_problems</span></code></a>()</p></td>
+<td><p>Select at first the indexes of the sub problems whose objectives are MOP individual objectives fi ([1, 0] and [0, 1] for example) and add sub problems with a 10-tournament</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_xtrem_index</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="moead_framework.core.sps_strategy.sps_dra.SpsDra.get_sub_problems">
+<code class="sig-name descname">get_sub_problems</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/sps_strategy/sps_dra.html#SpsDra.get_sub_problems"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.sps_strategy.sps_dra.SpsDra.get_sub_problems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select at first the indexes of the sub problems whose objectives are MOP
+individual objectives fi ([1, 0] and [0, 1] for example)
+and add sub problems with a 10-tournament</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>{list&lt;integer&gt;} indexes of sub-problems</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries.html" class="btn btn-neutral float-right" title="moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems.html" class="btn btn-neutral float-left" title="moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Geoffrey Pruvost
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

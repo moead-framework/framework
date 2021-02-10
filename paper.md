@@ -58,18 +58,18 @@ The package is focused on a modular architecture for easily adding, updating or 
 MOEA/D and for customizing how components interact with each other.
 
 For example, the *moead-framework* package was used for creating novel sub-problem selection strategies and 
-analyzing them [@gpruvost_gecco2020], and for rewriting the component used to generate 
+analyzing them [@gpruvost_evocop2020], and for rewriting the component used to generate 
 new candidate (offspring) solutions with a variant based on Walsh surrogates [@gpruvost_gecco2020].
 
 
 # Documentation
 
 The documentation is available at the following URL: 
-[moead-framework.github.io/documentation/](https://moead-framework.github.io/documentation/html/index.html).
+[moead-framework.github.io/framework/](https://moead-framework.github.io/framework/html/index.html).
 
-A [complete example](https://moead-framework.github.io/documentation/html/examples.html) and 
-[all components](https://moead-framework.github.io/documentation/html/documentation.html) are described in details,
-and [two tutorials](https://moead-framework.github.io/documentation/html/tuto.html) are made available for the user 
+A [complete example](https://moead-framework.github.io/framework/html/examples.html) and 
+[all components](https://moead-framework.github.io/framework/html/api.html) are described in details.
+[Two tutorials](https://moead-framework.github.io/framework/html/tuto.html) are made available for the user 
 to experiment with his/her own multi-objective optimization problem and to implement his/her own MOEA/D variants.
 
 

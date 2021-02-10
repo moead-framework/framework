@@ -4,6 +4,12 @@ from moead_framework.core.genetic_operator.combinatorial.mutation import BinaryM
 
 
 class CrossoverAndMutation(GeneticOperator):
+    """
+    Multi-point crossover combined with the Binary Mutation operator
+
+    Require 2 solutions, run a crossover according to the number of points crossover_points and
+    try to mutate each bit of the solution with the probability mutation_probability.
+    """
     def __init__(self, solutions, **kwargs):
         super().__init__(solutions, **kwargs)
         if kwargs.get("crossover_points") is None:

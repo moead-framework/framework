@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tutorials &mdash; The Moead Framework 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom_theme.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Library Reference" href="api.html" />
+    <link rel="prev" title="Installation" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> The Moead Framework
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#implement-your-own-problem">Implement your own problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implement-your-own-algorithm">Implement your own algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#save-data-with-the-framework">Save data with the framework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Library Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">The Moead Framework</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Tutorials</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tuto.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorials">
+<h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="implement-your-own-problem">
+<h2>Implement your own problem<a class="headerlink" href="#implement-your-own-problem" title="Permalink to this headline">¶</a></h2>
+<p>To make your problem compliant with the framework, your problem class have to extend the class <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.problem.Problem</span></code>
+and also implement the 3 required functions :</p>
+<ul>
+<li><p>the fitness function <code class="code docutils literal notranslate"><span class="pre">f(function_id,</span> <span class="pre">solution)</span></code> has 2 required parameters. The function must returns the objectif value of the solution
+for the objective function_id in parameter.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a better compatibility with components, problems should be converted in minimization problems.</p>
+</div>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function_id</span><span class="p">,</span> <span class="n">solution</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="n">objective_value</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The function <code class="code docutils literal notranslate"><span class="pre">generate_solution(array,</span> <span class="pre">evaluate)</span></code> allows to generate a solution. A solution is an object OneDimensionSolution that contains the representation of the solution in the attribute solution and all fitness values in the F attribute.</p></li>
+</ul>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All components of the framework available in this version are only compatible with OneDimensionSolution. If you want manage new type of solutions, you have to adapt other components of the framework.</p>
+</div>
+<p>The function <code class="code docutils literal notranslate"><span class="pre">generate_solution(array,</span> <span class="pre">evaluate)</span></code> takes in parameter the representation of the function and the boolean <code class="code docutils literal notranslate"><span class="pre">evaluate</span></code>
+that determine if the solution save the fitness, the default value must be “True”.</p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">OneDimensionSolution</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">function_numbers</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">evaluate</span><span class="p">:</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">solution</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The function <code class="code docutils literal notranslate"><span class="pre">generate_random_solution(evaluate)</span></code> generates a solution <strong>randomly</strong> in the same way than the previous function.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_random_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_solution</span><span class="p">(</span><span class="n">array</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">object_number</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[:],</span> <span class="n">evaluate</span><span class="o">=</span><span class="n">evaluate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="implement-your-own-algorithm">
+<h2>Implement your own algorithm<a class="headerlink" href="#implement-your-own-algorithm" title="Permalink to this headline">¶</a></h2>
+<p>All components are set with default values to implement the first version of <strong>MOEA/D</strong>.
+You can customize each algorithms of the framework with your own
+components that you can set in parameter of the algorithm contructor.</p>
+<p>Example for <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.algorithm.combinatorial.moead</span></code> :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">moead</span> <span class="o">=</span> <span class="n">Moead</span><span class="p">(</span>
+          <span class="c1"># Mandatory parameters</span>
+          <span class="n">problem</span><span class="o">=</span><span class="n">rmnk</span><span class="p">,</span>
+          <span class="n">max_evaluation</span> <span class="o">=</span> <span class="n">number_of_evaluations</span><span class="p">,</span>
+          <span class="n">number_of_objective</span><span class="o">=</span><span class="n">number_of_objective</span><span class="p">,</span>
+          <span class="n">number_of_weight</span><span class="o">=</span><span class="n">number_of_weight</span><span class="p">,</span>
+          <span class="n">number_of_weight_neighborhood</span><span class="o">=</span><span class="n">number_of_weight_neighborhood</span><span class="p">,</span>
+          <span class="n">weight_file</span><span class="o">=</span><span class="n">weight_file</span><span class="p">,</span>
+          <span class="n">aggregation_function</span><span class="o">=</span><span class="n">Tchebycheff</span><span class="p">,</span>
+          <span class="c1"># Optional parameters</span>
+          <span class="n">termination_criteria</span><span class="o">=</span><span class="n">MaxEvaluation</span><span class="p">,</span>
+          <span class="n">number_of_crossover_points</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+          <span class="n">mutation_probability</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+          <span class="n">mating_pool_selector</span><span class="o">=</span><span class="n">ClosestNeighborsSelector</span><span class="p">,</span>
+          <span class="n">genetic_operator</span><span class="o">=</span><span class="n">CrossoverAndMutation</span><span class="p">,</span>
+          <span class="n">parent_selector</span><span class="o">=</span><span class="n">TwoRandomParentSelector</span><span class="p">,</span>
+          <span class="n">sps_strategy</span><span class="o">=</span><span class="n">SpsAllSubproblems</span><span class="p">,</span>
+          <span class="n">offspring_generator</span><span class="o">=</span><span class="n">OffspringGeneratorGeneric</span>
+          <span class="p">)</span>
+</pre></div>
+</div>
+<p>If you want manage the way to use all this components, you have to create
+a new algorithm by extending an available algorithm. Examples are available in this repository : <a class="reference external" href="https://github.com/moead-framework/framework/tree/master/moead_framework/algorithm">https://github.com/moead-framework/framework/tree/master/moead_framework/algorithm</a>.</p>
+<p>For example with the implementation of MOEA/D-DE <a class="bibtex reference internal" href="references.html#moead-de" id="id1">[LZ09]</a> in the class <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.algorithm.combinatorial.moead_delta_nr</span></code> that extends <strong>Moead</strong> to rewrite the
+function update_solutions() and add two new parameters.</p>
+</div>
+<div class="section" id="save-data-with-the-framework">
+<h2>Save data with the framework<a class="headerlink" href="#save-data-with-the-framework" title="Permalink to this headline">¶</a></h2>
+<p>You can easily save a set of solutions by using the function <code class="code docutils literal notranslate"><span class="pre">save_population(&quot;population.txt&quot;,</span> <span class="pre">population)</span></code>.
+The function must be imported with : <code class="code docutils literal notranslate"><span class="pre">from</span> <span class="pre">moead_framework.tool.result</span> <span class="pre">import</span> <span class="pre">save_population</span></code>.</p>
+<p>If you want save all non-dominated solutions (attribute <code class="code docutils literal notranslate"><span class="pre">self.ep</span></code> in the algorithm) every 10 evaluations, you can use the checkpoint parameter of the function <code class="code docutils literal notranslate"><span class="pre">algorithm.run()</span></code> :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">moead</span> <span class="o">=</span> <span class="n">Moead</span><span class="p">(</span>
+          <span class="n">problem</span><span class="o">=</span><span class="n">rmnk</span><span class="p">,</span>
+          <span class="n">max_evaluation</span> <span class="o">=</span> <span class="n">number_of_evaluations</span><span class="p">,</span>
+          <span class="n">number_of_objective</span><span class="o">=</span><span class="n">number_of_objective</span><span class="p">,</span>
+          <span class="n">number_of_weight</span><span class="o">=</span><span class="n">number_of_weight</span><span class="p">,</span>
+          <span class="n">number_of_weight_neighborhood</span><span class="o">=</span><span class="n">number_of_weight_neighborhood</span><span class="p">,</span>
+          <span class="n">weight_file</span><span class="o">=</span><span class="n">weight_file</span><span class="p">,</span>
+          <span class="n">aggregation_function</span><span class="o">=</span><span class="n">Tchebycheff</span>
+          <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">checkpt</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">moead</span><span class="o">.</span><span class="n">current_eval</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span><span class="mi">0</span> <span class="p">:</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;non_dominated_solutions-eval&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">moead</span><span class="o">.</span><span class="n">current_eval</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.txt&quot;</span>
+        <span class="n">save_population</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="n">population</span><span class="o">=</span><span class="n">moead</span><span class="o">.</span><span class="n">ep</span><span class="p">)</span>
+
+<span class="n">moead</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api.html" class="btn btn-neutral float-right" title="Library Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Geoffrey Pruvost
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

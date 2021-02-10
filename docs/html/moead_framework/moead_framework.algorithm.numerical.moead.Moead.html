@@ -1,0 +1,450 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>moead_framework.algorithm.numerical.moead.Moead &mdash; The Moead Framework 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom_theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="moead_framework.aggregation.tchebycheff.Tchebycheff" href="moead_framework.aggregation.tchebycheff.Tchebycheff.html" />
+    <link rel="prev" title="moead_framework.algorithm.combinatorial.moead_sps_random.MoeadSPSRandom" href="moead_framework.algorithm.combinatorial.moead_sps_random.MoeadSPSRandom.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> The Moead Framework
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tuto.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">Library Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../main_components.html">Main components</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../main_components.html#problems">Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../main_components.html#solution">Solution</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../main_components.html#algorithms">Algorithms</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../main_components.html#for-combinatorial-problems">For combinatorial problems</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../main_components.html#for-numerical-problems">For numerical problems</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../main_components.html#aggregation-functions">Aggregation functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../other_components.html">Other components</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">The Moead Framework</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">Library Reference</a> &raquo;</li>
+        
+          <li><a href="../main_components.html">Main components</a> &raquo;</li>
+        
+      <li>moead_framework.algorithm.numerical.moead.Moead</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/moead_framework/moead_framework.algorithm.numerical.moead.Moead.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="moead-framework-algorithm-numerical-moead-moead">
+<h1>moead_framework.algorithm.numerical.moead.Moead<a class="headerlink" href="#moead-framework-algorithm-numerical-moead-moead" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="moead_framework.algorithm.numerical.moead.Moead">
+<em class="property">class </em><code class="sig-prename descclassname">moead_framework.algorithm.numerical.moead.</code><code class="sig-name descname">Moead</code><span class="sig-paren">(</span><em class="sig-param">problem</em>, <em class="sig-param">max_evaluation</em>, <em class="sig-param">number_of_objective</em>, <em class="sig-param">number_of_weight_neighborhood</em>, <em class="sig-param">aggregation_function</em>, <em class="sig-param">weight_file</em>, <em class="sig-param">termination_criteria=None</em>, <em class="sig-param">mating_pool_selector=None</em>, <em class="sig-param">genetic_operator=None</em>, <em class="sig-param">parent_selector=None</em>, <em class="sig-param">sps_strategy=None</em>, <em class="sig-param">offspring_generator=None</em>, <em class="sig-param">number_of_weight=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/algorithm/numerical/moead.html#Moead"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.algorithm.numerical.moead.Moead" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.algorithm.abstract_moead.AbstractMoead</span></code></p>
+<p>Implementation of MOEA/D for numerical problems.</p>
+<dl class="method">
+<dt id="moead_framework.algorithm.numerical.moead.Moead.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">problem</em>, <em class="sig-param">max_evaluation</em>, <em class="sig-param">number_of_objective</em>, <em class="sig-param">number_of_weight_neighborhood</em>, <em class="sig-param">aggregation_function</em>, <em class="sig-param">weight_file</em>, <em class="sig-param">termination_criteria=None</em>, <em class="sig-param">mating_pool_selector=None</em>, <em class="sig-param">genetic_operator=None</em>, <em class="sig-param">parent_selector=None</em>, <em class="sig-param">sps_strategy=None</em>, <em class="sig-param">offspring_generator=None</em>, <em class="sig-param">number_of_weight=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/algorithm/numerical/moead.html#Moead.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.algorithm.numerical.moead.Moead.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor of the algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>problem</strong> – {<code class="xref py py-class docutils literal notranslate"><span class="pre">Problem</span></code>} problem to optimize</p></li>
+<li><p><strong>max_evaluation</strong> – {integer} maximum number of evaluation</p></li>
+<li><p><strong>number_of_objective</strong> – {integer} number of objective in the problem</p></li>
+<li><p><strong>number_of_weight</strong> – {integer} number of weight vector used to decompose the problem</p></li>
+<li><p><strong>aggregation_function</strong> – {<code class="xref py py-class docutils literal notranslate"><span class="pre">AggregationFunction</span></code>}</p></li>
+<li><p><strong>weight_file</strong> – {string} path of the weight file. Each line represent a weight vector, each column represent a coordinate. An exemple is available here: <a class="reference external" href="https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws">https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws</a></p></li>
+<li><p><strong>termination_criteria</strong> – Optional – {<code class="xref py py-class docutils literal notranslate"><span class="pre">TerminationCriteria</span></code>} The default component is {<a class="reference internal" href="moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation.html#moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation" title="moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation"><code class="xref py py-class docutils literal notranslate"><span class="pre">MaxEvaluation</span></code></a>}</p></li>
+<li><p><strong>genetic_operator</strong> – Optional – {<code class="xref py py-class docutils literal notranslate"><span class="pre">GeneticOperator</span></code>} The default operator is <a class="reference internal" href="moead_framework.core.genetic_operator.numerical.differential_evolution_crossover.DifferentialEvolutionCrossover.html#moead_framework.core.genetic_operator.numerical.differential_evolution_crossover.DifferentialEvolutionCrossover" title="moead_framework.core.genetic_operator.numerical.differential_evolution_crossover.DifferentialEvolutionCrossover"><code class="xref py py-class docutils literal notranslate"><span class="pre">DifferentialEvolutionCrossover</span></code></a></p></li>
+<li><p><strong>parent_selector</strong> – Optional – {<code class="xref py py-class docutils literal notranslate"><span class="pre">ParentSelector</span></code>} The default operator is <a class="reference internal" href="moead_framework.core.parent_selector.two_random_and_current_parent_selector.TwoRandomAndCurrentParentSelector.html#moead_framework.core.parent_selector.two_random_and_current_parent_selector.TwoRandomAndCurrentParentSelector" title="moead_framework.core.parent_selector.two_random_and_current_parent_selector.TwoRandomAndCurrentParentSelector"><code class="xref py py-class docutils literal notranslate"><span class="pre">TwoRandomAndCurrentParentSelector</span></code></a></p></li>
+<li><p><strong>mating_pool_selector</strong> – Optional – {<code class="xref py py-class docutils literal notranslate"><span class="pre">MatingPoolSelector</span></code>} The default selector is {<a class="reference internal" href="moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector.html#moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector" title="moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClosestNeighborsSelector</span></code></a>}</p></li>
+<li><p><strong>sps_strategy</strong> – Optional – {<code class="xref py py-class docutils literal notranslate"><span class="pre">SpsStrategy</span></code>} The default strategy is {<a class="reference internal" href="moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems.html#moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems" title="moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpsAllSubproblems</span></code></a>}</p></li>
+<li><p><strong>offspring_generator</strong> – Optional – {<code class="xref py py-class docutils literal notranslate"><span class="pre">OffspringGenerator</span></code>} The default generator is {<a class="reference internal" href="moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric.html#moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric" title="moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric"><code class="xref py py-class docutils literal notranslate"><span class="pre">OffspringGeneratorGeneric</span></code></a>}</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.__init__" title="moead_framework.algorithm.numerical.moead.Moead.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(problem, max_evaluation, …[, …])</p></td>
+<td><p>Constructor of the algorithm.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.generate_closest_weight_vectors" title="moead_framework.algorithm.numerical.moead.Moead.generate_closest_weight_vectors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_closest_weight_vectors</span></code></a>()</p></td>
+<td><p>Generate all neighborhood for each solution in the population</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.generate_offspring" title="moead_framework.algorithm.numerical.moead.Moead.generate_offspring"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_offspring</span></code></a>(population)</p></td>
+<td><p>Generate a new offspring.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.get_sub_problems_to_visit" title="moead_framework.algorithm.numerical.moead.Moead.get_sub_problems_to_visit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_sub_problems_to_visit</span></code></a>()</p></td>
+<td><p>Select sub-problems to visit for the next generation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.init_z" title="moead_framework.algorithm.numerical.moead.Moead.init_z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">init_z</span></code></a>()</p></td>
+<td><p>Initialize the reference point z</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.initial_population" title="moead_framework.algorithm.numerical.moead.Moead.initial_population"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initial_population</span></code></a>()</p></td>
+<td><p>Initialize the population of <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.mating_pool_selection" title="moead_framework.algorithm.numerical.moead.Moead.mating_pool_selection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mating_pool_selection</span></code></a>(sub_problem)</p></td>
+<td><p>Select the set of solutions where future parents solutions will be selected according to the current sub-problem visited</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.repair" title="moead_framework.algorithm.numerical.moead.Moead.repair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">repair</span></code></a>(solution)</p></td>
+<td><p>Repair the solution in parameter.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.run" title="moead_framework.algorithm.numerical.moead.Moead.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a>([checkpoint])</p></td>
+<td><p>Execute the algorithm.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.update_current_sub_problem" title="moead_framework.algorithm.numerical.moead.Moead.update_current_sub_problem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_current_sub_problem</span></code></a>(sub_problem)</p></td>
+<td><p>Update the attribute current_sub_problem</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.update_solutions" title="moead_framework.algorithm.numerical.moead.Moead.update_solutions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_solutions</span></code></a>(solution, …)</p></td>
+<td><p>Update solutions of the population and of the external archive ep</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.update_z" title="moead_framework.algorithm.numerical.moead.Moead.update_z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_z</span></code></a>(solution)</p></td>
+<td><p>Update the reference point z with coordinates of the solution in parameter if coordinates are better.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="moead_framework.algorithm.numerical.moead.Moead.generate_closest_weight_vectors">
+<code class="sig-name descname">generate_closest_weight_vectors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.numerical.moead.Moead.generate_closest_weight_vectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate all neighborhood for each solution in the population</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>{list&lt;List&lt;Integer&gt;&gt;} List of sub-problem (neighborhood) for each solution</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="moead_framework.algorithm.numerical.moead.Moead.generate_offspring">
+<code class="sig-name descname">generate_offspring</code><span class="sig-paren">(</span><em class="sig-param">population</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.numerical.moead.Moead.generate_offspring" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a new offspring.
+This function calls the component <code class="xref py py-class docutils literal notranslate"><span class="pre">OffspringGenerator</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>population</strong> – {list&lt;<a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>&gt;} set of solutions (parents) used to generate the offspring</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>{<a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>} offspring</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="moead_framework.algorithm.numerical.moead.Moead.get_sub_problems_to_visit">
+<code class="sig-name descname">get_sub_problems_to_visit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.numerical.moead.Moead.get_sub_problems_to_visit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select sub-problems to visit for the next generation.
+This function calls the component <code class="xref py py-class docutils literal notranslate"><span class="pre">SpsStrategy</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>{list} indexes of sub-problems</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="moead_framework.algorithm.numerical.moead.Moead.init_z">
+<code class="sig-name descname">init_z</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.numerical.moead.Moead.init_z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the reference point z</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="moead_framework.algorithm.numerical.moead.Moead.initial_population">
+<code class="sig-name descname">initial_population</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.numerical.moead.Moead.initial_population" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the population of <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>{List&lt;<a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>&gt;}</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="moead_framework.algorithm.numerical.moead.Moead.mating_pool_selection">
+<code class="sig-name descname">mating_pool_selection</code><span class="sig-paren">(</span><em class="sig-param">sub_problem</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.numerical.moead.Moead.mating_pool_selection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select the set of solutions where future parents solutions will be selected according to the current sub-problem visited</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sub_problem</strong> – {integer} index of the sub-problem currently visited</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>{list} indexes of sub-problems</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="moead_framework.algorithm.numerical.moead.Moead.repair">
+<code class="sig-name descname">repair</code><span class="sig-paren">(</span><em class="sig-param">solution</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.numerical.moead.Moead.repair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Repair the solution in parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>solution</strong> – {<a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>}</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>{<a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>} the repaired solution</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="moead_framework.algorithm.numerical.moead.Moead.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">checkpoint=None</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.numerical.moead.Moead.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>checkpoint</strong> – {function} The default value is None. The checkpoint can be used to save data during the process</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="moead_framework.algorithm.numerical.moead.Moead.update_current_sub_problem">
+<code class="sig-name descname">update_current_sub_problem</code><span class="sig-paren">(</span><em class="sig-param">sub_problem</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.numerical.moead.Moead.update_current_sub_problem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the attribute current_sub_problem</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sub_problem</strong> – {integer} index of sub-problem</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="moead_framework.algorithm.numerical.moead.Moead.update_solutions">
+<code class="sig-name descname">update_solutions</code><span class="sig-paren">(</span><em class="sig-param">solution</em>, <em class="sig-param">aggregation_function</em>, <em class="sig-param">sub_problem</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.numerical.moead.Moead.update_solutions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update solutions of the population and of the external archive ep</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>solution</strong> – {<a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>} the candidate solution also called offspring</p></li>
+<li><p><strong>aggregation_function</strong> – {<code class="xref py py-class docutils literal notranslate"><span class="pre">AggregationFunction</span></code>} Aggregation function used to compare solution in a multi-objective context</p></li>
+<li><p><strong>sub_problem</strong> – {integer} index of the sub-problem currently visited</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="moead_framework.algorithm.numerical.moead.Moead.update_z">
+<code class="sig-name descname">update_z</code><span class="sig-paren">(</span><em class="sig-param">solution</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.numerical.moead.Moead.update_z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the reference point z with coordinates of the solution in parameter if coordinates are better.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>solution</strong> – <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="moead_framework.aggregation.tchebycheff.Tchebycheff.html" class="btn btn-neutral float-right" title="moead_framework.aggregation.tchebycheff.Tchebycheff" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="moead_framework.algorithm.combinatorial.moead_sps_random.MoeadSPSRandom.html" class="btn btn-neutral float-left" title="moead_framework.algorithm.combinatorial.moead_sps_random.MoeadSPSRandom" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Geoffrey Pruvost
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

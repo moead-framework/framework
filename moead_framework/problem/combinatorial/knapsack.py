@@ -1,13 +1,20 @@
 import numpy as np
-import random
 from moead_framework.problem.problem import Problem
 from moead_framework.solution.one_dimension_solution import OneDimensionSolution
 
 
 class KnapsackProblem(Problem):
-
-    def __init__(self, objective_number, instance_file):
-        super().__init__(objective_number)
+    """
+    Implementation of the Multiobjective knapsack problem by Thibaut Lust.
+    The problem is compatible with files available on the
+    author website: http://www-desir.lip6.fr/~lustt/Research.html#MOKP
+    """
+    def __init__(self, number_of_objective, instance_file):
+        """
+        :param number_of_objective: {integer}
+        :param instance_file: {string} txt file of the instance: http://www-desir.lip6.fr/~lustt/Research.html#MOKP
+        """
+        super().__init__(number_of_objective)
 
         self.instance_file = instance_file
         self.weights = []
@@ -25,7 +32,6 @@ class KnapsackProblem(Problem):
         kps = np.split(np.array(file_content), indexes_to_split)
 
         for kp in kps:
-            # print(kp)
             if kp[0] == "=":
                 kp = kp[1:]
             self.capacities.append(int(kp[1].replace("capacity: +", "")))
@@ -40,7 +46,8 @@ class KnapsackProblem(Problem):
             self.weights.append(w)
             self.profits.append(p)
 
-        self.object_number = len(self.weights[0])
+        self.number_of_objects = len(self.weights[0])
+        file.close()
 
     def f(self, function_id, solution):
         function_id = function_id - 1
@@ -48,27 +55,27 @@ class KnapsackProblem(Problem):
         profit = self.profit_of_solution(function_id, solution)
 
         if weight <= self.capacities[function_id]:
-            return profit
+            return -profit  # minimize the profit
         else:
-            return profit - self.penality(function_id) * (weight - self.capacities[function_id])
+            return -profit - self.penality(function_id) * (weight - self.capacities[function_id]) # minimize the profit
 
     def profit_of_solution(self, function_id, solution):
         res = 0
-        for i in range(0, self.object_number):
+        for i in range(0, self.number_of_objects):
             res += (self.profits[function_id][i] * solution[i])
 
         return res
 
     def weight_of_solution(self, function_id, solution):
         res = 0
-        for i in range(0, self.object_number):
+        for i in range(0, self.number_of_objects):
             res += (self.weights[function_id][i] * solution[i])
 
         return res
 
     def penality(self, function_id):
         max_founded = 0
-        for i in range(0, self.object_number):
+        for i in range(0, self.number_of_objects):
             tmp = self.profits[function_id][i] / self.weights[function_id][i]
             if tmp > max_founded:
                 max_founded = tmp
@@ -76,7 +83,7 @@ class KnapsackProblem(Problem):
         return max_founded
 
     def generate_random_solution(self, evaluate=True):
-        return self.generate_solution(array=np.random.randint(0, 2, self.object_number).tolist()[:], evaluate=evaluate)
+        return self.generate_solution(array=np.random.randint(0, 2, self.number_of_objects).tolist()[:], evaluate=evaluate)
 
     def generate_solution(self, array, evaluate=True):
         x = OneDimensionSolution(array)

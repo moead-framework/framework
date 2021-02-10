@@ -9,3 +9,11 @@ build/
 moead_framework.egg-info/
 
 dist/
+
+.coverage
+
+coverage.xml
+
+docs/doctrees/
+docs/.buildinfo
+docs/.DS_Store

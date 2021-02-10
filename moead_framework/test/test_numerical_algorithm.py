@@ -2,9 +2,9 @@ import unittest
 import random
 import os
 import numpy as np
-from moead_framework.aggregation.tchebycheff import Tchebycheff
-from moead_framework.algorithm.numerical.moead import Moead
-from moead_framework.problem.numerical.zdt import Zdt1
+from moead_framework.aggregation import Tchebycheff
+from moead_framework.algorithm.numerical import Moead
+from moead_framework.problem.numerical import Zdt1
 from moead_framework.tool.result import compute_hypervolume
 
 

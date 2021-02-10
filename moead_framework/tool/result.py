@@ -1,44 +1,13 @@
 import numpy as np
 
 
-def extract_coordinates(result_file):
-    file = open(result_file, 'r')
-    file_content = list(map(str.strip, file.readlines()))
-
-    x = []
-    y = []
-    z = []
-    for row in file_content[1:]:
-        if "Length of the list" in row:
-            break
-        spl = row.split(" ")
-        x.append(float(spl[0]))
-        y.append(float(spl[1]))
-
-        if len(spl) == 3:
-            z.append(float(spl[2]))
-
-    if len(z) > 0:
-        return x, y, z
-
-    return x, y
-
-
-def result_file_to_list(result_file):
-    file = open(result_file, 'r')
-    file_content = list(map(str.strip, file.readlines()))
-    result_list = []
-
-    for row in file_content[1:]:
-        if "Length of the list" in row:
-            break
-        spl = row.split(" ")
-        result_list.append([float(spl[0]), float(spl[1])])
-
-    return result_list
-
-
 def save_population(file_name, population):
+    """
+    Save the objective values of each solutions in the population
+    :param file_name:
+    :param population:
+    :return:
+    """
     file = open(file_name, "w")
     # file.write("Length of the list = " + str(len(population)) + "\n")
     for s in population:
@@ -52,7 +21,13 @@ def save_population(file_name, population):
     file.close()
 
 
-def save_population_and_solution(file_name, population):
+def save_population_full(file_name, population):
+    """
+    Save the objective values of each solutions in the population with the decision variables of solutions
+    :param file_name:
+    :param population:
+    :return:
+    """
     file = open(file_name, "w")
     # file.write("Length of the list = " + str(len(population)) + "\n")
     for s in population:
@@ -61,50 +36,9 @@ def save_population_and_solution(file_name, population):
         for coordinate in s.F:
             row += str(coordinate) + " "
 
-        row += str(s.solution)
-
+        row += str(s.solution.tolist())
         row = row + "\n"
         file.write(row)
-
-    file.close()
-
-
-def save_value_file(file_name, evaluation, value):
-    file = open(file_name, "a")
-    file.write(str(evaluation) + " " + str(value) + "\n")
-    file.close()
-
-
-def save_checkpoint_file(file_name, evaluation, moead):
-
-    file = open(file_name, "w")
-    file.write("eval : " + str(evaluation) + "\n")
-
-    file.write("pop : " + str(len(moead.population)) + "\n")
-    file.write(population_to_str(moead.population) + "\n")
-
-    file.write("ep : " + str(len(moead.ep)) + "\n")
-    file.write(population_to_str(moead.ep) + "\n")
-
-    file.close()
-
-
-def population_to_str(population):
-    result = ""
-
-    for s in population:
-        for bit in s.solution:
-            result += str(int(bit)) + ","
-        result += "/"
-
-    return result
-
-
-def save_front_file(file_name, points):
-    file = open(file_name, "w")
-
-    for point in points:
-        file.write(str(point[0]) + " " + str(point[1]) + "\n")
 
     file.close()
 
@@ -261,12 +195,6 @@ class HyperVolume:
         # write back to original list
         nodes[:] = [node for (_, node) in decorated]
 
-    def get_short_name(self) -> str:
-        return 'HV'
-
-    def get_name(self) -> str:
-        return "Hypervolume (Fonseca et al. implementation)"
-
 
 class MultiList:
     """A special front structure needed by FonsecaHyperVolume.
@@ -284,9 +212,6 @@ class MultiList:
             self.area = [0.0] * number_lists
             self.volume = [0.0] * number_lists
 
-        def __str__(self):
-            return str(self.cargo)
-
     def __init__(self, number_lists):
         """ Builds 'numberLists' doubly linked lists.
         """
@@ -295,33 +220,9 @@ class MultiList:
         self.sentinel.next = [self.sentinel] * number_lists
         self.sentinel.prev = [self.sentinel] * number_lists
 
-    def __str__(self):
-        strings = []
-        for i in range(self.number_lists):
-            current_list = []
-            node = self.sentinel.next[i]
-            while node != self.sentinel:
-                current_list.append(str(node))
-                node = node.next[i]
-            strings.append(str(current_list))
-        string_repr = ""
-        for string in strings:
-            string_repr += string + "\n"
-        return string_repr
-
     def __len__(self):
         """Returns the number of lists that are included in this MultiList."""
         return self.number_lists
-
-    def get_length(self, i):
-        """Returns the length of the i-th list."""
-        length = 0
-        sentinel = self.sentinel
-        node = sentinel.next[i]
-        while node != sentinel:
-            length += 1
-            node = node.next[i]
-        return length
 
     def append(self, node, index):
         """ Appends a node to the end of the list at the given index."""

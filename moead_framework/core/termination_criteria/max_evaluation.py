@@ -2,6 +2,9 @@ from moead_framework.core.termination_criteria.abstract_termination_criteria imp
 
 
 class MaxEvaluation(TerminationCriteria):
+    """
+    Stop the algorithm with a criteria based on the number of solution evaluated.
+    """
 
     def __init__(self, algorithm_instance):
         super().__init__(algorithm_instance)

@@ -3,6 +3,9 @@ from moead_framework.core.parent_selector.abstract_parent_selector import Parent
 
 
 class TwoRandomParentSelector(ParentSelector):
+    """
+    Select two parents randomly in the list of index
+    """
 
     def select(self, indexes):
         index1 = indexes[random.randint(0, len(indexes) - 1)]

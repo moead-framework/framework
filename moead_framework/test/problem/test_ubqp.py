@@ -1,8 +1,7 @@
-import random
 import os
 import unittest
 
-from moead_framework.problem.combinatorial.mubqp import Mubqp
+from moead_framework.problem.combinatorial import Mubqp
 
 
 class UbqpTest(unittest.TestCase):
@@ -11,7 +10,7 @@ class UbqpTest(unittest.TestCase):
     def setUp(self):
         """Init"""
         project_path = os.path.dirname(os.path.abspath(__file__))
-        self.problem = Mubqp(project_path + '/../data/mubqp_0_2_25_0.8_0.dat')
+        self.problem = Mubqp(project_path + '/../data/instances/mubqp_0_2_25_0.8_0.dat')
 
     def test_instance(self):
         """Test parameters"""

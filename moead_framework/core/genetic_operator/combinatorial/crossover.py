@@ -4,6 +4,11 @@ from moead_framework.core.genetic_operator.abstract_operator import GeneticOpera
 
 
 class Crossover(GeneticOperator):
+    """
+    Multi-point crossover.
+
+    Require 2 solutions, run a crossover according to the number of points crossover_points.
+    """
 
     def __init__(self, solutions, **kwargs):
         super().__init__(solutions, **kwargs)
