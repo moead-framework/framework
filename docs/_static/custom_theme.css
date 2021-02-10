@@ -3,10 +3,13 @@
     max-width: inherit;
 }
 
-.wy-menu-vertical li.toctree-l2 span.toctree-expand, .wy-menu-vertical li.current > a span.toctree-expand{
+.wy-menu-vertical li.toctree-l3 span.toctree-expand, .wy-menu-vertical li.current > a span.toctree-expand{
     display: none;
 }
 
-.wy-menu-vertical li.toctree-l3{
+.wy-menu-vertical li.toctree-l4{
     display: none;
+}
+.wy-body-for-nav .wy-nav-content-wrap a:visited {
+    color: #2980B9;
 }

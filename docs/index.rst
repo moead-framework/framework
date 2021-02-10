@@ -6,17 +6,6 @@
 Welcome to Moead-Framework's documentation!
 ===========================================
 
-.. toctree::
-   :hidden:
-
-   install
-   api
-   tuto
-   examples
-   references
-   contributing
-
-
 The **Multi-objective evolutionary algorithm based on decomposition (MOEA/D)** is a general-purpose algorithm 
 for approximating the Pareto set of multi-objective optimization problems. It decomposes the original 
 multi-objective problem into a number of 
@@ -28,3 +17,13 @@ The goal of the *moead-framework* python package is to provide a modular framewo
 researchers interested in experimenting with **MOEA/D** and its numerous variants.
 
 If you have any questions about the framework or the project, feel free to create an issue on github: https://github.com/moead-framework/framework.
+
+.. toctree::
+   :maxdepth: 2
+
+   install
+   tuto
+   api
+   examples
+   references
+   contributing

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Components of MOEA/D framework &mdash; The Moead Framework 1.0 documentation</title>
+  <title>Library Reference &mdash; The Moead Framework 1.0 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="_static/custom_theme.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="moead_framework.problem.combinatorial.rmnk.Rmnk" href="moead_framework/moead_framework.problem.combinatorial.rmnk.Rmnk.html" />
-    <link rel="prev" title="Installation" href="install.html" /> 
+    <link rel="next" title="Main components" href="main_components.html" />
+    <link rel="prev" title="Tutorials" href="tuto.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,80 +83,12 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Components of MOEA/D framework</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#problems">Problems</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.problem.combinatorial.rmnk.Rmnk.html">moead_framework.problem.combinatorial.rmnk.Rmnk</a></li>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.problem.combinatorial.mubqp.Mubqp.html">moead_framework.problem.combinatorial.mubqp.Mubqp</a></li>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.problem.combinatorial.knapsack.KnapsackProblem.html">moead_framework.problem.combinatorial.knapsack.KnapsackProblem</a></li>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.problem.numerical.zdt.Zdt1.html">moead_framework.problem.numerical.zdt.Zdt1</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#solution">Solution</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.solution.one_dimension_solution.OneDimensionSolution.html">moead_framework.solution.one_dimension_solution.OneDimensionSolution</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#algorithms">Algorithms</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#for-combinatorial-problems">For combinatorial problems</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="moead_framework/moead_framework.algorithm.combinatorial.moead.Moead.html">moead_framework.algorithm.combinatorial.moead.Moead</a></li>
-<li class="toctree-l4"><a class="reference internal" href="moead_framework/moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.html">moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr</a></li>
-<li class="toctree-l4"><a class="reference internal" href="moead_framework/moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA.html">moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA</a></li>
-<li class="toctree-l4"><a class="reference internal" href="moead_framework/moead_framework.algorithm.combinatorial.moead_sps_random.MoeadSPSRandom.html">moead_framework.algorithm.combinatorial.moead_sps_random.MoeadSPSRandom</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#for-numerical-problems">For numerical problems</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="moead_framework/moead_framework.algorithm.numerical.moead.Moead.html">moead_framework.algorithm.numerical.moead.Moead</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#aggregation-functions">Aggregation functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.aggregation.tchebycheff.Tchebycheff.html">moead_framework.aggregation.tchebycheff.Tchebycheff</a></li>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.aggregation.weighted_sum.WeightedSum.html">moead_framework.aggregation.weighted_sum.WeightedSum</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#genetic-operators">Genetic operators</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id5">For combinatorial problems</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="moead_framework/moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation.html">moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="moead_framework/moead_framework.core.genetic_operator.combinatorial.crossover.Crossover.html">moead_framework.core.genetic_operator.combinatorial.crossover.Crossover</a></li>
-<li class="toctree-l4"><a class="reference internal" href="moead_framework/moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation.html">moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">For numerical problems</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="moead_framework/moead_framework.core.genetic_operator.numerical.differential_evolution_crossover.DifferentialEvolutionCrossover.html">moead_framework.core.genetic_operator.numerical.differential_evolution_crossover.DifferentialEvolutionCrossover</a></li>
-<li class="toctree-l4"><a class="reference internal" href="moead_framework/moead_framework.core.genetic_operator.numerical.polynomial_mutation.PolynomialMutation.html">moead_framework.core.genetic_operator.numerical.polynomial_mutation.PolynomialMutation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="moead_framework/moead_framework.core.genetic_operator.numerical.moead_de_operators.MoeadDeOperators.html">moead_framework.core.genetic_operator.numerical.moead_de_operators.MoeadDeOperators</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#offspring-generator">Offspring generator</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric.html">moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#parent-selector">Parent Selector</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.core.parent_selector.one_random_and_current_parent_selector.OneRandomAndCurrentParentSelector.html">moead_framework.core.parent_selector.one_random_and_current_parent_selector.OneRandomAndCurrentParentSelector</a></li>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.core.parent_selector.two_random_and_current_parent_selector.TwoRandomAndCurrentParentSelector.html">moead_framework.core.parent_selector.two_random_and_current_parent_selector.TwoRandomAndCurrentParentSelector</a></li>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.core.parent_selector.two_random_parent_selector.TwoRandomParentSelector.html">moead_framework.core.parent_selector.two_random_parent_selector.TwoRandomParentSelector</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#mating-selector">Mating Selector</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector.html">moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector</a></li>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.core.selector.delta_selector.DeltaSelector.html">moead_framework.core.selector.delta_selector.DeltaSelector</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#sub-problem-selection-strategy">Sub-problem selection strategy</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems.html">moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems</a></li>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.core.sps_strategy.sps_dra.SpsDra.html">moead_framework.core.sps_strategy.sps_dra.SpsDra</a></li>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries.html">moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#termination-criteria">Termination criteria</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="moead_framework/moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation.html">moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="tuto.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Library Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="main_components.html">Main components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_components.html">Other components</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
@@ -205,7 +137,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Components of MOEA/D framework</li>
+      <li>Library Reference</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -224,254 +156,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="components-of-moea-d-framework">
-<span id="components"></span><h1>Components of MOEA/D framework<a class="headerlink" href="#components-of-moea-d-framework" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="problems">
-<h2>Problems<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h2>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.problem.combinatorial.rmnk.Rmnk.html#moead_framework.problem.combinatorial.rmnk.Rmnk" title="moead_framework.problem.combinatorial.rmnk.Rmnk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.problem.combinatorial.rmnk.Rmnk</span></code></a></p></td>
-<td><p>Implementation of the multiobjective NK landscapes with tunable objective correlation.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="moead_framework/moead_framework.problem.combinatorial.mubqp.Mubqp.html#moead_framework.problem.combinatorial.mubqp.Mubqp" title="moead_framework.problem.combinatorial.mubqp.Mubqp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.problem.combinatorial.mubqp.Mubqp</span></code></a></p></td>
-<td><p>Implementation of the Multiobjective Unconstrained Binary Quadratic Programming problem.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.problem.combinatorial.knapsack.KnapsackProblem.html#moead_framework.problem.combinatorial.knapsack.KnapsackProblem" title="moead_framework.problem.combinatorial.knapsack.KnapsackProblem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.problem.combinatorial.knapsack.KnapsackProblem</span></code></a></p></td>
-<td><p>Implementation of the Multiobjective knapsack problem by Thibaut Lust.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="moead_framework/moead_framework.problem.numerical.zdt.Zdt1.html#moead_framework.problem.numerical.zdt.Zdt1" title="moead_framework.problem.numerical.zdt.Zdt1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.problem.numerical.zdt.Zdt1</span></code></a></p></td>
-<td><p>Implementation of the Zdt1 problem.</p></td>
-</tr>
-</tbody>
-</table>
-<p>You can find examples of file instances for combinatorial problems
-in this repository <a class="reference external" href="https://github.com/moead-framework/data/tree/master/problem">https://github.com/moead-framework/data/tree/master/problem</a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You can implement your own problem by following <a class="reference internal" href="tuto.html#tuto-problem"><span class="std std-ref">this tutoriel</span></a>.</p>
-</div>
-</div>
-<div class="section" id="solution">
-<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.solution.one_dimension_solution.OneDimensionSolution</span></code></a></p></td>
-<td><p>Represent a one dimension solution for combinatorial and numerical problems</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="algorithms">
-<h2>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h2>
-<p>These algorithms are implemented on the basis of the original papers (<a class="bibtex reference internal" href="references.html#moead" id="id1">[ZhangLi07]</a>, <a class="bibtex reference internal" href="references.html#moead-de" id="id2">[LZ09]</a>, <a class="bibtex reference internal" href="references.html#moead-dra" id="id3">[ZhangLiuLi09]</a>, <a class="bibtex reference internal" href="references.html#gpruvost-evocop2020" id="id4">[PDL+20a]</a>).</p>
-<div class="section" id="for-combinatorial-problems">
-<h3>For combinatorial problems<a class="headerlink" href="#for-combinatorial-problems" title="Permalink to this headline">¶</a></h3>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.algorithm.combinatorial.moead.Moead.html#moead_framework.algorithm.combinatorial.moead.Moead" title="moead_framework.algorithm.combinatorial.moead.Moead"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.algorithm.combinatorial.moead.Moead</span></code></a></p></td>
-<td><p>Implementation of MOEA/D for combinatorial problems.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="moead_framework/moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.html#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr" title="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr</span></code></a></p></td>
-<td><p>Implementation of MOEA/D with parameters delta / nr</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA.html#moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA" title="moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA</span></code></a></p></td>
-<td><p>Implementation of MOEA/D-DRA</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="moead_framework/moead_framework.algorithm.combinatorial.moead_sps_random.MoeadSPSRandom.html#moead_framework.algorithm.combinatorial.moead_sps_random.MoeadSPSRandom" title="moead_framework.algorithm.combinatorial.moead_sps_random.MoeadSPSRandom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.algorithm.combinatorial.moead_sps_random.MoeadSPSRandom</span></code></a></p></td>
-<td><p>Implementation of MOEA/D with the component SPS Random.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="for-numerical-problems">
-<h3>For numerical problems<a class="headerlink" href="#for-numerical-problems" title="Permalink to this headline">¶</a></h3>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.algorithm.numerical.moead.Moead.html#moead_framework.algorithm.numerical.moead.Moead" title="moead_framework.algorithm.numerical.moead.Moead"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.algorithm.numerical.moead.Moead</span></code></a></p></td>
-<td><p>Implementation of MOEA/D for numerical problems.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You can implement your own algorithm by following <a class="reference internal" href="tuto.html#tuto-algo"><span class="std std-ref">this tutoriel</span></a>.</p>
-</div>
-</div>
-</div>
-<div class="section" id="aggregation-functions">
-<h2>Aggregation functions<a class="headerlink" href="#aggregation-functions" title="Permalink to this headline">¶</a></h2>
-<p>The aggregation function is used in MOEA/D to decompose the multi-objective problem into several mono-objective sub-problems.
-The two main functions used are the Weighted Sum and the Tchebycheff function. In our framework, the aggregation function
-is a required parameter of the algorithm.</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.aggregation.tchebycheff.Tchebycheff.html#moead_framework.aggregation.tchebycheff.Tchebycheff" title="moead_framework.aggregation.tchebycheff.Tchebycheff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.aggregation.tchebycheff.Tchebycheff</span></code></a></p></td>
-<td><p>Tchebycheff aggregation function.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="moead_framework/moead_framework.aggregation.weighted_sum.WeightedSum.html#moead_framework.aggregation.weighted_sum.WeightedSum" title="moead_framework.aggregation.weighted_sum.WeightedSum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.aggregation.weighted_sum.WeightedSum</span></code></a></p></td>
-<td><p>Weighted Sum aggregation function</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="genetic-operators">
-<h2>Genetic operators<a class="headerlink" href="#genetic-operators" title="Permalink to this headline">¶</a></h2>
-<p>A genetic operator is a component used in genetic algorithms to generate offspring by
-using characteristics of parents solutions. In the framework, these operators are used in the component <strong>offspring_generator</strong>.</p>
-<div class="section" id="id5">
-<h3>For combinatorial problems<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation.html#moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation" title="moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation</span></code></a></p></td>
-<td><p>Binary Mutation operator.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="moead_framework/moead_framework.core.genetic_operator.combinatorial.crossover.Crossover.html#moead_framework.core.genetic_operator.combinatorial.crossover.Crossover" title="moead_framework.core.genetic_operator.combinatorial.crossover.Crossover"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.core.genetic_operator.combinatorial.crossover.Crossover</span></code></a></p></td>
-<td><p>Multi-point crossover.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation.html#moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation" title="moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation</span></code></a></p></td>
-<td><p>Multi-point crossover combined with the Binary Mutation operator</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="id6">
-<h3>For numerical problems<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.core.genetic_operator.numerical.differential_evolution_crossover.DifferentialEvolutionCrossover.html#moead_framework.core.genetic_operator.numerical.differential_evolution_crossover.DifferentialEvolutionCrossover" title="moead_framework.core.genetic_operator.numerical.differential_evolution_crossover.DifferentialEvolutionCrossover"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.core.genetic_operator.numerical.differential_evolution_crossover.DifferentialEvolutionCrossover</span></code></a></p></td>
-<td><p>Differential Evolution (DE) Crossover.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="moead_framework/moead_framework.core.genetic_operator.numerical.polynomial_mutation.PolynomialMutation.html#moead_framework.core.genetic_operator.numerical.polynomial_mutation.PolynomialMutation" title="moead_framework.core.genetic_operator.numerical.polynomial_mutation.PolynomialMutation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.core.genetic_operator.numerical.polynomial_mutation.PolynomialMutation</span></code></a></p></td>
-<td><p>Polynomial Mutation operator.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.core.genetic_operator.numerical.moead_de_operators.MoeadDeOperators.html#moead_framework.core.genetic_operator.numerical.moead_de_operators.MoeadDeOperators" title="moead_framework.core.genetic_operator.numerical.moead_de_operators.MoeadDeOperators"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.core.genetic_operator.numerical.moead_de_operators.MoeadDeOperators</span></code></a></p></td>
-<td><p>Operator used in the original paper of MOEA/D-DE</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section" id="offspring-generator">
-<h2>Offspring generator<a class="headerlink" href="#offspring-generator" title="Permalink to this headline">¶</a></h2>
-<p>The offspring generator is the component that manage all the process to generate new offspring by
-using components <strong>Parent Selector</strong> and <strong>Genetic operator</strong> for example.</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric.html#moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric" title="moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric</span></code></a></p></td>
-<td><p>Generate a new offspring by using 2 components: the parent selector and the genetic operator</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="parent-selector">
-<h2>Parent Selector<a class="headerlink" href="#parent-selector" title="Permalink to this headline">¶</a></h2>
-<p>The parent selector is the component used to select solutions in the neighborhood before to use genetic
-operators to generate new offspring.</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.core.parent_selector.one_random_and_current_parent_selector.OneRandomAndCurrentParentSelector.html#moead_framework.core.parent_selector.one_random_and_current_parent_selector.OneRandomAndCurrentParentSelector" title="moead_framework.core.parent_selector.one_random_and_current_parent_selector.OneRandomAndCurrentParentSelector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.core.parent_selector.one_random_and_current_parent_selector.OneRandomAndCurrentParentSelector</span></code></a></p></td>
-<td><p>Select two parents: one random solution in the list of index available and the solution in the population linked to the current sub-problem visited.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="moead_framework/moead_framework.core.parent_selector.two_random_and_current_parent_selector.TwoRandomAndCurrentParentSelector.html#moead_framework.core.parent_selector.two_random_and_current_parent_selector.TwoRandomAndCurrentParentSelector" title="moead_framework.core.parent_selector.two_random_and_current_parent_selector.TwoRandomAndCurrentParentSelector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.core.parent_selector.two_random_and_current_parent_selector.TwoRandomAndCurrentParentSelector</span></code></a></p></td>
-<td><p>Select three parents: two random solutions in the list of index and the solution in the population linked to the current sub-problem visited.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.core.parent_selector.two_random_parent_selector.TwoRandomParentSelector.html#moead_framework.core.parent_selector.two_random_parent_selector.TwoRandomParentSelector" title="moead_framework.core.parent_selector.two_random_parent_selector.TwoRandomParentSelector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.core.parent_selector.two_random_parent_selector.TwoRandomParentSelector</span></code></a></p></td>
-<td><p>Select two parents randomly in the list of index</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="mating-selector">
-<h2>Mating Selector<a class="headerlink" href="#mating-selector" title="Permalink to this headline">¶</a></h2>
-<p>The mating selector is the component used to select the set of solutions where we can find parents solutions.</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector.html#moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector" title="moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector</span></code></a></p></td>
-<td><p>Return indexes of solutions in the neighborhood according to the current sub-problem visited.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="moead_framework/moead_framework.core.selector.delta_selector.DeltaSelector.html#moead_framework.core.selector.delta_selector.DeltaSelector" title="moead_framework.core.selector.delta_selector.DeltaSelector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.core.selector.delta_selector.DeltaSelector</span></code></a></p></td>
-<td><p>According to the probability delta, the selector will select the neighborhood or the whole population.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="sub-problem-selection-strategy">
-<h2>Sub-problem selection strategy<a class="headerlink" href="#sub-problem-selection-strategy" title="Permalink to this headline">¶</a></h2>
-<p>The SPS Strategy <a class="bibtex reference internal" href="references.html#gpruvost-evocop2020" id="id7">[PDL+20a]</a> is the component used to select sub-problems
-(or solutions of the population) that will be visited during the next
-generation of MOEA/D.</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems.html#moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems" title="moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems</span></code></a></p></td>
-<td><p>The classic SPS Strategy, all sub-problems are visited at each generation</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="moead_framework/moead_framework.core.sps_strategy.sps_dra.SpsDra.html#moead_framework.core.sps_strategy.sps_dra.SpsDra" title="moead_framework.core.sps_strategy.sps_dra.SpsDra"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.core.sps_strategy.sps_dra.SpsDra</span></code></a></p></td>
-<td><p>The strategy used in MOEA/D-DRA.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries.html#moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries" title="moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries</span></code></a></p></td>
-<td><p>Select randomly lambda sub-problems at each generation with boundaries sub-problems</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="termination-criteria">
-<h2>Termination criteria<a class="headerlink" href="#termination-criteria" title="Permalink to this headline">¶</a></h2>
-<p>The termination criteria is the component used to determine when the algorithm has to stop.</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation.html#moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation" title="moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation</span></code></a></p></td>
-<td><p>Stop the algorithm with a criteria based on the number of solution evaluated.</p></td>
-</tr>
-</tbody>
-</table>
+  <div class="section" id="library-reference">
+<span id="components"></span><h1>Library Reference<a class="headerlink" href="#library-reference" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="main_components.html">Main components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="main_components.html#problems">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main_components.html#solution">Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main_components.html#algorithms">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main_components.html#aggregation-functions">Aggregation functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="other_components.html">Other components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="other_components.html#genetic-operators">Genetic operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_components.html#offspring-generator">Offspring generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_components.html#parent-selector">Parent Selector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_components.html#mating-selector">Mating Selector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_components.html#sub-problem-selection-strategy">Sub-problem selection strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_components.html#termination-criteria">Termination criteria</a></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 
@@ -483,10 +188,10 @@ generation of MOEA/D.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="moead_framework/moead_framework.problem.combinatorial.rmnk.Rmnk.html" class="btn btn-neutral float-right" title="moead_framework.problem.combinatorial.rmnk.Rmnk" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="main_components.html" class="btn btn-neutral float-right" title="Main components" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="tuto.html" class="btn btn-neutral float-left" title="Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

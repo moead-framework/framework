@@ -37,7 +37,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="moead_framework.core.genetic_operator.combinatorial.crossover.Crossover" href="moead_framework.core.genetic_operator.combinatorial.crossover.Crossover.html" />
-    <link rel="prev" title="moead_framework.aggregation.weighted_sum.WeightedSum" href="moead_framework.aggregation.weighted_sum.WeightedSum.html" /> 
+    <link rel="prev" title="Other components" href="../other_components.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,29 +83,24 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../api.html">Components of MOEA/D framework</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../api.html#problems">Problems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#solution">Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#algorithms">Algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#aggregation-functions">Aggregation functions</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../api.html#genetic-operators">Genetic operators</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="../api.html#id5">For combinatorial problems</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="moead_framework.core.genetic_operator.combinatorial.crossover.Crossover.html">moead_framework.core.genetic_operator.combinatorial.crossover.Crossover</a></li>
-<li class="toctree-l4"><a class="reference internal" href="moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation.html">moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../api.html#id6">For numerical problems</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#offspring-generator">Offspring generator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#parent-selector">Parent Selector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#mating-selector">Mating Selector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#sub-problem-selection-strategy">Sub-problem selection strategy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#termination-criteria">Termination criteria</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../tuto.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">Library Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../main_components.html">Main components</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../other_components.html">Other components</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../other_components.html#genetic-operators">Genetic operators</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../other_components.html#for-combinatorial-problems">For combinatorial problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../other_components.html#for-numerical-problems">For numerical problems</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../other_components.html#offspring-generator">Offspring generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../other_components.html#parent-selector">Parent Selector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../other_components.html#mating-selector">Mating Selector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../other_components.html#sub-problem-selection-strategy">Sub-problem selection strategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../other_components.html#termination-criteria">Termination criteria</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
@@ -154,7 +149,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../api.html">Components of MOEA/D framework</a> &raquo;</li>
+          <li><a href="../api.html">Library Reference</a> &raquo;</li>
+        
+          <li><a href="../other_components.html">Other components</a> &raquo;</li>
         
       <li>moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation</li>
     
@@ -182,7 +179,7 @@
 <em class="property">class </em><code class="sig-prename descclassname">moead_framework.core.genetic_operator.combinatorial.mutation.</code><code class="sig-name descname">BinaryMutation</code><span class="sig-paren">(</span><em class="sig-param">solutions</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/genetic_operator/combinatorial/mutation.html#BinaryMutation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.core.genetic_operator.abstract_operator.GeneticOperator</span></code></p>
 <p>Binary Mutation operator.</p>
-<p>Require only one solution. Try to mute each bit of the solution with the probability mutation_probability</p>
+<p>Require only one solution. Try to mutate each bit of the solution with the probability mutation_probability</p>
 <dl class="method">
 <dt id="moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">solutions</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/genetic_operator/combinatorial/mutation.html#BinaryMutation.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation.__init__" title="Permalink to this definition">¶</a></dt>
@@ -248,7 +245,7 @@ it allows to check if the operator has the required number of solutions for the 
         <a href="moead_framework.core.genetic_operator.combinatorial.crossover.Crossover.html" class="btn btn-neutral float-right" title="moead_framework.core.genetic_operator.combinatorial.crossover.Crossover" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="moead_framework.aggregation.weighted_sum.WeightedSum.html" class="btn btn-neutral float-left" title="moead_framework.aggregation.weighted_sum.WeightedSum" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../other_components.html" class="btn btn-neutral float-left" title="Other components" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

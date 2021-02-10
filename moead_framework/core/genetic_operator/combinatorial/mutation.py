@@ -6,7 +6,7 @@ class BinaryMutation(GeneticOperator):
     """
     Binary Mutation operator.
 
-    Require only one solution. Try to mute each bit of the solution with the probability mutation_probability
+    Require only one solution. Try to mutate each bit of the solution with the probability mutation_probability
     """
 
     def __init__(self, solutions, **kwargs):

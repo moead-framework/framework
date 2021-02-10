@@ -8,7 +8,7 @@ class CrossoverAndMutation(GeneticOperator):
     Multi-point crossover combined with the Binary Mutation operator
 
     Require 2 solutions, run a crossover according to the number of points crossover_points and
-    try to mute each bit of the solution with the probability mutation_probability.
+    try to mutate each bit of the solution with the probability mutation_probability.
     """
     def __init__(self, solutions, **kwargs):
         super().__init__(solutions, **kwargs)
