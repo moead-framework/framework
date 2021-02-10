@@ -1,7 +1,6 @@
 from moead_framework.algorithm.abstract_moead import AbstractMoead
 from moead_framework.core.genetic_operator.combinatorial.cross_mut import CrossoverAndMutation
 from moead_framework.core.parent_selector.two_random_parent_selector import TwoRandomParentSelector
-from moead_framework.tool.mop import get_non_dominated, is_duplicated
 
 
 class Moead(AbstractMoead):
@@ -25,9 +24,23 @@ class Moead(AbstractMoead):
                  sps_strategy=None,
                  offspring_generator=None,
                  ):
+        """
+        Constructor of the algorithm.
 
-        self.current_eval = 1
-        self.mating_pool = []
+        :param problem: {:class:`~moead_framework.problem.Problem`} problem to optimize
+        :param max_evaluation: {integer} maximum number of evaluation
+        :param number_of_objective: {integer} number of objective in the problem
+        :param number_of_weight: {integer} number of weight vector used to decompose the problem
+        :param number_of_weight_neighborhood: {integer} size of the neighborhood
+        :param aggregation_function: {:class:`~moead_framework.aggregation.functions.AggregationFunction`}
+        :param termination_criteria: Optional -- {:class:`~moead_framework.core.termination_criteria.abstract_termination_criteria.TerminationCriteria`} The default component is {:class:`~moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation`}
+        :param genetic_operator: Optional -- {:class:`~moead_framework.core.genetic_operator.abstract_operator.GeneticOperator`} The default operator is :class:`~moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation`
+        :param parent_selector: Optional -- {:class:`~moead_framework.core.parent_selector.abstract_parent_selector.ParentSelector`} The default operator is :class:`~moead_framework.core.parent_selector.two_random_parent_selector.TwoRandomParentSelector`
+        :param mating_pool_selector: Optional -- {:class:`~moead_framework.core.selector.abstract_selector.MatingPoolSelector`} The default selector is {:class:`~moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector`}
+        :param sps_strategy: Optional -- {:class:`~moead_framework.core.sps_strategy.abstract_sps.SpsStrategy`} The default strategy is {:class:`~moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems`}
+        :param offspring_generator: Optional -- {:class:`~moead_framework.core.offspring_generator.abstract_mating.OffspringGenerator`} The default generator is {:class:`~moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric`}
+        :param weight_file: todo need refactoring
+        """
 
         super().__init__(problem,
                          max_evaluation,
@@ -54,46 +67,3 @@ class Moead(AbstractMoead):
             self.parent_selector = TwoRandomParentSelector(algorithm=self)
         else:
             self.parent_selector = parent_selector
-
-    def run(self, checkpoint=None):
-
-        while self.termination_criteria.test():
-
-            # For each sub-problem i
-            for i in self.get_sub_problems_to_visit():
-
-                if checkpoint is not None:
-                    checkpoint()
-
-                self.update_current_sub_problem(sub_problem=i)
-                self.mating_pool = self.mating_pool_selection(sub_problem=i)[:]
-                y = self.generate_offspring(population=self.mating_pool)
-                y = self.repair(solution=y)
-                self.update_z(solution=y)
-                self.update_solutions(solution=y, aggregation_function=self.aggregation_function, sub_problem=i)
-                self.current_eval += 1
-
-        return self.ep
-
-    def update_solutions(self, solution, aggregation_function, sub_problem):
-
-        for j in self.b[sub_problem]:
-            y_score = aggregation_function.run(solution=solution,
-                                               number_of_objective=self.number_of_objective,
-                                               weights=self.weights,
-                                               sub_problem=j,
-                                               z=self.z)
-
-            pop_j_score = aggregation_function.run(solution=self.population[j],
-                                                   number_of_objective=self.number_of_objective,
-                                                   weights=self.weights,
-                                                   sub_problem=j,
-                                                   z=self.z)
-
-            if aggregation_function.is_better(pop_j_score, y_score):
-                self.population[j] = solution
-
-                if not is_duplicated(x=solution, population=self.ep, number_of_objective=self.number_of_objective):
-                    self.ep.append(solution)
-                    self.ep = get_non_dominated(self.ep)
-

@@ -153,7 +153,6 @@
 <span class="kn">from</span> <span class="nn">moead_framework.core.genetic_operator.numerical.moead_de_operators</span> <span class="kn">import</span> <span class="n">DifferentialEvolutionCrossover</span>
 <span class="kn">from</span> <span class="nn">moead_framework.core.parent_selector.two_random_and_current_parent_selector</span> <span class="kn">import</span> \
     <span class="n">TwoRandomAndCurrentParentSelector</span>
-<span class="kn">from</span> <span class="nn">moead_framework.tool.mop</span> <span class="kn">import</span> <span class="n">get_non_dominated</span><span class="p">,</span> <span class="n">is_duplicated</span>
 
 
 <div class="viewcode-block" id="Moead"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.algorithm.numerical.moead.Moead.html#moead_framework.algorithm.numerical.moead.Moead">[docs]</a><span class="k">class</span> <span class="nc">Moead</span><span class="p">(</span><span class="n">AbstractMoead</span><span class="p">):</span>
@@ -173,9 +172,23 @@
                  <span class="n">sps_strategy</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">offspring_generator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">weight_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor of the algorithm.</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">current_eval</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mating_pool</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="sd">        :param problem: {:class:`~moead_framework.problem.Problem`} problem to optimize</span>
+<span class="sd">        :param max_evaluation: {integer} maximum number of evaluation</span>
+<span class="sd">        :param number_of_objective: {integer} number of objective in the problem</span>
+<span class="sd">        :param number_of_weight: {integer} number of weight vector used to decompose the problem</span>
+<span class="sd">        :param number_of_weight_neighborhood: {integer} size of the neighborhood</span>
+<span class="sd">        :param aggregation_function: {:class:`~moead_framework.aggregation.functions.AggregationFunction`}</span>
+<span class="sd">        :param termination_criteria: Optional -- {:class:`~moead_framework.core.termination_criteria.abstract_termination_criteria.TerminationCriteria`} The default component is {:class:`~moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation`}</span>
+<span class="sd">        :param genetic_operator: Optional -- {:class:`~moead_framework.core.genetic_operator.abstract_operator.GeneticOperator`} The default operator is :class:`~moead_framework.core.genetic_operator.numerical.differential_evolution_crossover.DifferentialEvolutionCrossover`</span>
+<span class="sd">        :param parent_selector: Optional -- {:class:`~moead_framework.core.parent_selector.abstract_parent_selector.ParentSelector`} The default operator is :class:`~moead_framework.core.parent_selector.two_random_and_current_parent_selector.TwoRandomAndCurrentParentSelector`</span>
+<span class="sd">        :param mating_pool_selector: Optional -- {:class:`~moead_framework.core.selector.abstract_selector.MatingPoolSelector`} The default selector is {:class:`~moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector`}</span>
+<span class="sd">        :param sps_strategy: Optional -- {:class:`~moead_framework.core.sps_strategy.abstract_sps.SpsStrategy`} The default strategy is {:class:`~moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems`}</span>
+<span class="sd">        :param offspring_generator: Optional -- {:class:`~moead_framework.core.offspring_generator.abstract_mating.OffspringGenerator`} The default generator is {:class:`~moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric`}</span>
+<span class="sd">        :param weight_file: todo need refactoring</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span>
                          <span class="n">max_evaluation</span><span class="p">,</span>
@@ -199,49 +212,7 @@
         <span class="k">if</span> <span class="n">parent_selector</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">parent_selector</span> <span class="o">=</span> <span class="n">TwoRandomAndCurrentParentSelector</span><span class="p">(</span><span class="n">algorithm</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">parent_selector</span> <span class="o">=</span> <span class="n">parent_selector</span></div>
-
-<div class="viewcode-block" id="Moead.run"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.algorithm.numerical.moead.Moead.html#moead_framework.algorithm.numerical.moead.Moead.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-
-        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">termination_criteria</span><span class="o">.</span><span class="n">test</span><span class="p">():</span>
-
-            <span class="c1"># For each sub-problem i</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_sub_problems_to_visit</span><span class="p">():</span>
-
-                <span class="k">if</span> <span class="n">checkpoint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="n">checkpoint</span><span class="p">()</span>
-
-                <span class="bp">self</span><span class="o">.</span><span class="n">update_current_sub_problem</span><span class="p">(</span><span class="n">sub_problem</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">mating_pool</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mating_pool_selection</span><span class="p">(</span><span class="n">sub_problem</span><span class="o">=</span><span class="n">i</span><span class="p">)[:]</span>
-                <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_offspring</span><span class="p">(</span><span class="n">population</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mating_pool</span><span class="p">)</span>
-                <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repair</span><span class="p">(</span><span class="n">solution</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">update_z</span><span class="p">(</span><span class="n">solution</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">update_solutions</span><span class="p">(</span><span class="n">solution</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">aggregation_function</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">aggregation_function</span><span class="p">,</span> <span class="n">sub_problem</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">current_eval</span> <span class="o">+=</span> <span class="mi">1</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ep</span></div>
-
-<div class="viewcode-block" id="Moead.update_solutions"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.algorithm.numerical.moead.Moead.html#moead_framework.algorithm.numerical.moead.Moead.update_solutions">[docs]</a>    <span class="k">def</span> <span class="nf">update_solutions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solution</span><span class="p">,</span> <span class="n">aggregation_function</span><span class="p">,</span> <span class="n">sub_problem</span><span class="p">):</span>
-
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">[</span><span class="n">sub_problem</span><span class="p">]:</span>
-            <span class="n">y_score</span> <span class="o">=</span> <span class="n">aggregation_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">solution</span><span class="o">=</span><span class="n">solution</span><span class="p">,</span>
-                                               <span class="n">number_of_objective</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">number_of_objective</span><span class="p">,</span>
-                                               <span class="n">weights</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span>
-                                               <span class="n">sub_problem</span><span class="o">=</span><span class="n">j</span><span class="p">,</span>
-                                               <span class="n">z</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
-
-            <span class="n">pop_j_score</span> <span class="o">=</span> <span class="n">aggregation_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">solution</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">population</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
-                                                   <span class="n">number_of_objective</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">number_of_objective</span><span class="p">,</span>
-                                                   <span class="n">weights</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span>
-                                                   <span class="n">sub_problem</span><span class="o">=</span><span class="n">j</span><span class="p">,</span>
-                                                   <span class="n">z</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
-
-            <span class="k">if</span> <span class="n">aggregation_function</span><span class="o">.</span><span class="n">is_better</span><span class="p">(</span><span class="n">pop_j_score</span><span class="p">,</span> <span class="n">y_score</span><span class="p">):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">population</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">solution</span>
-
-                <span class="k">if</span> <span class="ow">not</span> <span class="n">is_duplicated</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">solution</span><span class="p">,</span> <span class="n">population</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ep</span><span class="p">,</span> <span class="n">number_of_objective</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">number_of_objective</span><span class="p">):</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">ep</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">solution</span><span class="p">)</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">ep</span> <span class="o">=</span> <span class="n">get_non_dominated</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ep</span><span class="p">)</span></div></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parent_selector</span> <span class="o">=</span> <span class="n">parent_selector</span></div></div>
 
 </pre></div>
 
