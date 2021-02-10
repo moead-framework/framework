@@ -31,7 +31,6 @@ weight_file = "moead_framework/test/data/weights/SOBOL-" + str(number_of_objecti
 moead = Moead(problem=rmnk,
               max_evaluation=number_of_evaluations,
               number_of_objective=number_of_objective,
-              number_of_weight=number_of_weight,
               number_of_weight_neighborhood=number_of_weight_neighborhood,
               number_of_crossover_points=number_of_crossover_points,
               weight_file=weight_file,

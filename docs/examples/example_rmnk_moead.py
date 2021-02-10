@@ -31,7 +31,6 @@ weight_file = "SOBOL-" + str(number_of_objective) + "objs-" + str(number_of_weig
 moead = Moead(problem=rmnk,
               max_evaluation=number_of_evaluations,
               number_of_objective=number_of_objective,
-              number_of_weight=number_of_weight,
               number_of_weight_neighborhood=number_of_weight_neighborhood,
               weight_file=weight_file,
               aggregation_function=Tchebycheff,

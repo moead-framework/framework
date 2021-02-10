@@ -161,15 +161,14 @@
 <div class="viewcode-block" id="MoeadSPSRandom.__init__"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.algorithm.combinatorial.moead_sps_random.MoeadSPSRandom.html#moead_framework.algorithm.combinatorial.moead_sps_random.MoeadSPSRandom.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span>
                  <span class="n">max_evaluation</span><span class="p">,</span>
                  <span class="n">number_of_objective</span><span class="p">,</span>
-                 <span class="n">number_of_weight</span><span class="p">,</span>
                  <span class="n">number_of_weight_neighborhood</span><span class="p">,</span>
                  <span class="n">number_of_subproblem_to_visit</span><span class="p">,</span>
                  <span class="n">aggregation_function</span><span class="p">,</span>
+                 <span class="n">weight_file</span><span class="p">,</span>
                  <span class="n">number_of_crossover_points</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
                  <span class="n">mating_pool_selector</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">genetic_operator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">parent_selector</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">weight_file</span><span class="o">=</span><span class="kc">None</span>
                  <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor of the algorithm.</span>
@@ -177,21 +176,19 @@
 <span class="sd">        :param problem: {:class:`~moead_framework.problem.Problem`} problem to optimize</span>
 <span class="sd">        :param max_evaluation: {integer} maximum number of evaluation</span>
 <span class="sd">        :param number_of_objective: {integer} number of objective in the problem</span>
-<span class="sd">        :param number_of_weight: {integer} number of weight vector used to decompose the problem</span>
 <span class="sd">        :param number_of_weight_neighborhood: {integer} size of the neighborhood</span>
 <span class="sd">        :param number_of_subproblem_to_visit: {integer} number of sub-problems to visit randomly at each generation</span>
+<span class="sd">        :param weight_file: {string} path of the weight file. Each line represent a weight vector, each column represent a coordinate. An exemple is available here: https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws</span>
 <span class="sd">        :param aggregation_function: {:class:`~moead_framework.aggregation.functions.AggregationFunction`}</span>
 <span class="sd">        :param genetic_operator: Optional -- {:class:`~moead_framework.core.genetic_operator.abstract_operator.GeneticOperator`} The default operator depends of the problem type (combinatorial / numerical)</span>
 <span class="sd">        :param parent_selector: Optional -- {:class:`~moead_framework.core.parent_selector.abstract_parent_selector.ParentSelector`} The default operator depends of the number of solution required by the genetic operator</span>
 <span class="sd">        :param mating_pool_selector: Optional -- {:class:`~moead_framework.core.selector.abstract_selector.MatingPoolSelector`} The default selector is {:class:`~moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector`}</span>
-<span class="sd">        :param weight_file: todo need refactoring</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span>
-                         <span class="n">max_evaluation</span><span class="p">,</span>
-                         <span class="n">number_of_objective</span><span class="p">,</span>
-                         <span class="n">number_of_weight</span><span class="p">,</span>
-                         <span class="n">number_of_weight_neighborhood</span><span class="p">,</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">problem</span><span class="o">=</span><span class="n">problem</span><span class="p">,</span>
+                         <span class="n">max_evaluation</span><span class="o">=</span><span class="n">max_evaluation</span><span class="p">,</span>
+                         <span class="n">number_of_objective</span><span class="o">=</span><span class="n">number_of_objective</span><span class="p">,</span>
+                         <span class="n">number_of_weight_neighborhood</span><span class="o">=</span><span class="n">number_of_weight_neighborhood</span><span class="p">,</span>
                          <span class="n">aggregation_function</span><span class="o">=</span><span class="n">aggregation_function</span><span class="p">,</span>
                          <span class="n">number_of_crossover_points</span><span class="o">=</span><span class="n">number_of_crossover_points</span><span class="p">,</span>
                          <span class="n">genetic_operator</span><span class="o">=</span><span class="n">genetic_operator</span><span class="p">,</span>

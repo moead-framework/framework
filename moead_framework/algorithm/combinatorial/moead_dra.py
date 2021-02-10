@@ -14,36 +14,34 @@ class MoeadDRA(MoeadDeltaNr):
     def __init__(self, problem,
                  max_evaluation,
                  number_of_objective,
-                 number_of_weight,
                  number_of_weight_neighborhood,
                  delta,
                  number_of_replacement,
                  aggregation_function,
+                 weight_file,
                  number_of_crossover_points=2,
                  threshold_before_evaluate_subproblem_utility=50,
                  delta_threshold=0.001,
-                 weight_file=None):
+                 ):
         """
         Constructor of the algorithm.
 
         :param problem: {:class:`~moead_framework.problem.Problem`} problem to optimize
         :param max_evaluation: {integer} maximum number of evaluation
         :param number_of_objective: {integer} number of objective in the problem
-        :param number_of_weight: {integer} number of weight vector used to decompose the problem
         :param number_of_weight_neighborhood: {integer} size of the neighborhood
         :param delta: {float} probability to use all the population as neighborhood
         :param number_of_replacement: {integer} maximum number of solutions replaced in the population for each new offspring generated
         :param aggregation_function: {:class:`~moead_framework.aggregation.functions.AggregationFunction`}
+        :param weight_file: {string} path of the weight file. Each line represent a weight vector, each column represent a coordinate. An exemple is available here: https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws
         :param number_of_crossover_points: {integer} number of crossover point
         :param threshold_before_evaluate_subproblem_utility: Optional -- Threshold before evaluate the subproblem utility. The default value is 50
         :param delta_threshold: Optional -- reset the utility if the relative decrease delta_i is under this treshold. The default value is 0.001
-        :param weight_file: todo need refactoring
         """
 
         super().__init__(problem=problem,
                          max_evaluation=max_evaluation,
                          number_of_objective=number_of_objective,
-                         number_of_weight=number_of_weight,
                          number_of_weight_neighborhood=number_of_weight_neighborhood,
                          delta=delta,
                          number_of_replacement=number_of_replacement,

@@ -1,3 +1,5 @@
+import random
+
 import numpy as np
 
 from moead_framework.core.offspring_generator.offspring_generator import OffspringGeneratorGeneric
@@ -9,15 +11,16 @@ from moead_framework.tool.mop import is_duplicated, get_non_dominated, generate_
 
 class AbstractMoead:
 
-    def __init__(self, problem, max_evaluation, number_of_objective, number_of_weight, number_of_weight_neighborhood,
-                 aggregation_function,
+    def __init__(self, problem, max_evaluation, number_of_objective, number_of_weight_neighborhood,
+                 aggregation_function, weight_file,
                  termination_criteria=None,
                  genetic_operator=None,
                  parent_selector=None,
                  mating_pool_selector=None,
                  sps_strategy=None,
                  offspring_generator=None,
-                 weight_file=None):
+                 number_of_weight=None,
+                 ):
         """
         Constructor of the algorithm.
 
@@ -25,18 +28,22 @@ class AbstractMoead:
         :param max_evaluation: {integer} maximum number of evaluation
         :param number_of_objective: {integer} number of objective in the problem
         :param number_of_weight: {integer} number of weight vector used to decompose the problem
-        :param number_of_weight_neighborhood: {integer} size of the neighborhood
         :param aggregation_function: {:class:`~moead_framework.aggregation.functions.AggregationFunction`}
+        :param weight_file: {string} path of the weight file. Each line represent a weight vector, each column represent a coordinate. An exemple is available here: https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws
         :param termination_criteria: Optional -- {:class:`~moead_framework.core.termination_criteria.abstract_termination_criteria.TerminationCriteria`} The default component is {:class:`~moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation`}
         :param genetic_operator: Optional -- {:class:`~moead_framework.core.genetic_operator.abstract_operator.GeneticOperator`} The default operator depends of the problem type (combinatorial / numerical)
         :param parent_selector: Optional -- {:class:`~moead_framework.core.parent_selector.abstract_parent_selector.ParentSelector`} The default operator depends of the number of solution required by the genetic operator
         :param mating_pool_selector: Optional -- {:class:`~moead_framework.core.selector.abstract_selector.MatingPoolSelector`} The default selector is {:class:`~moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector`}
         :param sps_strategy: Optional -- {:class:`~moead_framework.core.sps_strategy.abstract_sps.SpsStrategy`} The default strategy is {:class:`~moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems`}
         :param offspring_generator: Optional -- {:class:`~moead_framework.core.offspring_generator.abstract_mating.OffspringGenerator`} The default generator is {:class:`~moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric`}
-        :param weight_file: todo need refactoring
+        :param number_of_weight_neighborhood: Deprecated -- {integer} size of the neighborhood. Deprecated, remove in the next major release.
         """
         self.problem = problem
         self.aggregation_function = aggregation_function()
+
+        if number_of_weight_neighborhood is not None:
+            import warnings
+            warnings.warn("deprecated", DeprecationWarning)
 
         if termination_criteria is None:
             self.termination_criteria = MaxEvaluation(algorithm_instance=self)
@@ -45,12 +52,13 @@ class AbstractMoead:
 
         self.max_evaluation = max_evaluation
         self.number_of_objective = number_of_objective
-        self.number_of_weight = number_of_weight
         self.t = number_of_weight_neighborhood
         self.ep = []
 
+        self.weights = generate_weight_vectors(weight_file, shuffle=False)
+        self.number_of_weight = len(self.weights)
         self.population = self.initial_population()
-        self.weights = generate_weight_vectors(weight_file)
+        random.shuffle(self.weights)
         self.z = self.init_z()
         self.b = self.generate_closest_weight_vectors()
         self.current_sub_problem = -1
