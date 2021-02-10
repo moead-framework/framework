@@ -10,7 +10,7 @@ This python package *moead-framework* is a modular framework for multi-objective
 The goal  is to provide a modular framework for scientists and researchers interested in 
 experimenting with MOEA/D and its numerous variants.
 
-The documentation is available here: [https://moead-framework.github.io/documentation/](https://moead-framework.github.io/documentation/html/index.html) and can be edited on this repository: [https://github.com/moead-framework/documentation](https://github.com/moead-framework/documentation).
+The documentation is available here: [https://moead-framework.github.io/framework/](https://moead-framework.github.io/framework/html/index.html) and can be edited in the folder docs of this repository.
 
 # Installation instructions
 
