@@ -20,6 +20,18 @@ The latest release of the framework is available on github:
     git clone https://github.com/moead-framework/framework
 
 
+Dependencies
+--------------------------------------
+All required dependencies will be installed with the pip command. If you download the sources,
+you have to install dependencies manually:
+::
+    pip install -r requirements.txt
+
+Dependencies:
+
+- numpy >= 1.18
+
+
 Run tests
 --------------------------------------
 You can execute unit test with: 
