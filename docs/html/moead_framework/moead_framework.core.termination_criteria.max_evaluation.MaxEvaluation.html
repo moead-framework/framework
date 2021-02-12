@@ -181,7 +181,12 @@
 <dl class="method">
 <dt id="moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">algorithm_instance</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/termination_criteria/max_evaluation.html#MaxEvaluation.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+<dd><p>Constructor of the termination criteria</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>algorithm_instance</strong> – {<code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractMoead</span></code>} instance of the algorithm</p>
+</dd>
+</dl>
 </dd></dl>
 
 <p class="rubric">Methods</p>
@@ -192,7 +197,7 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation.__init__" title="moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(algorithm_instance)</p></td>
-<td><p>Initialize self.</p></td>
+<td><p>Constructor of the termination criteria</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation.test" title="moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation.test"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test</span></code></a>()</p></td>
 <td><p>Test if the algorithm has to be stopped</p></td>
@@ -205,7 +210,7 @@
 <dd><p>Test if the algorithm has to be stopped</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>{boolean}</p>
+<dd class="field-odd"><p>{boolean} True: Continue the process. False: Stop the process</p>
 </dd>
 </dl>
 </dd></dl>

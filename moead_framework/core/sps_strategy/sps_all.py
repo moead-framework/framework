@@ -7,7 +7,4 @@ class SpsAllSubproblems(SpsStrategy):
     """
 
     def get_sub_problems(self):
-        """
-        :return: {list<integer>} indexes of sub-problems
-        """
         return range(self.algorithm.number_of_weight)

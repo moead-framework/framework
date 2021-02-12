@@ -32,5 +32,13 @@ class DifferentialEvolutionCrossover(GeneticOperator):
         return child
 
     def repair(self, s, mini=0, maxi=1):
+        """
+        Repair function for the solutions
+
+        :param s: solution's representation (In algorithms, it is represented by the attribute :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution` of the class :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`)
+        :param mini: {float} minimum value of variables in the solution
+        :param maxi: {float} maximum value of variables in the solution
+        :return:
+        """
         return [mini if x < mini else maxi if x > maxi else x for x in s]
 

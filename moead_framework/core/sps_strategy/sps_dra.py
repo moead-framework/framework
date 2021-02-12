@@ -16,8 +16,8 @@ class SpsDra(SpsStrategy):
     def get_sub_problems(self):
         """
         Select at first the indexes of the sub problems whose objectives are MOP
-        individual objectives fi ([1, 0] and [0, 1] for example)
-        and add sub problems with a 10-tournament
+        individual objectives fi (i.e. boundaries sub-problems)
+        and add sub-problems with a 10-tournament
 
         :return: {list<integer>} indexes of sub-problems
         """
@@ -52,6 +52,11 @@ class SpsDra(SpsStrategy):
         return selection
 
     def get_xtrem_index(self):
+        """
+        get boundaries sub-problems
+
+        :return: {list<integer>} indexes of sub-problems
+        """
         xtrem_index = []
         for i in range(self.algorithm.number_of_weight):
             weight = self.algorithm.weights[i]

@@ -336,7 +336,7 @@
 
     <span class="k">def</span> <span class="nf">initial_population</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Initialize the population of :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`</span>
+<span class="sd">        Initialize the population of solution</span>
 
 <span class="sd">        :return: {List&lt;:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`&gt;}</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -371,7 +371,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update the reference point z with coordinates of the solution in parameter if coordinates are better.</span>
 
-<span class="sd">        :param solution: :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`</span>
+<span class="sd">        :param solution: :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution` solution used to update the reference point</span>
 <span class="sd">        :return:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">number_of_objective</span><span class="p">):</span>

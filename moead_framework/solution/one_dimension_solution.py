@@ -5,16 +5,17 @@ class OneDimensionSolution(Solution):
     """
     Represent a one dimension solution for combinatorial and numerical problems
     """
+
     solution = []  #: :{list} all objectives values of the solution.
-    distance = 0  #: :{integer} optional - can be used to compute a distance (crowding distance, ...)
-    F = []  # : :{list} all objectives values of the solution. The default value is None if the solution is not evaluated.
+    F = []         #: :{list} all objectives values of the solution.
+    distance = 0   #: :{integer} optional - can be used to compute a distance (crowding distance, ...)
 
     def __init__(self, solution, f=None):
         """
+        Constructor of the solution
 
         :param solution: {list} all decision variables of the solution
-        :param f: {list} all objectives values of the solution. The default value
-        is None if the solution is not evaluated.
+        :param f: {list<float>} all objectives values of the solution. The default value is None if the solution is not evaluated.
         """
         super().__init__(solution, f)
         self.distance = 0
@@ -30,4 +31,3 @@ class OneDimensionSolution(Solution):
 
     def __copy__(self):
         return OneDimensionSolution(self.solution[:], self.F[:])
-

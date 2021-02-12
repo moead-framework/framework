@@ -156,15 +156,15 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Tchebycheff aggregation function.</span>
 
-<span class="sd">    Minimize the maximal distance |f_i(x) - z_i(x)| * w_i</span>
+<span class="sd">    Minimize the maximal distance \|f_i(x) - z_i(x)\| * w_i</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Tchebycheff.is_better"><a class="viewcode-back" href="../../../moead_framework/moead_framework.aggregation.tchebycheff.Tchebycheff.html#moead_framework.aggregation.tchebycheff.Tchebycheff.is_better">[docs]</a>    <span class="k">def</span> <span class="nf">is_better</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">old_value</span><span class="p">,</span> <span class="n">new_value</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Allow to compare 2 aggregations values for the tchebycheff function in a minimization context.</span>
 
-<span class="sd">        :param old_value: {float}</span>
-<span class="sd">        :param new_value: {float}</span>
+<span class="sd">        :param old_value: {float} old aggregation value</span>
+<span class="sd">        :param new_value: {float} new aggregation value</span>
 <span class="sd">        :return: {boolean} True if new_value is better than old_value.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">new_value</span> <span class="o">&lt;</span> <span class="n">old_value</span></div>

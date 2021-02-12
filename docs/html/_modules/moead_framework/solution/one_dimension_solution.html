@@ -156,16 +156,17 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Represent a one dimension solution for combinatorial and numerical problems</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">solution</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1">#: :{list} all objectives values of the solution.</span>
-    <span class="n">distance</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1">#: :{integer} optional - can be used to compute a distance (crowding distance, ...)</span>
-    <span class="n">F</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># : :{list} all objectives values of the solution. The default value is None if the solution is not evaluated.</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="p">[]</span>         <span class="c1">#: :{list} all objectives values of the solution.</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="mi">0</span>   <span class="c1">#: :{integer} optional - can be used to compute a distance (crowding distance, ...)</span>
 
 <div class="viewcode-block" id="OneDimensionSolution.__init__"><a class="viewcode-back" href="../../../moead_framework/moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solution</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor of the solution</span>
 
 <span class="sd">        :param solution: {list} all decision variables of the solution</span>
-<span class="sd">        :param f: {list} all objectives values of the solution. The default value</span>
-<span class="sd">        is None if the solution is not evaluated.</span>
+<span class="sd">        :param f: {list&lt;float&gt;} all objectives values of the solution. The default value is None if the solution is not evaluated.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">solution</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">distance</span> <span class="o">=</span> <span class="mi">0</span></div>
@@ -181,7 +182,6 @@
 
     <span class="k">def</span> <span class="nf">__copy__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">OneDimensionSolution</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solution</span><span class="p">[:],</span> <span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="p">[:])</span></div>
-
 </pre></div>
 
            </div>

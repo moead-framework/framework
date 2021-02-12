@@ -11,6 +11,8 @@ class KnapsackProblem(Problem):
     """
     def __init__(self, number_of_objective, instance_file):
         """
+        Constructor of the problem
+
         :param number_of_objective: {integer}
         :param instance_file: {string} txt file of the instance: http://www-desir.lip6.fr/~lustt/Research.html#MOKP
         """
@@ -60,6 +62,13 @@ class KnapsackProblem(Problem):
             return -profit - self.penality(function_id) * (weight - self.capacities[function_id]) # minimize the profit
 
     def profit_of_solution(self, function_id, solution):
+        """
+        Return the profit of the solution for the objective function_id
+
+        :param function_id: {integer} index of the objective function
+        :param solution: {list<integer>} representation of the solution
+        :return: {float} profit of the solution
+        """
         res = 0
         for i in range(0, self.number_of_objects):
             res += (self.profits[function_id][i] * solution[i])
@@ -67,6 +76,13 @@ class KnapsackProblem(Problem):
         return res
 
     def weight_of_solution(self, function_id, solution):
+        """
+        Return the weight of the solution for the objective function_id
+
+        :param function_id: {integer} index of the objective function
+        :param solution: {list<integer>} representation of the solution
+        :return: {float} weight of the solution
+        """
         res = 0
         for i in range(0, self.number_of_objects):
             res += (self.weights[function_id][i] * solution[i])
@@ -74,6 +90,12 @@ class KnapsackProblem(Problem):
         return res
 
     def penality(self, function_id):
+        """
+        Compute the penality for the specific objective
+
+        :param function_id: {integer} index of the objective function
+        :return: {float} penality value
+        """
         max_founded = 0
         for i in range(0, self.number_of_objects):
             tmp = self.profits[function_id][i] / self.weights[function_id][i]

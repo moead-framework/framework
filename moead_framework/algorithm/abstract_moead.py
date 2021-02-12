@@ -185,7 +185,7 @@ class AbstractMoead:
 
     def initial_population(self):
         """
-        Initialize the population of :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`
+        Initialize the population of solution
 
         :return: {List<:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`>}
         """
@@ -220,7 +220,7 @@ class AbstractMoead:
         """
         Update the reference point z with coordinates of the solution in parameter if coordinates are better.
 
-        :param solution: :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`
+        :param solution: :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution` solution used to update the reference point
         :return:
         """
         for i in range(self.number_of_objective):

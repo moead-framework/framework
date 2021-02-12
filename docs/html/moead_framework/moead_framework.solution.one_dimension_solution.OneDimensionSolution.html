@@ -179,15 +179,15 @@
 <dl class="method">
 <dt id="moead_framework.solution.one_dimension_solution.OneDimensionSolution.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">solution</em>, <em class="sig-param">f=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/solution/one_dimension_solution.html#OneDimensionSolution.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.solution.one_dimension_solution.OneDimensionSolution.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Constructor of the solution</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>solution</strong> – {list} all decision variables of the solution</p></li>
-<li><p><strong>f</strong> – {list} all objectives values of the solution. The default value</p></li>
+<li><p><strong>f</strong> – {list&lt;float&gt;} all objectives values of the solution. The default value is None if the solution is not evaluated.</p></li>
 </ul>
 </dd>
 </dl>
-<p>is None if the solution is not evaluated.</p>
 </dd></dl>
 
 <p class="rubric">Methods</p>
@@ -198,12 +198,7 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.solution.one_dimension_solution.OneDimensionSolution.__init__" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(solution[, f])</p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">param solution</dt>
-<dd class="field-odd"><p>{list} all decision variables of the solution</p>
-</dd>
-</dl>
-</p></td>
+<td><p>Constructor of the solution</p></td>
 </tr>
 </tbody>
 </table>
@@ -214,8 +209,8 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">F</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.solution.one_dimension_solution.OneDimensionSolution.F" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution.F"><code class="xref py py-obj docutils literal notranslate"><span class="pre">F</span></code></a></p></td>
+<td><p>{list} all objectives values of the solution.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.solution.one_dimension_solution.OneDimensionSolution.distance" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance</span></code></a></p></td>
 <td><p>{integer} optional - can be used to compute a distance (crowding distance, …)</p></td>
@@ -225,6 +220,12 @@
 </tr>
 </tbody>
 </table>
+<dl class="attribute">
+<dt id="moead_framework.solution.one_dimension_solution.OneDimensionSolution.F">
+<code class="sig-name descname">F</code><em class="property"> = []</em><a class="headerlink" href="#moead_framework.solution.one_dimension_solution.OneDimensionSolution.F" title="Permalink to this definition">¶</a></dt>
+<dd><p>{list} all objectives values of the solution.</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="moead_framework.solution.one_dimension_solution.OneDimensionSolution.distance">
 <code class="sig-name descname">distance</code><em class="property"> = 0</em><a class="headerlink" href="#moead_framework.solution.one_dimension_solution.OneDimensionSolution.distance" title="Permalink to this definition">¶</a></dt>

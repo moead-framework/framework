@@ -8,6 +8,8 @@ class ClosestNeighborsSelector(MatingPoolSelector):
 
     def select(self, sub_problem):
         """
+        Select the mating pool.
+
         :param sub_problem: {integer} index of the current sub-problem visited
         :return: {list<integer>}
         """
