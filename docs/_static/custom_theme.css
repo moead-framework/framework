@@ -13,3 +13,7 @@
 .wy-body-for-nav .wy-nav-content-wrap a:visited {
     color: #2980B9;
 }
+
+.wy-menu-vertical li.current a, .wy-menu-vertical li.toctree-l2.current > a{
+    padding: .4045em 1.427em;
+}

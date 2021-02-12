@@ -86,6 +86,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorials</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#implement-your-own-problem">Implement your own problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#implement-your-own-algorithm">Implement your own algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#manage-the-reproducibility-of-results">Manage the reproducibility of results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#save-data-with-the-framework">Save data with the framework</a></li>
 </ul>
 </li>
@@ -239,6 +240,28 @@ components that you can set in parameter of the algorithm contructor.</p>
 a new algorithm by extending an available algorithm. Examples are available in this repository : <a class="reference external" href="https://github.com/moead-framework/framework/tree/master/moead_framework/algorithm">https://github.com/moead-framework/framework/tree/master/moead_framework/algorithm</a>.</p>
 <p>For example with the implementation of MOEA/D-DE <a class="bibtex reference internal" href="references.html#moead-de" id="id1">[LZ09]</a> in the class <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.algorithm.combinatorial.moead_delta_nr</span></code> that extends <strong>Moead</strong> to rewrite the
 function update_solutions() and add two new parameters.</p>
+</div>
+<div class="section" id="manage-the-reproducibility-of-results">
+<h2>Manage the reproducibility of results<a class="headerlink" href="#manage-the-reproducibility-of-results" title="Permalink to this headline">¶</a></h2>
+<p>Reproducibility of results is a major principle for scientific research.
+The feature used here is not specific to the framework but
+can be used for every python project that uses the random and numpy modules.</p>
+<p>Because the framework uses the random and numpy modules, you can be sure
+to have the same results by running the same script several times if you
+add the following instructions before initializing problems or algorithms:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can find more information with the following links:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/random.html">https://docs.python.org/3/library/random.html</a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html">https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html</a></p></li>
+</ul>
 </div>
 <div class="section" id="save-data-with-the-framework">
 <h2>Save data with the framework<a class="headerlink" href="#save-data-with-the-framework" title="Permalink to this headline">¶</a></h2>
