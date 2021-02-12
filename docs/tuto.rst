@@ -93,6 +93,33 @@ For example with the implementation of MOEA/D-DE :cite:`moead_de` in the class :
 function update_solutions() and add two new parameters. 
 
 
+Manage the reproducibility of results
+--------------------------------------------------------------------
+
+Reproducibility of results is a major principle for scientific research.
+The feature used here is not specific to the framework but
+can be used for every python project that uses the random and numpy modules.
+
+Because the framework uses the random and numpy modules, you can be sure
+to have the same results by running the same script several times if you
+add the following instructions before initializing problems or algorithms:
+
+.. code-block:: python
+
+    import random
+    import numpy
+
+    seed = 0
+    random.seed(seed)
+    np.random.seed(seed)
+
+
+You can find more information with the following links:
+
+- https://docs.python.org/3/library/random.html
+- https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html
+
+
 Save data with the framework
 --------------------------------------------------------------------
 
