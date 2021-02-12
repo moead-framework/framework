@@ -1,4 +1,4 @@
-.. _components:
+.. _api:
 
 Library Reference
 ===========================================

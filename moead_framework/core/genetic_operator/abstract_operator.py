@@ -4,6 +4,12 @@ from abc import ABC, abstractmethod
 class GeneticOperator(ABC):
 
     def __init__(self, solutions, **kwargs):
+        """
+        Constructor of the genetic operator.
+
+        :param solutions: list<list<integer>> list of solution's representation (In algorithms, it is represented by the attribute :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution` of the class :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`)
+        :param kwargs: optional arguments for the genetic operator
+        """
         self.solutions = solutions
 
     @abstractmethod

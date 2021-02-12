@@ -179,11 +179,19 @@
 <em class="property">class </em><code class="sig-prename descclassname">moead_framework.core.genetic_operator.combinatorial.crossover.</code><code class="sig-name descname">Crossover</code><span class="sig-paren">(</span><em class="sig-param">solutions</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/genetic_operator/combinatorial/crossover.html#Crossover"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.genetic_operator.combinatorial.crossover.Crossover" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.core.genetic_operator.abstract_operator.GeneticOperator</span></code></p>
 <p>Multi-point crossover.</p>
-<p>Require 2 solutions, run a crossover according to the number of points crossover_points.</p>
+<p>Require 2 solutions, run a crossover according to the number of points wanted.</p>
 <dl class="method">
 <dt id="moead_framework.core.genetic_operator.combinatorial.crossover.Crossover.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">solutions</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/genetic_operator/combinatorial/crossover.html#Crossover.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.genetic_operator.combinatorial.crossover.Crossover.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+<dd><p>Constructor of the Crossover operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>solutions</strong> – list&lt;list&lt;integer&gt;&gt; list of solution’s representation (In algorithms, it is represented by the attribute <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution"><code class="xref py py-class docutils literal notranslate"><span class="pre">solution</span></code></a> of the class <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>)</p></li>
+<li><p><strong>crossover_points</strong> – {integer} the number of points for the crossover</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <p class="rubric">Methods</p>
@@ -194,7 +202,7 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.core.genetic_operator.combinatorial.crossover.Crossover.__init__" title="moead_framework.core.genetic_operator.combinatorial.crossover.Crossover.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(solutions, **kwargs)</p></td>
-<td><p>Initialize self.</p></td>
+<td><p>Constructor of the Crossover operator</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.core.genetic_operator.combinatorial.crossover.Crossover.number_of_solution_is_correct" title="moead_framework.core.genetic_operator.combinatorial.crossover.Crossover.number_of_solution_is_correct"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_solution_is_correct</span></code></a>(n)</p></td>
 <td><p>Secure the number of solutions required by the operator.</p></td>

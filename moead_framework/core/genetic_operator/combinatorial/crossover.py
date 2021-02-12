@@ -7,10 +7,16 @@ class Crossover(GeneticOperator):
     """
     Multi-point crossover.
 
-    Require 2 solutions, run a crossover according to the number of points crossover_points.
+    Require 2 solutions, run a crossover according to the number of points wanted.
     """
 
     def __init__(self, solutions, **kwargs):
+        """
+        Constructor of the Crossover operator
+
+        :param solutions: list<list<integer>> list of solution's representation (In algorithms, it is represented by the attribute :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution` of the class :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`)
+        :param crossover_points: {integer} the number of points for the crossover
+        """
         super().__init__(solutions, **kwargs)
         if kwargs.get("crossover_points") is None:
             self.crossover_points = 1

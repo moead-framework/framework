@@ -9,8 +9,8 @@ class WeightedSum(AggregationFunction):
         """
         Allow to compare 2 aggregations values for the weighted-sum function in a minimization context.
 
-        :param old_value: {float}
-        :param new_value: {float}
+        :param old_value: {float} old aggregation value
+        :param new_value: {float} new aggregation value
         :return: {boolean} True if new_value is better than old_value.
         """
         return new_value < old_value

@@ -162,6 +162,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="KnapsackProblem.__init__"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.problem.combinatorial.knapsack.KnapsackProblem.html#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_of_objective</span><span class="p">,</span> <span class="n">instance_file</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor of the problem</span>
+
 <span class="sd">        :param number_of_objective: {integer}</span>
 <span class="sd">        :param instance_file: {string} txt file of the instance: http://www-desir.lip6.fr/~lustt/Research.html#MOKP</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -210,28 +212,48 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="o">-</span><span class="n">profit</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">penality</span><span class="p">(</span><span class="n">function_id</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">weight</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">capacities</span><span class="p">[</span><span class="n">function_id</span><span class="p">])</span> <span class="c1"># minimize the profit</span></div>
 
-    <span class="k">def</span> <span class="nf">profit_of_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function_id</span><span class="p">,</span> <span class="n">solution</span><span class="p">):</span>
+<div class="viewcode-block" id="KnapsackProblem.profit_of_solution"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.problem.combinatorial.knapsack.KnapsackProblem.html#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.profit_of_solution">[docs]</a>    <span class="k">def</span> <span class="nf">profit_of_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function_id</span><span class="p">,</span> <span class="n">solution</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the profit of the solution for the objective function_id</span>
+
+<span class="sd">        :param function_id: {integer} index of the objective function</span>
+<span class="sd">        :param solution: {list&lt;integer&gt;} representation of the solution</span>
+<span class="sd">        :return: {float} profit of the solution</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_of_objects</span><span class="p">):</span>
             <span class="n">res</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">profits</span><span class="p">[</span><span class="n">function_id</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">solution</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 
-        <span class="k">return</span> <span class="n">res</span>
+        <span class="k">return</span> <span class="n">res</span></div>
 
-    <span class="k">def</span> <span class="nf">weight_of_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function_id</span><span class="p">,</span> <span class="n">solution</span><span class="p">):</span>
+<div class="viewcode-block" id="KnapsackProblem.weight_of_solution"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.problem.combinatorial.knapsack.KnapsackProblem.html#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.weight_of_solution">[docs]</a>    <span class="k">def</span> <span class="nf">weight_of_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function_id</span><span class="p">,</span> <span class="n">solution</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the weight of the solution for the objective function_id</span>
+
+<span class="sd">        :param function_id: {integer} index of the objective function</span>
+<span class="sd">        :param solution: {list&lt;integer&gt;} representation of the solution</span>
+<span class="sd">        :return: {float} weight of the solution</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_of_objects</span><span class="p">):</span>
             <span class="n">res</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="n">function_id</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">solution</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 
-        <span class="k">return</span> <span class="n">res</span>
+        <span class="k">return</span> <span class="n">res</span></div>
 
-    <span class="k">def</span> <span class="nf">penality</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function_id</span><span class="p">):</span>
+<div class="viewcode-block" id="KnapsackProblem.penality"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.problem.combinatorial.knapsack.KnapsackProblem.html#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.penality">[docs]</a>    <span class="k">def</span> <span class="nf">penality</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute the penality for the specific objective</span>
+
+<span class="sd">        :param function_id: {integer} index of the objective function</span>
+<span class="sd">        :return: {float} penality value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">max_founded</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_of_objects</span><span class="p">):</span>
             <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">profits</span><span class="p">[</span><span class="n">function_id</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="n">function_id</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">tmp</span> <span class="o">&gt;</span> <span class="n">max_founded</span><span class="p">:</span>
                 <span class="n">max_founded</span> <span class="o">=</span> <span class="n">tmp</span>
 
-        <span class="k">return</span> <span class="n">max_founded</span>
+        <span class="k">return</span> <span class="n">max_founded</span></div>
 
 <div class="viewcode-block" id="KnapsackProblem.generate_random_solution"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.problem.combinatorial.knapsack.KnapsackProblem.html#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.generate_random_solution">[docs]</a>    <span class="k">def</span> <span class="nf">generate_random_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_solution</span><span class="p">(</span><span class="n">array</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_of_objects</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[:],</span> <span class="n">evaluate</span><span class="o">=</span><span class="n">evaluate</span><span class="p">)</span></div>

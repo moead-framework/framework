@@ -15,6 +15,8 @@ class Zdt1(Problem):
 
     def __init__(self, size):
         """
+        Constructor of the problem
+
         :param size: {integer} number of variables in a solution
         """
         self.n = size

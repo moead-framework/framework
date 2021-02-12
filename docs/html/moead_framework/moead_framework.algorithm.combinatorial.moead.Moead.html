@@ -224,7 +224,7 @@
 <td><p>Initialize the reference point z</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead.Moead.initial_population" title="moead_framework.algorithm.combinatorial.moead.Moead.initial_population"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initial_population</span></code></a>()</p></td>
-<td><p>Initialize the population of <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a></p></td>
+<td><p>Initialize the population of solution</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.combinatorial.moead.Moead.mating_pool_selection" title="moead_framework.algorithm.combinatorial.moead.Moead.mating_pool_selection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mating_pool_selection</span></code></a>(sub_problem)</p></td>
 <td><p>Select the set of solutions where future parents solutions will be selected according to the current sub-problem visited</p></td>
@@ -298,7 +298,7 @@ This function calls the component <code class="xref py py-class docutils literal
 <dl class="method">
 <dt id="moead_framework.algorithm.combinatorial.moead.Moead.initial_population">
 <code class="sig-name descname">initial_population</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead.Moead.initial_population" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize the population of <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a></p>
+<dd><p>Initialize the population of solution</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>{List&lt;<a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>&gt;}</p>
@@ -386,7 +386,7 @@ This function calls the component <code class="xref py py-class docutils literal
 <dd><p>Update the reference point z with coordinates of the solution in parameter if coordinates are better.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>solution</strong> – <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a></p>
+<dd class="field-odd"><p><strong>solution</strong> – <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a> solution used to update the reference point</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p></p>

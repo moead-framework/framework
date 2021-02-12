@@ -6,10 +6,16 @@ class BinaryMutation(GeneticOperator):
     """
     Binary Mutation operator.
 
-    Require only one solution. Try to mutate each bit of the solution with the probability mutation_probability
+    Require only one solution. Try to mutate each bit of the solution with a predefined probability.
     """
 
     def __init__(self, solutions, **kwargs):
+        """
+        Constructor of the Binary Mutation operator
+
+        :param solutions: list<list<integer>> list of solution's representation (In algorithms, it is represented by the attribute :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution` of the class :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`)
+        :param mutation_probability: {float} the probability to mutation a bit in the solution is 'mutation_probability / size(solution)'
+        """
         super().__init__(solutions, **kwargs)
         if kwargs.get("mutation_probability") is None:
             self.mutation_probability = 1

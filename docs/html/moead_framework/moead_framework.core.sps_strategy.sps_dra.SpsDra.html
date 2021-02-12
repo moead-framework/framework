@@ -188,7 +188,8 @@ doi: 10.1109/CEC.2009.4982949.</p>
 <dl class="method">
 <dt id="moead_framework.core.sps_strategy.sps_dra.SpsDra.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">algorithm_instance</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.core.sps_strategy.sps_dra.SpsDra.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Constructor of the Sub-Problem Selection Strategy</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>algorithm_instance</strong> – {<code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractMoead</span></code>} instance of the algorithm</p>
 </dd>
@@ -203,18 +204,13 @@ doi: 10.1109/CEC.2009.4982949.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.core.sps_strategy.sps_dra.SpsDra.__init__" title="moead_framework.core.sps_strategy.sps_dra.SpsDra.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(algorithm_instance)</p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">param algorithm_instance</dt>
-<dd class="field-odd"><p>{<code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractMoead</span></code>} instance of the algorithm</p>
-</dd>
-</dl>
-</p></td>
+<td><p>Constructor of the Sub-Problem Selection Strategy</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.core.sps_strategy.sps_dra.SpsDra.get_sub_problems" title="moead_framework.core.sps_strategy.sps_dra.SpsDra.get_sub_problems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_sub_problems</span></code></a>()</p></td>
-<td><p>Select at first the indexes of the sub problems whose objectives are MOP individual objectives fi ([1, 0] and [0, 1] for example) and add sub problems with a 10-tournament</p></td>
+<td><p>Select at first the indexes of the sub problems whose objectives are MOP individual objectives fi (i.e.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_xtrem_index</span></code>()</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.core.sps_strategy.sps_dra.SpsDra.get_xtrem_index" title="moead_framework.core.sps_strategy.sps_dra.SpsDra.get_xtrem_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_xtrem_index</span></code></a>()</p></td>
+<td><p>get boundaries sub-problems</p></td>
 </tr>
 </tbody>
 </table>
@@ -222,8 +218,19 @@ doi: 10.1109/CEC.2009.4982949.</p>
 <dt id="moead_framework.core.sps_strategy.sps_dra.SpsDra.get_sub_problems">
 <code class="sig-name descname">get_sub_problems</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/sps_strategy/sps_dra.html#SpsDra.get_sub_problems"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.sps_strategy.sps_dra.SpsDra.get_sub_problems" title="Permalink to this definition">¶</a></dt>
 <dd><p>Select at first the indexes of the sub problems whose objectives are MOP
-individual objectives fi ([1, 0] and [0, 1] for example)
-and add sub problems with a 10-tournament</p>
+individual objectives fi (i.e. boundaries sub-problems)
+and add sub-problems with a 10-tournament</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>{list&lt;integer&gt;} indexes of sub-problems</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="moead_framework.core.sps_strategy.sps_dra.SpsDra.get_xtrem_index">
+<code class="sig-name descname">get_xtrem_index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/sps_strategy/sps_dra.html#SpsDra.get_xtrem_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.sps_strategy.sps_dra.SpsDra.get_xtrem_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>get boundaries sub-problems</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>{list&lt;integer&gt;} indexes of sub-problems</p>

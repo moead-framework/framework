@@ -158,10 +158,16 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Multi-point crossover.</span>
 
-<span class="sd">    Require 2 solutions, run a crossover according to the number of points crossover_points.</span>
+<span class="sd">    Require 2 solutions, run a crossover according to the number of points wanted.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Crossover.__init__"><a class="viewcode-back" href="../../../../../moead_framework/moead_framework.core.genetic_operator.combinatorial.crossover.Crossover.html#moead_framework.core.genetic_operator.combinatorial.crossover.Crossover.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solutions</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor of the Crossover operator</span>
+
+<span class="sd">        :param solutions: list&lt;list&lt;integer&gt;&gt; list of solution&#39;s representation (In algorithms, it is represented by the attribute :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution` of the class :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`)</span>
+<span class="sd">        :param crossover_points: {integer} the number of points for the crossover</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">solutions</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;crossover_points&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">crossover_points</span> <span class="o">=</span> <span class="mi">1</span>

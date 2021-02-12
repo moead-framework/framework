@@ -186,7 +186,8 @@
 <dl class="method">
 <dt id="moead_framework.problem.numerical.zdt.Zdt1.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">size</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/numerical/zdt.html#Zdt1.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.numerical.zdt.Zdt1.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Constructor of the problem</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>size</strong> – {integer} number of variables in a solution</p>
 </dd>
@@ -201,21 +202,16 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.problem.numerical.zdt.Zdt1.__init__" title="moead_framework.problem.numerical.zdt.Zdt1.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(size)</p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">param size</dt>
-<dd class="field-odd"><p>{integer} number of variables in a solution</p>
-</dd>
-</dl>
-</p></td>
+<td><p>Constructor of the problem</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.problem.numerical.zdt.Zdt1.f" title="moead_framework.problem.numerical.zdt.Zdt1.f"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f</span></code></a>(function_id, solution)</p></td>
 <td><p>Evaluate the solution for the objective function_id</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.problem.numerical.zdt.Zdt1.generate_random_solution" title="moead_framework.problem.numerical.zdt.Zdt1.generate_random_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_random_solution</span></code></a>([evaluate])</p></td>
-<td><p>Generate a random Solution for the current problem</p></td>
+<td><p>Generate a random solution for the current problem</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.problem.numerical.zdt.Zdt1.generate_solution" title="moead_framework.problem.numerical.zdt.Zdt1.generate_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_solution</span></code></a>(array[, evaluate])</p></td>
-<td><p>Generate a predefined Solution for the current problem with array</p></td>
+<td><p>Generate a predefined solution for the current problem with array</p></td>
 </tr>
 </tbody>
 </table>
@@ -227,7 +223,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>function_id</strong> – {integer} index of the objective</p></li>
-<li><p><strong>solution</strong> – {<code class="xref py py-class docutils literal notranslate"><span class="pre">one_dimension_solution</span></code>} solution to evaluate</p></li>
+<li><p><strong>solution</strong> – {<a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>} solution to evaluate</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -239,10 +235,10 @@
 <dl class="method">
 <dt id="moead_framework.problem.numerical.zdt.Zdt1.generate_random_solution">
 <code class="sig-name descname">generate_random_solution</code><span class="sig-paren">(</span><em class="sig-param">evaluate=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/numerical/zdt.html#Zdt1.generate_random_solution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.numerical.zdt.Zdt1.generate_random_solution" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate a random Solution for the current problem</p>
+<dd><p>Generate a random solution for the current problem</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>evaluate</strong> – Boolean: specify if the new solution is evaluated. The default value is True.</p>
+<dd class="field-odd"><p><strong>evaluate</strong> – {boolean} specify if the new solution is evaluated. The default value is True.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>{<a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>}</p>
@@ -253,12 +249,12 @@
 <dl class="method">
 <dt id="moead_framework.problem.numerical.zdt.Zdt1.generate_solution">
 <code class="sig-name descname">generate_solution</code><span class="sig-paren">(</span><em class="sig-param">array</em>, <em class="sig-param">evaluate=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/numerical/zdt.html#Zdt1.generate_solution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.numerical.zdt.Zdt1.generate_solution" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate a predefined Solution for the current problem with array</p>
+<dd><p>Generate a predefined solution for the current problem with array</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>array</strong> – List: all decision variables of the Solution</p></li>
-<li><p><strong>evaluate</strong> – Boolean: specify if the new solution is evaluated. The default value is True.</p></li>
+<li><p><strong>array</strong> – {list&lt;integer&gt;} all decision variables of the Solution</p></li>
+<li><p><strong>evaluate</strong> – {boolean} specify if the new solution is evaluated. The default value is True.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

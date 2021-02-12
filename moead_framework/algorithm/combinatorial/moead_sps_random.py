@@ -4,7 +4,7 @@ from moead_framework.core.sps_strategy.sps_random_and_boundaries import SpsRando
 
 class MoeadSPSRandom(Moead):
     """
-    Implementation of MOEA/D with the component SPS Random.
+    Implementation of MOEA/D with the component :class:`~moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries`.
     """
 
     def __init__(self, problem,
