@@ -17,7 +17,7 @@ class ToolsTest(unittest.TestCase):
         project_path = os.path.dirname(os.path.abspath(__file__))
         self.rmnk = Rmnk(instance_file=project_path + '/data/instances/rmnk_0_2_100_1_0.dat')
         self.rmnk3D = Rmnk(instance_file=project_path + '/data/instances/rmnk_0_3_100_1_0.dat')
-        self.number_of_objective = self.rmnk.function_numbers
+        self.number_of_objective = self.rmnk.number_of_objective
 
     def test_PF(self):
         """Test get Non dominated"""
@@ -62,9 +62,6 @@ class ToolsTest(unittest.TestCase):
             population.append(self.rmnk3D.generate_random_solution())
 
         self.assertEqual(compute_hypervolume(population, [0, 0, 0]), 0.16108679722159508)  # test the hypervolume value
-
-
-
 
     def test_compute_crowding_distance(self):
         """test the function compute_crowding_distance"""

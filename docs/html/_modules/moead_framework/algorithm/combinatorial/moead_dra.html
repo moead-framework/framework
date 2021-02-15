@@ -164,12 +164,12 @@
 
 <div class="viewcode-block" id="MoeadDRA.__init__"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA.html#moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span>
                  <span class="n">max_evaluation</span><span class="p">,</span>
-                 <span class="n">number_of_objective</span><span class="p">,</span>
                  <span class="n">number_of_weight_neighborhood</span><span class="p">,</span>
                  <span class="n">delta</span><span class="p">,</span>
                  <span class="n">number_of_replacement</span><span class="p">,</span>
                  <span class="n">aggregation_function</span><span class="p">,</span>
                  <span class="n">weight_file</span><span class="p">,</span>
+                 <span class="n">number_of_objective</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">number_of_crossover_points</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
                  <span class="n">threshold_before_evaluate_subproblem_utility</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
                  <span class="n">delta_threshold</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
@@ -179,7 +179,6 @@
 
 <span class="sd">        :param problem: {:class:`~moead_framework.problem.Problem`} problem to optimize</span>
 <span class="sd">        :param max_evaluation: {integer} maximum number of evaluation</span>
-<span class="sd">        :param number_of_objective: {integer} number of objective in the problem</span>
 <span class="sd">        :param number_of_weight_neighborhood: {integer} size of the neighborhood</span>
 <span class="sd">        :param delta: {float} probability to use all the population as neighborhood</span>
 <span class="sd">        :param number_of_replacement: {integer} maximum number of solutions replaced in the population for each new offspring generated</span>
@@ -188,6 +187,7 @@
 <span class="sd">        :param number_of_crossover_points: {integer} number of crossover point</span>
 <span class="sd">        :param threshold_before_evaluate_subproblem_utility: Optional -- Threshold before evaluate the subproblem utility. The default value is 50</span>
 <span class="sd">        :param delta_threshold: Optional -- reset the utility if the relative decrease delta_i is under this treshold. The default value is 0.001</span>
+<span class="sd">        :param number_of_objective: Deprecated -- {integer} number of objective in the problem. Deprecated, remove in the next major release.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">problem</span><span class="o">=</span><span class="n">problem</span><span class="p">,</span>

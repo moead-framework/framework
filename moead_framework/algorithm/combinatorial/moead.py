@@ -10,10 +10,10 @@ class Moead(AbstractMoead):
 
     def __init__(self, problem,
                  max_evaluation,
-                 number_of_objective,
                  number_of_weight_neighborhood,
                  aggregation_function,
                  weight_file,
+                 number_of_objective=None,
                  termination_criteria=None,
                  number_of_crossover_points=2,
                  mutation_probability=1,
@@ -29,8 +29,6 @@ class Moead(AbstractMoead):
 
         :param problem: {:class:`~moead_framework.problem.Problem`} problem to optimize
         :param max_evaluation: {integer} maximum number of evaluation
-        :param number_of_objective: {integer} number of objective in the problem
-        :param number_of_weight: {integer} number of weight vector used to decompose the problem
         :param aggregation_function: {:class:`~moead_framework.aggregation.functions.AggregationFunction`}
         :param weight_file: {string} path of the weight file. Each line represent a weight vector, each column represent a coordinate. An exemple is available here: https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws
         :param termination_criteria: Optional -- {:class:`~moead_framework.core.termination_criteria.abstract_termination_criteria.TerminationCriteria`} The default component is {:class:`~moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation`}
@@ -39,12 +37,14 @@ class Moead(AbstractMoead):
         :param mating_pool_selector: Optional -- {:class:`~moead_framework.core.selector.abstract_selector.MatingPoolSelector`} The default selector is {:class:`~moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector`}
         :param sps_strategy: Optional -- {:class:`~moead_framework.core.sps_strategy.abstract_sps.SpsStrategy`} The default strategy is {:class:`~moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems`}
         :param offspring_generator: Optional -- {:class:`~moead_framework.core.offspring_generator.abstract_mating.OffspringGenerator`} The default generator is {:class:`~moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric`}
+        :param number_of_weight: Deprecated -- {integer} number of weight vector used to decompose the problem. Deprecated, remove in the next major release.
+        :param number_of_objective: Deprecated -- {integer} number of objective in the problem. Deprecated, remove in the next major release.
         """
 
         super().__init__(problem,
                          max_evaluation,
-                         number_of_objective,
                          number_of_weight_neighborhood,
+                         number_of_objective=number_of_objective,
                          termination_criteria=termination_criteria,
                          aggregation_function=aggregation_function,
                          genetic_operator=genetic_operator,

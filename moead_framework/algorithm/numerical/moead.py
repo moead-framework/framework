@@ -10,10 +10,10 @@ class Moead(AbstractMoead):
     """
     def __init__(self, problem,
                  max_evaluation,
-                 number_of_objective,
                  number_of_weight_neighborhood,
                  aggregation_function,
                  weight_file,
+                 number_of_objective=None,
                  termination_criteria=None,
                  mating_pool_selector=None,
                  genetic_operator=None,
@@ -37,12 +37,13 @@ class Moead(AbstractMoead):
         :param mating_pool_selector: Optional -- {:class:`~moead_framework.core.selector.abstract_selector.MatingPoolSelector`} The default selector is {:class:`~moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector`}
         :param sps_strategy: Optional -- {:class:`~moead_framework.core.sps_strategy.abstract_sps.SpsStrategy`} The default strategy is {:class:`~moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems`}
         :param offspring_generator: Optional -- {:class:`~moead_framework.core.offspring_generator.abstract_mating.OffspringGenerator`} The default generator is {:class:`~moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric`}
+        :param number_of_objective: Deprecated -- {integer} number of objective in the problem. Deprecated, remove in the next major release.
         """
 
         super().__init__(problem,
                          max_evaluation,
-                         number_of_objective,
                          number_of_weight_neighborhood,
+                         number_of_objective=number_of_objective,
                          aggregation_function=aggregation_function,
                          termination_criteria=termination_criteria,
                          genetic_operator=genetic_operator,

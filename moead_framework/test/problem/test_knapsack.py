@@ -17,7 +17,7 @@ class RmnkTest(unittest.TestCase):
 
     def test_instance(self):
         """Test parameters"""
-        self.assertEqual(self.problem.function_numbers, 2)
+        self.assertEqual(self.problem.number_of_objective, 2)
         self.assertEqual(self.problem.number_of_objects, 250)
 
     def test_generate_random_solution(self):

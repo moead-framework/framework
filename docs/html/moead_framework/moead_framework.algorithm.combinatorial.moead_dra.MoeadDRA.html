@@ -174,7 +174,7 @@
 <h1>moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA<a class="headerlink" href="#moead-framework-algorithm-combinatorial-moead-dra-moeaddra" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA">
-<em class="property">class </em><code class="sig-prename descclassname">moead_framework.algorithm.combinatorial.moead_dra.</code><code class="sig-name descname">MoeadDRA</code><span class="sig-paren">(</span><em class="sig-param">problem</em>, <em class="sig-param">max_evaluation</em>, <em class="sig-param">number_of_objective</em>, <em class="sig-param">number_of_weight_neighborhood</em>, <em class="sig-param">delta</em>, <em class="sig-param">number_of_replacement</em>, <em class="sig-param">aggregation_function</em>, <em class="sig-param">weight_file</em>, <em class="sig-param">number_of_crossover_points=2</em>, <em class="sig-param">threshold_before_evaluate_subproblem_utility=50</em>, <em class="sig-param">delta_threshold=0.001</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/algorithm/combinatorial/moead_dra.html#MoeadDRA"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">moead_framework.algorithm.combinatorial.moead_dra.</code><code class="sig-name descname">MoeadDRA</code><span class="sig-paren">(</span><em class="sig-param">problem</em>, <em class="sig-param">max_evaluation</em>, <em class="sig-param">number_of_weight_neighborhood</em>, <em class="sig-param">delta</em>, <em class="sig-param">number_of_replacement</em>, <em class="sig-param">aggregation_function</em>, <em class="sig-param">weight_file</em>, <em class="sig-param">number_of_objective=None</em>, <em class="sig-param">number_of_crossover_points=2</em>, <em class="sig-param">threshold_before_evaluate_subproblem_utility=50</em>, <em class="sig-param">delta_threshold=0.001</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/algorithm/combinatorial/moead_dra.html#MoeadDRA"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.html#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr" title="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr"><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr</span></code></a></p>
 <p>Implementation of MOEA/D-DRA</p>
 <ol class="upperalpha simple" start="17">
@@ -182,14 +182,13 @@
 </ol>
 <dl class="method">
 <dt id="moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">problem</em>, <em class="sig-param">max_evaluation</em>, <em class="sig-param">number_of_objective</em>, <em class="sig-param">number_of_weight_neighborhood</em>, <em class="sig-param">delta</em>, <em class="sig-param">number_of_replacement</em>, <em class="sig-param">aggregation_function</em>, <em class="sig-param">weight_file</em>, <em class="sig-param">number_of_crossover_points=2</em>, <em class="sig-param">threshold_before_evaluate_subproblem_utility=50</em>, <em class="sig-param">delta_threshold=0.001</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/algorithm/combinatorial/moead_dra.html#MoeadDRA.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">problem</em>, <em class="sig-param">max_evaluation</em>, <em class="sig-param">number_of_weight_neighborhood</em>, <em class="sig-param">delta</em>, <em class="sig-param">number_of_replacement</em>, <em class="sig-param">aggregation_function</em>, <em class="sig-param">weight_file</em>, <em class="sig-param">number_of_objective=None</em>, <em class="sig-param">number_of_crossover_points=2</em>, <em class="sig-param">threshold_before_evaluate_subproblem_utility=50</em>, <em class="sig-param">delta_threshold=0.001</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/algorithm/combinatorial/moead_dra.html#MoeadDRA.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructor of the algorithm.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>problem</strong> – {<code class="xref py py-class docutils literal notranslate"><span class="pre">Problem</span></code>} problem to optimize</p></li>
 <li><p><strong>max_evaluation</strong> – {integer} maximum number of evaluation</p></li>
-<li><p><strong>number_of_objective</strong> – {integer} number of objective in the problem</p></li>
 <li><p><strong>number_of_weight_neighborhood</strong> – {integer} size of the neighborhood</p></li>
 <li><p><strong>delta</strong> – {float} probability to use all the population as neighborhood</p></li>
 <li><p><strong>number_of_replacement</strong> – {integer} maximum number of solutions replaced in the population for each new offspring generated</p></li>
@@ -198,6 +197,7 @@
 <li><p><strong>number_of_crossover_points</strong> – {integer} number of crossover point</p></li>
 <li><p><strong>threshold_before_evaluate_subproblem_utility</strong> – Optional – Threshold before evaluate the subproblem utility. The default value is 50</p></li>
 <li><p><strong>delta_threshold</strong> – Optional – reset the utility if the relative decrease delta_i is under this treshold. The default value is 0.001</p></li>
+<li><p><strong>number_of_objective</strong> – Deprecated – {integer} number of objective in the problem. Deprecated, remove in the next major release.</p></li>
 </ul>
 </dd>
 </dl>

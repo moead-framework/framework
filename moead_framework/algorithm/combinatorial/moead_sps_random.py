@@ -9,11 +9,11 @@ class MoeadSPSRandom(Moead):
 
     def __init__(self, problem,
                  max_evaluation,
-                 number_of_objective,
                  number_of_weight_neighborhood,
                  number_of_subproblem_to_visit,
                  aggregation_function,
                  weight_file,
+                 number_of_objective=None,
                  number_of_crossover_points=2,
                  mating_pool_selector=None,
                  genetic_operator=None,
@@ -32,6 +32,7 @@ class MoeadSPSRandom(Moead):
         :param genetic_operator: Optional -- {:class:`~moead_framework.core.genetic_operator.abstract_operator.GeneticOperator`} The default operator depends of the problem type (combinatorial / numerical)
         :param parent_selector: Optional -- {:class:`~moead_framework.core.parent_selector.abstract_parent_selector.ParentSelector`} The default operator depends of the number of solution required by the genetic operator
         :param mating_pool_selector: Optional -- {:class:`~moead_framework.core.selector.abstract_selector.MatingPoolSelector`} The default selector is {:class:`~moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector`}
+        :param number_of_objective: Deprecated -- {integer} number of objective in the problem. Deprecated, remove in the next major release.
         """
 
         super().__init__(problem=problem,

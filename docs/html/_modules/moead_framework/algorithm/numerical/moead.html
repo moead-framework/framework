@@ -161,10 +161,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Moead.__init__"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.algorithm.numerical.moead.Moead.html#moead_framework.algorithm.numerical.moead.Moead.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span>
                  <span class="n">max_evaluation</span><span class="p">,</span>
-                 <span class="n">number_of_objective</span><span class="p">,</span>
                  <span class="n">number_of_weight_neighborhood</span><span class="p">,</span>
                  <span class="n">aggregation_function</span><span class="p">,</span>
                  <span class="n">weight_file</span><span class="p">,</span>
+                 <span class="n">number_of_objective</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">termination_criteria</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">mating_pool_selector</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">genetic_operator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -188,12 +188,13 @@
 <span class="sd">        :param mating_pool_selector: Optional -- {:class:`~moead_framework.core.selector.abstract_selector.MatingPoolSelector`} The default selector is {:class:`~moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector`}</span>
 <span class="sd">        :param sps_strategy: Optional -- {:class:`~moead_framework.core.sps_strategy.abstract_sps.SpsStrategy`} The default strategy is {:class:`~moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems`}</span>
 <span class="sd">        :param offspring_generator: Optional -- {:class:`~moead_framework.core.offspring_generator.abstract_mating.OffspringGenerator`} The default generator is {:class:`~moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric`}</span>
+<span class="sd">        :param number_of_objective: Deprecated -- {integer} number of objective in the problem. Deprecated, remove in the next major release.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span>
                          <span class="n">max_evaluation</span><span class="p">,</span>
-                         <span class="n">number_of_objective</span><span class="p">,</span>
                          <span class="n">number_of_weight_neighborhood</span><span class="p">,</span>
+                         <span class="n">number_of_objective</span><span class="o">=</span><span class="n">number_of_objective</span><span class="p">,</span>
                          <span class="n">aggregation_function</span><span class="o">=</span><span class="n">aggregation_function</span><span class="p">,</span>
                          <span class="n">termination_criteria</span><span class="o">=</span><span class="n">termination_criteria</span><span class="p">,</span>
                          <span class="n">genetic_operator</span><span class="o">=</span><span class="n">genetic_operator</span><span class="p">,</span>

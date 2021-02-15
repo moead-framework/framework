@@ -24,7 +24,7 @@ class ParentSelectorTest(unittest.TestCase):
         project_path = os.path.dirname(os.path.abspath(__file__))
         self.rmnk = Rmnk(instance_file=project_path + '/data/instances/rmnk_0_2_100_1_0.dat')
 
-        self.number_of_objective = self.rmnk.function_numbers
+        self.number_of_objective = self.rmnk.number_of_objective
         self.number_of_weight = 10
         self.number_of_weight_neighborhood = 10
         self.number_of_crossover_points = 4

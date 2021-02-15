@@ -20,7 +20,7 @@ class AlgorithmsTest(unittest.TestCase):
         project_path = os.path.dirname(os.path.abspath(__file__))
         self.rmnk = Rmnk(instance_file=project_path + '/data/instances/rmnk_0_2_100_1_0.dat')
 
-        self.number_of_objective = self.rmnk.function_numbers
+        self.number_of_objective = self.rmnk.number_of_objective
         self.number_of_weight = 10
         self.number_of_weight_neighborhood = 2
         self.number_of_crossover_points = 4
@@ -38,7 +38,6 @@ class AlgorithmsTest(unittest.TestCase):
 
         moead = Moead(problem=self.rmnk,
                       max_evaluation=self.number_of_evaluations,
-                      number_of_objective=self.number_of_objective,
                       number_of_weight=self.number_of_weight,
                       aggregation_function=Tchebycheff,
                       number_of_weight_neighborhood=self.number_of_weight_neighborhood,

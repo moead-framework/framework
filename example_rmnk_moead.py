@@ -15,13 +15,12 @@ rmnk = Rmnk(instance_file=instance_file)
 #####################################
 #      Initialize the algorithm     #
 #####################################
-number_of_objective = rmnk.function_numbers
 number_of_weight = 10
 number_of_weight_neighborhood = 2
 number_of_crossover_points = 4
 number_of_evaluations = 1000
 # Others weights files are available here : https://github.com/moead-framework/data/tree/master/weights
-weight_file = "moead_framework/test/data/weights/SOBOL-" + str(number_of_objective) + "objs-" + str(number_of_weight) + "wei.ws"
+weight_file = "moead_framework/test/data/weights/SOBOL-" + str(rmnk.number_of_objective) + "objs-" + str(number_of_weight) + "wei.ws"
 
 
 
@@ -30,7 +29,6 @@ weight_file = "moead_framework/test/data/weights/SOBOL-" + str(number_of_objecti
 ###############################
 moead = Moead(problem=rmnk,
               max_evaluation=number_of_evaluations,
-              number_of_objective=number_of_objective,
               number_of_weight_neighborhood=number_of_weight_neighborhood,
               number_of_crossover_points=number_of_crossover_points,
               weight_file=weight_file,
@@ -43,7 +41,7 @@ population = moead.run()
 ###############################
 #       Save the result       #
 ###############################
-save_file = "moead-rmnk" + str(number_of_objective) \
+save_file = "moead-rmnk" + str(rmnk.number_of_objective) \
             + "-N" + str(number_of_weight) \
             + "-T" + str(number_of_weight_neighborhood) \
             + "-CP" + str(number_of_crossover_points) \

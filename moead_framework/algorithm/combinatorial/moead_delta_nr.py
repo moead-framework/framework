@@ -30,7 +30,6 @@ class MoeadDeltaNr(Moead):
 
         :param problem: {:class:`~moead_framework.problem.Problem`} problem to optimize
         :param max_evaluation: {integer} maximum number of evaluation
-        :param number_of_objective: {integer} number of objective in the problem
         :param number_of_weight_neighborhood: {integer} size of the neighborhood
         :param delta: {float} probability to use all the population as neighborhood
         :param number_of_replacement: {integer} maximum number of solutions replaced in the population for each new offspring generated
@@ -40,6 +39,7 @@ class MoeadDeltaNr(Moead):
         :param sps_strategy: Optional -- {:class:`~moead_framework.core.sps_strategy.abstract_sps.SpsStrategy`} The default strategy is {:class:`~moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems`}
         :param number_of_crossover_points: {integer} number of crossover point
         :param mutation_probability: {integer} probability of mutation used by the genetic operator
+        :param number_of_objective: Deprecated -- {integer} number of objective in the problem. Deprecated, remove in the next major release.
         """
 
         mating_pool_selector = DeltaSelector

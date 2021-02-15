@@ -11,7 +11,7 @@ from moead_framework.tool.mop import is_duplicated, get_non_dominated, generate_
 
 class AbstractMoead:
 
-    def __init__(self, problem, max_evaluation, number_of_objective, number_of_weight_neighborhood,
+    def __init__(self, problem, max_evaluation, number_of_weight_neighborhood,
                  aggregation_function, weight_file,
                  termination_criteria=None,
                  genetic_operator=None,
@@ -20,14 +20,14 @@ class AbstractMoead:
                  sps_strategy=None,
                  offspring_generator=None,
                  number_of_weight=None,
+                 number_of_objective=None,
                  ):
         """
         Constructor of the algorithm.
 
         :param problem: {:class:`~moead_framework.problem.Problem`} problem to optimize
         :param max_evaluation: {integer} maximum number of evaluation
-        :param number_of_objective: {integer} number of objective in the problem
-        :param number_of_weight: {integer} number of weight vector used to decompose the problem
+        :param number_of_weight_neighborhood: {integer} size of the neighborhood.
         :param aggregation_function: {:class:`~moead_framework.aggregation.functions.AggregationFunction`}
         :param weight_file: {string} path of the weight file. Each line represent a weight vector, each column represent a coordinate. An exemple is available here: https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws
         :param termination_criteria: Optional -- {:class:`~moead_framework.core.termination_criteria.abstract_termination_criteria.TerminationCriteria`} The default component is {:class:`~moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation`}
@@ -36,14 +36,19 @@ class AbstractMoead:
         :param mating_pool_selector: Optional -- {:class:`~moead_framework.core.selector.abstract_selector.MatingPoolSelector`} The default selector is {:class:`~moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector`}
         :param sps_strategy: Optional -- {:class:`~moead_framework.core.sps_strategy.abstract_sps.SpsStrategy`} The default strategy is {:class:`~moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems`}
         :param offspring_generator: Optional -- {:class:`~moead_framework.core.offspring_generator.abstract_mating.OffspringGenerator`} The default generator is {:class:`~moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric`}
-        :param number_of_weight_neighborhood: Deprecated -- {integer} size of the neighborhood. Deprecated, remove in the next major release.
+        :param number_of_weight: Deprecated -- {integer} number of weight vector used to decompose the problem. Deprecated, remove in the next major release.
+        :param number_of_objective: Deprecated -- {integer} number of objective in the problem. Deprecated, remove in the next major release.
         """
         self.problem = problem
         self.aggregation_function = aggregation_function()
 
-        if number_of_weight_neighborhood is not None:
+        if number_of_weight is not None:
             import warnings
-            warnings.warn("deprecated", DeprecationWarning)
+            warnings.warn("The attribute number_of_weight is deprecated", DeprecationWarning)
+
+        if number_of_objective is not None:
+            import warnings
+            warnings.warn("The attribute number_of_objective is deprecated", DeprecationWarning)
 
         if termination_criteria is None:
             self.termination_criteria = MaxEvaluation(algorithm_instance=self)
@@ -51,7 +56,7 @@ class AbstractMoead:
             self.termination_criteria = termination_criteria(algorithm_instance=self)
 
         self.max_evaluation = max_evaluation
-        self.number_of_objective = number_of_objective
+        self.number_of_objective = self.problem.number_of_objective
         self.t = number_of_weight_neighborhood
         self.ep = []
 

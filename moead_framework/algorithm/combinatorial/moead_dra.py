@@ -13,12 +13,12 @@ class MoeadDRA(MoeadDeltaNr):
 
     def __init__(self, problem,
                  max_evaluation,
-                 number_of_objective,
                  number_of_weight_neighborhood,
                  delta,
                  number_of_replacement,
                  aggregation_function,
                  weight_file,
+                 number_of_objective=None,
                  number_of_crossover_points=2,
                  threshold_before_evaluate_subproblem_utility=50,
                  delta_threshold=0.001,
@@ -28,7 +28,6 @@ class MoeadDRA(MoeadDeltaNr):
 
         :param problem: {:class:`~moead_framework.problem.Problem`} problem to optimize
         :param max_evaluation: {integer} maximum number of evaluation
-        :param number_of_objective: {integer} number of objective in the problem
         :param number_of_weight_neighborhood: {integer} size of the neighborhood
         :param delta: {float} probability to use all the population as neighborhood
         :param number_of_replacement: {integer} maximum number of solutions replaced in the population for each new offspring generated
@@ -37,6 +36,7 @@ class MoeadDRA(MoeadDeltaNr):
         :param number_of_crossover_points: {integer} number of crossover point
         :param threshold_before_evaluate_subproblem_utility: Optional -- Threshold before evaluate the subproblem utility. The default value is 50
         :param delta_threshold: Optional -- reset the utility if the relative decrease delta_i is under this treshold. The default value is 0.001
+        :param number_of_objective: Deprecated -- {integer} number of objective in the problem. Deprecated, remove in the next major release.
         """
 
         super().__init__(problem=problem,
