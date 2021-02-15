@@ -16,13 +16,12 @@ rmnk = Rmnk(instance_file=instance_file)
 ###############################
 #  Initialize the algorithm   #
 ###############################
-number_of_objective = rmnk.function_numbers
 number_of_weight = 10
 number_of_weight_neighborhood = 20
 number_of_evaluations = 1000
 # The file is available here : https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws
 # Others weights files are available here : https://github.com/moead-framework/data/tree/master/weights
-weight_file = "SOBOL-" + str(number_of_objective) + "objs-" + str(number_of_weight) + "wei.ws"
+weight_file = "SOBOL-" + str(rmnk.function_numbers) + "objs-" + str(number_of_weight) + "wei.ws"
 
 
 ###############################
@@ -30,7 +29,6 @@ weight_file = "SOBOL-" + str(number_of_objective) + "objs-" + str(number_of_weig
 ###############################
 moead = Moead(problem=rmnk,
               max_evaluation=number_of_evaluations,
-              number_of_objective=number_of_objective,
               number_of_weight_neighborhood=number_of_weight_neighborhood,
               weight_file=weight_file,
               aggregation_function=Tchebycheff,
@@ -42,7 +40,7 @@ population = moead.run()
 ###############################
 #       Save the result       #
 ###############################
-save_file = "moead-rmnk" + str(number_of_objective) \
+save_file = "moead-rmnk" + str(rmnk.function_numbers) \
             + "-N" + str(number_of_weight) \
             + "-T" + str(number_of_weight_neighborhood) \
             + "-iter" + str(number_of_evaluations) \

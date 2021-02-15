@@ -28,7 +28,7 @@ class KnapsackProblem(Problem):
 
         index_to_split_one = file_content.index("=")
         indexes_to_split = [index_to_split_one]
-        for i in range(1, self.function_numbers - 1):
+        for i in range(1, self.number_of_objective - 1):
             indexes_to_split.append(index_to_split_one * (i+1) + 1)
 
         kps = np.split(np.array(file_content), indexes_to_split)
@@ -110,7 +110,7 @@ class KnapsackProblem(Problem):
     def generate_solution(self, array, evaluate=True):
         x = OneDimensionSolution(array)
 
-        for j in range(self.function_numbers):
+        for j in range(self.number_of_objective):
             if evaluate:
                 x.F.append(self.f(j, x.solution))
             else:

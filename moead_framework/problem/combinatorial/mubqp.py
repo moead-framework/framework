@@ -50,7 +50,7 @@ class Mubqp(Problem):
     def generate_solution(self, array, evaluate=True):
         x = OneDimensionSolution(np.array(array, dtype=int))
 
-        for j in range(self.function_numbers):
+        for j in range(self.number_of_objective):
             if evaluate:
                 x.F.append(self.f(j, x.solution))
             else:

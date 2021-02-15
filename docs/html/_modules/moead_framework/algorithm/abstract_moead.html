@@ -162,7 +162,7 @@
 
 <span class="k">class</span> <span class="nc">AbstractMoead</span><span class="p">:</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">max_evaluation</span><span class="p">,</span> <span class="n">number_of_objective</span><span class="p">,</span> <span class="n">number_of_weight_neighborhood</span><span class="p">,</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">max_evaluation</span><span class="p">,</span> <span class="n">number_of_weight_neighborhood</span><span class="p">,</span>
                  <span class="n">aggregation_function</span><span class="p">,</span> <span class="n">weight_file</span><span class="p">,</span>
                  <span class="n">termination_criteria</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">genetic_operator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -171,14 +171,14 @@
                  <span class="n">sps_strategy</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">offspring_generator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">number_of_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">number_of_objective</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor of the algorithm.</span>
 
 <span class="sd">        :param problem: {:class:`~moead_framework.problem.Problem`} problem to optimize</span>
 <span class="sd">        :param max_evaluation: {integer} maximum number of evaluation</span>
-<span class="sd">        :param number_of_objective: {integer} number of objective in the problem</span>
-<span class="sd">        :param number_of_weight: {integer} number of weight vector used to decompose the problem</span>
+<span class="sd">        :param number_of_weight_neighborhood: {integer} size of the neighborhood.</span>
 <span class="sd">        :param aggregation_function: {:class:`~moead_framework.aggregation.functions.AggregationFunction`}</span>
 <span class="sd">        :param weight_file: {string} path of the weight file. Each line represent a weight vector, each column represent a coordinate. An exemple is available here: https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws</span>
 <span class="sd">        :param termination_criteria: Optional -- {:class:`~moead_framework.core.termination_criteria.abstract_termination_criteria.TerminationCriteria`} The default component is {:class:`~moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation`}</span>
@@ -187,14 +187,19 @@
 <span class="sd">        :param mating_pool_selector: Optional -- {:class:`~moead_framework.core.selector.abstract_selector.MatingPoolSelector`} The default selector is {:class:`~moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector`}</span>
 <span class="sd">        :param sps_strategy: Optional -- {:class:`~moead_framework.core.sps_strategy.abstract_sps.SpsStrategy`} The default strategy is {:class:`~moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems`}</span>
 <span class="sd">        :param offspring_generator: Optional -- {:class:`~moead_framework.core.offspring_generator.abstract_mating.OffspringGenerator`} The default generator is {:class:`~moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric`}</span>
-<span class="sd">        :param number_of_weight_neighborhood: Deprecated -- {integer} size of the neighborhood. Deprecated, remove in the next major release.</span>
+<span class="sd">        :param number_of_weight: Deprecated -- {integer} number of weight vector used to decompose the problem. Deprecated, remove in the next major release.</span>
+<span class="sd">        :param number_of_objective: Deprecated -- {integer} number of objective in the problem. Deprecated, remove in the next major release.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">problem</span> <span class="o">=</span> <span class="n">problem</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">aggregation_function</span> <span class="o">=</span> <span class="n">aggregation_function</span><span class="p">()</span>
 
-        <span class="k">if</span> <span class="n">number_of_weight_neighborhood</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">number_of_weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="kn">import</span> <span class="nn">warnings</span>
-            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;deprecated&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The attribute number_of_weight is deprecated&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">number_of_objective</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">warnings</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The attribute number_of_objective is deprecated&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">termination_criteria</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">termination_criteria</span> <span class="o">=</span> <span class="n">MaxEvaluation</span><span class="p">(</span><span class="n">algorithm_instance</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
@@ -202,7 +207,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">termination_criteria</span> <span class="o">=</span> <span class="n">termination_criteria</span><span class="p">(</span><span class="n">algorithm_instance</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">max_evaluation</span> <span class="o">=</span> <span class="n">max_evaluation</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">number_of_objective</span> <span class="o">=</span> <span class="n">number_of_objective</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">number_of_objective</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">number_of_objective</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">number_of_weight_neighborhood</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ep</span> <span class="o">=</span> <span class="p">[]</span>
 
