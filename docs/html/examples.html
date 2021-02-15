@@ -177,13 +177,12 @@
 <span class="c1">###############################</span>
 <span class="c1">#  Initialize the algorithm   #</span>
 <span class="c1">###############################</span>
-<span class="n">number_of_objective</span> <span class="o">=</span> <span class="n">rmnk</span><span class="o">.</span><span class="n">function_numbers</span>
 <span class="n">number_of_weight</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">number_of_weight_neighborhood</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">number_of_evaluations</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="c1"># The file is available here : https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws</span>
 <span class="c1"># Others weights files are available here : https://github.com/moead-framework/data/tree/master/weights</span>
-<span class="n">weight_file</span> <span class="o">=</span> <span class="s2">&quot;SOBOL-&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_objective</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;objs-&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_weight</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;wei.ws&quot;</span>
+<span class="n">weight_file</span> <span class="o">=</span> <span class="s2">&quot;SOBOL-&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rmnk</span><span class="o">.</span><span class="n">function_numbers</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;objs-&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_weight</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;wei.ws&quot;</span>
 
 
 <span class="c1">###############################</span>
@@ -191,7 +190,6 @@
 <span class="c1">###############################</span>
 <span class="n">moead</span> <span class="o">=</span> <span class="n">Moead</span><span class="p">(</span><span class="n">problem</span><span class="o">=</span><span class="n">rmnk</span><span class="p">,</span>
               <span class="n">max_evaluation</span><span class="o">=</span><span class="n">number_of_evaluations</span><span class="p">,</span>
-              <span class="n">number_of_objective</span><span class="o">=</span><span class="n">number_of_objective</span><span class="p">,</span>
               <span class="n">number_of_weight_neighborhood</span><span class="o">=</span><span class="n">number_of_weight_neighborhood</span><span class="p">,</span>
               <span class="n">weight_file</span><span class="o">=</span><span class="n">weight_file</span><span class="p">,</span>
               <span class="n">aggregation_function</span><span class="o">=</span><span class="n">Tchebycheff</span><span class="p">,</span>
@@ -203,7 +201,7 @@
 <span class="c1">###############################</span>
 <span class="c1">#       Save the result       #</span>
 <span class="c1">###############################</span>
-<span class="n">save_file</span> <span class="o">=</span> <span class="s2">&quot;moead-rmnk&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_objective</span><span class="p">)</span> \
+<span class="n">save_file</span> <span class="o">=</span> <span class="s2">&quot;moead-rmnk&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rmnk</span><span class="o">.</span><span class="n">function_numbers</span><span class="p">)</span> \
             <span class="o">+</span> <span class="s2">&quot;-N&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_weight</span><span class="p">)</span> \
             <span class="o">+</span> <span class="s2">&quot;-T&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_weight_neighborhood</span><span class="p">)</span> \
             <span class="o">+</span> <span class="s2">&quot;-iter&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_evaluations</span><span class="p">)</span> \
