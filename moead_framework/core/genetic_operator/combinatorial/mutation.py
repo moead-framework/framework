@@ -20,7 +20,7 @@ class BinaryMutation(GeneticOperator):
         if kwargs.get("mutation_probability") is None:
             self.mutation_probability = 1 / (len(self.solutions[0]))
         else:
-            self.mutation_probability = int(kwargs.get("mutation_probability"))
+            self.mutation_probability = float(kwargs.get("mutation_probability"))
 
     def run(self):
 
