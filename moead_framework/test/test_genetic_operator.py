@@ -21,7 +21,7 @@ class GeneticOperatorsTest(unittest.TestCase):
         array_solution = [1, 0, 0, 1, 1, 0]
         new_solution = BinaryMutation(solutions=[array_solution]).run()
 
-        self.assertEqual(new_solution, [1, 0, 0, 1, 1, 1])
+        self.assertEqual(new_solution, [0, 0, 0, 1, 1, 0])
 
     def test_combinatorial_crossover(self):
         """Test combinatorial crossover multi-points"""

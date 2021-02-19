@@ -46,8 +46,8 @@ class AlgorithmsTest(unittest.TestCase):
                       )
 
         non_dominated = moead.run()
-        self.assertEqual(len(non_dominated), 9)  # test the number of non_dominated solutions
-        self.assertEqual(compute_hypervolume(non_dominated, [0, 0]), 0.30782449662124794)  # test the hypervolume value
+        self.assertEqual(len(non_dominated), 6)  # test the number of non_dominated solutions
+        self.assertEqual(compute_hypervolume(non_dominated, [0, 0]), 0.3067096309846773)  # test the hypervolume value
 
     def test_moead_delta_nr(self):
         """Test MOEA/D algorithm with parameters delta & nr"""
@@ -67,8 +67,8 @@ class AlgorithmsTest(unittest.TestCase):
 
         non_dominated = moead.run()
 
-        self.assertEqual(len(non_dominated), 5)  # test the number of non_dominated solutions
-        self.assertEqual(compute_hypervolume(non_dominated, [0, 0]), 0.31258792470191915)  # test the hypervolume value
+        self.assertEqual(len(non_dominated), 8)  # test the number of non_dominated solutions
+        self.assertEqual(compute_hypervolume(non_dominated, [0, 0]), 0.3080418229332149)  # test the hypervolume value
 
     def test_moead_sps_random(self):
         """Test MOEA/D algorithm with the random sps strategy"""
@@ -85,8 +85,8 @@ class AlgorithmsTest(unittest.TestCase):
 
         non_dominated = moead.run()
 
-        self.assertEqual(len(non_dominated), 9)  # test the number of non_dominated solutions
-        self.assertEqual(compute_hypervolume(non_dominated, [0, 0]), 0.31389677640758806)  # test the hypervolume value
+        self.assertEqual(len(non_dominated), 6)  # test the number of non_dominated solutions
+        self.assertEqual(compute_hypervolume(non_dominated, [0, 0]), 0.3065340139304028)  # test the hypervolume value
 
     def test_moead_dra(self):
         """Test MOEA/D algorithm with the random sps strategy"""
@@ -106,5 +106,5 @@ class AlgorithmsTest(unittest.TestCase):
 
         non_dominated = moead.run()
 
-        self.assertEqual(len(non_dominated), 10)  # test the number of non_dominated solutions
-        self.assertEqual(compute_hypervolume(non_dominated, [0, 0]), 0.3782449450992227)  # test the hypervolume value
+        self.assertEqual(len(non_dominated), 9)  # test the number of non_dominated solutions
+        self.assertEqual(compute_hypervolume(non_dominated, [0, 0]), 0.33359538462056193)  # test the hypervolume value

@@ -190,7 +190,7 @@ try to mutate each bit of the solution with the predefined probability.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>solutions</strong> – list&lt;list&lt;integer&gt;&gt; list of solution’s representation (In algorithms, it is represented by the attribute <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution"><code class="xref py py-class docutils literal notranslate"><span class="pre">solution</span></code></a> of the class <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>)</p></li>
 <li><p><strong>crossover_points</strong> – {integer} the number of points for the crossover</p></li>
-<li><p><strong>mutation_probability</strong> – {float} the probability to mutation a bit in the solution is ‘mutation_probability / size(solution)’</p></li>
+<li><p><strong>mutation_probability</strong> – {float} the probability (between 0 and 1) to mutate a bit in the solution. The default value is the probability to mutate one bit of the solution</p></li>
 </ul>
 </dd>
 </dl>

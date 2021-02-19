@@ -16,7 +16,7 @@ class CrossoverAndMutation(GeneticOperator):
 
         :param solutions: list<list<integer>> list of solution's representation (In algorithms, it is represented by the attribute :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution` of the class :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`)
         :param crossover_points: {integer} the number of points for the crossover
-        :param mutation_probability: {float} the probability to mutation a bit in the solution is 'mutation_probability / size(solution)'
+        :param mutation_probability: {float} the probability (between 0 and 1) to mutate a bit in the solution. The default value is the probability to mutate one bit of the solution
         """
         super().__init__(solutions, **kwargs)
         if kwargs.get("crossover_points") is None:
@@ -25,7 +25,7 @@ class CrossoverAndMutation(GeneticOperator):
             self.crossover_points = int(kwargs.get("crossover_points"))
 
         if kwargs.get("mutation_probability") is None:
-            self.mutation_probability = 1
+            self.mutation_probability = 1 / (len(self.solutions[0]))
         else:
             self.mutation_probability = int(kwargs.get("mutation_probability"))
 
