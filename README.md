@@ -40,7 +40,7 @@ The package is available in pypi with a linux environment for python 3.6, 3.7, 3
     #####################################
     #      Initialize the algorithm     #
     #####################################
-    number_of_objective = rmnk.function_numbers
+    number_of_objective = rmnk.number_of_objective
     number_of_weight = 10
     number_of_weight_neighborhood = 20
     number_of_evaluations = 1000
