@@ -19,7 +19,7 @@ class MoeadDRA(MoeadDeltaNr):
                  aggregation_function,
                  weight_file,
                  number_of_objective=None,
-                 number_of_crossover_points=2,
+                 number_of_crossover_points=None,
                  threshold_before_evaluate_subproblem_utility=50,
                  delta_threshold=0.001,
                  ):

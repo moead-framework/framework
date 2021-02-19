@@ -21,8 +21,8 @@ class MoeadDeltaNr(Moead):
                  aggregation_function,
                  weight_file,
                  sps_strategy=None,
-                 number_of_crossover_points=2,
-                 mutation_probability=1,
+                 number_of_crossover_points=None,
+                 mutation_probability=None,
                  parent_selector=None,
                  ):
         """

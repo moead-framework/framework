@@ -14,7 +14,7 @@ class MoeadSPSRandom(Moead):
                  aggregation_function,
                  weight_file,
                  number_of_objective=None,
-                 number_of_crossover_points=2,
+                 number_of_crossover_points=None,
                  mating_pool_selector=None,
                  genetic_operator=None,
                  parent_selector=None,
