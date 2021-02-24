@@ -7,13 +7,11 @@ Please note we have a code of conduct, please follow it in all your interactions
 
 ## Pull Request Process
 
-1. Ensure any install or build dependencies are removed before the end of the layer when doing a 
-   build.
-2. Update the README.md with details of changes to the interface, this includes new environment 
-   variables, exposed ports, useful file locations and container parameters.
-3. Update the documentation with a new Pull Request on the repository [https://github.com/moead-framework/documentation](https://github.com/moead-framework/documentation).
-4. Don't forget to add unit tests.
-5. Create a new branch and a Pull Request to merge your work on the **dev** branch of the project.
+1. Update the README.md with details of changes to the interface, this includes new environment 
+   variables and useful file locations.
+2. Update the documentation with a new Pull Request on this repository [https://github.com/moead-framework/framework/tree/master/docs](https://github.com/moead-framework/framework/tree/master/docs).
+3. Don't forget to add unit tests.
+4. Create a new branch and a Pull Request to merge your work on the **dev** branch of the project.
 
 ## Code of Conduct
 
