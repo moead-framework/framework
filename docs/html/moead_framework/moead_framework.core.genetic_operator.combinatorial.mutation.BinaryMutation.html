@@ -182,6 +182,72 @@
             
   <div class="section" id="moead-framework-core-genetic-operator-combinatorial-mutation-binarymutation">
 <h1>moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation<a class="headerlink" href="#moead-framework-core-genetic-operator-combinatorial-mutation-binarymutation" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation">
+<em class="property">class </em><code class="sig-prename descclassname">moead_framework.core.genetic_operator.combinatorial.mutation.</code><code class="sig-name descname">BinaryMutation</code><span class="sig-paren">(</span><em class="sig-param">solutions</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/genetic_operator/combinatorial/mutation.html#BinaryMutation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.core.genetic_operator.abstract_operator.GeneticOperator</span></code></p>
+<p>Binary Mutation operator.</p>
+<p>Require only one solution. Try to mutate each bit of the solution with a predefined probability.</p>
+<dl class="method">
+<dt id="moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">solutions</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/genetic_operator/combinatorial/mutation.html#BinaryMutation.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor of the Binary Mutation operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>solutions</strong> – list&lt;list&lt;integer&gt;&gt; list of solution’s representation (In algorithms, it is represented by the attribute <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution"><code class="xref py py-class docutils literal notranslate"><span class="pre">solution</span></code></a> of the class <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>)</p></li>
+<li><p><strong>mutation_probability</strong> – {float} the probability (between 0 and 1) to mutate a bit in the solution. The default value is the probability to mutate one bit of the solution</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation.__init__" title="moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(solutions, **kwargs)</p></td>
+<td><p>Constructor of the Binary Mutation operator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation.number_of_solution_is_correct" title="moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation.number_of_solution_is_correct"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_solution_is_correct</span></code></a>(n)</p></td>
+<td><p>Secure the number of solutions required by the operator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation.run" title="moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a>()</p></td>
+<td><p>Execute the genetic operator</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation.number_of_solution_is_correct">
+<code class="sig-name descname">number_of_solution_is_correct</code><span class="sig-paren">(</span><em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation.number_of_solution_is_correct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Secure the number of solutions required by the operator.
+it allows to check if the operator has the required number of solutions for the process in run()</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> – {integer} number of solution required by the operator</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/genetic_operator/combinatorial/mutation.html#BinaryMutation.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.genetic_operator.combinatorial.mutation.BinaryMutation.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the genetic operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>{<a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>} the offspring</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

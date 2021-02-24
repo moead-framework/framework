@@ -182,6 +182,97 @@
             
   <div class="section" id="moead-framework-problem-numerical-zdt-zdt1">
 <h1>moead_framework.problem.numerical.zdt.Zdt1<a class="headerlink" href="#moead-framework-problem-numerical-zdt-zdt1" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="moead_framework.problem.numerical.zdt.Zdt1">
+<em class="property">class </em><code class="sig-prename descclassname">moead_framework.problem.numerical.zdt.</code><code class="sig-name descname">Zdt1</code><span class="sig-paren">(</span><em class="sig-param">size</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/numerical/zdt.html#Zdt1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.numerical.zdt.Zdt1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.problem.problem.Problem</span></code></p>
+<p>Implementation of the Zdt1 problem.
+<a class="reference external" href="https://sop.tik.ee.ethz.ch/download/supplementary/testproblems/zdt1/index.php">https://sop.tik.ee.ethz.ch/download/supplementary/testproblems/zdt1/index.php</a></p>
+<ol class="upperalpha simple" start="5">
+<li><p>Zitzler, K. Deb, and L. Thiele. Comparison of Multiobjective Evolutionary Algorithms: Empirical Results. Evolutionary Computation, 8(2):173-195, 2000</p></li>
+</ol>
+<dl class="method">
+<dt id="moead_framework.problem.numerical.zdt.Zdt1.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">size</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/numerical/zdt.html#Zdt1.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.numerical.zdt.Zdt1.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor of the problem</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>size</strong> – {integer} number of variables in a solution</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.problem.numerical.zdt.Zdt1.__init__" title="moead_framework.problem.numerical.zdt.Zdt1.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(size)</p></td>
+<td><p>Constructor of the problem</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.problem.numerical.zdt.Zdt1.f" title="moead_framework.problem.numerical.zdt.Zdt1.f"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f</span></code></a>(function_id, solution)</p></td>
+<td><p>Evaluate the solution for the objective function_id</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.problem.numerical.zdt.Zdt1.generate_random_solution" title="moead_framework.problem.numerical.zdt.Zdt1.generate_random_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_random_solution</span></code></a>([evaluate])</p></td>
+<td><p>Generate a random solution for the current problem</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.problem.numerical.zdt.Zdt1.generate_solution" title="moead_framework.problem.numerical.zdt.Zdt1.generate_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_solution</span></code></a>(array[, evaluate])</p></td>
+<td><p>Generate a predefined solution for the current problem with array</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="moead_framework.problem.numerical.zdt.Zdt1.f">
+<code class="sig-name descname">f</code><span class="sig-paren">(</span><em class="sig-param">function_id</em>, <em class="sig-param">solution</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/numerical/zdt.html#Zdt1.f"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.numerical.zdt.Zdt1.f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the solution for the objective function_id</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function_id</strong> – {integer} index of the objective</p></li>
+<li><p><strong>solution</strong> – {<a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>} solution to evaluate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>{float} fitness value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="moead_framework.problem.numerical.zdt.Zdt1.generate_random_solution">
+<code class="sig-name descname">generate_random_solution</code><span class="sig-paren">(</span><em class="sig-param">evaluate=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/numerical/zdt.html#Zdt1.generate_random_solution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.numerical.zdt.Zdt1.generate_random_solution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a random solution for the current problem</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>evaluate</strong> – {boolean} specify if the new solution is evaluated. The default value is True.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>{<a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>}</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="moead_framework.problem.numerical.zdt.Zdt1.generate_solution">
+<code class="sig-name descname">generate_solution</code><span class="sig-paren">(</span><em class="sig-param">array</em>, <em class="sig-param">evaluate=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/numerical/zdt.html#Zdt1.generate_solution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.numerical.zdt.Zdt1.generate_solution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a predefined solution for the current problem with array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>array</strong> – {list&lt;integer&gt;} all decision variables of the Solution</p></li>
+<li><p><strong>evaluate</strong> – {boolean} specify if the new solution is evaluated. The default value is True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>{<a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>}</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
