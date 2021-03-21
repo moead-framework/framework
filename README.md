@@ -5,6 +5,7 @@
 [![codecov](https://codecov.io/gh/moead-framework/framework/branch/master/graph/badge.svg?token=J7MAU5E6BB)](https://codecov.io/gh/moead-framework/framework)
 [![PyPI](https://img.shields.io/pypi/v/moead-framework)](https://pypi.org/project/moead-framework/)
 [![GitHub](https://img.shields.io/github/license/moead-framework/framework?style=flat)](https://github.com/moead-framework/framework/blob/master/LICENCE)
+[![build status](https://github.com/moead-framework/framework/workflows/Documentation/badge.svg?branch=master)](https://moead-framework.github.io/framework/html/index.html)
 
 This python package *moead-framework* is a modular framework for multi-objective evolutionary algorithms by decomposition. 
 The goal  is to provide a modular framework for scientists and researchers interested in 
