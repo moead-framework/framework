@@ -1,3 +1,4 @@
+import random
 import numpy as np
 
 
@@ -41,6 +42,17 @@ def save_population_full(file_name, population):
         file.write(row)
 
     file.close()
+
+
+def set_seed(seed):
+    """
+    Set the seed for numpy and random packages
+
+    :param seed: integer
+    :return:
+    """
+    random.seed(seed)
+    np.random.seed(seed)
 
 
 def compute_hypervolume(solutions, ref_point):
