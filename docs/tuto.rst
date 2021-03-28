@@ -9,10 +9,10 @@ Implement your own problem
 To make your problem compliant with the framework, your problem class has to extend the class :class:`moead_framework.problem.Problem`
 and implement the following 3 required functions :
 
-- the fitness function :code:`f(function_id, solution)` has 2 required parameters. The function must returns the objective value of the solution
-  for the objective function_id in parameter.
+- the fitness function :code:`f(function_id, solution)` has 2 required parameters. The function must return the objective value of the given ``solution``
+  for the objective specified by ``function_id``.
 
-  .. note:: For compatibility with existing components, problems should be converted to minimization problems.
+.. note:: For compatibility with existing components, problems should be converted to minimization problems.
 
 .. code-block:: python
     
@@ -22,12 +22,12 @@ and implement the following 3 required functions :
 
 
 
-- The function :code:`generate_solution(array, evaluate)` generates a solution. A solution is a :class:`moead_framework.solution.one_dimensional_dolution.OneDimensionSolution` object that contains the representation of the solution in the `solution` attribute, and all fitness values in the `F` attribute.
+- The function :code:`generate_solution(array, evaluate)` generates a solution. A solution is a :class:`moead_framework.solution.one_dimensional_dolution.OneDimensionSolution` object that contains the representation of the solution in the ``solution`` attribute, and all fitness values in the ``F`` attribute.
  
- .. note:: All components of the framework available in this version are only compatible with OneDimensionSolution. If you want to manage new types of solutions, you have to adapt other components of the framework.
+.. note:: All components of the framework available in this version are only compatible with OneDimensionSolution. If you want to manage new types of solutions, you have to adapt other components of the framework.
  
- The function :code:`generate_solution(array, evaluate)` takes as parameter the representation of the function and the boolean :code:`evaluate`
- that determine if the solution object should save the fitness, the default value must be "True".
+The function :code:`generate_solution(array, evaluate)` takes as parameter ``array`` the representation of the solution and the boolean :code:`evaluate`
+that determine if the solution object should save the fitness, the default value must be ``True``.
 
 .. code-block:: python
     
@@ -88,7 +88,7 @@ If you want to manage the way to use all these components, you have to create
 a new algorithm by extending an available algorithm. Examples are available in this repository : https://github.com/moead-framework/framework/tree/master/moead_framework/algorithm.
 
 An example is the implementation of MOEA/D-DE :cite:`moead_de` in the class :class:`moead_framework.algorithm.combinatorial.moead_delta_nr` that extends **Moead** to rewrite the
-function `update_solutions()` and adds two new parameters.
+function ``update_solutions()`` and adds two new parameters.
 
 
 Manage the reproducibility of results
