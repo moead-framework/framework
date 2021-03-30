@@ -170,33 +170,30 @@
 <h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="implement-your-own-problem">
 <h2>Implement your own problem<a class="headerlink" href="#implement-your-own-problem" title="Permalink to this headline">¶</a></h2>
-<p>To make your problem compliant with the framework, your problem class have to extend the class <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.problem.Problem</span></code>
-and also implement the 3 required functions :</p>
-<ul>
-<li><p>the fitness function <code class="code docutils literal notranslate"><span class="pre">f(function_id,</span> <span class="pre">solution)</span></code> has 2 required parameters. The function must returns the objectif value of the solution
-for the objective function_id in parameter.</p>
+<p>To make your problem compliant with the framework, your problem class has to extend the class <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.problem.Problem</span></code>
+and implement the following 3 required functions :</p>
+<ul class="simple">
+<li><p>the fitness function <code class="code docutils literal notranslate"><span class="pre">f(function_id,</span> <span class="pre">solution)</span></code> has 2 required parameters. The function must return the objective value of the given <code class="docutils literal notranslate"><span class="pre">solution</span></code>
+for the objective specified by <code class="docutils literal notranslate"><span class="pre">function_id</span></code>.</p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For a better compatibility with components, problems should be converted in minimization problems.</p>
+<p>For compatibility with existing components, problems should be converted to minimization problems.</p>
 </div>
-</li>
-</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function_id</span><span class="p">,</span> <span class="n">solution</span><span class="p">):</span>
     <span class="o">...</span>
     <span class="k">return</span> <span class="n">objective_value</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>The function <code class="code docutils literal notranslate"><span class="pre">generate_solution(array,</span> <span class="pre">evaluate)</span></code> allows to generate a solution. A solution is an object OneDimensionSolution that contains the representation of the solution in the attribute solution and all fitness values in the F attribute.</p></li>
+<li><p>The function <code class="code docutils literal notranslate"><span class="pre">generate_solution(array,</span> <span class="pre">evaluate)</span></code> generates a solution. A solution is a <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.solution.one_dimensional_dolution.OneDimensionSolution</span></code> object that contains the representation of the solution in the <code class="docutils literal notranslate"><span class="pre">solution</span></code> attribute, and all fitness values in the <code class="docutils literal notranslate"><span class="pre">F</span></code> attribute.</p></li>
 </ul>
-<blockquote>
-<div><div class="admonition note">
+<div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>All components of the framework available in this version are only compatible with OneDimensionSolution. If you want manage new type of solutions, you have to adapt other components of the framework.</p>
+<p>All components of the framework available in this version are only compatible with OneDimensionSolution. If you want to manage new types of solutions, you have to adapt other components of the framework.</p>
 </div>
-<p>The function <code class="code docutils literal notranslate"><span class="pre">generate_solution(array,</span> <span class="pre">evaluate)</span></code> takes in parameter the representation of the function and the boolean <code class="code docutils literal notranslate"><span class="pre">evaluate</span></code>
-that determine if the solution save the fitness, the default value must be “True”.</p>
-</div></blockquote>
+<p>The function <code class="code docutils literal notranslate"><span class="pre">generate_solution(array,</span> <span class="pre">evaluate)</span></code> takes as parameter <code class="docutils literal notranslate"><span class="pre">array</span></code> the representation of the solution and the boolean <code class="code docutils literal notranslate"><span class="pre">evaluate</span></code>
+that determine if the solution object should save the fitness, the default value must be <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">OneDimensionSolution</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
 
@@ -210,7 +207,7 @@ that determine if the solution save the fitness, the default value must be “Tr
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>The function <code class="code docutils literal notranslate"><span class="pre">generate_random_solution(evaluate)</span></code> generates a solution <strong>randomly</strong> in the same way than the previous function.</p></li>
+<li><p>The function <code class="code docutils literal notranslate"><span class="pre">generate_random_solution(evaluate)</span></code> generates a solution <strong>randomly</strong> in the same way as the previous function.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_random_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_solution</span><span class="p">(</span><span class="n">array</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">object_number</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[:],</span> <span class="n">evaluate</span><span class="o">=</span><span class="n">evaluate</span><span class="p">)</span>
@@ -220,8 +217,8 @@ that determine if the solution save the fitness, the default value must be “Tr
 <div class="section" id="implement-your-own-algorithm">
 <h2>Implement your own algorithm<a class="headerlink" href="#implement-your-own-algorithm" title="Permalink to this headline">¶</a></h2>
 <p>All components are set with default values to implement the first version of <strong>MOEA/D</strong>.
-You can customize each algorithms of the framework with your own
-components that you can set in parameter of the algorithm contructor.</p>
+You can customize each algorithm in the framework with your own
+components that you can set as parameter of the algorithm contructor.</p>
 <p>Example for <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.algorithm.combinatorial.moead</span></code> :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">moead</span> <span class="o">=</span> <span class="n">Moead</span><span class="p">(</span>
           <span class="c1"># Mandatory parameters</span>
@@ -242,17 +239,17 @@ components that you can set in parameter of the algorithm contructor.</p>
           <span class="p">)</span>
 </pre></div>
 </div>
-<p>If you want manage the way to use all this components, you have to create
+<p>If you want to manage the way to use all these components, you have to create
 a new algorithm by extending an available algorithm. Examples are available in this repository : <a class="reference external" href="https://github.com/moead-framework/framework/tree/master/moead_framework/algorithm">https://github.com/moead-framework/framework/tree/master/moead_framework/algorithm</a>.</p>
-<p>For example with the implementation of MOEA/D-DE <a class="bibtex reference internal" href="references.html#moead-de" id="id1">[LZ09]</a> in the class <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.algorithm.combinatorial.moead_delta_nr</span></code> that extends <strong>Moead</strong> to rewrite the
-function update_solutions() and add two new parameters.</p>
+<p>An example is the implementation of MOEA/D-DE <a class="bibtex reference internal" href="references.html#moead-de" id="id1">[LZ09]</a> in the class <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.algorithm.combinatorial.moead_delta_nr</span></code> that extends <strong>Moead</strong> to rewrite the
+function <code class="docutils literal notranslate"><span class="pre">update_solutions()</span></code> and adds two new parameters.</p>
 </div>
 <div class="section" id="manage-the-reproducibility-of-results">
 <h2>Manage the reproducibility of results<a class="headerlink" href="#manage-the-reproducibility-of-results" title="Permalink to this headline">¶</a></h2>
 <p>Reproducibility of results is a major principle for scientific research.
 The feature used here is not specific to the framework but
-can be used for every python project that uses the random and numpy modules.</p>
-<p>Because the framework uses the random and numpy modules, you can be sure
+can be used for every python project that uses the <cite>numpy</cite> and built-in <cite>random</cite> modules.</p>
+<p>Because the framework uses the <cite>random</cite> and <cite>numpy</cite> modules, you can be sure
 to have the same results by running the same script several times if you
 add the following instructions before initializing problems or algorithms:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
@@ -263,7 +260,7 @@ add the following instructions before initializing problems or algorithms:</p>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>You can find more information with the following links:</p>
+<p>You can find more information at the following links:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.python.org/3/library/random.html">https://docs.python.org/3/library/random.html</a></p></li>
 <li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html">https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html</a></p></li>
@@ -273,7 +270,7 @@ add the following instructions before initializing problems or algorithms:</p>
 <h2>Save data with the framework<a class="headerlink" href="#save-data-with-the-framework" title="Permalink to this headline">¶</a></h2>
 <p>You can easily save a set of solutions by using the function <code class="code docutils literal notranslate"><span class="pre">save_population(&quot;population.txt&quot;,</span> <span class="pre">population)</span></code>.
 The function must be imported with : <code class="code docutils literal notranslate"><span class="pre">from</span> <span class="pre">moead_framework.tool.result</span> <span class="pre">import</span> <span class="pre">save_population</span></code>.</p>
-<p>If you want save all non-dominated solutions (attribute <code class="code docutils literal notranslate"><span class="pre">self.ep</span></code> in the algorithm) every 10 evaluations, you can use the checkpoint parameter of the function <code class="code docutils literal notranslate"><span class="pre">algorithm.run()</span></code> :</p>
+<p>If you want to save all non-dominated solutions (attribute <code class="code docutils literal notranslate"><span class="pre">self.ep</span></code> in the algorithm) every e.g. 10 evaluations, you can use the checkpoint parameter of the function <code class="code docutils literal notranslate"><span class="pre">algorithm.run()</span></code> :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">moead</span> <span class="o">=</span> <span class="n">Moead</span><span class="p">(</span>
           <span class="n">problem</span><span class="o">=</span><span class="n">rmnk</span><span class="p">,</span>
           <span class="n">max_evaluation</span> <span class="o">=</span> <span class="n">number_of_evaluations</span><span class="p">,</span>
