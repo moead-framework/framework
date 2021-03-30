@@ -36,6 +36,10 @@ class Zdt1(Problem):
         :param size: {integer} number of variables in a solution
         """
         self.n = size
+
+        if self.n <= 1:
+            raise ValueError("The parameter 'size' must be an integer strictly greater than 1 (size > 1)")
+
         super().__init__()
 
     def f(self, function_id, decision_vector):
