@@ -55,7 +55,11 @@ With the *moead-framework* package, we aim at bringing the modularity of the MOE
 using the flexibility of Python in order to allow the user to update the behavior of MOEA/D 
 components in their research works, and to propose new variants without being limited by the software. 
 The package is focused on a modular architecture for easily adding, updating or testing the components of 
-MOEA/D and for customizing how components interact with each other.
+MOEA/D and for customizing how components interact with each other. Indeed, in contrast with other existing implementations, 
+*moead-framework* does not limit the users with a limited number of components available as parameters (8 components are available 
+in MOEADr). Users can easily restructure the 10 existing components of the *moead-framework* and include new ones to easily add new features without 
+altering existing components. Components are not only customizable with parameters as with MOEADr, but in fact they can be added
+with the inheritance mechanism on the main run() method of each algorithm.
 
 For example, the *moead-framework* package was used for creating novel sub-problem selection strategies and 
 analyzing them [@gpruvost_evocop2020], and for rewriting the component used to generate 
