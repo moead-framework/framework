@@ -79,14 +79,32 @@ The package is available in pypi with a linux environment for python 3.6, 3.7, 3
 
 # For developers 
 
-## build: 
+## Requirements for developers
 
-You can execute unit test with the following command in the git repository: 
+    pip install -r requirements-dev.txt
+
+## Tests: 
+
+You can execute unit tests with the following command in the git repository: 
 
     python3 -m unittest 
 
+## Generate the documentation locally
 
-The package is build with a github action. If you want to create manually a new package: 
+The documentation can be generated locally if you want check changes. The documentation is generated with sphinx 2.4.4 :
+
+    pip install -U sphinx==v2.4.4
+
+You can generate the documentation with the following commands :
+
+    cd docs/
+
+    make html
+
+
+## Build the package
+
+The package is built with a github action. If you want to create manually a new package: 
 
     python3 setup.py sdist bdist_wheel
  
