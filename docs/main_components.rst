@@ -3,24 +3,6 @@
 Main components
 ===========================================
 
-Problems
-__________________________________________
-
-.. autosummary::
-   :nosignatures:
-   :toctree: moead_framework
-
-   moead_framework.problem.combinatorial.rmnk.Rmnk
-   moead_framework.problem.combinatorial.mubqp.Mubqp
-   moead_framework.problem.combinatorial.knapsack.KnapsackProblem
-   moead_framework.problem.numerical.zdt.Zdt1
-
-You can find examples of file instances for combinatorial problems
-in this repository https://github.com/moead-framework/data/tree/master/problem.
-
-.. note:: You can implement your own problem by following :ref:`this tutoriel<tuto-problem>`.
-
-
 Solution
 __________________________________________
 
@@ -58,7 +40,7 @@ For numerical problems
    moead_framework.algorithm.numerical.moead.Moead
 
 
-.. note:: You can implement your own algorithm by following :ref:`this tutoriel<tuto-algo>`.
+.. note:: You can implement your own algorithm by following :ref:`this tutorial<tuto-algo>`.
 
 
 Aggregation functions
