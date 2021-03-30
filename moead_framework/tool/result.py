@@ -69,7 +69,7 @@ class HyperVolume:
         self.referencePoint = reference_point
         self.list: MultiList = MultiList(0)
 
-    def compute(self, solutions: np.typing.List):
+    def compute(self, solutions: List):
         """Before the HV computation, front and reference point are translated, so that the reference point is [0, ..., 0].
         :return: The hypervolume that is dominated by a non-dominated front.
         """
