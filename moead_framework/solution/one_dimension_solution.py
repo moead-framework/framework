@@ -1,3 +1,5 @@
+from typing import List
+
 from .solution import Solution
 
 
@@ -6,8 +8,8 @@ class OneDimensionSolution(Solution):
     Represent a one dimension solution for combinatorial and numerical problems
     """
 
-    solution = []  #: :{list} all decision variables of the solution.
-    F = []         #: :{list} all objectives values of the solution.
+    solution: List[float] = []  #: :{list} all decision variables of the solution.
+    F: List[float] = []       #: :{list} all objectives values of the solution.
     distance = 0   #: :{integer} optional - can be used to compute a distance (crowding distance, ...)
 
     def __init__(self, solution, f=None):
