@@ -21,7 +21,7 @@ class OneDimensionSolution(Solution):
         self.distance = 0
 
     def __repr__(self):
-        return str(self.F)
+        return "Solution(F(x)=" + str(self.F) + " ; x=" +str(list(self.solution)) + ")"
 
     def __getitem__(self, index):
         return self.F[index]
