@@ -29,11 +29,11 @@ bibliography: paper.bib
 
 # Summary
 
-The Multi-objective evolutionary algorithm based on decomposition (MOEA/D) is a general-purpose algorithm 
+The Multi-Objective Evolutionary Algorithm based on Decomposition (MOEA/D) is a general-purpose algorithm 
 for approximating the Pareto set of multi-objective optimization problems [@moead]. It decomposes the original 
 multi-objective problem into a number of 
 single-objective optimization sub-problems and then uses an evolutionary process to optimize these 
-sub-problems simultaneously and cooperatively. MOEA/D is a state-of-art algorithm in aggregation-based 
+sub-problems simultaneously and cooperatively. MOEA/D is a state-of-the-art algorithm in aggregation-based 
 approaches for multi-objective optimization.
 
 The goal of the *moead-framework* python package is to provide a modular framework for scientists and 
@@ -45,17 +45,21 @@ researchers interested in experimenting with MOEA/D and its numerous variants.
 The MOEA/D algorithm is now considered as a framework. MOEA/D is the basis of many variants that improve or 
 add new components to improve MOEA/D performance.
 The first version of MOEA/D and its most famous variants [@moead_de; @moead_dra] are implemented in recent multi-objective 
-optimization software such as pymoo [@pymoo], pygmo [@pygmo] and jMetal [@jmetal]. These software offer 
-many state-of-art algorithms, visualization tools or parallelization abstraction but they do not enable to test 
-and analyse in detail the behavior of components implemented in each algorithm.
-The modular R package MOEADr [@Campelo_2020] focuses on MOEA/D and allows to define different variants for 
+optimization software such as pymoo [@pymoo], pygmo [@pygmo] and jMetal [@jmetal]. These implementations offer 
+many state-of-the-art algorithms, visualization tools or parallelization abstraction, but they do not enable detailed 
+testing and analysis of the various algorithm's components' behavior.
+The modular R package MOEADr [@Campelo_2020] focuses on MOEA/D and allows the definition of different variants for 
 each component of MOEA/D. 
 
 With the *moead-framework* package, we aim at bringing the modularity of the MOEADr package by 
 using the flexibility of Python in order to allow the user to update the behavior of MOEA/D 
 components in their research works, and to propose new variants without being limited by the software. 
 The package is focused on a modular architecture for easily adding, updating or testing the components of 
-MOEA/D and for customizing how components interact with each other.
+MOEA/D and for customizing how components interact with each other. Indeed, in contrast with other existing implementations, 
+*moead-framework* does not limit the users with a limited number of components available as parameters (8 components are available 
+in MOEADr). Users can easily restructure the 10 existing components of the *moead-framework* and include new ones to easily add new features without 
+altering existing components. Components are not only customizable with parameters as with MOEADr, but in fact they can be added
+with the inheritance mechanism on the main run() method of each algorithm.
 
 For example, the *moead-framework* package was used for creating novel sub-problem selection strategies and 
 analyzing them [@gpruvost_evocop2020], and for rewriting the component used to generate 
@@ -70,7 +74,7 @@ The documentation is available at the following URL:
 A [complete example](https://moead-framework.github.io/framework/html/examples.html) and 
 [all components](https://moead-framework.github.io/framework/html/api.html) are described in details.
 [Two tutorials](https://moead-framework.github.io/framework/html/tuto.html) are made available for the user 
-to experiment with his/her own multi-objective optimization problem and to implement his/her own MOEA/D variants.
+to experiment with their own multi-objective optimization problem and to implement their own MOEA/D variants.
 
 
 # Acknowledgements
