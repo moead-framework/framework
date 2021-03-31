@@ -3,7 +3,7 @@
 
 __pycache__/
 moead_framework/data/my_results
-*.txt
+
 build/
 
 moead_framework.egg-info/
