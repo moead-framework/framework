@@ -110,6 +110,10 @@ add the following instructions before initializing problems or algorithms:
     seed = 0
     set_seed(seed)
 
+.. warning::
+    This approach is not safe in threaded environments.
+    By re-using a seed value, the same sequence should be reproducible from run to run as long as
+    multiple threads are not running (https://docs.python.org/3/library/random.html#notes-on-reproducibility)
 
 You can find more information at the following links:
 
