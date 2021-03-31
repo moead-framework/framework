@@ -81,6 +81,10 @@ The package is available in pypi with a linux environment for python 3.6, 3.7, 3
 
 ## Requirements for developers
 
+These requirements must be installed to use the commands in the following sections (unit test, documentation, package) :
+
+    pip install -r requirements.txt
+
     pip install -r requirements-dev.txt
 
 ## Tests: 
@@ -91,9 +95,7 @@ You can execute unit tests with the following command in the git repository:
 
 ## Generate the documentation locally
 
-The documentation can be generated locally if you want check changes. The documentation is generated with sphinx 2.4.4 :
-
-    pip install -U sphinx==v2.4.4
+The documentation can be generated locally if you want check changes. The documentation is generated with sphinx 2.4.4 (see the section 'Requirements for developers').
 
 You can generate the documentation with the following commands :
 
