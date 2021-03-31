@@ -76,6 +76,13 @@ The package is available in pypi with a linux environment for python 3.6, 3.7, 3
     save_population(save_file, population)
 
 
+# How to contribute
+
+[A guide is available](https://github.com/moead-framework/framework/blob/master/CONTRIBUTING.md) to explain the 
+process of contributing to the project. The contribution can be the report of a bug, the request for a new feature or 
+modifying the code of the framework to improve it.
+
+We have [a code of conduct](https://github.com/moead-framework/framework/blob/master/CODE_OF_CONDUCT.md), please follow it in all your interactions with the project.
 
 # For developers 
 
