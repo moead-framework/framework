@@ -1,11 +1,9 @@
 import unittest
-import random
 import os
-import numpy as np
 from moead_framework.aggregation import Tchebycheff
 from moead_framework.algorithm.numerical import Moead
 from moead_framework.problem.numerical import Zdt1
-from moead_framework.tool.result import compute_hypervolume
+from moead_framework.tool.result import compute_hypervolume, set_seed
 
 
 class AlgorithmsNumericalTest(unittest.TestCase):
@@ -13,8 +11,7 @@ class AlgorithmsNumericalTest(unittest.TestCase):
 
     def setUp(self):
         """Init"""
-        random.seed(1)
-        np.random.seed(1)
+        set_seed(1)
         self.number_of_evaluations = 100
 
         project_path = os.path.dirname(os.path.abspath(__file__))
