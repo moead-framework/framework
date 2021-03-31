@@ -3,9 +3,6 @@ from abc import ABC, abstractmethod
 
 class AggregationFunction(ABC):
 
-    def __init__(self):
-        pass
-
     @abstractmethod
     def run(self, solution, number_of_objective, weights, sub_problem, z):
         """

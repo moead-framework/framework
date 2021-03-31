@@ -8,3 +8,4 @@ Library Reference
 
 	main_components
 	other_components
+	problems

@@ -5,8 +5,8 @@ import unittest
 from moead_framework.problem.combinatorial import KnapsackProblem
 
 
-class RmnkTest(unittest.TestCase):
-    """Test the 'rmnk' problem."""
+class KnapsackTest(unittest.TestCase):
+    """Test the 'knapsack' problem."""
 
     def setUp(self):
         """Init"""

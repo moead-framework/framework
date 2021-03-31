@@ -3,7 +3,7 @@
 
 __pycache__/
 moead_framework/data/my_results
-*.txt
+
 build/
 
 moead_framework.egg-info/
@@ -14,6 +14,8 @@ dist/
 
 coverage.xml
 
+docs/html/
+docs/moead_framework/
 docs/doctrees/
 docs/.buildinfo
 docs/.DS_Store

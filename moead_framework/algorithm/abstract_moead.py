@@ -93,7 +93,7 @@ class AbstractMoead:
         Execute the algorithm.
 
         :param checkpoint: {function} The default value is None. The checkpoint can be used to save data during the process
-        :return:
+        :return: list<{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}> All non-dominated solutions found by the algorithm
         """
         while self.termination_criteria.test():
 

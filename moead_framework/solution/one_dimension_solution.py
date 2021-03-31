@@ -6,7 +6,7 @@ class OneDimensionSolution(Solution):
     Represent a one dimension solution for combinatorial and numerical problems
     """
 
-    solution = []  #: :{list} all objectives values of the solution.
+    solution = []  #: :{list} all decision variables of the solution.
     F = []         #: :{list} all objectives values of the solution.
     distance = 0   #: :{integer} optional - can be used to compute a distance (crowding distance, ...)
 

@@ -2,6 +2,8 @@ import setuptools
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
+with open("requirements.txt", "r") as fh:
+    requirements = fh.read().splitlines()
 
 setuptools.setup(
     name="moead-framework",
@@ -13,7 +15,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/moead-framework/framework",
     packages=setuptools.find_packages(),
-    install_requires=['numpy'],
+    install_requires=requirements,
     classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
