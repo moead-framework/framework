@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>moead_framework.core.termination_criteria.max_evaluation &mdash; The Moead Framework 1.0 documentation</title>
+  <title>moead_framework.core.termination_criteria.abstract_termination_criteria &mdash; The Moead Framework 1.0 documentation</title>
   
 
   
@@ -141,7 +141,7 @@
         
           <li><a href="../../../index.html">Module code</a> &raquo;</li>
         
-      <li>moead_framework.core.termination_criteria.max_evaluation</li>
+      <li>moead_framework.core.termination_criteria.abstract_termination_criteria</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -156,17 +156,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for moead_framework.core.termination_criteria.max_evaluation</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">moead_framework.core.termination_criteria.abstract_termination_criteria</span> <span class="kn">import</span> <span class="n">TerminationCriteria</span>
+  <h1>Source code for moead_framework.core.termination_criteria.abstract_termination_criteria</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
 
 
-<div class="viewcode-block" id="MaxEvaluation"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation.html#moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation">[docs]</a><span class="k">class</span> <span class="nc">MaxEvaluation</span><span class="p">(</span><span class="n">TerminationCriteria</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">TerminationCriteria</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Stop the algorithm with a criteria based on the number of solution evaluated.</span>
+<span class="sd">    Component used to stop the algorithm</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="MaxEvaluation.test"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation.html#moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation.test">[docs]</a>    <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">current_eval</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">max_evaluation</span></div></div>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">algorithm_instance</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor of the termination criteria</span>
+
+<span class="sd">        :param algorithm_instance: {:class:`~moead_framework.algorithm.abstract_moead.py.AbstractMoead`} instance of the algorithm</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span> <span class="o">=</span> <span class="n">algorithm_instance</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test if the algorithm has to be stopped</span>
+
+<span class="sd">        :return: {boolean} True: Continue the process. False: Stop the process</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 </pre></div>
 
            </div>
