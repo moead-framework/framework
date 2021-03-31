@@ -24,7 +24,7 @@ class OneDimensionSolution(Solution):
         return "Solution(F(x)=" + str(self.F) + " ; x=" +str(list(self.solution)) + ")"
 
     def __repr__(self):
-        return "f'OneDimensionSolution(solution={" + str(list(self.solution)) + "}, f={" + str(self.F) + "})'"
+        return f'OneDimensionSolution(solution={self.solution}, f={self.F})'
 
     def __getitem__(self, index):
         return self.F[index]
