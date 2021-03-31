@@ -167,6 +167,11 @@
 <h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="optimise-mnk-landscapes-with-moea-d">
 <h2>Optimise mnk-landscapes with MOEA/D<a class="headerlink" href="#optimise-mnk-landscapes-with-moea-d" title="Permalink to this headline">¶</a></h2>
+<p>The example requires two files :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">`instance_file`</span></code> is required by the problem. The file is available in the framework in “moead_framework/test/data/instances/” or can be downloaded from <a class="reference external" href="https://github.com/moead-framework/data/tree/master/problem/RMNK/Instances">https://github.com/moead-framework/data/tree/master/problem/RMNK/Instances</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">`weight_file`</span></code> is required by the algorithm. The file is available in the framework in “moead_framework/test/data/weights/” or can be downloaded from <a class="reference external" href="https://github.com/moead-framework/data/tree/master/weights">https://github.com/moead-framework/data/tree/master/weights</a></p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">moead_framework.aggregation</span> <span class="kn">import</span> <span class="n">Tchebycheff</span>
 <span class="kn">from</span> <span class="nn">moead_framework.algorithm.combinatorial</span> <span class="kn">import</span> <span class="n">Moead</span>
 <span class="kn">from</span> <span class="nn">moead_framework.problem.combinatorial</span> <span class="kn">import</span> <span class="n">Rmnk</span>
@@ -190,7 +195,7 @@
 <span class="n">number_of_evaluations</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="c1"># The file is available here : https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws</span>
 <span class="c1"># Others weights files are available here : https://github.com/moead-framework/data/tree/master/weights</span>
-<span class="n">weight_file</span> <span class="o">=</span> <span class="s2">&quot;SOBOL-&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rmnk</span><span class="o">.</span><span class="n">function_numbers</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;objs-&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_weight</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;wei.ws&quot;</span>
+<span class="n">weight_file</span> <span class="o">=</span> <span class="s2">&quot;SOBOL-&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rmnk</span><span class="o">.</span><span class="n">number_of_objective</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;objs-&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_weight</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;wei.ws&quot;</span>
 
 
 <span class="c1">###############################</span>
@@ -209,7 +214,7 @@
 <span class="c1">###############################</span>
 <span class="c1">#       Save the result       #</span>
 <span class="c1">###############################</span>
-<span class="n">save_file</span> <span class="o">=</span> <span class="s2">&quot;moead-rmnk&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rmnk</span><span class="o">.</span><span class="n">function_numbers</span><span class="p">)</span> \
+<span class="n">save_file</span> <span class="o">=</span> <span class="s2">&quot;moead-rmnk&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rmnk</span><span class="o">.</span><span class="n">number_of_objective</span><span class="p">)</span> \
             <span class="o">+</span> <span class="s2">&quot;-N&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_weight</span><span class="p">)</span> \
             <span class="o">+</span> <span class="s2">&quot;-T&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_weight_neighborhood</span><span class="p">)</span> \
             <span class="o">+</span> <span class="s2">&quot;-iter&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_evaluations</span><span class="p">)</span> \

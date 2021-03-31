@@ -21,7 +21,7 @@ number_of_weight_neighborhood = 20
 number_of_evaluations = 1000
 # The file is available here : https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws
 # Others weights files are available here : https://github.com/moead-framework/data/tree/master/weights
-weight_file = "SOBOL-" + str(rmnk.function_numbers) + "objs-" + str(number_of_weight) + "wei.ws"
+weight_file = "SOBOL-" + str(rmnk.number_of_objective) + "objs-" + str(number_of_weight) + "wei.ws"
 
 
 ###############################
@@ -40,7 +40,7 @@ population = moead.run()
 ###############################
 #       Save the result       #
 ###############################
-save_file = "moead-rmnk" + str(rmnk.function_numbers) \
+save_file = "moead-rmnk" + str(rmnk.number_of_objective) \
             + "-N" + str(number_of_weight) \
             + "-T" + str(number_of_weight_neighborhood) \
             + "-iter" + str(number_of_evaluations) \
