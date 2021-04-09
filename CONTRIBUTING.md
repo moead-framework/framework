@@ -29,6 +29,12 @@ You can then create a Pull Request with the following process :
 3. Don't forget to add unit tests.
 4. Create a new branch and a Pull Request to merge your work on the **dev** branch of the project.
 
+## You want to discuss the project ?
+
+If you have any questions about the project, don't hesitate to create a [new discussion](https://github.com/moead-framework/framework/discussions/new) 
+with the [GitHub Discussions](https://github.com/moead-framework/framework/discussions). It is the space for your community to have conversations, 
+ask questions and post answers without opening issues.
+
 ## Code of Conduct
 
 The code of conduct is available [in this file](https://github.com/moead-framework/framework/blob/master/CODE_OF_CONDUCT.md).
