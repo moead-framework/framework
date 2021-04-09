@@ -149,7 +149,7 @@ If you want to save all non-dominated solutions (attribute :code:`self.ep` in th
 Extract and plot the Pareto front
 --------------------------------------------------------------------
 
-The method `run()` of each algorithm return a list of :class:`moead_framework.solution.one_dimension_solution.OneDimensionSolution`.
+The method `run()` of each algorithm returns a list of :class:`moead_framework.solution.one_dimension_solution.OneDimensionSolution`.
 
 .. code-block:: python
 
@@ -161,7 +161,7 @@ The method `run()` of each algorithm return a list of :class:`moead_framework.so
               aggregation_function=Tchebycheff
               )
 
-    list_of_solution = moead.run(checkpoint=checkpt)
+    list_of_solutions = moead.run(checkpoint=checkpt)
 
 
 You can then extract the Pareto set and the Pareto front :
@@ -171,7 +171,7 @@ You can then extract the Pareto set and the Pareto front :
     pareto_front = []
     pareto_set = []
 
-    for solution_object in list_of_solution:
+    for solution_object in list_of_solutions:
         pareto_front.append(solution_object.F)
         pareto_set.append(solution_object.solution)
 
