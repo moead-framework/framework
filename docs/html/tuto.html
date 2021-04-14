@@ -93,6 +93,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#implement-your-own-algorithm">Implement your own algorithm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#manage-the-reproducibility-of-results">Manage the reproducibility of results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#save-data-with-the-framework">Save data with the framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extract-and-plot-the-pareto-front">Extract and plot the Pareto front</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Library Reference</a></li>
@@ -285,6 +286,40 @@ The function must be imported with : <code class="code docutils literal notransl
         <span class="n">save_population</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="n">population</span><span class="o">=</span><span class="n">moead</span><span class="o">.</span><span class="n">ep</span><span class="p">)</span>
 
 <span class="n">moead</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="extract-and-plot-the-pareto-front">
+<h2>Extract and plot the Pareto front<a class="headerlink" href="#extract-and-plot-the-pareto-front" title="Permalink to this headline">¶</a></h2>
+<p>The method <cite>run()</cite> of each algorithm returns a list of <a class="reference internal" href="moead_framework/moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.solution.one_dimension_solution.OneDimensionSolution</span></code></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">moead</span> <span class="o">=</span> <span class="n">Moead</span><span class="p">(</span>
+          <span class="n">problem</span><span class="o">=</span><span class="n">rmnk</span><span class="p">,</span>
+          <span class="n">max_evaluation</span> <span class="o">=</span> <span class="n">number_of_evaluations</span><span class="p">,</span>
+          <span class="n">number_of_weight_neighborhood</span><span class="o">=</span><span class="n">number_of_weight_neighborhood</span><span class="p">,</span>
+          <span class="n">weight_file</span><span class="o">=</span><span class="n">weight_file</span><span class="p">,</span>
+          <span class="n">aggregation_function</span><span class="o">=</span><span class="n">Tchebycheff</span>
+          <span class="p">)</span>
+
+<span class="n">list_of_solutions</span> <span class="o">=</span> <span class="n">moead</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpt</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can then extract the Pareto set and the Pareto front :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pareto_front</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">pareto_set</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">solution_object</span> <span class="ow">in</span> <span class="n">list_of_solutions</span><span class="p">:</span>
+    <span class="n">pareto_front</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">solution_object</span><span class="o">.</span><span class="n">F</span><span class="p">)</span>
+    <span class="n">pareto_set</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">solution_object</span><span class="o">.</span><span class="n">solution</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you want plot the Pareto front with matplotlib, you can do it with :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pareto_front</span><span class="p">)</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">T</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

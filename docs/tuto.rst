@@ -144,3 +144,46 @@ If you want to save all non-dominated solutions (attribute :code:`self.ep` in th
             save_population(file_name=filename, population=moead.ep)
     
     moead.run(checkpoint=checkpt)
+
+
+Extract and plot the Pareto front
+--------------------------------------------------------------------
+
+The method `run()` of each algorithm returns a list of :class:`moead_framework.solution.one_dimension_solution.OneDimensionSolution`.
+
+.. code-block:: python
+
+    moead = Moead(
+              problem=rmnk,
+              max_evaluation = number_of_evaluations,
+              number_of_weight_neighborhood=number_of_weight_neighborhood,
+              weight_file=weight_file,
+              aggregation_function=Tchebycheff
+              )
+
+    list_of_solutions = moead.run(checkpoint=checkpt)
+
+
+You can then extract the Pareto set and the Pareto front :
+
+.. code-block:: python
+
+    pareto_front = []
+    pareto_set = []
+
+    for solution_object in list_of_solutions:
+        pareto_front.append(solution_object.F)
+        pareto_set.append(solution_object.solution)
+
+
+If you want plot the Pareto front with matplotlib, you can do it with :
+
+.. code-block:: python
+
+    from matplotlib import pyplot as plt
+    import numpy as np
+
+    data = np.array(pareto_front)
+    x, y = data.T
+    plt.scatter(x,y)
+    plt.show()
