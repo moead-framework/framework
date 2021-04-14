@@ -21,14 +21,14 @@ class RmnkTest(unittest.TestCase):
 
     def test_set_item(self):
         """Test set item"""
-        # todo
         self.assertEqual(self.solution[0], -0.5107130364200001)
         self.solution[0] = -42
         self.assertEqual(self.solution[0], -42)
 
     def test_repr(self):
         """Test repr'"""
-        self.assertEqual(repr(self.solution), "[-0.5107130364200001, -0.5078202645999998]")
+        str_repr = "OneDimensionSolution(solution=[1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1], f=[-0.5107130364200001, -0.5078202645999998])"
+        self.assertEqual(repr(self.solution), str_repr)
 
     def test_copy(self):
         """"Test the copy of solution"""

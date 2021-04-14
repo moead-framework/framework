@@ -20,8 +20,11 @@ class OneDimensionSolution(Solution):
         super().__init__(solution, f)
         self.distance = 0
 
+    def __str__(self):
+        return "Solution(F(x)=" + str(self.F) + " ; x=" +str(list(self.solution)) + ")"
+
     def __repr__(self):
-        return str(self.F)
+        return f'OneDimensionSolution(solution={list(self.solution)}, f={self.F})'
 
     def __getitem__(self, index):
         return self.F[index]
