@@ -1,11 +1,10 @@
 import unittest
-import random
-import numpy as np
 
 from moead_framework.core.genetic_operator.combinatorial import Crossover, BinaryMutation
 from moead_framework.core.genetic_operator.numerical import DifferentialEvolutionCrossover, PolynomialMutation, \
     MoeadDeOperators
 from moead_framework.problem.numerical import Zdt1
+from moead_framework.tool.result import set_seed
 
 
 class GeneticOperatorsTest(unittest.TestCase):
@@ -13,8 +12,7 @@ class GeneticOperatorsTest(unittest.TestCase):
 
     def setUp(self):
         """Init"""
-        random.seed(1)
-        np.random.seed(1)
+        set_seed(1)
 
     def test_combinatorial_binary_mutation(self):
         """Test combinatorial binary mutation"""

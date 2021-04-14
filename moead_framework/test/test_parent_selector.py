@@ -1,14 +1,13 @@
 import os
 
 import unittest
-import random
-import numpy as np
 
 from moead_framework.aggregation import Tchebycheff
 from moead_framework.algorithm.combinatorial import Moead
 from moead_framework.core.parent_selector import TwoRandomParentSelector, OneRandomAndCurrentParentSelector, \
     TwoRandomAndCurrentParentSelector
 from moead_framework.problem.combinatorial import Rmnk
+from moead_framework.tool.result import set_seed
 
 
 class ParentSelectorTest(unittest.TestCase):
@@ -16,8 +15,7 @@ class ParentSelectorTest(unittest.TestCase):
 
     def setUp(self):
         """Init"""
-        random.seed(1)
-        np.random.seed(1)
+        set_seed(1)
 
         self.number_of_evaluations = 100
 
