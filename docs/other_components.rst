@@ -41,6 +41,7 @@ The offspring generator is the component that manage all the process to generate
 using components **Parent Selector** and **Genetic operator** for example.
 
 .. autosummary::
+   :template: class_custom.rst
    :nosignatures:
    :toctree: moead_framework
 
