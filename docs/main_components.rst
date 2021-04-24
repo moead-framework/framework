@@ -52,6 +52,7 @@ The two main functions used are the Weighted Sum and the Tchebycheff function. I
 is a required parameter of the algorithm.
 
 .. autosummary::
+   :template: class_custom.rst
    :nosignatures:
    :toctree: moead_framework
 
