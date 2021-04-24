@@ -6,7 +6,6 @@ moead\_framework.aggregation.tchebycheff.Tchebycheff
 .. autoclass:: Tchebycheff
 
    
-   .. automethod:: __init__
 
    
    .. rubric:: Methods

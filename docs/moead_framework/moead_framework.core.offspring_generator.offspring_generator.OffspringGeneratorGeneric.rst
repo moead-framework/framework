@@ -6,7 +6,6 @@ moead\_framework.core.offspring\_generator.offspring\_generator.OffspringGenerat
 .. autoclass:: OffspringGeneratorGeneric
 
    
-   .. automethod:: __init__
 
    
    .. rubric:: Methods

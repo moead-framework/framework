@@ -6,7 +6,6 @@ moead\_framework.aggregation.weighted\_sum.WeightedSum
 .. autoclass:: WeightedSum
 
    
-   .. automethod:: __init__
 
    
    .. rubric:: Methods
