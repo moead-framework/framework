@@ -39,7 +39,7 @@ class UbqpTest(unittest.TestCase):
             else:
                 array.append(1)
 
-        solution = self.problem.generate_solution(array)
+        solution = self.problem.evaluate(array)
 
         self.assertEqual(solution.F[0], -290.0)
         self.assertEqual(solution.F[1], -856.0)

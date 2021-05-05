@@ -105,18 +105,7 @@ class KnapsackProblem(Problem):
         return max_founded
 
     def generate_random_solution(self, evaluate=True):
-        return self.generate_solution(array=np.random.randint(0, 2, self.number_of_objects).tolist()[:], evaluate=evaluate)
-
-    def generate_solution(self, array, evaluate=True):
-        x = OneDimensionSolution(array)
-
-        for j in range(self.number_of_objective):
-            if evaluate:
-                x.F.append(self.f(j, x.solution))
-            else:
-                x.F.append(None)
-
-        return x
+        return self.evaluate(x=np.random.randint(0, 2, self.number_of_objects).tolist()[:])
 
     def evaluate(self, x):
         if not isinstance(x, OneDimensionSolution):

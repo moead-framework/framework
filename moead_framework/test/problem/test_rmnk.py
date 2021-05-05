@@ -40,7 +40,7 @@ class RmnkTest(unittest.TestCase):
         for i in range(100):
             array.append(random.randint(0, 1))
 
-        solution = self.problem.generate_solution(array)
+        solution = self.problem.evaluate(array)
         self.assertEqual(len(solution.solution), 100)
         self.assertEqual(len(solution.F), 2)
 
@@ -58,7 +58,7 @@ class RmnkTest(unittest.TestCase):
         for i in range(100):
             array.append(1)
 
-        solution = self.problem.generate_solution(array)
+        solution = self.problem.evaluate(array)
 
         self.assertEqual(solution.F[0], -0.4884468640000001)
         self.assertEqual(solution.F[1], -0.4930223456999998)

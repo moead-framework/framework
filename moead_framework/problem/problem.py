@@ -32,16 +32,6 @@ class Problem(ABC):
         """
 
     @abstractmethod
-    def generate_solution(self, array, evaluate=True):
-        """
-        Generate a predefined solution for the current problem with array
-
-        :param array: {list<integer>} all decision variables of the Solution
-        :param evaluate: {boolean} specify if the new solution is evaluated. The default value is True.
-        :return: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}
-        """
-
-    @abstractmethod
     def evaluate(self, x: Union[Solution, Sequence]) -> OneDimensionSolution:
         """
         Evaluate the given solution for the current problem and store the outcome

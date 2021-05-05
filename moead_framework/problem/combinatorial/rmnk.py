@@ -71,18 +71,7 @@ class Rmnk(Problem):
         return accu
 
     def generate_random_solution(self, evaluate=True):
-        return self.generate_solution(array=np.random.randint(0, 2, self.n).tolist()[:], evaluate=evaluate)
-
-    def generate_solution(self, array, evaluate=True):
-        x = OneDimensionSolution(np.array(array, dtype=int))
-
-        for j in range(self.number_of_objective):
-            if evaluate:
-                x.F.append(self.f(j, x.solution))
-            else:
-                x.F.append(None)
-
-        return x
+        return self.evaluate(x=np.random.randint(0, 2, self.n).tolist()[:])
 
     def evaluate(self, x):
         if not isinstance(x, OneDimensionSolution):
