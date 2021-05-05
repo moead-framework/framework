@@ -58,6 +58,12 @@ class Mubqp(Problem):
 
         return x
 
+    def evaluate(self, x):
+        if not isinstance(x, OneDimensionSolution):
+            x = OneDimensionSolution(np.array(x, dtype=int))
+        x.F = [self.f(j, x.solution) for j in range(self.number_of_objective)]
+        return x
+
     def load_qs(self, file_content):
         """
         Load values of the instance file

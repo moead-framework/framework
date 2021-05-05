@@ -117,3 +117,9 @@ class KnapsackProblem(Problem):
                 x.F.append(None)
 
         return x
+
+    def evaluate(self, x):
+        if not isinstance(x, OneDimensionSolution):
+            x = OneDimensionSolution(x)
+        x.F = [self.f(j, x.solution) for j in range(self.number_of_objective)]
+        return x

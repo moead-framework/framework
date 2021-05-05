@@ -31,4 +31,4 @@ class OffspringGeneratorGeneric(OffspringGenerator):
                                                 mutation_probability=mutation_probability
                                                 ).run()
 
-        return self.algorithm.problem.generate_solution(array=y_sol)
+        return self.algorithm.problem.evaluate(x=y_sol)
