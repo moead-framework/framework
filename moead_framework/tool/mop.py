@@ -5,6 +5,7 @@ import numpy as np
 def is_pareto_efficient(costs, return_mask = True):
     """
     Find the pareto-efficient points
+
     :param costs: An (n_points, n_costs) array
     :param return_mask: True to return a mask
     :return: An array of indices of pareto-efficient points.
@@ -30,9 +31,10 @@ def is_pareto_efficient(costs, return_mask = True):
 
 def get_non_dominated(population):
     """
-    return all non dominated solutions of the population
-    :param population: list of solution
-    :return: list of solution
+    Return all non dominated solutions of the population
+
+    :param population: list<{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}>
+    :return: population: list<{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}>
     """
     arr = []
     for s in population:
@@ -45,10 +47,11 @@ def get_non_dominated(population):
 
 def is_duplicated(x, population, number_of_objective):
     """
-    identify if the solution x is already in the population
+    Identify if the solution x is already in the population
+
     :param number_of_objective: integer
-    :param x: solution
-    :param population: list of solution
+    :param x: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}
+    :param population: list<{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}>
     :return: boolean
     """
     for sol in population:
@@ -66,9 +69,10 @@ def is_duplicated(x, population, number_of_objective):
 
 def population_size_without_duplicate(population):
     """
-    compute the population size without duplicate
-    :param population:
-    :return: integer
+    Compute the population size without duplicate
+
+    :param population: list<{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}>
+    :return: integer: the size of the population
     """
     arr = []
     for ind in population:
@@ -85,23 +89,11 @@ def population_size_without_duplicate(population):
 
 def compute_crowding_distance(s):
     """
-    1. Get the number of nondominated solutions in the external repository
-        a. n = | S |
-    2. Initialize distance
-        a. FOR i=0 TO MAX
-            b. S[i].distance = 0
-    3. Compute the crowding distance of each solution
-        a. For each objective m
-            b. Sort using each objective value
-               S = sort(S, m)
-            c. For i=1 to (n-1)
-                d. S[i].distance = S[i].distance + (S[i+1].m – S[i-1].m)
-        e. Set the maximum distance to the boundary points so that they are always selected
-           S[0].distance = S[n].distance = maximum distance
+    Update the attribute distance of each solution with the crowding distance
 
-        :param s:
-        :return: s with computed distances
-        """
+    :param s: list<{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}>
+    :return: population: list<{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}> with computed distances
+    """
     for individual in s:
         individual.distance = 0
 
