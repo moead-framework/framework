@@ -37,9 +37,3 @@ class Zdt1(Problem):
             solution.append(random.random())
 
         return self.evaluate(x=solution)
-
-    def evaluate(self, x):
-        if not isinstance(x, OneDimensionSolution):
-            x = OneDimensionSolution(x)
-        x.F = [self.f(j, x.solution) for j in range(self.number_of_objective)]
-        return x

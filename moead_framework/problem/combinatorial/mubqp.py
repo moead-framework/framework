@@ -9,6 +9,9 @@ class Mubqp(Problem):
     The problem is compatible with files generated
     by the mocobench generator http://mocobench.sourceforge.net/index.php?n=Problem.MUBQP
     """
+
+    dtype = int
+
     def __init__(self, instance_file):
         """
         Constructor of the problem
@@ -46,12 +49,6 @@ class Mubqp(Problem):
 
     def generate_random_solution(self, evaluate=True):
         return self.evaluate(x=np.random.randint(0, 2, self.n).tolist()[:])
-
-    def evaluate(self, x):
-        if not isinstance(x, OneDimensionSolution):
-            x = OneDimensionSolution(np.array(x, dtype=int))
-        x.F = [self.f(j, x.solution) for j in range(self.number_of_objective)]
-        return x
 
     def load_qs(self, file_content):
         """
