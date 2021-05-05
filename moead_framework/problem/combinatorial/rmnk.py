@@ -10,6 +10,8 @@ class Rmnk(Problem):
     by the mocobench generator http://mocobench.sourceforge.net/index.php?n=Problem.RMNK
     """
 
+    dtype = int
+
     def __init__(self, instance_file):
         """
         Constructor of the problem
@@ -71,18 +73,7 @@ class Rmnk(Problem):
         return accu
 
     def generate_random_solution(self, evaluate=True):
-        return self.generate_solution(array=np.random.randint(0, 2, self.n).tolist()[:], evaluate=evaluate)
-
-    def generate_solution(self, array, evaluate=True):
-        x = OneDimensionSolution(np.array(array, dtype=int))
-
-        for j in range(self.number_of_objective):
-            if evaluate:
-                x.F.append(self.f(j, x.solution))
-            else:
-                x.F.append(None)
-
-        return x
+        return self.evaluate(x=np.random.randint(0, 2, self.n).tolist()[:])
 
     def load_links(self, file_content):
         """

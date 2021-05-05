@@ -36,7 +36,7 @@ class KnapsackTest(unittest.TestCase):
         for i in range(250):
             array.append(random.randint(0, 1))
 
-        solution = self.problem.generate_solution(array)
+        solution = self.problem.evaluate(array)
         self.assertEqual(len(solution.solution), 250)
         self.assertEqual(len(solution.F), 2)
 
@@ -50,7 +50,7 @@ class KnapsackTest(unittest.TestCase):
         for i in range(250):
             array.append(1)
 
-        solution = self.problem.generate_solution(array)
+        solution = self.problem.evaluate(array)
 
         self.assertEqual(solution.F[0], -75232.5)
         self.assertEqual(solution.F[1], -71644.4)
