@@ -118,7 +118,7 @@ class ToolsTest(unittest.TestCase):
 
             self.assertEqual(f1, population[index_pop].F[0])
             self.assertEqual(f2, population[index_pop].F[1])
-            self.assertEqual(solution, str(population[index_pop].solution.tolist()))
+            self.assertEqual(solution, str(population[index_pop].decision_vector.tolist()))
             index_pop += 1
 
         f.close()

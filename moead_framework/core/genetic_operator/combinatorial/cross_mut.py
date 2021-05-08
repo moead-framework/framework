@@ -8,15 +8,15 @@ class CrossoverAndMutation(GeneticOperator):
     Multi-point crossover combined with the Binary Mutation operator
 
     Require 2 solutions, run a crossover according to the number of points wanted and
-    try to mutate each bit of the solution with the predefined probability.
+    try to mutate each bit of the decision_vector with the predefined probability.
     """
     def __init__(self, solutions, **kwargs):
         """
         Constructor of the Crossover and Binary Mutation operator
 
-        :param solutions: list<list<integer>> list of solution's representation (In algorithms, it is represented by the attribute :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution` of the class :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`)
+        :param solutions: list<list<integer>> list of solution's representation (In algorithms, it is represented by the attribute :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution.decision_vector` of the class :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`)
         :param crossover_points: {integer} the number of points for the crossover
-        :param mutation_probability: {float} the probability (between 0 and 1) to mutate a bit in the solution. The default value is the probability to mutate one bit of the solution
+        :param mutation_probability: {float} the probability (between 0 and 1) to mutate a bit in the decision_vector. The default value is the probability to mutate one bit of the decision_vector
         """
         super().__init__(solutions, **kwargs)
         if kwargs.get("crossover_points") is None:

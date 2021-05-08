@@ -22,8 +22,8 @@ class Zdt1(Problem):
         self.n = size
         super().__init__()
 
-    def f(self, function_id, solution):
-        x = solution[:]
+    def f(self, function_id, decision_vector):
+        x = decision_vector[:]
 
         if function_id == 0:
             return x[0]
@@ -31,7 +31,7 @@ class Zdt1(Problem):
             g = 1 + 9.0 / (self.n - 1) * np.sum(x[1:])
             return g * (1 - np.power((x[0] / g), 0.5))
 
-    def generate_random_solution(self, evaluate=True):
+    def generate_random_solution(self):
         solution = []
         for i in range(0, self.n):
             solution.append(random.random())

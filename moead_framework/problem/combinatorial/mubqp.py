@@ -36,18 +36,18 @@ class Mubqp(Problem):
         self.qs = np.zeros((self.m, self.n, self.n))
         self.load_qs(file_content)
 
-    def f(self, function_id, solution):
+    def f(self, function_id, decision_vector):
         fit = 0
 
         for i in range(self.n):
-            if solution[i] == 1:
+            if decision_vector[i] == 1:
                 for j in range(i+1):
-                    if solution[j] == 1:
+                    if decision_vector[j] == 1:
                         fit += self.qs[function_id][i][j]
 
         return - fit
 
-    def generate_random_solution(self, evaluate=True):
+    def generate_random_solution(self):
         return self.evaluate(x=np.random.randint(0, 2, self.n).tolist()[:])
 
     def load_qs(self, file_content):

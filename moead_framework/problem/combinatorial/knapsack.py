@@ -51,10 +51,10 @@ class KnapsackProblem(Problem):
         self.number_of_objects = len(self.weights[0])
         file.close()
 
-    def f(self, function_id, solution):
+    def f(self, function_id, decision_vector):
         function_id = function_id - 1
-        weight = self.weight_of_solution(function_id, solution)
-        profit = self.profit_of_solution(function_id, solution)
+        weight = self.weight_of_solution(function_id, decision_vector)
+        profit = self.profit_of_solution(function_id, decision_vector)
 
         if weight <= self.capacities[function_id]:
             return -profit  # minimize the profit
@@ -104,5 +104,5 @@ class KnapsackProblem(Problem):
 
         return max_founded
 
-    def generate_random_solution(self, evaluate=True):
+    def generate_random_solution(self):
         return self.evaluate(x=np.random.randint(0, 2, self.number_of_objects).tolist()[:])

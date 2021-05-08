@@ -23,10 +23,10 @@ class RmnkTest(unittest.TestCase):
     def test_generate_random_solution(self):
         """Test the function 'generate_random_solution'"""
         random_solution = self.problem.generate_random_solution()
-        self.assertEqual(len(random_solution.solution), 100)
+        self.assertEqual(len(random_solution.decision_vector), 100)
         self.assertEqual(len(random_solution.F), 2)
 
-        for item in random_solution.solution:
+        for item in random_solution.decision_vector:
             self.assertIn(item, [0, 1])
 
         for function_i in random_solution.F:
@@ -41,10 +41,10 @@ class RmnkTest(unittest.TestCase):
             array.append(random.randint(0, 1))
 
         solution = self.problem.evaluate(array)
-        self.assertEqual(len(solution.solution), 100)
+        self.assertEqual(len(solution.decision_vector), 100)
         self.assertEqual(len(solution.F), 2)
 
-        for item in solution.solution:
+        for item in solution.decision_vector:
             self.assertIn(item, [0, 1])
 
         for function_i in solution.F:
