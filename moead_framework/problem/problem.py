@@ -15,22 +15,21 @@ class Problem(ABC):
         pass
 
     @abstractmethod
-    def f(self, function_id, solution):
+    def f(self, function_id, decision_vector):
         """
-        Evaluate the solution for the objective function_id
+        Evaluate the decision_vector for the objective function_id
 
         :param function_id: {integer} index of the objective
-        :param solution: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} solution to evaluate
+        :param decision_vector: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} solution to evaluate
         :return: {float} fitness value
         """
 
 
     @abstractmethod
-    def generate_random_solution(self, evaluate=True):
+    def generate_random_solution(self):
         """
         Generate a random solution for the current problem
 
-        :param evaluate: {boolean} specify if the new solution is evaluated. The default value is True.
         :return: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}
         """
 
@@ -43,5 +42,5 @@ class Problem(ABC):
         """
         if not isinstance(x, OneDimensionSolution):
             x = OneDimensionSolution(np.array(x, dtype=self.dtype))
-        x.F = [self.f(j, x.solution) for j in range(self.number_of_objective)]
+        x.F = [self.f(j, x.decision_vector) for j in range(self.number_of_objective)]
         return x

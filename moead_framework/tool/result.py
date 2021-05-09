@@ -36,7 +36,7 @@ def save_population_full(file_name, population):
         for coordinate in s.F:
             row += str(coordinate) + " "
 
-        row += str(s.solution.tolist())
+        row += str(s.decision_vector.tolist())
         row = row + "\n"
         file.write(row)
 

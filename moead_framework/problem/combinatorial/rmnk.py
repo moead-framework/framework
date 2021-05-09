@@ -43,11 +43,11 @@ class Rmnk(Problem):
 
         file.close()
 
-    def f(self, function_id, solution):
+    def f(self, function_id, decision_vector):
         accu = 0
 
         for i in range(self.n):
-            accu += self.tables[function_id][i][self.sigma(function_id, solution, i)]
+            accu += self.tables[function_id][i][self.sigma(function_id, decision_vector, i)]
 
         return -1 * (accu / self.n)
 
@@ -72,7 +72,7 @@ class Rmnk(Problem):
 
         return accu
 
-    def generate_random_solution(self, evaluate=True):
+    def generate_random_solution(self):
         return self.evaluate(x=np.random.randint(0, 2, self.n).tolist()[:])
 
     def load_links(self, file_content):

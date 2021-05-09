@@ -7,7 +7,7 @@ Tutorials
 Implement your own problem
 --------------------------------------
 To make your problem compliant with the framework, your problem class has to extend the class :class:`moead_framework.problem.Problem`
-and implement the following 3 required functions :
+and implement the following 2 required functions :
 
 - the fitness function :code:`f(function_id, solution)` has 2 required parameters. The function must return the objective value of the given ``solution``
   for the objective specified by ``function_id``.
@@ -15,41 +15,23 @@ and implement the following 3 required functions :
 .. note:: For compatibility with existing components, problems should be converted to minimization problems.
 
 .. code-block:: python
-    
+
     def f(self, function_id, solution):
         ...
         return objective_value
 
 
 
-- The function :code:`generate_solution(array, evaluate)` generates a solution. A solution is a :class:`moead_framework.solution.one_dimensional_dolution.OneDimensionSolution` object that contains the representation of the solution in the ``solution`` attribute, and all fitness values in the ``F`` attribute.
- 
-.. note:: All components of the framework available in this version are only compatible with OneDimensionSolution. If you want to manage new types of solutions, you have to adapt other components of the framework.
- 
-The function :code:`generate_solution(array, evaluate)` takes as parameter ``array`` the representation of the solution and the boolean :code:`evaluate`
-that determine if the solution object should save the fitness, the default value must be ``True``.
 
-.. code-block:: python
-    
-        def generate_solution(self, array, evaluate=True):
-            x = OneDimensionSolution(array)
-
-            for j in range(self.function_numbers):
-                if evaluate:
-                    x.F.append(self.f(j, x.solution))
-                else:
-                    x.F.append(None)
-
-            return x
-  
-
-- The function :code:`generate_random_solution(evaluate)` generates a solution **randomly** in the same way as the previous function.
+- The function :code:`generate_random_solution()` generates a solution **randomly**. You can see an example to generate pseudo-boolean solutions :
 
 .. code-block:: python
 
-    def generate_random_solution(self, evaluate=True):
-        return self.generate_solution(array=np.random.randint(0, 2, self.object_number).tolist()[:], evaluate=evaluate)
+    def generate_random_solution(self):
+        return self.evaluate(x=np.random.randint(0, 2, self.number_of_objects).tolist()[:])
 
+
+Examples are available in this repository : https://github.com/moead-framework/framework/tree/master/moead_framework/problem/combinatorial.
 
 
 .. _tuto-algo:
@@ -121,7 +103,7 @@ You can find more information at the following links:
 Save data with the framework
 --------------------------------------------------------------------
 
-You can easily save a set of solutions by using the function :code:`save_population("population.txt", population)`. 
+You can easily save a set of solutions by using the function :code:`save_population("population.txt", population)`.
 The function must be imported with : :code:`from moead_framework.tool.result import save_population`.
 
 
@@ -139,10 +121,10 @@ If you want to save all non-dominated solutions (attribute :code:`self.ep` in th
               )
 
     def checkpt():
-        if moead.current_eval % 10 ==0 :      
+        if moead.current_eval % 10 ==0 :
             filename = "non_dominated_solutions-eval" + str(moead.current_eval) + ".txt"
             save_population(file_name=filename, population=moead.ep)
-    
+
     moead.run(checkpoint=checkpt)
 
 
@@ -173,7 +155,7 @@ You can then extract the Pareto set and the Pareto front :
 
     for solution_object in list_of_solutions:
         pareto_front.append(solution_object.F)
-        pareto_set.append(solution_object.solution)
+        pareto_set.append(solution_object.decision_vector)
 
 
 If you want plot the Pareto front with matplotlib, you can do it with :

@@ -1,7 +1,7 @@
 class Solution:
 
-    def __init__(self, solution, f=None):
+    def __init__(self, decision_vector, f=None):
         if f is None:
             f = []
-        self.solution = solution
+        self.decision_vector = decision_vector
         self.F = f
