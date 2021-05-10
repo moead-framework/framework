@@ -23,10 +23,10 @@ class UbqpTest(unittest.TestCase):
         """Test the function 'generate_random_solution'"""
         random_solution = self.problem.generate_random_solution()
 
-        self.assertEqual(len(random_solution.solution), 25)
+        self.assertEqual(len(random_solution.decision_vector), 25)
         self.assertEqual(len(random_solution.F), 2)
 
-        for item in random_solution.solution:
+        for item in random_solution.decision_vector:
             self.assertIn(item, [0, 1])
 
     def test_evaluation(self):
@@ -39,7 +39,7 @@ class UbqpTest(unittest.TestCase):
             else:
                 array.append(1)
 
-        solution = self.problem.generate_solution(array)
+        solution = self.problem.evaluate(array)
 
         self.assertEqual(solution.F[0], -290.0)
         self.assertEqual(solution.F[1], -856.0)

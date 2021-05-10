@@ -55,4 +55,4 @@ pareto_set = []
 
 for solution_object in population:
     pareto_front.append(solution_object.F)
-    pareto_set.append(solution_object.solution)
+    pareto_set.append(solution_object.decision_vector)

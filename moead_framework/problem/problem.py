@@ -1,38 +1,46 @@
 from abc import abstractmethod, ABC
+from typing import Union, Sequence
+
+import numpy as np
+from moead_framework.solution.solution import Solution
+from moead_framework.solution import OneDimensionSolution
 
 
 class Problem(ABC):
+
+    dtype = float
 
     def __init__(self, objective_number=2):
         self.number_of_objective = objective_number
         pass
 
     @abstractmethod
-    def f(self, function_id, solution):
+    def f(self, function_id, decision_vector):
         """
-        Evaluate the solution for the objective function_id
+        Evaluate the decision_vector for the objective function_id
 
         :param function_id: {integer} index of the objective
-        :param solution: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} solution to evaluate
+        :param decision_vector: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} solution to evaluate
         :return: {float} fitness value
         """
 
 
     @abstractmethod
-    def generate_random_solution(self, evaluate=True):
+    def generate_random_solution(self):
         """
         Generate a random solution for the current problem
 
-        :param evaluate: {boolean} specify if the new solution is evaluated. The default value is True.
         :return: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}
         """
 
-    @abstractmethod
-    def generate_solution(self, array, evaluate=True):
+    def evaluate(self, x: Union[Solution, Sequence]) -> OneDimensionSolution:
         """
-        Generate a predefined solution for the current problem with array
+        Evaluate the given solution for the current problem and store the outcome
 
-        :param array: {list<integer>} all decision variables of the Solution
-        :param evaluate: {boolean} specify if the new solution is evaluated. The default value is True.
-        :return: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}
+        :param x: A {Solution} containing all decision variables
+        :return: :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`
         """
+        if not isinstance(x, OneDimensionSolution):
+            x = OneDimensionSolution(np.array(x, dtype=self.dtype))
+        x.F = [self.f(j, x.decision_vector) for j in range(self.number_of_objective)]
+        return x

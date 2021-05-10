@@ -14,7 +14,7 @@ class OffspringGeneratorGeneric(OffspringGenerator):
 
         parents_solutions = []
         for s in parents:
-            parents_solutions.append(s.solution)
+            parents_solutions.append(s.decision_vector)
 
         if hasattr(self.algorithm, 'number_of_crossover_points'):
             crossover_point = self.algorithm.number_of_crossover_points
@@ -31,4 +31,4 @@ class OffspringGeneratorGeneric(OffspringGenerator):
                                                 mutation_probability=mutation_probability
                                                 ).run()
 
-        return self.algorithm.problem.generate_solution(array=y_sol)
+        return self.algorithm.problem.evaluate(x=y_sol)
