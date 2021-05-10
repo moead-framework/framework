@@ -14,9 +14,9 @@ moead\_framework.problem.combinatorial.mubqp.Mubqp
    .. autosummary::
    
       ~Mubqp.__init__
+      ~Mubqp.evaluate
       ~Mubqp.f
       ~Mubqp.generate_random_solution
-      ~Mubqp.generate_solution
       ~Mubqp.load_qs
    
    

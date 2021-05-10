@@ -196,7 +196,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>solutions</strong> – list&lt;list&lt;integer&gt;&gt; list of solution’s representation (In algorithms, it is represented by the attribute <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution"><code class="xref py py-class docutils literal notranslate"><span class="pre">solution</span></code></a> of the class <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>)</p></li>
+<li><p><strong>solutions</strong> – list&lt;list&lt;integer&gt;&gt; list of solution’s representation (In algorithms, it is represented by the attribute <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution.decision_vector" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution.decision_vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">decision_vector</span></code></a> of the class <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>)</p></li>
 <li><p><strong>kwargs</strong> – optional arguments for the genetic operator</p></li>
 </ul>
 </dd>
@@ -237,11 +237,11 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s</strong> – solution’s representation (In algorithms, it is represented by the attribute <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution"><code class="xref py py-class docutils literal notranslate"><span class="pre">solution</span></code></a> of the class <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>)</p></li>
+<li><p><strong>s</strong> – solution’s representation (In algorithms, it is represented by the attribute <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution.decision_vector" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution.decision_vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">decision_vector</span></code></a> of the class <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>)</p></li>
 <li><p><strong>rate</strong> – {float} mutation rate</p></li>
 <li><p><strong>n</strong> – {integer} value used to compute the sigma value</p></li>
-<li><p><strong>mini</strong> – {float} minimum value of variables in the solution</p></li>
-<li><p><strong>maxi</strong> – {float} maximum value of variables in the solution</p></li>
+<li><p><strong>mini</strong> – {float} minimum value of variables in the decision_vector</p></li>
+<li><p><strong>maxi</strong> – {float} maximum value of variables in the decision_vector</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -272,9 +272,9 @@ it allows to check if the operator has the required number of solutions for the 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s</strong> – solution’s representation (In algorithms, it is represented by the attribute <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution"><code class="xref py py-class docutils literal notranslate"><span class="pre">solution</span></code></a> of the class <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>)</p></li>
-<li><p><strong>mini</strong> – {float} minimum value of variables in the solution</p></li>
-<li><p><strong>maxi</strong> – {float} maximum value of variables in the solution</p></li>
+<li><p><strong>s</strong> – solution’s representation (In algorithms, it is represented by the attribute <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution.decision_vector" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution.decision_vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">decision_vector</span></code></a> of the class <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>)</p></li>
+<li><p><strong>mini</strong> – {float} minimum value of variables in the decision_vector</p></li>
+<li><p><strong>maxi</strong> – {float} maximum value of variables in the decision_vector</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

@@ -178,9 +178,9 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Repair function for solutions</span>
 
-<span class="sd">        :param s: solution&#39;s representation (In algorithms, it is represented by the attribute :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution` of the class :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`)</span>
-<span class="sd">        :param mini: {float} minimum value of variables in the solution</span>
-<span class="sd">        :param maxi: {float} maximum value of variables in the solution</span>
+<span class="sd">        :param s: solution&#39;s representation (In algorithms, it is represented by the attribute :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution.decision_vector` of the class :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`)</span>
+<span class="sd">        :param mini: {float} minimum value of variables in the decision_vector</span>
+<span class="sd">        :param maxi: {float} maximum value of variables in the decision_vector</span>
 <span class="sd">        :return:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">mini</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">mini</span> <span class="k">else</span> <span class="n">maxi</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">maxi</span> <span class="k">else</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="p">]</span></div>
@@ -189,11 +189,11 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Compute the polynomial mutation</span>
 
-<span class="sd">        :param s: solution&#39;s representation (In algorithms, it is represented by the attribute :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution.solution` of the class :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`)</span>
+<span class="sd">        :param s: solution&#39;s representation (In algorithms, it is represented by the attribute :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution.decision_vector` of the class :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`)</span>
 <span class="sd">        :param rate: {float} mutation rate</span>
 <span class="sd">        :param n: {integer} value used to compute the sigma value</span>
-<span class="sd">        :param mini: {float} minimum value of variables in the solution</span>
-<span class="sd">        :param maxi: {float} maximum value of variables in the solution</span>
+<span class="sd">        :param mini: {float} minimum value of variables in the decision_vector</span>
+<span class="sd">        :param maxi: {float} maximum value of variables in the decision_vector</span>
 <span class="sd">        :return:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">rand</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>

@@ -14,9 +14,9 @@ moead\_framework.problem.combinatorial.rmnk.Rmnk
    .. autosummary::
    
       ~Rmnk.__init__
+      ~Rmnk.evaluate
       ~Rmnk.f
       ~Rmnk.generate_random_solution
-      ~Rmnk.generate_solution
       ~Rmnk.load_links
       ~Rmnk.load_tables
       ~Rmnk.sigma

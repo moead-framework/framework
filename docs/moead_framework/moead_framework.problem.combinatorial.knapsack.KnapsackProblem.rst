@@ -14,9 +14,9 @@ moead\_framework.problem.combinatorial.knapsack.KnapsackProblem
    .. autosummary::
    
       ~KnapsackProblem.__init__
+      ~KnapsackProblem.evaluate
       ~KnapsackProblem.f
       ~KnapsackProblem.generate_random_solution
-      ~KnapsackProblem.generate_solution
       ~KnapsackProblem.penality
       ~KnapsackProblem.profit_of_solution
       ~KnapsackProblem.weight_of_solution

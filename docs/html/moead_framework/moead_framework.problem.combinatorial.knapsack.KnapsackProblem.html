@@ -211,14 +211,14 @@ author website: <a class="reference external" href="http://www-desir.lip6.fr/~lu
 <tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.__init__" title="moead_framework.problem.combinatorial.knapsack.KnapsackProblem.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(number_of_objective, instance_file)</p></td>
 <td><p>Constructor of the problem</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.f" title="moead_framework.problem.combinatorial.knapsack.KnapsackProblem.f"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f</span></code></a>(function_id, solution)</p></td>
-<td><p>Evaluate the solution for the objective function_id</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.evaluate" title="moead_framework.problem.combinatorial.knapsack.KnapsackProblem.evaluate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluate</span></code></a>(x)</p></td>
+<td><p>Evaluate the given solution for the current problem and store the outcome</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.generate_random_solution" title="moead_framework.problem.combinatorial.knapsack.KnapsackProblem.generate_random_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_random_solution</span></code></a>([evaluate])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.f" title="moead_framework.problem.combinatorial.knapsack.KnapsackProblem.f"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f</span></code></a>(function_id, decision_vector)</p></td>
+<td><p>Evaluate the decision_vector for the objective function_id</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.generate_random_solution" title="moead_framework.problem.combinatorial.knapsack.KnapsackProblem.generate_random_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_random_solution</span></code></a>()</p></td>
 <td><p>Generate a random solution for the current problem</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.generate_solution" title="moead_framework.problem.combinatorial.knapsack.KnapsackProblem.generate_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_solution</span></code></a>(array[, evaluate])</p></td>
-<td><p>Generate a predefined solution for the current problem with array</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.penality" title="moead_framework.problem.combinatorial.knapsack.KnapsackProblem.penality"><code class="xref py py-obj docutils literal notranslate"><span class="pre">penality</span></code></a>(function_id)</p></td>
 <td><p>Compute the penality for the specific objective</p></td>
@@ -231,15 +231,35 @@ author website: <a class="reference external" href="http://www-desir.lip6.fr/~lu
 </tr>
 </tbody>
 </table>
+<dl class="attribute">
+<dt id="moead_framework.problem.combinatorial.knapsack.KnapsackProblem.dtype">
+<code class="sig-name descname">dtype</code><a class="headerlink" href="#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.dtype" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">builtins.float</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="moead_framework.problem.combinatorial.knapsack.KnapsackProblem.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param">x: Union[moead_framework.solution.solution.Solution, Sequence]</em><span class="sig-paren">)</span> &#x2192; moead_framework.solution.one_dimension_solution.OneDimensionSolution<a class="headerlink" href="#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the given solution for the current problem and store the outcome</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – A {Solution} containing all decision variables</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="method">
 <dt id="moead_framework.problem.combinatorial.knapsack.KnapsackProblem.f">
-<code class="sig-name descname">f</code><span class="sig-paren">(</span><em class="sig-param">function_id</em>, <em class="sig-param">solution</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/combinatorial/knapsack.html#KnapsackProblem.f"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.f" title="Permalink to this definition">¶</a></dt>
-<dd><p>Evaluate the solution for the objective function_id</p>
+<code class="sig-name descname">f</code><span class="sig-paren">(</span><em class="sig-param">function_id</em>, <em class="sig-param">decision_vector</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/combinatorial/knapsack.html#KnapsackProblem.f"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the decision_vector for the objective function_id</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>function_id</strong> – {integer} index of the objective</p></li>
-<li><p><strong>solution</strong> – {<a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>} solution to evaluate</p></li>
+<li><p><strong>decision_vector</strong> – {<a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>} solution to evaluate</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -250,31 +270,11 @@ author website: <a class="reference external" href="http://www-desir.lip6.fr/~lu
 
 <dl class="method">
 <dt id="moead_framework.problem.combinatorial.knapsack.KnapsackProblem.generate_random_solution">
-<code class="sig-name descname">generate_random_solution</code><span class="sig-paren">(</span><em class="sig-param">evaluate=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/combinatorial/knapsack.html#KnapsackProblem.generate_random_solution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.generate_random_solution" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">generate_random_solution</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/combinatorial/knapsack.html#KnapsackProblem.generate_random_solution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.generate_random_solution" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a random solution for the current problem</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>evaluate</strong> – {boolean} specify if the new solution is evaluated. The default value is True.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>{<a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>}</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="moead_framework.problem.combinatorial.knapsack.KnapsackProblem.generate_solution">
-<code class="sig-name descname">generate_solution</code><span class="sig-paren">(</span><em class="sig-param">array</em>, <em class="sig-param">evaluate=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/combinatorial/knapsack.html#KnapsackProblem.generate_solution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.generate_solution" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate a predefined solution for the current problem with array</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>array</strong> – {list&lt;integer&gt;} all decision variables of the Solution</p></li>
-<li><p><strong>evaluate</strong> – {boolean} specify if the new solution is evaluated. The default value is True.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>{<a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>}</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>{<a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>}</p>
 </dd>
 </dl>
 </dd></dl>

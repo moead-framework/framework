@@ -172,7 +172,7 @@
 <div class="section" id="implement-your-own-problem">
 <h2>Implement your own problem<a class="headerlink" href="#implement-your-own-problem" title="Permalink to this headline">¶</a></h2>
 <p>To make your problem compliant with the framework, your problem class has to extend the class <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.problem.Problem</span></code>
-and implement the following 3 required functions :</p>
+and implement the following 2 required functions :</p>
 <ul class="simple">
 <li><p>the fitness function <code class="code docutils literal notranslate"><span class="pre">f(function_id,</span> <span class="pre">solution)</span></code> has 2 required parameters. The function must return the objective value of the given <code class="docutils literal notranslate"><span class="pre">solution</span></code>
 for the objective specified by <code class="docutils literal notranslate"><span class="pre">function_id</span></code>.</p></li>
@@ -187,33 +187,13 @@ for the objective specified by <code class="docutils literal notranslate"><span 
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>The function <code class="code docutils literal notranslate"><span class="pre">generate_solution(array,</span> <span class="pre">evaluate)</span></code> generates a solution. A solution is a <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.solution.one_dimensional_dolution.OneDimensionSolution</span></code> object that contains the representation of the solution in the <code class="docutils literal notranslate"><span class="pre">solution</span></code> attribute, and all fitness values in the <code class="docutils literal notranslate"><span class="pre">F</span></code> attribute.</p></li>
+<li><p>The function <code class="code docutils literal notranslate"><span class="pre">generate_random_solution()</span></code> generates a solution <strong>randomly</strong>. You can see an example to generate pseudo-boolean solutions :</p></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>All components of the framework available in this version are only compatible with OneDimensionSolution. If you want to manage new types of solutions, you have to adapt other components of the framework.</p>
-</div>
-<p>The function <code class="code docutils literal notranslate"><span class="pre">generate_solution(array,</span> <span class="pre">evaluate)</span></code> takes as parameter <code class="docutils literal notranslate"><span class="pre">array</span></code> the representation of the solution and the boolean <code class="code docutils literal notranslate"><span class="pre">evaluate</span></code>
-that determine if the solution object should save the fitness, the default value must be <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">OneDimensionSolution</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
-
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">function_numbers</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">evaluate</span><span class="p">:</span>
-            <span class="n">x</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">solution</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">x</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">x</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_random_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_of_objects</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[:])</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>The function <code class="code docutils literal notranslate"><span class="pre">generate_random_solution(evaluate)</span></code> generates a solution <strong>randomly</strong> in the same way as the previous function.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_random_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_solution</span><span class="p">(</span><span class="n">array</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">object_number</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[:],</span> <span class="n">evaluate</span><span class="o">=</span><span class="n">evaluate</span><span class="p">)</span>
-</pre></div>
-</div>
+<p>Examples are available in this repository : <a class="reference external" href="https://github.com/moead-framework/framework/tree/master/moead_framework/problem/combinatorial">https://github.com/moead-framework/framework/tree/master/moead_framework/problem/combinatorial</a>.</p>
 </div>
 <div class="section" id="implement-your-own-algorithm">
 <h2>Implement your own algorithm<a class="headerlink" href="#implement-your-own-algorithm" title="Permalink to this headline">¶</a></h2>
@@ -309,7 +289,7 @@ The function must be imported with : <code class="code docutils literal notransl
 
 <span class="k">for</span> <span class="n">solution_object</span> <span class="ow">in</span> <span class="n">list_of_solutions</span><span class="p">:</span>
     <span class="n">pareto_front</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">solution_object</span><span class="o">.</span><span class="n">F</span><span class="p">)</span>
-    <span class="n">pareto_set</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">solution_object</span><span class="o">.</span><span class="n">solution</span><span class="p">)</span>
+    <span class="n">pareto_set</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">solution_object</span><span class="o">.</span><span class="n">decision_vector</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>If you want plot the Pareto front with matplotlib, you can do it with :</p>

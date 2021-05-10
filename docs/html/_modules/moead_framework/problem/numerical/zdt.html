@@ -181,8 +181,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">size</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Zdt1.f"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.problem.numerical.zdt.Zdt1.html#moead_framework.problem.numerical.zdt.Zdt1.f">[docs]</a>    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function_id</span><span class="p">,</span> <span class="n">solution</span><span class="p">):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[:]</span>
+<div class="viewcode-block" id="Zdt1.f"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.problem.numerical.zdt.Zdt1.html#moead_framework.problem.numerical.zdt.Zdt1.f">[docs]</a>    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function_id</span><span class="p">,</span> <span class="n">decision_vector</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">decision_vector</span><span class="p">[:]</span>
 
         <span class="k">if</span> <span class="n">function_id</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -190,23 +190,12 @@
             <span class="n">g</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mf">9.0</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
             <span class="k">return</span> <span class="n">g</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">g</span><span class="p">),</span> <span class="mf">0.5</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="Zdt1.generate_random_solution"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.problem.numerical.zdt.Zdt1.html#moead_framework.problem.numerical.zdt.Zdt1.generate_random_solution">[docs]</a>    <span class="k">def</span> <span class="nf">generate_random_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="Zdt1.generate_random_solution"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.problem.numerical.zdt.Zdt1.html#moead_framework.problem.numerical.zdt.Zdt1.generate_random_solution">[docs]</a>    <span class="k">def</span> <span class="nf">generate_random_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">solution</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">):</span>
             <span class="n">solution</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_solution</span><span class="p">(</span><span class="n">solution</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="Zdt1.generate_solution"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.problem.numerical.zdt.Zdt1.html#moead_framework.problem.numerical.zdt.Zdt1.generate_solution">[docs]</a>    <span class="k">def</span> <span class="nf">generate_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">OneDimensionSolution</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
-
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">number_of_objective</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">evaluate</span><span class="p">:</span>
-                <span class="n">x</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">solution</span><span class="p">))</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">x</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">x</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">solution</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>
