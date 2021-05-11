@@ -233,13 +233,17 @@ can be used for every python project that uses the <cite>numpy</cite> and built-
 <p>Because the framework uses the <cite>random</cite> and <cite>numpy</cite> modules, you can be sure
 to have the same results by running the same script several times if you
 add the following instructions before initializing problems or algorithms:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">numpy</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">moead_framework.tool.result</span> <span class="kn">import</span> <span class="n">set_seed</span>
 
 <span class="n">seed</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<span class="n">set_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
 </pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This approach is not safe in threaded environments.
+By re-using a seed value, the same sequence should be reproducible from run to run as long as
+multiple threads are not running (<a class="reference external" href="https://docs.python.org/3/library/random.html#notes-on-reproducibility">https://docs.python.org/3/library/random.html#notes-on-reproducibility</a>)</p>
 </div>
 <p>You can find more information at the following links:</p>
 <ul class="simple">

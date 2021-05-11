@@ -84,15 +84,18 @@ Because the framework uses the `random` and `numpy` modules, you can be sure
 to have the same results by running the same script several times if you
 add the following instructions before initializing problems or algorithms:
 
+
 .. code-block:: python
 
-    import random
-    import numpy
+    from moead_framework.tool.result import set_seed
 
     seed = 0
-    random.seed(seed)
-    np.random.seed(seed)
+    set_seed(seed)
 
+.. warning::
+    This approach is not safe in threaded environments.
+    By re-using a seed value, the same sequence should be reproducible from run to run as long as
+    multiple threads are not running (https://docs.python.org/3/library/random.html#notes-on-reproducibility)
 
 You can find more information at the following links:
 
