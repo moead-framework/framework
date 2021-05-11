@@ -37,11 +37,7 @@ class Zdt1(Problem):
         """
         self.n = size
 
-        if type(self.n) != int:
-            raise ValueError("The parameter 'size' must be an integer strictly greater than 1 (size > 1)")
-
-        if self.n <= 1:
-            raise ValueError("The parameter 'size' must be an integer strictly greater than 1 (size > 1)")
+        self.validate_size(size=self.n)
 
         super().__init__()
 
@@ -60,3 +56,23 @@ class Zdt1(Problem):
             solution.append(random.random())
 
         return self.evaluate(x=solution)
+
+    def generate_solution(self, array, evaluate=True):
+        x = OneDimensionSolution(array)
+
+        for j in range(self.number_of_objective):
+            if evaluate:
+                x.F.append(self.f(j, x.solution))
+            else:
+                x.F.append(None)
+
+        return x
+
+    def validate_size(self, size):
+        try:
+            if size <= 1 or not isinstance(size, int):
+                raise
+            return size
+        except Exception:
+            msg = "Size should be a positive integer. Got '{size}' instead."
+            raise ValueError(msg.format(size=size))
