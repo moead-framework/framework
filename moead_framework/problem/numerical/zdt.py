@@ -37,6 +37,9 @@ class Zdt1(Problem):
         """
         self.n = size
 
+        if type(self.n) != int:
+            raise ValueError("The parameter 'size' must be an integer strictly greater than 1 (size > 1)")
+
         if self.n <= 1:
             raise ValueError("The parameter 'size' must be an integer strictly greater than 1 (size > 1)")
 
