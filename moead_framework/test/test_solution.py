@@ -1,11 +1,10 @@
 from copy import copy
 
-import numpy as np
-import random
 import os
 import unittest
 
 from moead_framework.problem.combinatorial import Rmnk
+from moead_framework.tool.result import set_seed
 
 
 class RmnkTest(unittest.TestCase):
@@ -13,8 +12,7 @@ class RmnkTest(unittest.TestCase):
 
     def setUp(self):
         """Init"""
-        random.seed(1)
-        np.random.seed(1)
+        set_seed(1)
         project_path = os.path.dirname(os.path.abspath(__file__))
         self.problem = Rmnk(project_path + '/data/instances/rmnk_0_2_100_1_0.dat')
         self.solution = self.problem.generate_random_solution()

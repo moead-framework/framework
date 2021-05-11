@@ -1,10 +1,8 @@
 import unittest
-import random
 import os
-import numpy as np
 from moead_framework.problem.combinatorial import Rmnk
 from moead_framework.tool.mop import get_non_dominated, population_size_without_duplicate, compute_crowding_distance
-from moead_framework.tool.result import save_population, save_population_full, compute_hypervolume
+from moead_framework.tool.result import save_population, save_population_full, compute_hypervolume, set_seed
 
 
 class ToolsTest(unittest.TestCase):
@@ -12,8 +10,7 @@ class ToolsTest(unittest.TestCase):
 
     def setUp(self):
         """Init"""
-        random.seed(1)
-        np.random.seed(1)
+        set_seed(1)
         project_path = os.path.dirname(os.path.abspath(__file__))
         self.rmnk = Rmnk(instance_file=project_path + '/data/instances/rmnk_0_2_100_1_0.dat')
         self.rmnk3D = Rmnk(instance_file=project_path + '/data/instances/rmnk_0_3_100_1_0.dat')
