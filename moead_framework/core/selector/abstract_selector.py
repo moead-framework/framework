@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 class MatingPoolSelector(ABC):
     """
-    select the set of solutions (the neighborhood) used to select parents
+    Abstract class to implement a new mating-pool selector
     """
 
     def __init__(self, algorithm_instance):

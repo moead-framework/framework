@@ -24,6 +24,12 @@ class Crossover(GeneticOperator):
             self.crossover_points = int(kwargs.get("crossover_points"))
 
     def run(self):
+        """
+        Execute the genetic operator
+
+        :return: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} the offspring
+        """
+
         self.number_of_solution_is_correct(n=2)
         solution1 = self.solutions[0]
         solution2 = self.solutions[1]

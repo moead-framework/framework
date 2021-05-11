@@ -2,6 +2,9 @@ from abc import ABC, abstractmethod
 
 
 class AggregationFunction(ABC):
+    """
+    Abstract class to implement an aggregation function in the framework
+    """
 
     @abstractmethod
     def run(self, solution, number_of_objective, weights, sub_problem, z):

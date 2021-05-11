@@ -8,6 +8,22 @@ class KnapsackProblem(Problem):
     Implementation of the Multiobjective knapsack problem by Thibaut Lust.
     The problem is compatible with files available on the
     author website: http://www-desir.lip6.fr/~lustt/Research.html#MOKP
+
+    Example:
+
+    >>> from moead_framework.problem.combinatorial import KnapsackProblem
+    >>>
+    >>> instance_file = "moead_framework/test/data/instances/mubqp_0_2_25_0.8_0.dat"
+    >>> kp = KnapsackProblem(number_of_objective=2, instance_file=instance_file)
+    >>>
+    >>> # Generate a new solution
+    >>> solution = kp.generate_random_solution()
+    >>>
+    >>> # Print all decision variables of the solution
+    >>> print(solution.decision_vector)
+    >>>
+    >>> # Print all objectives values of the solution
+    >>> print(solution.F)
     """
     def __init__(self, number_of_objective, instance_file):
         """
@@ -52,6 +68,14 @@ class KnapsackProblem(Problem):
         file.close()
 
     def f(self, function_id, decision_vector):
+        """
+        Evaluate the decision_vector for the objective function_id
+
+        :param function_id: {integer} index of the objective
+        :param decision_vector: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} solution to evaluate
+        :return: {float} fitness value
+        """
+
         function_id = function_id - 1
         weight = self.weight_of_solution(function_id, decision_vector)
         profit = self.profit_of_solution(function_id, decision_vector)
@@ -105,4 +129,10 @@ class KnapsackProblem(Problem):
         return max_founded
 
     def generate_random_solution(self):
+        """
+        Generate a random solution for the current problem
+
+        :return: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}
+        """
+
         return self.evaluate(x=np.random.randint(0, 2, self.number_of_objects).tolist()[:])

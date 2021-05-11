@@ -58,4 +58,5 @@ is a required parameter of the algorithm.
 
    moead_framework.aggregation.tchebycheff.Tchebycheff
    moead_framework.aggregation.weighted_sum.WeightedSum
+   moead_framework.aggregation.functions.AggregationFunction
 

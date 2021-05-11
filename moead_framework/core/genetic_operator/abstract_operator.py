@@ -2,6 +2,9 @@ from abc import ABC, abstractmethod
 
 
 class GeneticOperator(ABC):
+    """
+    Abstract class to implement a new genetic Operator
+    """
 
     def __init__(self, solutions, **kwargs):
         """

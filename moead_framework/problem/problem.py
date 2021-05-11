@@ -7,10 +7,20 @@ from moead_framework.solution import OneDimensionSolution
 
 
 class Problem(ABC):
+    """
+     Abstract class to implement a new Problem in the framework.
+
+     https://moead-framework.github.io/framework/html/tuto.html#implement-your-own-problem
+    """
 
     dtype = float
 
     def __init__(self, objective_number=2):
+        """
+        Constructor of the problem
+
+        :param objective_number: {integer}
+        """
         self.number_of_objective = objective_number
         pass
 

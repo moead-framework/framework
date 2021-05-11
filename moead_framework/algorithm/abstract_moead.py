@@ -10,6 +10,11 @@ from moead_framework.tool.mop import is_duplicated, get_non_dominated, generate_
 
 
 class AbstractMoead:
+    """
+     Abstract class to implement a new algorithm based on MOEA/D in the framework
+
+     https://moead-framework.github.io/framework/html/tuto.html#implement-your-own-algorithm
+    """
 
     def __init__(self, problem, max_evaluation, number_of_weight_neighborhood,
                  aggregation_function, weight_file,

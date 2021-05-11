@@ -8,6 +8,24 @@ class Rmnk(Problem):
     Implementation of the multiobjective NK landscapes with tunable objective correlation.
     The problem is compatible with files generated
     by the mocobench generator http://mocobench.sourceforge.net/index.php?n=Problem.RMNK
+
+    Example:
+
+    >>> from moead_framework.problem.combinatorial import Rmnk
+    >>>
+    >>> # The file is available here : https://github.com/moead-framework/data/blob/master/problem/RMNK/Instances/rmnk_0_2_100_1_0.dat
+    >>> # Others instances are available here : https://github.com/moead-framework/data/tree/master/problem/RMNK/Instances
+    >>> instance_file = "moead_framework/test/data/instances/rmnk_0_2_100_1_0.dat"
+    >>> rmnk = Rmnk(instance_file=instance_file)
+    >>>
+    >>> # Generate a new solution
+    >>> solution = rmnk.generate_random_solution()
+    >>>
+    >>> # Print all decision variables of the solution
+    >>> print(solution.decision_vector)
+    >>>
+    >>> # Print all objectives values of the solution
+    >>> print(solution.F)
     """
 
     dtype = int
@@ -44,6 +62,14 @@ class Rmnk(Problem):
         file.close()
 
     def f(self, function_id, decision_vector):
+        """
+        Evaluate the decision_vector for the objective function_id
+
+        :param function_id: {integer} index of the objective
+        :param decision_vector: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} solution to evaluate
+        :return: {float} fitness value
+        """
+
         accu = 0
 
         for i in range(self.n):
@@ -73,6 +99,12 @@ class Rmnk(Problem):
         return accu
 
     def generate_random_solution(self):
+        """
+        Generate a random solution for the current problem
+
+        :return: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}
+        """
+
         return self.evaluate(x=np.random.randint(0, 2, self.n).tolist()[:])
 
     def load_links(self, file_content):

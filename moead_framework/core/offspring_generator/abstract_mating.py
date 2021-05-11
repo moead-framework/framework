@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 class OffspringGenerator(ABC):
     """
-    Generate a new offspring.
+    Abstract class to implement a new offspring generator
     """
 
     def __init__(self, algorithm_instance):

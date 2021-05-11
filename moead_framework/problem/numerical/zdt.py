@@ -11,6 +11,22 @@ class Zdt1(Problem):
     https://sop.tik.ee.ethz.ch/download/supplementary/testproblems/zdt1/index.php
 
     E. Zitzler, K. Deb, and L. Thiele. Comparison of Multiobjective Evolutionary Algorithms: Empirical Results. Evolutionary Computation, 8(2):173-195, 2000
+
+    Example:
+
+    >>> from moead_framework.problem.numerical import Zdt1
+    >>>
+    >>> zdt = Zdt1(size=10)
+    >>>
+    >>> # Generate a new solution
+    >>> solution = zdt.generate_random_solution()
+    >>>
+    >>> # Print all decision variables of the solution
+    >>> print(solution.decision_vector)
+    >>>
+    >>> # Print all objectives values of the solution
+    >>> print(solution.F)
+
     """
 
     def __init__(self, size):

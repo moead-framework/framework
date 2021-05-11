@@ -34,6 +34,15 @@ For numerical problems
    moead_framework.core.genetic_operator.numerical.moead_de_operators.MoeadDeOperators
 
 
+Abstract
+---------------------------------
+
+.. autosummary::
+   :nosignatures:
+   :toctree: moead_framework
+
+   moead_framework.core.genetic_operator.abstract_operator.GeneticOperator
+
 Offspring generator
 __________________________________________
 
@@ -46,6 +55,7 @@ using components **Parent Selector** and **Genetic operator** for example.
    :toctree: moead_framework
 
    moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric
+   moead_framework.core.offspring_generator.abstract_mating.OffspringGenerator
 
 
 Parent Selector
@@ -61,7 +71,7 @@ operators to generate new offspring.
    moead_framework.core.parent_selector.one_random_and_current_parent_selector.OneRandomAndCurrentParentSelector
    moead_framework.core.parent_selector.two_random_and_current_parent_selector.TwoRandomAndCurrentParentSelector
    moead_framework.core.parent_selector.two_random_parent_selector.TwoRandomParentSelector
-
+   moead_framework.core.parent_selector.abstract_parent_selector.ParentSelector
 
 Mating Selector
 __________________________________________
@@ -74,6 +84,7 @@ The mating selector is the component used to select the set of solutions where w
 
    moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector
    moead_framework.core.selector.delta_selector.DeltaSelector
+   moead_framework.core.selector.abstract_selector.MatingPoolSelector
 
 
 Sub-problem selection strategy
@@ -90,6 +101,7 @@ generation of MOEA/D.
    moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems
    moead_framework.core.sps_strategy.sps_dra.SpsDra
    moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries
+   moead_framework.core.sps_strategy.abstract_sps.SpsStrategy
 
 
 Termination criteria
@@ -102,3 +114,4 @@ The termination criteria is the component used to determine when the algorithm h
    :toctree: moead_framework
 
    moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation
+   moead_framework.core.termination_criteria.abstract_termination_criteria.TerminationCriteria

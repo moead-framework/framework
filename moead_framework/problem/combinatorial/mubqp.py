@@ -8,6 +8,22 @@ class Mubqp(Problem):
     Implementation of the Multiobjective Unconstrained Binary Quadratic Programming problem.
     The problem is compatible with files generated
     by the mocobench generator http://mocobench.sourceforge.net/index.php?n=Problem.MUBQP
+
+    Example:
+
+    >>> from moead_framework.problem.combinatorial import Mubqp
+    >>>
+    >>> instance_file = "moead_framework/test/data/instances/mubqp_0_2_25_0.8_0.dat"
+    >>> mubqp = Mubqp(instance_file=instance_file)
+    >>>
+    >>> # Generate a new solution
+    >>> solution = mubqp.generate_random_solution()
+    >>>
+    >>> # Print all decision variables of the solution
+    >>> print(solution.decision_vector)
+    >>>
+    >>> # Print all objectives values of the solution
+    >>> print(solution.F)
     """
 
     dtype = int
@@ -37,6 +53,14 @@ class Mubqp(Problem):
         self.load_qs(file_content)
 
     def f(self, function_id, decision_vector):
+        """
+        Evaluate the decision_vector for the objective function_id
+
+        :param function_id: {integer} index of the objective
+        :param decision_vector: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} solution to evaluate
+        :return: {float} fitness value
+        """
+
         fit = 0
 
         for i in range(self.n):
@@ -48,6 +72,12 @@ class Mubqp(Problem):
         return - fit
 
     def generate_random_solution(self):
+        """
+        Generate a random solution for the current problem
+
+        :return: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}
+        """
+
         return self.evaluate(x=np.random.randint(0, 2, self.n).tolist()[:])
 
     def load_qs(self, file_content):
