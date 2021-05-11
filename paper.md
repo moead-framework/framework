@@ -51,9 +51,9 @@ testing and analysis of the various algorithm's components' behavior.
 The modular R package MOEADr [@Campelo_2020] focuses on MOEA/D and allows the definition of different variants for 
 each component of MOEA/D. 
 
-With the *moead-framework* package, we aim at bringing the modularity of the MOEADr package by 
-using the flexibility of Python in order to allow the user to update the behavior of MOEA/D 
-components in their research works, and to propose new variants without being limited by the software. 
+With the *moead-framework* package, we aim to provide the modularity of the MOEADr package by 
+using the flexibility of Python. Indeed, we want to allow the user to update the behavior of MOEA/D 
+components in their research works without being limited by the software. 
 The package is focused on a modular architecture for easily adding, updating or testing the components of 
 MOEA/D and for customizing how components interact with each other. Indeed, in contrast with other existing implementations, 
 *moead-framework* does not limit the users with a limited number of components available as parameters (8 components are available 

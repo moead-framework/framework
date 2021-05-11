@@ -1,3 +1,4 @@
+import random
 import numpy as np
 
 
@@ -38,11 +39,25 @@ def save_population_full(file_name, population):
         for coordinate in s.F:
             row += str(coordinate) + " "
 
-        row += str(s.solution.tolist())
+        row += str(s.decision_vector.tolist())
         row = row + "\n"
         file.write(row)
 
     file.close()
+
+
+def set_seed(seed):
+    """
+    Set the seed for numpy and random packages.
+    Warning, this approach is not safe in threaded environments.
+    By re-using a seed value, the same sequence should be reproducible from run to run as long as
+    multiple threads are not running (https://docs.python.org/3/library/random.html#notes-on-reproducibility)
+
+    :param seed: integer
+    :return:
+    """
+    random.seed(seed)
+    np.random.seed(seed)
 
 
 def compute_hypervolume(solutions, ref_point):

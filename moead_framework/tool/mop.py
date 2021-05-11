@@ -78,7 +78,7 @@ def population_size_without_duplicate(population):
     for ind in population:
         is_dup = False
         for ind_not_dup in arr:
-            if np.array_equal(np.array(ind.solution), np.array(ind_not_dup.solution)):
+            if np.array_equal(np.array(ind.decision_vector), np.array(ind_not_dup.decision_vector)):
                 is_dup = True
 
         if not is_dup:

@@ -9,6 +9,9 @@ class Mubqp(Problem):
     The problem is compatible with files generated
     by the mocobench generator http://mocobench.sourceforge.net/index.php?n=Problem.MUBQP
     """
+
+    dtype = int
+
     def __init__(self, instance_file):
         """
         Constructor of the problem
@@ -33,30 +36,19 @@ class Mubqp(Problem):
         self.qs = np.zeros((self.m, self.n, self.n))
         self.load_qs(file_content)
 
-    def f(self, function_id, solution):
+    def f(self, function_id, decision_vector):
         fit = 0
 
         for i in range(self.n):
-            if solution[i] == 1:
+            if decision_vector[i] == 1:
                 for j in range(i+1):
-                    if solution[j] == 1:
+                    if decision_vector[j] == 1:
                         fit += self.qs[function_id][i][j]
 
         return - fit
 
-    def generate_random_solution(self, evaluate=True):
-        return self.generate_solution(array=np.random.randint(0, 2, self.n).tolist()[:], evaluate=evaluate)
-
-    def generate_solution(self, array, evaluate=True):
-        x = OneDimensionSolution(np.array(array, dtype=int))
-
-        for j in range(self.number_of_objective):
-            if evaluate:
-                x.F.append(self.f(j, x.solution))
-            else:
-                x.F.append(None)
-
-        return x
+    def generate_random_solution(self):
+        return self.evaluate(x=np.random.randint(0, 2, self.n).tolist()[:])
 
     def load_qs(self, file_content):
         """

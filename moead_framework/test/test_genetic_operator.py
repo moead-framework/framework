@@ -1,11 +1,10 @@
 import unittest
-import random
-import numpy as np
 
 from moead_framework.core.genetic_operator.combinatorial import Crossover, BinaryMutation
 from moead_framework.core.genetic_operator.numerical import DifferentialEvolutionCrossover, PolynomialMutation, \
     MoeadDeOperators
 from moead_framework.problem.numerical import Zdt1
+from moead_framework.tool.result import set_seed
 
 
 class GeneticOperatorsTest(unittest.TestCase):
@@ -13,8 +12,7 @@ class GeneticOperatorsTest(unittest.TestCase):
 
     def setUp(self):
         """Init"""
-        random.seed(1)
-        np.random.seed(1)
+        set_seed(1)
 
     def test_combinatorial_binary_mutation(self):
         """Test combinatorial binary mutation"""
@@ -38,7 +36,7 @@ class GeneticOperatorsTest(unittest.TestCase):
     def test_numerical_polynomial_mutation(self):
         """Test numerical polynomial mutation"""
         problem = Zdt1(20)
-        array_solution = problem.generate_random_solution().solution
+        array_solution = problem.generate_random_solution().decision_vector
         new_solution = PolynomialMutation(solutions=[array_solution]).run()
 
         self.assertEqual(new_solution, [0.13890427141075934, 0.95236226912859, 0.750939942185552, 0.21601593072335035,
@@ -51,9 +49,9 @@ class GeneticOperatorsTest(unittest.TestCase):
     def test_numerical_de_crossover(self):
         """Test numerical de crossover"""
         problem = Zdt1(5)
-        array_solution1 = problem.generate_random_solution().solution
-        array_solution2 = problem.generate_random_solution().solution
-        array_solution3 = problem.generate_random_solution().solution
+        array_solution1 = problem.generate_random_solution().decision_vector
+        array_solution2 = problem.generate_random_solution().decision_vector
+        array_solution3 = problem.generate_random_solution().decision_vector
 
         new_solution = DifferentialEvolutionCrossover(solutions=[array_solution1,
                                                                  array_solution2,
@@ -65,9 +63,9 @@ class GeneticOperatorsTest(unittest.TestCase):
     def test_moead_de_operator(self):
         """Test numerical de crossover"""
         problem = Zdt1(5)
-        array_solution1 = problem.generate_random_solution().solution
-        array_solution2 = problem.generate_random_solution().solution
-        array_solution3 = problem.generate_random_solution().solution
+        array_solution1 = problem.generate_random_solution().decision_vector
+        array_solution2 = problem.generate_random_solution().decision_vector
+        array_solution3 = problem.generate_random_solution().decision_vector
 
         new_solution = MoeadDeOperators(solutions=[array_solution1,
                                                    array_solution2,

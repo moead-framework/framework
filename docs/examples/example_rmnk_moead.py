@@ -48,3 +48,14 @@ save_file = "moead-rmnk" + str(rmnk.number_of_objective) \
 
 save_population(save_file, population)
 
+
+###############################
+#    Extract the Pareto set   #
+#     and the Pareto front    #
+###############################
+pareto_front = []
+pareto_set = []
+
+for solution_object in population:
+    pareto_front.append(solution_object.F)
+    pareto_set.append(solution_object.decision_vector)

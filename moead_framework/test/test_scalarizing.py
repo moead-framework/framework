@@ -22,7 +22,7 @@ class ScalarizingTest(unittest.TestCase):
         for i in range(100):
             array.append(1)
 
-        self.solution = self.problem.generate_solution(array)
+        self.solution = self.problem.evaluate(array)
         self.z = [1, 1]
 
     def test_tchebycheff(self):
