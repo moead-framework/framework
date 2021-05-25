@@ -2,7 +2,7 @@ from abc import abstractmethod, ABC
 from typing import Union, Sequence
 
 import numpy as np
-from moead_framework.solution.solution import Solution
+from moead_framework.solution.base import Solution
 from moead_framework.solution import OneDimensionSolution
 
 
