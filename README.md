@@ -93,6 +93,14 @@ modifying the code of the framework to improve it.
 
 We have [a code of conduct](https://github.com/moead-framework/framework/blob/master/CODE_OF_CONDUCT.md), please follow it in all your interactions with the project.
 
+
+# Support
+
+If you have any questions about the project, don't hesitate to create a [new discussion](https://github.com/moead-framework/framework/discussions/new) 
+with [GitHub Discussions](https://github.com/moead-framework/framework/discussions). It is the space for our community to have conversations, 
+ask questions and post answers without opening issues.
+
+
 # For developers 
 
 ## Requirements for developers

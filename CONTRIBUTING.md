@@ -6,10 +6,10 @@ email, or any other method with the owners of this repository before making a ch
 Please note we have [a code of conduct](https://github.com/moead-framework/framework/blob/master/CODE_OF_CONDUCT.md), please follow it in all your interactions with the project.
 
 
-## You want to share a bug or an idea ?
+## You want to share a bug ?
 
 You can [create an issue](https://github.com/moead-framework/framework/issues/new) with all information that can 
-help us to understand your request. If you want to report a bug, share with us the following information:
+help us to understand your request. Share with us the following information:
 
 - version of python
 - version of the framework
@@ -32,7 +32,7 @@ You can then create a Pull Request with the following process :
 ## You want to discuss the project ?
 
 If you have any questions about the project, don't hesitate to create a [new discussion](https://github.com/moead-framework/framework/discussions/new) 
-with the [GitHub Discussions](https://github.com/moead-framework/framework/discussions). It is the space for your community to have conversations, 
+with the [GitHub Discussions](https://github.com/moead-framework/framework/discussions). It is the space for our community to have conversations, 
 ask questions and post answers without opening issues.
 
 ## Code of Conduct
