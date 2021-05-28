@@ -93,8 +93,23 @@ class MoeadDRA(MoeadDeltaNr):
         """
         Execute the algorithm.
 
-        :param checkpoint: {function} The default value is None. The checkpoint can be used to save data during the process
+        :param checkpoint: {function} The default value is None. The checkpoint can be used to save data during the process. The function required one parameter of type {:class:`~moead_framework.algorithm.abstract_moead.AbstractMoead`}
         :return: list<{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}> All non-dominated solutions found by the algorithm
+
+        Example:
+
+                >>> from moead_framework.algorithm.combinatorial import Moead
+                >>> from moead_framework.algorithm import AbstractMoead
+                >>> from moead_framework.tool.result import save_population
+                >>> moead = Moead(...)
+                >>>
+                >>> def checkpoint(moead_algorithm: AbstractMoead):
+                >>>     if moead_algorithm.current_eval % 10 == 0 :
+                >>>     filename = "non_dominated_solutions-eval" + str(moead_algorithm.current_eval) + ".txt"
+                >>>     save_population(file_name=filename, population=moead_algorithm.ep)
+                >>>
+                >>> population = moead.run(checkpoint)
+
         """
 
         while self.current_eval < self.max_evaluation:
@@ -102,7 +117,7 @@ class MoeadDRA(MoeadDeltaNr):
             for i in self.get_sub_problems_to_visit():
 
                 if checkpoint is not None:
-                    checkpoint(self.current_eval)
+                    checkpoint(self)
 
                 self.update_current_sub_problem(sub_problem=i)
                 self.mating_pool = self.mating_pool_selection(sub_problem=i)[:]

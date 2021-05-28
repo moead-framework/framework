@@ -1,6 +1,8 @@
 import random
 import numpy as np
 
+from moead_framework.algorithm import AbstractMoead
+
 
 def save_population(file_name, population):
     """
@@ -58,6 +60,18 @@ def set_seed(seed):
     """
     random.seed(seed)
     np.random.seed(seed)
+
+
+def checkpoint(moead_algorithm: AbstractMoead):
+    """
+    Minimalist checkpoint function to save all non dominated point every 10 evaluations
+
+    :param moead_algorithm: {:class:`~moead_framework.algorithm.AbstractMoead`}
+    :return:
+    """
+    if moead_algorithm.current_eval % 10 == 0 :
+        filename = "non_dominated_solutions-eval" + str(moead_algorithm.current_eval) + ".txt"
+        save_population(file_name=filename, population=moead_algorithm.ep)
 
 
 def compute_hypervolume(solutions, ref_point):
