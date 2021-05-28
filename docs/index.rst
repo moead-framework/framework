@@ -16,7 +16,7 @@ approaches for multi-objective optimization.
 The goal of the *moead-framework* python package is to provide a modular framework for scientists and 
 researchers interested in experimenting with **MOEA/D** and its numerous variants.
 
-If you have any questions about the framework or the project, feel free to create an issue on github: https://github.com/moead-framework/framework.
+If you have any questions about the framework or the project, feel free to create a new discussion on github: https://github.com/moead-framework/framework/discussions.
 
 .. toctree::
    :maxdepth: 2
