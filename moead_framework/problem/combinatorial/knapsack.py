@@ -13,7 +13,7 @@ class KnapsackProblem(Problem):
 
     >>> from moead_framework.problem.combinatorial import KnapsackProblem
     >>>
-    >>> instance_file = "moead_framework/test/data/instances/mubqp_0_2_25_0.8_0.dat"
+    >>> instance_file = "moead_framework/test/data/instances/MOKP_250_2.dat"
     >>> kp = KnapsackProblem(number_of_objective=2, instance_file=instance_file)
     >>>
     >>> # Generate a new solution
