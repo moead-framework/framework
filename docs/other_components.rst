@@ -3,6 +3,9 @@
 Other components
 ===========================================
 
+.. note:: Not all available components are compatible with each other.
+    Refer to each component's documentation for more details on required attributes.
+
 Genetic operators
 __________________________________________
 

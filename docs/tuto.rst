@@ -42,6 +42,10 @@ All components are set with default values to implement the first version of **M
 You can customize each algorithm in the framework with your own
 components that you can set as parameter of the algorithm contructor.
 
+.. note:: Not all available components are compatible with each other.
+    Refer to each component's documentation for more details on required attributes.
+
+
 Example for :class:`moead_framework.algorithm.combinatorial.moead` :
 
 .. code-block:: python
