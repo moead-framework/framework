@@ -20,6 +20,7 @@ moead\_framework.algorithm.combinatorial.moead\_delta\_nr.MoeadDeltaNr
       ~MoeadDeltaNr.init_z
       ~MoeadDeltaNr.initial_population
       ~MoeadDeltaNr.mating_pool_selection
+      ~MoeadDeltaNr.optimize_sub_problem
       ~MoeadDeltaNr.repair
       ~MoeadDeltaNr.run
       ~MoeadDeltaNr.update_current_sub_problem

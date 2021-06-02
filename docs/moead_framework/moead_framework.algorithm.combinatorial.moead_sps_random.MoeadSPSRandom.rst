@@ -20,6 +20,7 @@ moead\_framework.algorithm.combinatorial.moead\_sps\_random.MoeadSPSRandom
       ~MoeadSPSRandom.init_z
       ~MoeadSPSRandom.initial_population
       ~MoeadSPSRandom.mating_pool_selection
+      ~MoeadSPSRandom.optimize_sub_problem
       ~MoeadSPSRandom.repair
       ~MoeadSPSRandom.run
       ~MoeadSPSRandom.update_current_sub_problem

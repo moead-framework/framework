@@ -238,19 +238,22 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.mating_pool_selection" title="moead_framework.algorithm.numerical.moead.Moead.mating_pool_selection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mating_pool_selection</span></code></a>(sub_problem)</p></td>
 <td><p>Select the set of solutions where future parents solutions will be selected according to the current sub-problem visited</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.repair" title="moead_framework.algorithm.numerical.moead.Moead.repair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">repair</span></code></a>(solution)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.optimize_sub_problem" title="moead_framework.algorithm.numerical.moead.Moead.optimize_sub_problem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">optimize_sub_problem</span></code></a>(sub_problem_index)</p></td>
+<td><p>Execute the process to optimize the sub-problem currently iterated</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.repair" title="moead_framework.algorithm.numerical.moead.Moead.repair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">repair</span></code></a>(solution)</p></td>
 <td><p>Repair the solution in parameter.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.run" title="moead_framework.algorithm.numerical.moead.Moead.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a>([checkpoint])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.run" title="moead_framework.algorithm.numerical.moead.Moead.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a>([checkpoint])</p></td>
 <td><p>Execute the algorithm.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.update_current_sub_problem" title="moead_framework.algorithm.numerical.moead.Moead.update_current_sub_problem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_current_sub_problem</span></code></a>(sub_problem)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.update_current_sub_problem" title="moead_framework.algorithm.numerical.moead.Moead.update_current_sub_problem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_current_sub_problem</span></code></a>(sub_problem)</p></td>
 <td><p>Update the attribute current_sub_problem</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.update_solutions" title="moead_framework.algorithm.numerical.moead.Moead.update_solutions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_solutions</span></code></a>(solution, …)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.update_solutions" title="moead_framework.algorithm.numerical.moead.Moead.update_solutions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_solutions</span></code></a>(solution, …)</p></td>
 <td><p>Update solutions of the population and of the external archive ep</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.update_z" title="moead_framework.algorithm.numerical.moead.Moead.update_z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_z</span></code></a>(solution)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.algorithm.numerical.moead.Moead.update_z" title="moead_framework.algorithm.numerical.moead.Moead.update_z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_z</span></code></a>(solution)</p></td>
 <td><p>Update the reference point z with coordinates of the solution in parameter if coordinates are better.</p></td>
 </tr>
 </tbody>
@@ -325,6 +328,20 @@ This function calls the component <code class="xref py py-class docutils literal
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>{list} indexes of sub-problems</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="moead_framework.algorithm.numerical.moead.Moead.optimize_sub_problem">
+<code class="sig-name descname">optimize_sub_problem</code><span class="sig-paren">(</span><em class="sig-param">sub_problem_index</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.numerical.moead.Moead.optimize_sub_problem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the process to optimize the sub-problem currently iterated</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sub_problem_index</strong> – {integer} index of the sub-problem iterated</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
 </dd>
 </dl>
 </dd></dl>

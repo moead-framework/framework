@@ -21,6 +21,7 @@ moead\_framework.algorithm.combinatorial.moead\_dra.MoeadDRA
       ~MoeadDRA.init_z
       ~MoeadDRA.initial_population
       ~MoeadDRA.mating_pool_selection
+      ~MoeadDRA.optimize_sub_problem
       ~MoeadDRA.repair
       ~MoeadDRA.run
       ~MoeadDRA.update_current_sub_problem

@@ -262,15 +262,24 @@
                 <span class="k">if</span> <span class="n">checkpoint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="n">checkpoint</span><span class="p">()</span>
 
-                <span class="bp">self</span><span class="o">.</span><span class="n">update_current_sub_problem</span><span class="p">(</span><span class="n">sub_problem</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">mating_pool</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mating_pool_selection</span><span class="p">(</span><span class="n">sub_problem</span><span class="o">=</span><span class="n">i</span><span class="p">)[:]</span>
-                <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_offspring</span><span class="p">(</span><span class="n">population</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mating_pool</span><span class="p">)</span>
-                <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repair</span><span class="p">(</span><span class="n">solution</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">update_z</span><span class="p">(</span><span class="n">solution</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">update_solutions</span><span class="p">(</span><span class="n">solution</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">aggregation_function</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">aggregation_function</span><span class="p">,</span> <span class="n">sub_problem</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">current_eval</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">optimize_sub_problem</span><span class="p">(</span><span class="n">sub_problem_index</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ep</span>
+
+    <span class="k">def</span> <span class="nf">optimize_sub_problem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sub_problem_index</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Execute the process to optimize the sub-problem currently iterated</span>
+
+<span class="sd">        :param sub_problem_index: {integer} index of the sub-problem iterated</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_current_sub_problem</span><span class="p">(</span><span class="n">sub_problem</span><span class="o">=</span><span class="n">sub_problem_index</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mating_pool</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mating_pool_selection</span><span class="p">(</span><span class="n">sub_problem</span><span class="o">=</span><span class="n">sub_problem_index</span><span class="p">)[:]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_offspring</span><span class="p">(</span><span class="n">population</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mating_pool</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">repair</span><span class="p">(</span><span class="n">solution</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_z</span><span class="p">(</span><span class="n">solution</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_solutions</span><span class="p">(</span><span class="n">solution</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">aggregation_function</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">aggregation_function</span><span class="p">,</span> <span class="n">sub_problem</span><span class="o">=</span><span class="n">sub_problem_index</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_eval</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="k">def</span> <span class="nf">update_solutions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solution</span><span class="p">,</span> <span class="n">aggregation_function</span><span class="p">,</span> <span class="n">sub_problem</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

@@ -20,6 +20,7 @@ moead\_framework.algorithm.numerical.moead.Moead
       ~Moead.init_z
       ~Moead.initial_population
       ~Moead.mating_pool_selection
+      ~Moead.optimize_sub_problem
       ~Moead.repair
       ~Moead.run
       ~Moead.update_current_sub_problem

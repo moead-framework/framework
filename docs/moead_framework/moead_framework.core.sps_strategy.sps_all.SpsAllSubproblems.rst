@@ -15,6 +15,7 @@ moead\_framework.core.sps\_strategy.sps\_all.SpsAllSubproblems
    
       ~SpsAllSubproblems.__init__
       ~SpsAllSubproblems.get_sub_problems
+      ~SpsAllSubproblems.get_xtrem_index
    
    
 
