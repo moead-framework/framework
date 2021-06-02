@@ -29,4 +29,5 @@ ___________________________________________
    moead_framework.tool.result.save_population
    moead_framework.tool.result.save_population_full
    moead_framework.tool.result.compute_hypervolume
+   moead_framework.tool.result.checkpoint
 

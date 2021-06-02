@@ -66,7 +66,7 @@ def checkpoint(moead_algorithm: AbstractMoead):
     """
     Minimalist checkpoint function to save all non dominated point every 10 evaluations
 
-    :param moead_algorithm: {:class:`~moead_framework.algorithm.AbstractMoead`}
+    :param moead_algorithm: {:class:`~moead_framework.algorithm.abstract_moead.AbstractMoead`} instance of the algorithm that uses the checkpoint
     :return:
     """
     if moead_algorithm.current_eval % 10 == 0 :
