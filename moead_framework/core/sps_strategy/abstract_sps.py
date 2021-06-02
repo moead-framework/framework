@@ -18,3 +18,19 @@ class SpsStrategy(ABC):
 
         :return: {list<integer>} indexes of sub-problems
         """
+
+    def get_xtrem_index(self):
+        """
+        get boundaries sub-problems
+
+        :return: {list<integer>} indexes of sub-problems
+        """
+        xtrem_index = []
+        for i in range(self.algorithm.number_of_weight):
+            weight = self.algorithm.weights[i]
+            for j in range(self.algorithm.number_of_objective):
+                if weight[j] == 1:
+                    xtrem_index.append(i)
+                    break
+
+        return xtrem_index
