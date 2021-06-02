@@ -103,15 +103,24 @@ class AbstractMoead:
                 if checkpoint is not None:
                     checkpoint()
 
-                self.update_current_sub_problem(sub_problem=i)
-                self.mating_pool = self.mating_pool_selection(sub_problem=i)[:]
-                y = self.generate_offspring(population=self.mating_pool)
-                y = self.repair(solution=y)
-                self.update_z(solution=y)
-                self.update_solutions(solution=y, aggregation_function=self.aggregation_function, sub_problem=i)
-                self.current_eval += 1
+                self.optimize_sub_problem(sub_problem_index=i)
 
         return self.ep
+
+    def optimize_sub_problem(self, sub_problem_index):
+        """
+        Execute the process to optimize the sub-problem currently iterated
+
+        :param sub_problem_index: {integer} index of the sub-problem iterated
+        :return:
+        """
+        self.update_current_sub_problem(sub_problem=sub_problem_index)
+        self.mating_pool = self.mating_pool_selection(sub_problem=sub_problem_index)[:]
+        y = self.generate_offspring(population=self.mating_pool)
+        y = self.repair(solution=y)
+        self.update_z(solution=y)
+        self.update_solutions(solution=y, aggregation_function=self.aggregation_function, sub_problem=sub_problem_index)
+        self.current_eval += 1
 
     def update_solutions(self, solution, aggregation_function, sub_problem):
         """

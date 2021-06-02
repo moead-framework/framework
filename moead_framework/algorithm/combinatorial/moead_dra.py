@@ -69,13 +69,7 @@ class MoeadDRA(MoeadDeltaNr):
                 if checkpoint is not None:
                     checkpoint(self.current_eval)
 
-                self.update_current_sub_problem(sub_problem=i)
-                self.mating_pool = self.mating_pool_selection(sub_problem=i)[:]
-                y = self.generate_offspring(population=self.mating_pool)
-                y = self.repair(solution=y)
-                self.update_z(solution=y)
-                self.update_solutions(solution=y, aggregation_function=self.aggregation_function, sub_problem=i)
-                self.current_eval += 1
+                self.optimize_sub_problem(sub_problem_index=i)
 
             # update the score history of all sub_problem
             # just before compute the utility of sub problems
