@@ -29,5 +29,5 @@ class GeneticOperator(ABC):
         :return:
         """
         if len(self.solutions) != n:
-            msg = "The algorithm does not seem to be compatible with the current genetic operator. The current genetic oeperator needs {n} solutions as parents and it received {badn} solution(s)."
-            raise ValueError(msg.format(n=n, badn=len(self.solutions)))
+            msg = f"{self.__class__.__name__} needs {n} solutions as parents, but received {len(self.solutions)} solution(s)"
+            raise ValueError(msg)

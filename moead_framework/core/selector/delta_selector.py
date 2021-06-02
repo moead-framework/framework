@@ -17,12 +17,9 @@ class DeltaSelector(MatingPoolSelector):
         """
         super().__init__(algorithm_instance)
 
-        try:
-            if not hasattr(self.algorithm, 'delta'):
-                raise
-        except Exception:
-            msg = "The algorithm does not seem to be compatible with the component DeltaSelector. The parameter delta is required in the algorithm by the component DeltaSelector."
-            raise ValueError(msg)
+        if not hasattr(self.algorithm, 'delta'):
+            msg = "Algorithm lacks required attribute 'delta' for component 'DeltaSelector'. "
+            raise AttributeError(msg)
 
     def select(self, sub_problem):
         """

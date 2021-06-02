@@ -23,12 +23,9 @@ class SpsRandomAndBoundaries(SpsStrategy):
 
         :return: {list<integer>} indexes of sub-problems
         """
-        try:
-            if not hasattr(self.algorithm, 'number_of_subproblem'):
-                raise
-        except Exception:
-            msg = "The algorithm does not seem to be compatible with the component SpsRandomAndBoundaries. The attribute number_of_subproblem is required in the algorithm to define the number of sub-problem to iterate."
-            raise ValueError(msg)
+        if not hasattr(self.algorithm, 'number_of_subproblem'):
+            msg = "Algorithm lacks required attribute 'number_of_subproblem' for component 'SpsRandomAndBoundaries'."
+            raise AttributeError(msg)
 
         range_list = list(range(self.algorithm.number_of_weight))
         xtrem_index = self.get_xtrem_index()

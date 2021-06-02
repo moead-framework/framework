@@ -24,12 +24,9 @@ class SpsDra(SpsStrategy):
 
         :return: {list<integer>} indexes of sub-problems
         """
-        try:
-            if not hasattr(self.algorithm, 'pi'):
-                raise
-        except Exception:
-            msg = "The algorithm does not seem to be compatible with the component SpsDra. The attribute pi is required in the algorithm to stock all utility values of each sub-problems."
-            raise ValueError(msg)
+        if not hasattr(self.algorithm, 'pi'):
+            msg = "Algorithm lacks required attribute 'pi' for component 'SpsDra'."
+            raise AttributeError(msg)
 
         selection = []
 
