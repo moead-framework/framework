@@ -28,5 +28,6 @@ class GeneticOperator(ABC):
         :param n: {integer} number of solution required by the operator
         :return:
         """
-        if len(self.solutions) < n:
-            raise ValueError("The genetic operator needs more than "+str(n)+" solutions")
+        if len(self.solutions) != n:
+            msg = f"{self.__class__.__name__} needs {n} solutions as parents, but received {len(self.solutions)} solution(s)"
+            raise ValueError(msg)

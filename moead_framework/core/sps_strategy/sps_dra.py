@@ -12,6 +12,9 @@ class SpsDra(SpsStrategy):
     2009 IEEE Congress on Evolutionary Computation
     Trondheim, 2009, pp. 203-208
     doi: 10.1109/CEC.2009.4982949.
+
+    The strategy requires the attribute pi in the algorithm to stock all utility values of each sub-problems.
+    This attribute is a list with the same size as the number of available sub-problems.
     """
     def get_sub_problems(self):
         """
@@ -21,6 +24,10 @@ class SpsDra(SpsStrategy):
 
         :return: {list<integer>} indexes of sub-problems
         """
+        if not hasattr(self.algorithm, 'pi'):
+            msg = "Algorithm lacks required attribute 'pi' for component 'SpsDra'."
+            raise AttributeError(msg)
+
         selection = []
 
         for w in range(self.algorithm.number_of_weight):

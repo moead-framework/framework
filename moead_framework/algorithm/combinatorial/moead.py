@@ -63,6 +63,6 @@ class Moead(AbstractMoead):
             self.genetic_operator = genetic_operator
 
         if parent_selector is None:
-            self.parent_selector = TwoRandomParentSelector(algorithm=self)
-        else:
-            self.parent_selector = parent_selector
+            parent_selector = TwoRandomParentSelector
+
+        self.parent_selector = parent_selector(algorithm=self)
