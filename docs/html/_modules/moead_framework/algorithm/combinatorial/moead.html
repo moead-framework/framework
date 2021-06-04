@@ -222,9 +222,9 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">genetic_operator</span> <span class="o">=</span> <span class="n">genetic_operator</span>
 
         <span class="k">if</span> <span class="n">parent_selector</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">parent_selector</span> <span class="o">=</span> <span class="n">TwoRandomParentSelector</span><span class="p">(</span><span class="n">algorithm</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">parent_selector</span> <span class="o">=</span> <span class="n">parent_selector</span></div></div>
+            <span class="n">parent_selector</span> <span class="o">=</span> <span class="n">TwoRandomParentSelector</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent_selector</span> <span class="o">=</span> <span class="n">parent_selector</span><span class="p">(</span><span class="n">algorithm</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

@@ -164,9 +164,21 @@
 
 <div class="viewcode-block" id="DeltaSelector"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.core.selector.delta_selector.DeltaSelector.html#moead_framework.core.selector.delta_selector.DeltaSelector">[docs]</a><span class="k">class</span> <span class="nc">DeltaSelector</span><span class="p">(</span><span class="n">MatingPoolSelector</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    According to the probability delta (attribute in the algorithm), the selector will select the neighborhood or the whole population.</span>
-<span class="sd">    delta is the probability that parent solutions are selected from the neighborhood.</span>
+<span class="sd">    According to the probability delta (required attribute in the algorithm), the selector will select the neighborhood or the whole population.</span>
+<span class="sd">    The attribute &#39;delta&#39; represents the probability that parent solutions are selected from the neighborhood.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DeltaSelector.__init__"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.core.selector.delta_selector.DeltaSelector.html#moead_framework.core.selector.delta_selector.DeltaSelector.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">algorithm_instance</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor of the mating pool selector</span>
+
+<span class="sd">        :param algorithm_instance: {:class:`~moead_framework.algorithm.abstract_moead.py.AbstractMoead`} instance of the algorithm</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">algorithm_instance</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="p">,</span> <span class="s1">&#39;delta&#39;</span><span class="p">):</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Algorithm lacks required attribute &#39;delta&#39; for component &#39;DeltaSelector&#39;. &quot;</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeltaSelector.select"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.core.selector.delta_selector.DeltaSelector.html#moead_framework.core.selector.delta_selector.DeltaSelector.select">[docs]</a>    <span class="k">def</span> <span class="nf">select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sub_problem</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

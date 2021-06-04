@@ -171,6 +171,9 @@
 <span class="sd">    2009 IEEE Congress on Evolutionary Computation</span>
 <span class="sd">    Trondheim, 2009, pp. 203-208</span>
 <span class="sd">    doi: 10.1109/CEC.2009.4982949.</span>
+
+<span class="sd">    The strategy requires the attribute pi in the algorithm to stock all utility values of each sub-problems.</span>
+<span class="sd">    This attribute is a list with the same size as the number of available sub-problems.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="SpsDra.get_sub_problems"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.core.sps_strategy.sps_dra.SpsDra.html#moead_framework.core.sps_strategy.sps_dra.SpsDra.get_sub_problems">[docs]</a>    <span class="k">def</span> <span class="nf">get_sub_problems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -180,6 +183,10 @@
 
 <span class="sd">        :return: {list&lt;integer&gt;} indexes of sub-problems</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="p">,</span> <span class="s1">&#39;pi&#39;</span><span class="p">):</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Algorithm lacks required attribute &#39;pi&#39; for component &#39;SpsDra&#39;.&quot;</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
         <span class="n">selection</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">number_of_weight</span><span class="p">):</span>

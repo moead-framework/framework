@@ -193,6 +193,7 @@
 “On the Combined Impact of Population Size and Sub-problem Selection in MOEA/D.”
 European Conference on Evolutionary Computation in Combinatorial Optimization (Part of EvoStar).
 Springer, Cham, 2020</p>
+<p>The strategy requires the attribute number_of_subproblem to define the number of sub-problem to iterate for the next generation.</p>
 <dl class="method">
 <dt id="moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">algorithm_instance</em><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries.__init__" title="Permalink to this definition">¶</a></dt>
@@ -215,7 +216,7 @@ Springer, Cham, 2020</p>
 <td><p>Constructor of the Sub-Problem Selection Strategy</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries.get_sub_problems" title="moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries.get_sub_problems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_sub_problems</span></code></a>()</p></td>
-<td><p>Select lambda random sub problems in each cluster</p></td>
+<td><p>Select lambda random sub problems</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries.get_xtrem_index" title="moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries.get_xtrem_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_xtrem_index</span></code></a>()</p></td>
 <td><p>get boundaries sub-problems</p></td>
@@ -225,7 +226,7 @@ Springer, Cham, 2020</p>
 <dl class="method">
 <dt id="moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries.get_sub_problems">
 <code class="sig-name descname">get_sub_problems</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/sps_strategy/sps_random_and_boundaries.html#SpsRandomAndBoundaries.get_sub_problems"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries.get_sub_problems" title="Permalink to this definition">¶</a></dt>
-<dd><p>Select lambda random sub problems in each cluster</p>
+<dd><p>Select lambda random sub problems</p>
 <p>lambda is represented here by the attribute self.algorithm.number_of_subproblem</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
