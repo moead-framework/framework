@@ -49,7 +49,9 @@ optimization software such as pymoo [@pymoo], pygmo [@pygmo] and jMetal [@jmetal
 many state-of-the-art algorithms, visualization tools or parallelization abstraction, but they do not enable detailed 
 testing and analysis of the various algorithm's components' behavior.
 The modular R package MOEADr [@Campelo_2020] focuses on MOEA/D and allows the definition of different variants for 
-each component of MOEA/D. 
+each component of MOEA/D. While some modular frameworks already exist in Python for evolutionary algorithms 
+such as DEAP [@DEAP_JMLR2012] or ModEA [@vanrijn2016], these do not (easily) support implementing MOEA/D variants. 
+Instead, they focus mostly on single-objective optimization and CMA-ES variants respectively.
 
 With the *moead-framework* package, we aim to provide the modularity of the MOEADr package by 
 using the flexibility of Python. Indeed, we want to allow the user to update the behavior of MOEA/D 
