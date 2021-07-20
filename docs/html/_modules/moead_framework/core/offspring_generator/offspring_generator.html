@@ -168,6 +168,12 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="OffspringGeneratorGeneric.run"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric.html#moead_framework.core.offspring_generator.offspring_generator.OffspringGeneratorGeneric.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">population_indexes</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Execute the process to generate a new candidate solution</span>
+
+<span class="sd">        :param population_indexes: {list&lt;integer&gt;} indexes of parents in the population used to generate the offspring</span>
+<span class="sd">        :return: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} offspring</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">parents</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">parent_selector</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">indexes</span><span class="o">=</span><span class="n">population_indexes</span><span class="p">)</span>
 

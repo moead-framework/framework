@@ -178,6 +178,16 @@
         <span class="k">return</span> <span class="n">new_value</span> <span class="o">&lt;</span> <span class="n">old_value</span></div>
 
 <div class="viewcode-block" id="Tchebycheff.run"><a class="viewcode-back" href="../../../moead_framework/moead_framework.aggregation.tchebycheff.Tchebycheff.html#moead_framework.aggregation.tchebycheff.Tchebycheff.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solution</span><span class="p">,</span> <span class="n">number_of_objective</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">sub_problem</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute the Tchebycheff value.</span>
+
+<span class="sd">        :param solution: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}</span>
+<span class="sd">        :param number_of_objective: {integer} number of objective</span>
+<span class="sd">        :param weights: {list&lt;list&lt;integer&gt;&gt;} List of weight vectors</span>
+<span class="sd">        :param sub_problem: {integer} index of the sub-problem / weight vector</span>
+<span class="sd">        :param z: {list&lt;float&gt;} coordinates of the reference point Z*</span>
+<span class="sd">        :return: {float} the aggregation value of the solution for the weight vector: weights[sub-problem]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">max_distance</span> <span class="o">=</span> <span class="mi">0</span>
 
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_objective</span><span class="p">):</span>

@@ -160,12 +160,12 @@
 <span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
 
 
-<span class="k">class</span> <span class="nc">AggregationFunction</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<div class="viewcode-block" id="AggregationFunction"><a class="viewcode-back" href="../../../moead_framework/moead_framework.aggregation.functions.AggregationFunction.html#moead_framework.aggregation.functions.AggregationFunction">[docs]</a><span class="k">class</span> <span class="nc">AggregationFunction</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Abstract class to implement an aggregation function in the framework</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span>
-
-    <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="AggregationFunction.run"><a class="viewcode-back" href="../../../moead_framework/moead_framework.aggregation.functions.AggregationFunction.html#moead_framework.aggregation.functions.AggregationFunction.run">[docs]</a>    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solution</span><span class="p">,</span> <span class="n">number_of_objective</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">sub_problem</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Compute the aggregation value.</span>
@@ -176,9 +176,9 @@
 <span class="sd">        :param sub_problem: {integer} index of the sub-problem / weight vector</span>
 <span class="sd">        :param z: {list&lt;float&gt;} coordinates of the reference point Z*</span>
 <span class="sd">        :return: {float} the aggregation value of the solution for the weight vector: weights[sub-problem]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
 
-    <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="AggregationFunction.is_better"><a class="viewcode-back" href="../../../moead_framework/moead_framework.aggregation.functions.AggregationFunction.html#moead_framework.aggregation.functions.AggregationFunction.is_better">[docs]</a>    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">is_better</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">old_value</span><span class="p">,</span> <span class="n">new_value</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Allow to compare 2 aggregations values according to the aggregation function and to the context (minimization or maximization).</span>
@@ -187,7 +187,7 @@
 <span class="sd">        :param new_value: {float}</span>
 <span class="sd">        :return: {boolean} True if new_value is better than old_value.</span>
 <span class="sd">        The test depends of the aggregation function and of the context (minimization or maximization).</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span></div></div>
 </pre></div>
 
            </div>

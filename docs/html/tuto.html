@@ -171,7 +171,7 @@
 <h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="implement-your-own-problem">
 <h2>Implement your own problem<a class="headerlink" href="#implement-your-own-problem" title="Permalink to this headline">¶</a></h2>
-<p>To make your problem compliant with the framework, your problem class has to extend the class <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.problem.Problem</span></code>
+<p>To make your problem compliant with the framework, your problem class has to extend the class <a class="reference internal" href="moead_framework/moead_framework.problem.Problem.html#moead_framework.problem.Problem" title="moead_framework.problem.Problem"><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.problem.Problem</span></code></a>
 and implement the following 2 required functions :</p>
 <ul class="simple">
 <li><p>the fitness function <code class="code docutils literal notranslate"><span class="pre">f(function_id,</span> <span class="pre">solution)</span></code> has 2 required parameters. The function must return the objective value of the given <code class="docutils literal notranslate"><span class="pre">solution</span></code>
@@ -269,12 +269,12 @@ The function must be imported with : <code class="code docutils literal notransl
           <span class="n">aggregation_function</span><span class="o">=</span><span class="n">Tchebycheff</span>
           <span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">checkpt</span><span class="p">():</span>
-    <span class="k">if</span> <span class="n">moead</span><span class="o">.</span><span class="n">current_eval</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span><span class="mi">0</span> <span class="p">:</span>
-        <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;non_dominated_solutions-eval&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">moead</span><span class="o">.</span><span class="n">current_eval</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.txt&quot;</span>
-        <span class="n">save_population</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="n">population</span><span class="o">=</span><span class="n">moead</span><span class="o">.</span><span class="n">ep</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">checkpoint</span><span class="p">(</span><span class="n">moead_algorithm</span><span class="p">:</span> <span class="n">AbstractMoead</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">moead_algorithm</span><span class="o">.</span><span class="n">current_eval</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span><span class="mi">0</span> <span class="p">:</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;non_dominated_solutions-eval&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">moead_algorithm</span><span class="o">.</span><span class="n">current_eval</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.txt&quot;</span>
+        <span class="n">save_population</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="n">population</span><span class="o">=</span><span class="n">moead_algorithm</span><span class="o">.</span><span class="n">ep</span><span class="p">)</span>
 
-<span class="n">moead</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpt</span><span class="p">)</span>
+<span class="n">moead</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -289,7 +289,7 @@ The function must be imported with : <code class="code docutils literal notransl
           <span class="n">aggregation_function</span><span class="o">=</span><span class="n">Tchebycheff</span>
           <span class="p">)</span>
 
-<span class="n">list_of_solutions</span> <span class="o">=</span> <span class="n">moead</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpt</span><span class="p">)</span>
+<span class="n">list_of_solutions</span> <span class="o">=</span> <span class="n">moead</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You can then extract the Pareto set and the Pareto front :</p>

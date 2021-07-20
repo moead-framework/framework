@@ -100,8 +100,10 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../problems.html#numerical">Numerical</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../problems.html#abstract">Abstract</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../tools.html">Tools</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
@@ -187,6 +189,22 @@
 <p>Implementation of the Multiobjective knapsack problem by Thibaut Lust.
 The problem is compatible with files available on the
 author website: <a class="reference external" href="http://www-desir.lip6.fr/~lustt/Research.html#MOKP">http://www-desir.lip6.fr/~lustt/Research.html#MOKP</a></p>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">moead_framework.problem.combinatorial</span> <span class="kn">import</span> <span class="n">KnapsackProblem</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">instance_file</span> <span class="o">=</span> <span class="s2">&quot;moead_framework/test/data/instances/MOKP_250_2.dat&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kp</span> <span class="o">=</span> <span class="n">KnapsackProblem</span><span class="p">(</span><span class="n">number_of_objective</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">instance_file</span><span class="o">=</span><span class="n">instance_file</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Generate a new solution</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">solution</span> <span class="o">=</span> <span class="n">kp</span><span class="o">.</span><span class="n">generate_random_solution</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Print all decision variables of the solution</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">solution</span><span class="o">.</span><span class="n">decision_vector</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Print all objectives values of the solution</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">solution</span><span class="o">.</span><span class="n">F</span><span class="p">)</span>
+</pre></div>
+</div>
 <dl class="method">
 <dt id="moead_framework.problem.combinatorial.knapsack.KnapsackProblem.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">number_of_objective</em>, <em class="sig-param">instance_file</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/combinatorial/knapsack.html#KnapsackProblem.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.__init__" title="Permalink to this definition">¶</a></dt>

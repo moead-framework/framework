@@ -167,6 +167,22 @@
 <span class="sd">    Implementation of the Multiobjective knapsack problem by Thibaut Lust.</span>
 <span class="sd">    The problem is compatible with files available on the</span>
 <span class="sd">    author website: http://www-desir.lip6.fr/~lustt/Research.html#MOKP</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">    &gt;&gt;&gt; from moead_framework.problem.combinatorial import KnapsackProblem</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; instance_file = &quot;moead_framework/test/data/instances/MOKP_250_2.dat&quot;</span>
+<span class="sd">    &gt;&gt;&gt; kp = KnapsackProblem(number_of_objective=2, instance_file=instance_file)</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; # Generate a new solution</span>
+<span class="sd">    &gt;&gt;&gt; solution = kp.generate_random_solution()</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; # Print all decision variables of the solution</span>
+<span class="sd">    &gt;&gt;&gt; print(solution.decision_vector)</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; # Print all objectives values of the solution</span>
+<span class="sd">    &gt;&gt;&gt; print(solution.F)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="KnapsackProblem.__init__"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.problem.combinatorial.knapsack.KnapsackProblem.html#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_of_objective</span><span class="p">,</span> <span class="n">instance_file</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -211,6 +227,14 @@
         <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="KnapsackProblem.f"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.problem.combinatorial.knapsack.KnapsackProblem.html#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.f">[docs]</a>    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function_id</span><span class="p">,</span> <span class="n">decision_vector</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Evaluate the decision_vector for the objective function_id</span>
+
+<span class="sd">        :param function_id: {integer} index of the objective</span>
+<span class="sd">        :param decision_vector: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} solution to evaluate</span>
+<span class="sd">        :return: {float} fitness value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">function_id</span> <span class="o">=</span> <span class="n">function_id</span> <span class="o">-</span> <span class="mi">1</span>
         <span class="n">weight</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight_of_solution</span><span class="p">(</span><span class="n">function_id</span><span class="p">,</span> <span class="n">decision_vector</span><span class="p">)</span>
         <span class="n">profit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">profit_of_solution</span><span class="p">(</span><span class="n">function_id</span><span class="p">,</span> <span class="n">decision_vector</span><span class="p">)</span>
@@ -264,6 +288,12 @@
         <span class="k">return</span> <span class="n">max_founded</span></div>
 
 <div class="viewcode-block" id="KnapsackProblem.generate_random_solution"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.problem.combinatorial.knapsack.KnapsackProblem.html#moead_framework.problem.combinatorial.knapsack.KnapsackProblem.generate_random_solution">[docs]</a>    <span class="k">def</span> <span class="nf">generate_random_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generate a random solution for the current problem</span>
+
+<span class="sd">        :return: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_of_objects</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[:])</span></div></div>
 </pre></div>
 

@@ -40,8 +40,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Problems" href="../problems.html" />
-    <link rel="prev" title="moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries" href="moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries.html" /> 
+    <link rel="next" title="moead_framework.core.termination_criteria.abstract_termination_criteria.TerminationCriteria" href="moead_framework.core.termination_criteria.abstract_termination_criteria.TerminationCriteria.html" />
+    <link rel="prev" title="moead_framework.core.sps_strategy.abstract_sps.SpsStrategy" href="moead_framework.core.sps_strategy.abstract_sps.SpsStrategy.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,11 +99,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../other_components.html#sub-problem-selection-strategy">Sub-problem selection strategy</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="../other_components.html#termination-criteria">Termination criteria</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="moead_framework.core.termination_criteria.abstract_termination_criteria.TerminationCriteria.html">moead_framework.core.termination_criteria.abstract_termination_criteria.TerminationCriteria</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tools.html">Tools</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
@@ -185,7 +187,7 @@
 <dl class="class">
 <dt id="moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation">
 <em class="property">class </em><code class="sig-prename descclassname">moead_framework.core.termination_criteria.max_evaluation.</code><code class="sig-name descname">MaxEvaluation</code><span class="sig-paren">(</span><em class="sig-param">algorithm_instance</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/termination_criteria/max_evaluation.html#MaxEvaluation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.core.termination_criteria.abstract_termination_criteria.TerminationCriteria</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="moead_framework.core.termination_criteria.abstract_termination_criteria.TerminationCriteria.html#moead_framework.core.termination_criteria.abstract_termination_criteria.TerminationCriteria" title="moead_framework.core.termination_criteria.abstract_termination_criteria.TerminationCriteria"><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.core.termination_criteria.abstract_termination_criteria.TerminationCriteria</span></code></a></p>
 <p>Stop the algorithm with a criteria based on the number of solution evaluated.</p>
 <dl class="method">
 <dt id="moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation.__init__">
@@ -209,14 +211,15 @@
 <td><p>Constructor of the termination criteria</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation.test" title="moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation.test"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test</span></code></a>()</p></td>
-<td><p>Test if the algorithm has to be stopped</p></td>
+<td><p>Test if the algorithm has to be stopped.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation.test">
 <code class="sig-name descname">test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/termination_criteria/max_evaluation.html#MaxEvaluation.test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation.test" title="Permalink to this definition">¶</a></dt>
-<dd><p>Test if the algorithm has to be stopped</p>
+<dd><p>Test if the algorithm has to be stopped. The algorithm is stopped when the maximum
+number of evaluation is reached</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>{boolean} True: Continue the process. False: Stop the process</p>
@@ -234,8 +237,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../problems.html" class="btn btn-neutral float-right" title="Problems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries.html" class="btn btn-neutral float-left" title="moead_framework.core.sps_strategy.sps_random_and_boundaries.SpsRandomAndBoundaries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="moead_framework.core.termination_criteria.abstract_termination_criteria.TerminationCriteria.html" class="btn btn-neutral float-right" title="moead_framework.core.termination_criteria.abstract_termination_criteria.TerminationCriteria" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="moead_framework.core.sps_strategy.abstract_sps.SpsStrategy.html" class="btn btn-neutral float-left" title="moead_framework.core.sps_strategy.abstract_sps.SpsStrategy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

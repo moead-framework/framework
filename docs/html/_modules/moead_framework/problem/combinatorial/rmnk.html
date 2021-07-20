@@ -167,6 +167,24 @@
 <span class="sd">    Implementation of the multiobjective NK landscapes with tunable objective correlation.</span>
 <span class="sd">    The problem is compatible with files generated</span>
 <span class="sd">    by the mocobench generator http://mocobench.sourceforge.net/index.php?n=Problem.RMNK</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">    &gt;&gt;&gt; from moead_framework.problem.combinatorial import Rmnk</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; # The file is available here : https://github.com/moead-framework/data/blob/master/problem/RMNK/Instances/rmnk_0_2_100_1_0.dat</span>
+<span class="sd">    &gt;&gt;&gt; # Others instances are available here : https://github.com/moead-framework/data/tree/master/problem/RMNK/Instances</span>
+<span class="sd">    &gt;&gt;&gt; instance_file = &quot;moead_framework/test/data/instances/rmnk_0_2_100_1_0.dat&quot;</span>
+<span class="sd">    &gt;&gt;&gt; rmnk = Rmnk(instance_file=instance_file)</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; # Generate a new solution</span>
+<span class="sd">    &gt;&gt;&gt; solution = rmnk.generate_random_solution()</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; # Print all decision variables of the solution</span>
+<span class="sd">    &gt;&gt;&gt; print(solution.decision_vector)</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; # Print all objectives values of the solution</span>
+<span class="sd">    &gt;&gt;&gt; print(solution.F)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span>
@@ -203,6 +221,14 @@
         <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Rmnk.f"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.problem.combinatorial.rmnk.Rmnk.html#moead_framework.problem.combinatorial.rmnk.Rmnk.f">[docs]</a>    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function_id</span><span class="p">,</span> <span class="n">decision_vector</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Evaluate the decision_vector for the objective function_id</span>
+
+<span class="sd">        :param function_id: {integer} index of the objective</span>
+<span class="sd">        :param decision_vector: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} solution to evaluate</span>
+<span class="sd">        :return: {float} fitness value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">accu</span> <span class="o">=</span> <span class="mi">0</span>
 
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">):</span>
@@ -232,6 +258,12 @@
         <span class="k">return</span> <span class="n">accu</span></div>
 
 <div class="viewcode-block" id="Rmnk.generate_random_solution"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.problem.combinatorial.rmnk.Rmnk.html#moead_framework.problem.combinatorial.rmnk.Rmnk.generate_random_solution">[docs]</a>    <span class="k">def</span> <span class="nf">generate_random_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generate a random solution for the current problem</span>
+
+<span class="sd">        :return: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[:])</span></div>
 
 <div class="viewcode-block" id="Rmnk.load_links"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.problem.combinatorial.rmnk.Rmnk.html#moead_framework.problem.combinatorial.rmnk.Rmnk.load_links">[docs]</a>    <span class="k">def</span> <span class="nf">load_links</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_content</span><span class="p">):</span>

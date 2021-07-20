@@ -96,6 +96,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#algorithms">Algorithms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="moead_framework/moead_framework.algorithm.abstract_moead.AbstractMoead.html">moead_framework.algorithm.abstract_moead.AbstractMoead</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#for-combinatorial-problems">For combinatorial problems</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#for-numerical-problems">For numerical problems</a></li>
 </ul>
@@ -103,12 +104,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#aggregation-functions">Aggregation functions</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="moead_framework/moead_framework.aggregation.tchebycheff.Tchebycheff.html">moead_framework.aggregation.tchebycheff.Tchebycheff</a></li>
 <li class="toctree-l4"><a class="reference internal" href="moead_framework/moead_framework.aggregation.weighted_sum.WeightedSum.html">moead_framework.aggregation.weighted_sum.WeightedSum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="moead_framework/moead_framework.aggregation.functions.AggregationFunction.html">moead_framework.aggregation.functions.AggregationFunction</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="other_components.html">Other components</a></li>
 <li class="toctree-l2"><a class="reference internal" href="problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html">Tools</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
@@ -202,6 +205,17 @@
 <div class="section" id="algorithms">
 <h2>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h2>
 <p>These algorithms are implemented on the basis of the original papers (<a class="bibtex reference internal" href="references.html#moead" id="id1">[ZhangLi07]</a>, <a class="bibtex reference internal" href="references.html#moead-de" id="id2">[LZ09]</a>, <a class="bibtex reference internal" href="references.html#moead-dra" id="id3">[ZhangLiuLi09]</a>, <a class="bibtex reference internal" href="references.html#gpruvost-evocop2020" id="id4">[PDL+20a]</a>).</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.algorithm.abstract_moead.AbstractMoead.html#moead_framework.algorithm.abstract_moead.AbstractMoead" title="moead_framework.algorithm.abstract_moead.AbstractMoead"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.algorithm.abstract_moead.AbstractMoead</span></code></a></p></td>
+<td><p>Abstract class to implement a new algorithm based on MOEA/D in the framework</p></td>
+</tr>
+</tbody>
+</table>
 <div class="section" id="for-combinatorial-problems">
 <h3>For combinatorial problems<a class="headerlink" href="#for-combinatorial-problems" title="Permalink to this headline">¶</a></h3>
 <table class="longtable docutils align-default">
@@ -260,6 +274,9 @@ is a required parameter of the algorithm.</p>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="moead_framework/moead_framework.aggregation.weighted_sum.WeightedSum.html#moead_framework.aggregation.weighted_sum.WeightedSum" title="moead_framework.aggregation.weighted_sum.WeightedSum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.aggregation.weighted_sum.WeightedSum</span></code></a></p></td>
 <td><p>Weighted Sum aggregation function</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="moead_framework/moead_framework.aggregation.functions.AggregationFunction.html#moead_framework.aggregation.functions.AggregationFunction" title="moead_framework.aggregation.functions.AggregationFunction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moead_framework.aggregation.functions.AggregationFunction</span></code></a></p></td>
+<td><p>Abstract class to implement an aggregation function in the framework</p></td>
 </tr>
 </tbody>
 </table>

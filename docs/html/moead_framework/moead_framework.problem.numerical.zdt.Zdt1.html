@@ -40,7 +40,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Examples" href="../examples.html" />
+    <link rel="next" title="moead_framework.problem.Problem" href="moead_framework.problem.Problem.html" />
     <link rel="prev" title="moead_framework.problem.combinatorial.knapsack.KnapsackProblem" href="moead_framework.problem.combinatorial.knapsack.KnapsackProblem.html" /> 
 </head>
 
@@ -98,8 +98,10 @@
 <li class="toctree-l4 current"><a class="current reference internal" href="#">moead_framework.problem.numerical.zdt.Zdt1</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../problems.html#abstract">Abstract</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../tools.html">Tools</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
@@ -187,6 +189,21 @@
 <ol class="upperalpha simple" start="5">
 <li><p>Zitzler, K. Deb, and L. Thiele. Comparison of Multiobjective Evolutionary Algorithms: Empirical Results. Evolutionary Computation, 8(2):173-195, 2000</p></li>
 </ol>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">moead_framework.problem.numerical</span> <span class="kn">import</span> <span class="n">Zdt1</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zdt</span> <span class="o">=</span> <span class="n">Zdt1</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Generate a new solution</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">solution</span> <span class="o">=</span> <span class="n">zdt</span><span class="o">.</span><span class="n">generate_random_solution</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Print all decision variables of the solution</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">solution</span><span class="o">.</span><span class="n">decision_vector</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Print all objectives values of the solution</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">solution</span><span class="o">.</span><span class="n">F</span><span class="p">)</span>
+</pre></div>
+</div>
 <dl class="method">
 <dt id="moead_framework.problem.numerical.zdt.Zdt1.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">size</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/problem/numerical/zdt.html#Zdt1.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.problem.numerical.zdt.Zdt1.__init__" title="Permalink to this definition">¶</a></dt>
@@ -277,7 +294,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="moead_framework.problem.Problem.html" class="btn btn-neutral float-right" title="moead_framework.problem.Problem" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="moead_framework.problem.combinatorial.knapsack.KnapsackProblem.html" class="btn btn-neutral float-left" title="moead_framework.problem.combinatorial.knapsack.KnapsackProblem" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

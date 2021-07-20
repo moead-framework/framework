@@ -165,15 +165,25 @@
 <span class="kn">from</span> <span class="nn">moead_framework.solution</span> <span class="kn">import</span> <span class="n">OneDimensionSolution</span>
 
 
-<span class="k">class</span> <span class="nc">Problem</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<div class="viewcode-block" id="Problem"><a class="viewcode-back" href="../../../moead_framework/moead_framework.problem.Problem.html#moead_framework.problem.Problem">[docs]</a><span class="k">class</span> <span class="nc">Problem</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     Abstract class to implement a new Problem in the framework.</span>
+
+<span class="sd">     https://moead-framework.github.io/framework/html/tuto.html#implement-your-own-problem</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objective_number</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">number_of_objective</span> <span class="o">=</span> <span class="n">objective_number</span>
-        <span class="k">pass</span>
+<div class="viewcode-block" id="Problem.__init__"><a class="viewcode-back" href="../../../moead_framework/moead_framework.problem.Problem.html#moead_framework.problem.Problem.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objective_number</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor of the problem</span>
 
-    <span class="nd">@abstractmethod</span>
+<span class="sd">        :param objective_number: {integer}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">number_of_objective</span> <span class="o">=</span> <span class="n">objective_number</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Problem.f"><a class="viewcode-back" href="../../../moead_framework/moead_framework.problem.Problem.html#moead_framework.problem.Problem.f">[docs]</a>    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function_id</span><span class="p">,</span> <span class="n">decision_vector</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Evaluate the decision_vector for the objective function_id</span>
@@ -181,18 +191,18 @@
 <span class="sd">        :param function_id: {integer} index of the objective</span>
 <span class="sd">        :param decision_vector: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} solution to evaluate</span>
 <span class="sd">        :return: {float} fitness value</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
 
 
-    <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="Problem.generate_random_solution"><a class="viewcode-back" href="../../../moead_framework/moead_framework.problem.Problem.html#moead_framework.problem.Problem.generate_random_solution">[docs]</a>    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">generate_random_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generate a random solution for the current problem</span>
 
 <span class="sd">        :return: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
 
-    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Solution</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">OneDimensionSolution</span><span class="p">:</span>
+<div class="viewcode-block" id="Problem.evaluate"><a class="viewcode-back" href="../../../moead_framework/moead_framework.problem.Problem.html#moead_framework.problem.Problem.evaluate">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Solution</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">OneDimensionSolution</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Evaluate the given solution for the current problem and store the outcome</span>
 
@@ -202,7 +212,7 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">OneDimensionSolution</span><span class="p">):</span>
             <span class="n">x</span> <span class="o">=</span> <span class="n">OneDimensionSolution</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span>
         <span class="n">x</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">decision_vector</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">number_of_objective</span><span class="p">)]</span>
-        <span class="k">return</span> <span class="n">x</span>
+        <span class="k">return</span> <span class="n">x</span></div></div>
 </pre></div>
 
            </div>

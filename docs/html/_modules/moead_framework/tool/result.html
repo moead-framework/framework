@@ -1,0 +1,510 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>moead_framework.tool.result &mdash; The Moead Framework 1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/custom_theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> The Moead Framework
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tuto.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">Library Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">The Moead Framework</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>moead_framework.tool.result</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for moead_framework.tool.result</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">moead_framework.algorithm</span> <span class="kn">import</span> <span class="n">AbstractMoead</span>
+
+
+<div class="viewcode-block" id="save_population"><a class="viewcode-back" href="../../../moead_framework/moead_framework.tool.result.save_population.html#moead_framework.tool.result.save_population">[docs]</a><span class="k">def</span> <span class="nf">save_population</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">population</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Save the objective values of each solution in the population</span>
+
+<span class="sd">    :param file_name: string</span>
+<span class="sd">    :param population: list&lt;{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}&gt;</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+    <span class="c1"># file.write(&quot;Length of the list = &quot; + str(len(population)) + &quot;\n&quot;)</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">population</span><span class="p">:</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">coordinate</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">F</span><span class="p">:</span>
+            <span class="n">row</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">coordinate</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span>
+
+        <span class="n">row</span> <span class="o">=</span> <span class="n">row</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+    <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="save_population_full"><a class="viewcode-back" href="../../../moead_framework/moead_framework.tool.result.save_population_full.html#moead_framework.tool.result.save_population_full">[docs]</a><span class="k">def</span> <span class="nf">save_population_full</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">population</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Save the objective vector and the decision vector of each solution in the population</span>
+
+<span class="sd">    :param file_name: string</span>
+<span class="sd">    :param population: list&lt;{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}&gt;</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+    <span class="c1"># file.write(&quot;Length of the list = &quot; + str(len(population)) + &quot;\n&quot;)</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">population</span><span class="p">:</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">coordinate</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">F</span><span class="p">:</span>
+            <span class="n">row</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">coordinate</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span>
+
+        <span class="n">row</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">decision_vector</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">row</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+    <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+
+<span class="k">def</span> <span class="nf">set_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set the seed for numpy and random packages.</span>
+<span class="sd">    Warning, this approach is not safe in threaded environments.</span>
+<span class="sd">    By re-using a seed value, the same sequence should be reproducible from run to run as long as</span>
+<span class="sd">    multiple threads are not running (https://docs.python.org/3/library/random.html#notes-on-reproducibility)</span>
+
+<span class="sd">    :param seed: integer</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="checkpoint"><a class="viewcode-back" href="../../../moead_framework/moead_framework.tool.result.checkpoint.html#moead_framework.tool.result.checkpoint">[docs]</a><span class="k">def</span> <span class="nf">checkpoint</span><span class="p">(</span><span class="n">moead_algorithm</span><span class="p">:</span> <span class="n">AbstractMoead</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Minimalist checkpoint function to save all non dominated point every 10 evaluations</span>
+
+<span class="sd">    :param moead_algorithm: {:class:`~moead_framework.algorithm.abstract_moead.AbstractMoead`} instance of the algorithm that uses the checkpoint</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">moead_algorithm</span><span class="o">.</span><span class="n">current_eval</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;non_dominated_solutions-eval&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">moead_algorithm</span><span class="o">.</span><span class="n">current_eval</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.txt&quot;</span>
+        <span class="n">save_population</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="n">population</span><span class="o">=</span><span class="n">moead_algorithm</span><span class="o">.</span><span class="n">ep</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="compute_hypervolume"><a class="viewcode-back" href="../../../moead_framework/moead_framework.tool.result.compute_hypervolume.html#moead_framework.tool.result.compute_hypervolume">[docs]</a><span class="k">def</span> <span class="nf">compute_hypervolume</span><span class="p">(</span><span class="n">solutions</span><span class="p">,</span> <span class="n">ref_point</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the Hypervolume between the ref_point and objective values of each solution</span>
+
+<span class="sd">    :param solutions: list&lt;{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}&gt;</span>
+<span class="sd">    :param ref_point: list&lt;float&gt;</span>
+<span class="sd">    :return: float : hypervolume value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">hypervolume_class</span> <span class="o">=</span> <span class="n">HyperVolume</span><span class="p">(</span><span class="n">reference_point</span><span class="o">=</span><span class="n">ref_point</span><span class="p">)</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">solutions</span><span class="p">:</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">F</span><span class="p">[:])</span>
+
+    <span class="k">return</span> <span class="n">hypervolume_class</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">solutions</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">))</span></div>
+
+
+<span class="k">class</span> <span class="nc">HyperVolume</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Code from https://github.com/jMetal/jMetalPy/blob/master/jmetal/core/quality_indicator.py</span>
+
+<span class="sd">    Hypervolume computation based on variant 3 of the algorithm in the paper:</span>
+<span class="sd">    * C. M. Fonseca, L. Paquete, and M. Lopez-Ibanez. An improved dimension-sweep</span>
+<span class="sd">      algorithm for the hypervolume indicator. In IEEE Congress on Evolutionary</span>
+<span class="sd">      Computation, pages 1157-1163, Vancouver, Canada, July 2006.</span>
+<span class="sd">    Minimization is implicitly assumed here!</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reference_point</span><span class="p">:</span> <span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">referencePoint</span> <span class="o">=</span> <span class="n">reference_point</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">:</span> <span class="n">MultiList</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solutions</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Before the HV computation, front and reference point are translated, so that the reference point is [0, ..., 0].</span>
+<span class="sd">        :return: The hypervolume that is dominated by a non-dominated front.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">front</span> <span class="o">=</span> <span class="n">solutions</span>
+
+        <span class="k">def</span> <span class="nf">weakly_dominates</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">point</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">point</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">other</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                    <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="n">relevant_points</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">reference_point</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">referencePoint</span>
+        <span class="n">dimensions</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">reference_point</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">front</span><span class="p">:</span>
+            <span class="c1"># only consider points that dominate the reference point</span>
+            <span class="k">if</span> <span class="n">weakly_dominates</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">reference_point</span><span class="p">):</span>
+                <span class="n">relevant_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">reference_point</span><span class="p">):</span>
+            <span class="c1"># shift points so that reference_point == [0, ..., 0]</span>
+            <span class="c1"># this way the reference point doesn&#39;t have to be explicitly used</span>
+            <span class="c1"># in the HV computation</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">relevant_points</span><span class="p">)):</span>
+                <span class="n">relevant_points</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">relevant_points</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">reference_point</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dimensions</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pre_process</span><span class="p">(</span><span class="n">relevant_points</span><span class="p">)</span>
+        <span class="n">bounds</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.0e308</span><span class="p">]</span> <span class="o">*</span> <span class="n">dimensions</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hv_recursive</span><span class="p">(</span><span class="n">dimensions</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">relevant_points</span><span class="p">),</span> <span class="n">bounds</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_hv_recursive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">length</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">bounds</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Recursive call to hypervolume calculation.</span>
+<span class="sd">        In contrast to the paper, the code assumes that the reference point</span>
+<span class="sd">        is [0, ..., 0]. This allows the avoidance of a few operations.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">hvol</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">sentinel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">sentinel</span>
+        <span class="k">if</span> <span class="n">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">hvol</span>
+        <span class="k">elif</span> <span class="n">dim_index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># special case: only one dimension</span>
+            <span class="c1"># why using hypervolume at all?</span>
+            <span class="k">return</span> <span class="o">-</span><span class="n">sentinel</span><span class="o">.</span><span class="n">next</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cargo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">dim_index</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># special case: two dimensions, end recursion</span>
+            <span class="n">q</span> <span class="o">=</span> <span class="n">sentinel</span><span class="o">.</span><span class="n">next</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">cargo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">next</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">while</span> <span class="n">p</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">sentinel</span><span class="p">:</span>
+                <span class="n">p_cargo</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">cargo</span>
+                <span class="n">hvol</span> <span class="o">+=</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">cargo</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">p_cargo</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">p_cargo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">h</span><span class="p">:</span>
+                    <span class="n">h</span> <span class="o">=</span> <span class="n">p_cargo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">q</span> <span class="o">=</span> <span class="n">p</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">next</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">hvol</span> <span class="o">+=</span> <span class="n">h</span> <span class="o">*</span> <span class="n">q</span><span class="o">.</span><span class="n">cargo</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">hvol</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">remove</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">remove</span>
+            <span class="n">reinsert</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">reinsert</span>
+            <span class="n">hv_recursive</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hv_recursive</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">sentinel</span>
+            <span class="n">q</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">prev</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span>
+            <span class="k">while</span> <span class="n">q</span><span class="o">.</span><span class="n">cargo</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">q</span><span class="o">.</span><span class="n">ignore</span> <span class="o">&lt;</span> <span class="n">dim_index</span><span class="p">:</span>
+                    <span class="n">q</span><span class="o">.</span><span class="n">ignore</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">q</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">prev</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span>
+            <span class="n">q</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">prev</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span>
+            <span class="k">while</span> <span class="n">length</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="p">(</span>
+                    <span class="n">q</span><span class="o">.</span><span class="n">cargo</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">bounds</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span> <span class="ow">or</span> <span class="n">q</span><span class="o">.</span><span class="n">prev</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span><span class="o">.</span><span class="n">cargo</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">bounds</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]):</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="n">q</span>
+                <span class="n">remove</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">dim_index</span><span class="p">,</span> <span class="n">bounds</span><span class="p">)</span>
+                <span class="n">q</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">prev</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span>
+                <span class="n">length</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">q_area</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">area</span>
+            <span class="n">q_cargo</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">cargo</span>
+            <span class="n">q_prev_dim_index</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">prev</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">length</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">hvol</span> <span class="o">=</span> <span class="n">q_prev_dim_index</span><span class="o">.</span><span class="n">volume</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span> <span class="o">+</span> <span class="n">q_prev_dim_index</span><span class="o">.</span><span class="n">area</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span>
+                        <span class="n">q_cargo</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span> <span class="o">-</span> <span class="n">q_prev_dim_index</span><span class="o">.</span><span class="n">cargo</span><span class="p">[</span><span class="n">dim_index</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">q_area</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">q_area</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">dim_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">q_area</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="o">-</span><span class="n">q_cargo</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dim_index</span><span class="p">)]</span>
+            <span class="n">q</span><span class="o">.</span><span class="n">volume</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">hvol</span>
+            <span class="k">if</span> <span class="n">q</span><span class="o">.</span><span class="n">ignore</span> <span class="o">&gt;=</span> <span class="n">dim_index</span><span class="p">:</span>
+                <span class="n">q_area</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_prev_dim_index</span><span class="o">.</span><span class="n">area</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">q_area</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">hv_recursive</span><span class="p">(</span><span class="n">dim_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">bounds</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">q_area</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">q_prev_dim_index</span><span class="o">.</span><span class="n">area</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]:</span>
+                    <span class="n">q</span><span class="o">.</span><span class="n">ignore</span> <span class="o">=</span> <span class="n">dim_index</span>
+            <span class="k">while</span> <span class="n">p</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">sentinel</span><span class="p">:</span>
+                <span class="n">p_cargo_dim_index</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">cargo</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span>
+                <span class="n">hvol</span> <span class="o">+=</span> <span class="n">q</span><span class="o">.</span><span class="n">area</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">p_cargo_dim_index</span> <span class="o">-</span> <span class="n">q</span><span class="o">.</span><span class="n">cargo</span><span class="p">[</span><span class="n">dim_index</span><span class="p">])</span>
+                <span class="n">bounds</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_cargo_dim_index</span>
+                <span class="n">reinsert</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">dim_index</span><span class="p">,</span> <span class="n">bounds</span><span class="p">)</span>
+                <span class="n">length</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">q</span> <span class="o">=</span> <span class="n">p</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">next</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span>
+                <span class="n">q</span><span class="o">.</span><span class="n">volume</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">hvol</span>
+                <span class="k">if</span> <span class="n">q</span><span class="o">.</span><span class="n">ignore</span> <span class="o">&gt;=</span> <span class="n">dim_index</span><span class="p">:</span>
+                    <span class="n">q</span><span class="o">.</span><span class="n">area</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">prev</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span><span class="o">.</span><span class="n">area</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">q</span><span class="o">.</span><span class="n">area</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">hv_recursive</span><span class="p">(</span><span class="n">dim_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">bounds</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">q</span><span class="o">.</span><span class="n">area</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">q</span><span class="o">.</span><span class="n">prev</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span><span class="o">.</span><span class="n">area</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]:</span>
+                        <span class="n">q</span><span class="o">.</span><span class="n">ignore</span> <span class="o">=</span> <span class="n">dim_index</span>
+            <span class="n">hvol</span> <span class="o">-=</span> <span class="n">q</span><span class="o">.</span><span class="n">area</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span> <span class="o">*</span> <span class="n">q</span><span class="o">.</span><span class="n">cargo</span><span class="p">[</span><span class="n">dim_index</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">hvol</span>
+
+    <span class="k">def</span> <span class="nf">_pre_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">front</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sets up the list front structure needed for calculation.&quot;&quot;&quot;</span>
+        <span class="n">dimensions</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">referencePoint</span><span class="p">)</span>
+        <span class="n">node_list</span> <span class="o">=</span> <span class="n">MultiList</span><span class="p">(</span><span class="n">dimensions</span><span class="p">)</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">MultiList</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="n">dimensions</span><span class="p">,</span> <span class="n">point</span><span class="p">)</span> <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">front</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dimensions</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sort_by_dimension</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+            <span class="n">node_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">list</span> <span class="o">=</span> <span class="n">node_list</span>
+
+    <span class="k">def</span> <span class="nf">_sort_by_dimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sorts the list of nodes by the i-th value of the contained points.&quot;&quot;&quot;</span>
+        <span class="c1"># build a list of tuples of (point[i], node)</span>
+        <span class="n">decorated</span> <span class="o">=</span> <span class="p">[(</span><span class="n">node</span><span class="o">.</span><span class="n">cargo</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">node</span><span class="p">)</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">]</span>
+        <span class="c1"># sort by this value</span>
+        <span class="n">decorated</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="c1"># write back to original list</span>
+        <span class="n">nodes</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[</span><span class="n">node</span> <span class="k">for</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span> <span class="ow">in</span> <span class="n">decorated</span><span class="p">]</span>
+
+
+<span class="k">class</span> <span class="nc">MultiList</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A special front structure needed by FonsecaHyperVolume.</span>
+<span class="sd">    It consists of several doubly linked lists that share common nodes. So,</span>
+<span class="sd">    every node has multiple predecessors and successors, one in every list.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
+
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_lists</span><span class="p">,</span> <span class="n">cargo</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cargo</span> <span class="o">=</span> <span class="n">cargo</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">number_lists</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">prev</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">number_lists</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ignore</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">area</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">number_lists</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">volume</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">number_lists</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_lists</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Builds &#39;numberLists&#39; doubly linked lists.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">number_lists</span> <span class="o">=</span> <span class="n">number_lists</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sentinel</span> <span class="o">=</span> <span class="n">MultiList</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="n">number_lists</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sentinel</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">sentinel</span><span class="p">]</span> <span class="o">*</span> <span class="n">number_lists</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sentinel</span><span class="o">.</span><span class="n">prev</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">sentinel</span><span class="p">]</span> <span class="o">*</span> <span class="n">number_lists</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the number of lists that are included in this MultiList.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_lists</span>
+
+    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Appends a node to the end of the list at the given index.&quot;&quot;&quot;</span>
+        <span class="n">last_but_one</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sentinel</span><span class="o">.</span><span class="n">prev</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">next</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sentinel</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">prev</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">last_but_one</span>
+        <span class="c1"># set the last element as the new one</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sentinel</span><span class="o">.</span><span class="n">prev</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
+        <span class="n">last_but_one</span><span class="o">.</span><span class="n">next</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
+
+    <span class="k">def</span> <span class="nf">extend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Extends the list at the given index with the nodes.&quot;&quot;&quot;</span>
+        <span class="n">sentinel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sentinel</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+            <span class="n">last_but_one</span> <span class="o">=</span> <span class="n">sentinel</span><span class="o">.</span><span class="n">prev</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">next</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">sentinel</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">prev</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">last_but_one</span>
+            <span class="c1"># set the last element as the new one</span>
+            <span class="n">sentinel</span><span class="o">.</span><span class="n">prev</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
+            <span class="n">last_but_one</span><span class="o">.</span><span class="n">next</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
+
+    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">bounds</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Removes and returns &#39;node&#39; from all lists in [0, &#39;index&#39;[.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">index</span><span class="p">):</span>
+            <span class="n">predecessor</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">prev</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">successor</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">predecessor</span><span class="o">.</span><span class="n">next</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">successor</span>
+            <span class="n">successor</span><span class="o">.</span><span class="n">prev</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">predecessor</span>
+            <span class="k">if</span> <span class="n">bounds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">node</span><span class="o">.</span><span class="n">cargo</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="n">bounds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">cargo</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">node</span>
+
+    <span class="k">def</span> <span class="nf">reinsert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">bounds</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Inserts &#39;node&#39; at the position it had in all lists in [0, &#39;index&#39;[</span>
+<span class="sd">        before it was removed. This method assumes that the next and previous</span>
+<span class="sd">        nodes of the node that is reinserted are in the list.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">index</span><span class="p">):</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">prev</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">next</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">next</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">prev</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
+            <span class="k">if</span> <span class="n">bounds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">node</span><span class="o">.</span><span class="n">cargo</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="n">bounds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">cargo</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Geoffrey Pruvost.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

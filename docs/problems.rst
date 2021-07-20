@@ -31,3 +31,12 @@ ___________________________________________
 
    moead_framework.problem.numerical.zdt.Zdt1
 
+
+Abstract
+___________________________________________
+
+.. autosummary::
+   :nosignatures:
+   :toctree: moead_framework
+
+   moead_framework.problem.Problem

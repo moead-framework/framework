@@ -40,7 +40,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems" href="moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems.html" />
+    <link rel="next" title="moead_framework.core.selector.abstract_selector.MatingPoolSelector" href="moead_framework.core.selector.abstract_selector.MatingPoolSelector.html" />
     <link rel="prev" title="moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector" href="moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector.html" /> 
 </head>
 
@@ -98,6 +98,7 @@
 <li class="toctree-l3 current"><a class="reference internal" href="../other_components.html#mating-selector">Mating Selector</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector.html">moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">moead_framework.core.selector.delta_selector.DeltaSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="moead_framework.core.selector.abstract_selector.MatingPoolSelector.html">moead_framework.core.selector.abstract_selector.MatingPoolSelector</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../other_components.html#sub-problem-selection-strategy">Sub-problem selection strategy</a></li>
@@ -105,6 +106,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tools.html">Tools</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
@@ -186,7 +188,7 @@
 <dl class="class">
 <dt id="moead_framework.core.selector.delta_selector.DeltaSelector">
 <em class="property">class </em><code class="sig-prename descclassname">moead_framework.core.selector.delta_selector.</code><code class="sig-name descname">DeltaSelector</code><span class="sig-paren">(</span><em class="sig-param">algorithm_instance</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/selector/delta_selector.html#DeltaSelector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.selector.delta_selector.DeltaSelector" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.core.selector.abstract_selector.MatingPoolSelector</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="moead_framework.core.selector.abstract_selector.MatingPoolSelector.html#moead_framework.core.selector.abstract_selector.MatingPoolSelector" title="moead_framework.core.selector.abstract_selector.MatingPoolSelector"><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.core.selector.abstract_selector.MatingPoolSelector</span></code></a></p>
 <p>According to the probability delta (required attribute in the algorithm), the selector will select the neighborhood or the whole population.
 The attribute ‘delta’ represents the probability that parent solutions are selected from the neighborhood.</p>
 <dl class="method">
@@ -239,7 +241,7 @@ The attribute ‘delta’ represents the probability that parent solutions are s
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems.html" class="btn btn-neutral float-right" title="moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="moead_framework.core.selector.abstract_selector.MatingPoolSelector.html" class="btn btn-neutral float-right" title="moead_framework.core.selector.abstract_selector.MatingPoolSelector" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector.html" class="btn btn-neutral float-left" title="moead_framework.core.selector.closest_neighbors_selector.ClosestNeighborsSelector" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

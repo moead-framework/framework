@@ -166,6 +166,12 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="MaxEvaluation.test"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation.html#moead_framework.core.termination_criteria.max_evaluation.MaxEvaluation.test">[docs]</a>    <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test if the algorithm has to be stopped. The algorithm is stopped when the maximum</span>
+<span class="sd">        number of evaluation is reached</span>
+
+<span class="sd">        :return: {boolean} True: Continue the process. False: Stop the process</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">current_eval</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">max_evaluation</span></div></div>
 </pre></div>
 

@@ -157,8 +157,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for moead_framework.algorithm.combinatorial.moead_dra</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">moead_framework.algorithm.combinatorial.moead_delta_nr</span> <span class="kn">import</span> <span class="n">MoeadDeltaNr</span>
 <span class="kn">from</span> <span class="nn">moead_framework.core.sps_strategy.sps_dra</span> <span class="kn">import</span> <span class="n">SpsDra</span>
 
@@ -168,6 +167,36 @@
 <span class="sd">    Implementation of MOEA/D-DRA</span>
 
 <span class="sd">    Q. Zhang, W. Liu, and H. Li. The performance of a new version of moea/d on cec09 unconstrained mop test instances. In 2009 IEEE Congress on Evolutionary Computation, volume, 203–208. 2009. doi:10.1109/CEC.2009.4982949.</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">    &gt;&gt;&gt; from moead_framework.aggregation import Tchebycheff</span>
+<span class="sd">    &gt;&gt;&gt; from moead_framework.algorithm.combinatorial import MoeadDRA</span>
+<span class="sd">    &gt;&gt;&gt; from moead_framework.problem.combinatorial import Rmnk</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; # The file is available here : https://github.com/moead-framework/data/blob/master/problem/RMNK/Instances/rmnk_0_2_100_1_0.dat</span>
+<span class="sd">    &gt;&gt;&gt; # Others instances are available here : https://github.com/moead-framework/data/tree/master/problem/RMNK/Instances</span>
+<span class="sd">    &gt;&gt;&gt; instance_file = &quot;moead_framework/test/data/instances/rmnk_0_2_100_1_0.dat&quot;</span>
+<span class="sd">    &gt;&gt;&gt; rmnk = Rmnk(instance_file=instance_file)</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; number_of_weight = 10</span>
+<span class="sd">    &gt;&gt;&gt; number_of_weight_neighborhood = 2</span>
+<span class="sd">    &gt;&gt;&gt; number_of_evaluations = 1000</span>
+<span class="sd">    &gt;&gt;&gt; # The file is available here : https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws</span>
+<span class="sd">    &gt;&gt;&gt; # Others weights files are available here : https://github.com/moead-framework/data/tree/master/weights</span>
+<span class="sd">    &gt;&gt;&gt; weight_file = &quot;moead_framework/test/data/weights/SOBOL-&quot; + str(rmnk.number_of_objective) + &quot;objs-&quot; + str(number_of_weight) + &quot;wei.ws&quot;</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; moead = MoeadDRA(problem=rmnk,</span>
+<span class="sd">    &gt;&gt;&gt;               max_evaluation=number_of_evaluations,</span>
+<span class="sd">    &gt;&gt;&gt;               delta=0.9,</span>
+<span class="sd">    &gt;&gt;&gt;               number_of_replacement=1,</span>
+<span class="sd">    &gt;&gt;&gt;               number_of_weight_neighborhood=number_of_weight_neighborhood,</span>
+<span class="sd">    &gt;&gt;&gt;               weight_file=weight_file,</span>
+<span class="sd">    &gt;&gt;&gt;               aggregation_function=Tchebycheff,</span>
+<span class="sd">    &gt;&gt;&gt;               )</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; population = moead.run()</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="MoeadDRA.__init__"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA.html#moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span>
@@ -220,13 +249,34 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="MoeadDRA.run"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA.html#moead_framework.algorithm.combinatorial.moead_dra.MoeadDRA.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Execute the algorithm.</span>
+
+<span class="sd">        :param checkpoint: {function} The default value is None. The checkpoint can be used to save data during the process. The function required one parameter of type {:class:`~moead_framework.algorithm.abstract_moead.AbstractMoead`}</span>
+<span class="sd">        :return: list&lt;{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}&gt; All non-dominated solutions found by the algorithm</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">                &gt;&gt;&gt; from moead_framework.algorithm.combinatorial import Moead</span>
+<span class="sd">                &gt;&gt;&gt; from moead_framework.algorithm import AbstractMoead</span>
+<span class="sd">                &gt;&gt;&gt; from moead_framework.tool.result import save_population</span>
+<span class="sd">                &gt;&gt;&gt; moead = Moead(...)</span>
+<span class="sd">                &gt;&gt;&gt;</span>
+<span class="sd">                &gt;&gt;&gt; def checkpoint(moead_algorithm: AbstractMoead):</span>
+<span class="sd">                &gt;&gt;&gt;     if moead_algorithm.current_eval % 10 == 0 :</span>
+<span class="sd">                &gt;&gt;&gt;     filename = &quot;non_dominated_solutions-eval&quot; + str(moead_algorithm.current_eval) + &quot;.txt&quot;</span>
+<span class="sd">                &gt;&gt;&gt;     save_population(file_name=filename, population=moead_algorithm.ep)</span>
+<span class="sd">                &gt;&gt;&gt;</span>
+<span class="sd">                &gt;&gt;&gt; population = moead.run(checkpoint)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_eval</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_evaluation</span><span class="p">:</span>
 
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_sub_problems_to_visit</span><span class="p">():</span>
 
                 <span class="k">if</span> <span class="n">checkpoint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="n">checkpoint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_eval</span><span class="p">)</span>
+                    <span class="n">checkpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
                 <span class="bp">self</span><span class="o">.</span><span class="n">optimize_sub_problem</span><span class="p">(</span><span class="n">sub_problem_index</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
 

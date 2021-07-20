@@ -170,6 +170,22 @@
 <span class="sd">    https://sop.tik.ee.ethz.ch/download/supplementary/testproblems/zdt1/index.php</span>
 
 <span class="sd">    E. Zitzler, K. Deb, and L. Thiele. Comparison of Multiobjective Evolutionary Algorithms: Empirical Results. Evolutionary Computation, 8(2):173-195, 2000</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">    &gt;&gt;&gt; from moead_framework.problem.numerical import Zdt1</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; zdt = Zdt1(size=10)</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; # Generate a new solution</span>
+<span class="sd">    &gt;&gt;&gt; solution = zdt.generate_random_solution()</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; # Print all decision variables of the solution</span>
+<span class="sd">    &gt;&gt;&gt; print(solution.decision_vector)</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; # Print all objectives values of the solution</span>
+<span class="sd">    &gt;&gt;&gt; print(solution.F)</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Zdt1.__init__"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.problem.numerical.zdt.Zdt1.html#moead_framework.problem.numerical.zdt.Zdt1.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>

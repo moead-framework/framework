@@ -127,12 +127,12 @@ If you want to save all non-dominated solutions (attribute :code:`self.ep` in th
               aggregation_function=Tchebycheff
               )
 
-    def checkpt():
-        if moead.current_eval % 10 ==0 :
-            filename = "non_dominated_solutions-eval" + str(moead.current_eval) + ".txt"
-            save_population(file_name=filename, population=moead.ep)
+    def checkpoint(moead_algorithm: AbstractMoead):
+        if moead_algorithm.current_eval % 10 ==0 :
+            filename = "non_dominated_solutions-eval" + str(moead_algorithm.current_eval) + ".txt"
+            save_population(file_name=filename, population=moead_algorithm.ep)
 
-    moead.run(checkpoint=checkpt)
+    moead.run(checkpoint=checkpoint)
 
 
 Extract and plot the Pareto front
@@ -150,7 +150,7 @@ The method `run()` of each algorithm returns a list of :class:`moead_framework.s
               aggregation_function=Tchebycheff
               )
 
-    list_of_solutions = moead.run(checkpoint=checkpt)
+    list_of_solutions = moead.run(checkpoint=checkpoint)
 
 
 You can then extract the Pareto set and the Pareto front :

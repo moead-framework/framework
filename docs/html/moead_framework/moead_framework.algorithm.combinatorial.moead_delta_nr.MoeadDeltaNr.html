@@ -93,6 +93,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../main_components.html">Main components</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../main_components.html#solution">Solution</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="../main_components.html#algorithms">Algorithms</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="moead_framework.algorithm.abstract_moead.AbstractMoead.html">moead_framework.algorithm.abstract_moead.AbstractMoead</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="../main_components.html#for-combinatorial-problems">For combinatorial problems</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../main_components.html#for-numerical-problems">For numerical problems</a></li>
 </ul>
@@ -102,6 +103,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../other_components.html">Other components</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../problems.html">Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tools.html">Tools</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
@@ -188,6 +190,36 @@
 <ol class="upperalpha simple" start="8">
 <li><p>Li and Q. Zhang. MOEA/D-DE : Multiobjective Optimization Problems With Complicated Pareto Sets, MOEA/D and NSGA-II. IEEE Transactions on Evolutionary Computation, 13(2):284–302, April 2009. doi:10.1109/TEVC.2008.925798</p></li>
 </ol>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">moead_framework.aggregation</span> <span class="kn">import</span> <span class="n">Tchebycheff</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">moead_framework.algorithm.combinatorial</span> <span class="kn">import</span> <span class="n">MoeadDeltaNr</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">moead_framework.problem.combinatorial</span> <span class="kn">import</span> <span class="n">Rmnk</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The file is available here : https://github.com/moead-framework/data/blob/master/problem/RMNK/Instances/rmnk_0_2_100_1_0.dat</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Others instances are available here : https://github.com/moead-framework/data/tree/master/problem/RMNK/Instances</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">instance_file</span> <span class="o">=</span> <span class="s2">&quot;moead_framework/test/data/instances/rmnk_0_2_100_1_0.dat&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rmnk</span> <span class="o">=</span> <span class="n">Rmnk</span><span class="p">(</span><span class="n">instance_file</span><span class="o">=</span><span class="n">instance_file</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">number_of_weight</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">number_of_weight_neighborhood</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">number_of_evaluations</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The file is available here : https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Others weights files are available here : https://github.com/moead-framework/data/tree/master/weights</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">weight_file</span> <span class="o">=</span> <span class="s2">&quot;moead_framework/test/data/weights/SOBOL-&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rmnk</span><span class="o">.</span><span class="n">number_of_objective</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;objs-&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_weight</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;wei.ws&quot;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moead</span> <span class="o">=</span> <span class="n">MoeadDeltaNr</span><span class="p">(</span><span class="n">problem</span><span class="o">=</span><span class="n">rmnk</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>              <span class="n">max_evaluation</span><span class="o">=</span><span class="n">number_of_evaluations</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>              <span class="n">number_of_objective</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>              <span class="n">delta</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>              <span class="n">number_of_replacement</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>              <span class="n">number_of_weight_neighborhood</span><span class="o">=</span><span class="n">number_of_weight_neighborhood</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>              <span class="n">weight_file</span><span class="o">=</span><span class="n">weight_file</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>              <span class="n">aggregation_function</span><span class="o">=</span><span class="n">Tchebycheff</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>              <span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">population</span> <span class="o">=</span> <span class="n">moead</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
 <dl class="method">
 <dt id="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">problem</em>, <em class="sig-param">max_evaluation</em>, <em class="sig-param">number_of_objective</em>, <em class="sig-param">number_of_weight_neighborhood</em>, <em class="sig-param">delta</em>, <em class="sig-param">number_of_replacement</em>, <em class="sig-param">aggregation_function</em>, <em class="sig-param">weight_file</em>, <em class="sig-param">sps_strategy=None</em>, <em class="sig-param">number_of_crossover_points=None</em>, <em class="sig-param">mutation_probability=None</em>, <em class="sig-param">parent_selector=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/algorithm/combinatorial/moead_delta_nr.html#MoeadDeltaNr.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.__init__" title="Permalink to this definition">¶</a></dt>
@@ -195,15 +227,15 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>problem</strong> – {<code class="xref py py-class docutils literal notranslate"><span class="pre">Problem</span></code>} problem to optimize</p></li>
+<li><p><strong>problem</strong> – {<a class="reference internal" href="moead_framework.problem.Problem.html#moead_framework.problem.Problem" title="moead_framework.problem.Problem"><code class="xref py py-class docutils literal notranslate"><span class="pre">Problem</span></code></a>} problem to optimize</p></li>
 <li><p><strong>max_evaluation</strong> – {integer} maximum number of evaluation</p></li>
 <li><p><strong>number_of_weight_neighborhood</strong> – {integer} size of the neighborhood</p></li>
 <li><p><strong>delta</strong> – {float} probability to use all the population as neighborhood</p></li>
 <li><p><strong>number_of_replacement</strong> – {integer} maximum number of solutions replaced in the population for each new offspring generated</p></li>
-<li><p><strong>aggregation_function</strong> – {<code class="xref py py-class docutils literal notranslate"><span class="pre">AggregationFunction</span></code>}</p></li>
+<li><p><strong>aggregation_function</strong> – {<a class="reference internal" href="moead_framework.aggregation.functions.AggregationFunction.html#moead_framework.aggregation.functions.AggregationFunction" title="moead_framework.aggregation.functions.AggregationFunction"><code class="xref py py-class docutils literal notranslate"><span class="pre">AggregationFunction</span></code></a>}</p></li>
 <li><p><strong>weight_file</strong> – {string} path of the weight file. Each line represent a weight vector, each column represent a coordinate. An exemple is available here: <a class="reference external" href="https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws">https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws</a></p></li>
-<li><p><strong>parent_selector</strong> – Optional – {<code class="xref py py-class docutils literal notranslate"><span class="pre">ParentSelector</span></code>} The default operator depends of the number of solution required by the genetic operator</p></li>
-<li><p><strong>sps_strategy</strong> – Optional – {<code class="xref py py-class docutils literal notranslate"><span class="pre">SpsStrategy</span></code>} The default strategy is {<a class="reference internal" href="moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems.html#moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems" title="moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpsAllSubproblems</span></code></a>}</p></li>
+<li><p><strong>parent_selector</strong> – Optional – {<a class="reference internal" href="moead_framework.core.parent_selector.abstract_parent_selector.ParentSelector.html#moead_framework.core.parent_selector.abstract_parent_selector.ParentSelector" title="moead_framework.core.parent_selector.abstract_parent_selector.ParentSelector"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParentSelector</span></code></a>} The default operator depends of the number of solution required by the genetic operator</p></li>
+<li><p><strong>sps_strategy</strong> – Optional – {<a class="reference internal" href="moead_framework.core.sps_strategy.abstract_sps.SpsStrategy.html#moead_framework.core.sps_strategy.abstract_sps.SpsStrategy" title="moead_framework.core.sps_strategy.abstract_sps.SpsStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpsStrategy</span></code></a>} The default strategy is {<a class="reference internal" href="moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems.html#moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems" title="moead_framework.core.sps_strategy.sps_all.SpsAllSubproblems"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpsAllSubproblems</span></code></a>}</p></li>
 <li><p><strong>number_of_crossover_points</strong> – {integer} number of crossover point</p></li>
 <li><p><strong>mutation_probability</strong> – {integer} probability of mutation used by the genetic operator</p></li>
 <li><p><strong>number_of_objective</strong> – Deprecated – {integer} number of objective in the problem. Deprecated, remove in the next major release.</p></li>
@@ -290,7 +322,7 @@ This function calls the component <code class="xref py py-class docutils literal
 <dt id="moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.get_sub_problems_to_visit">
 <code class="sig-name descname">get_sub_problems_to_visit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#moead_framework.algorithm.combinatorial.moead_delta_nr.MoeadDeltaNr.get_sub_problems_to_visit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Select sub-problems to visit for the next generation.
-This function calls the component <code class="xref py py-class docutils literal notranslate"><span class="pre">SpsStrategy</span></code></p>
+This function calls the component <a class="reference internal" href="moead_framework.core.sps_strategy.abstract_sps.SpsStrategy.html#moead_framework.core.sps_strategy.abstract_sps.SpsStrategy" title="moead_framework.core.sps_strategy.abstract_sps.SpsStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpsStrategy</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>{list} indexes of sub-problems</p>
@@ -368,12 +400,25 @@ This function calls the component <code class="xref py py-class docutils literal
 <dd><p>Execute the algorithm.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>checkpoint</strong> – {function} The default value is None. The checkpoint can be used to save data during the process</p>
+<dd class="field-odd"><p><strong>checkpoint</strong> – {function} The default value is None. The checkpoint can be used to save data during the process. The function required one parameter of type {<a class="reference internal" href="moead_framework.algorithm.abstract_moead.AbstractMoead.html#moead_framework.algorithm.abstract_moead.AbstractMoead" title="moead_framework.algorithm.abstract_moead.AbstractMoead"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractMoead</span></code></a>}</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>list&lt;{<a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>}&gt; All non-dominated solutions found by the algorithm</p>
 </dd>
 </dl>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">moead_framework.algorithm.combinatorial</span> <span class="kn">import</span> <span class="n">Moead</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">moead_framework.tool.result</span> <span class="kn">import</span> <span class="n">save_population</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moead</span> <span class="o">=</span> <span class="n">Moead</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">checkpoint</span><span class="p">(</span><span class="n">moead_algorithm</span><span class="p">:</span> <span class="n">AbstractMoead</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">if</span> <span class="n">moead_algorithm</span><span class="o">.</span><span class="n">current_eval</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;non_dominated_solutions-eval&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">moead_algorithm</span><span class="o">.</span><span class="n">current_eval</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.txt&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">save_population</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="n">population</span><span class="o">=</span><span class="n">moead_algorithm</span><span class="o">.</span><span class="n">ep</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">population</span> <span class="o">=</span> <span class="n">moead</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -400,7 +445,7 @@ to preserve the diversity)</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>solution</strong> – {<a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>} the candidate solution also called offspring</p></li>
-<li><p><strong>aggregation_function</strong> – {<code class="xref py py-class docutils literal notranslate"><span class="pre">AggregationFunction</span></code>} Aggregation function used to compare solution in a multi-objective context</p></li>
+<li><p><strong>aggregation_function</strong> – {<a class="reference internal" href="moead_framework.aggregation.functions.AggregationFunction.html#moead_framework.aggregation.functions.AggregationFunction" title="moead_framework.aggregation.functions.AggregationFunction"><code class="xref py py-class docutils literal notranslate"><span class="pre">AggregationFunction</span></code></a>} Aggregation function used to compare solution in a multi-objective context</p></li>
 <li><p><strong>sub_problem</strong> – {integer} index of the sub-problem currently visited</p></li>
 </ul>
 </dd>

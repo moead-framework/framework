@@ -165,6 +165,34 @@
 <div class="viewcode-block" id="Moead"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.algorithm.combinatorial.moead.Moead.html#moead_framework.algorithm.combinatorial.moead.Moead">[docs]</a><span class="k">class</span> <span class="nc">Moead</span><span class="p">(</span><span class="n">AbstractMoead</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Implementation of MOEA/D for combinatorial problems.</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">    &gt;&gt;&gt; from moead_framework.aggregation import Tchebycheff</span>
+<span class="sd">    &gt;&gt;&gt; from moead_framework.algorithm.combinatorial import Moead</span>
+<span class="sd">    &gt;&gt;&gt; from moead_framework.problem.combinatorial import Rmnk</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; # The file is available here : https://github.com/moead-framework/data/blob/master/problem/RMNK/Instances/rmnk_0_2_100_1_0.dat</span>
+<span class="sd">    &gt;&gt;&gt; # Others instances are available here : https://github.com/moead-framework/data/tree/master/problem/RMNK/Instances</span>
+<span class="sd">    &gt;&gt;&gt; instance_file = &quot;moead_framework/test/data/instances/rmnk_0_2_100_1_0.dat&quot;</span>
+<span class="sd">    &gt;&gt;&gt; rmnk = Rmnk(instance_file=instance_file)</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; number_of_weight = 10</span>
+<span class="sd">    &gt;&gt;&gt; number_of_weight_neighborhood = 2</span>
+<span class="sd">    &gt;&gt;&gt; number_of_evaluations = 1000</span>
+<span class="sd">    &gt;&gt;&gt; # The file is available here : https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws</span>
+<span class="sd">    &gt;&gt;&gt; # Others weights files are available here : https://github.com/moead-framework/data/tree/master/weights</span>
+<span class="sd">    &gt;&gt;&gt; weight_file = &quot;moead_framework/test/data/weights/SOBOL-&quot; + str(rmnk.number_of_objective) + &quot;objs-&quot; + str(number_of_weight) + &quot;wei.ws&quot;</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; moead = Moead(problem=rmnk,</span>
+<span class="sd">    &gt;&gt;&gt;               max_evaluation=number_of_evaluations,</span>
+<span class="sd">    &gt;&gt;&gt;               number_of_weight_neighborhood=number_of_weight_neighborhood,</span>
+<span class="sd">    &gt;&gt;&gt;               weight_file=weight_file,</span>
+<span class="sd">    &gt;&gt;&gt;               aggregation_function=Tchebycheff,</span>
+<span class="sd">    &gt;&gt;&gt;               )</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; population = moead.run()</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Moead.__init__"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.algorithm.combinatorial.moead.Moead.html#moead_framework.algorithm.combinatorial.moead.Moead.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span>
