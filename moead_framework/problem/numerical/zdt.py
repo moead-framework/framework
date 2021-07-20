@@ -36,6 +36,9 @@ class Zdt1(Problem):
         :param size: {integer} number of variables in a solution
         """
         self.n = size
+
+        self.validate_size(size=self.n)
+
         super().__init__()
 
     def f(self, function_id, decision_vector):
@@ -53,3 +56,23 @@ class Zdt1(Problem):
             solution.append(random.random())
 
         return self.evaluate(x=solution)
+
+    def generate_solution(self, array, evaluate=True):
+        x = OneDimensionSolution(array)
+
+        for j in range(self.number_of_objective):
+            if evaluate:
+                x.F.append(self.f(j, x.solution))
+            else:
+                x.F.append(None)
+
+        return x
+
+    def validate_size(self, size):
+        try:
+            if size <= 1 or not isinstance(size, int):
+                raise
+            return size
+        except Exception:
+            msg = "Size should be a positive integer. Got '{size}' instead."
+            raise ValueError(msg.format(size=size))
