@@ -23,6 +23,11 @@ class BinaryMutation(GeneticOperator):
             self.mutation_probability = float(kwargs.get("mutation_probability"))
 
     def run(self):
+        """
+        Execute the genetic operator
+
+        :return: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} the offspring
+        """
 
         self.number_of_solution_is_correct(n=1)
 

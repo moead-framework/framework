@@ -1,4 +1,3 @@
-import random
 import numpy as np
 from moead_framework.algorithm.combinatorial.moead_delta_nr import MoeadDeltaNr
 from moead_framework.core.sps_strategy.sps_dra import SpsDra
@@ -9,6 +8,36 @@ class MoeadDRA(MoeadDeltaNr):
     Implementation of MOEA/D-DRA
 
     Q. Zhang, W. Liu, and H. Li. The performance of a new version of moea/d on cec09 unconstrained mop test instances. In 2009 IEEE Congress on Evolutionary Computation, volume, 203–208. 2009. doi:10.1109/CEC.2009.4982949.
+
+    Example:
+
+    >>> from moead_framework.aggregation import Tchebycheff
+    >>> from moead_framework.algorithm.combinatorial import MoeadDRA
+    >>> from moead_framework.problem.combinatorial import Rmnk
+    >>>
+    >>> # The file is available here : https://github.com/moead-framework/data/blob/master/problem/RMNK/Instances/rmnk_0_2_100_1_0.dat
+    >>> # Others instances are available here : https://github.com/moead-framework/data/tree/master/problem/RMNK/Instances
+    >>> instance_file = "moead_framework/test/data/instances/rmnk_0_2_100_1_0.dat"
+    >>> rmnk = Rmnk(instance_file=instance_file)
+    >>>
+    >>> number_of_weight = 10
+    >>> number_of_weight_neighborhood = 2
+    >>> number_of_evaluations = 1000
+    >>> # The file is available here : https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws
+    >>> # Others weights files are available here : https://github.com/moead-framework/data/tree/master/weights
+    >>> weight_file = "moead_framework/test/data/weights/SOBOL-" + str(rmnk.number_of_objective) + "objs-" + str(number_of_weight) + "wei.ws"
+    >>>
+    >>> moead = MoeadDRA(problem=rmnk,
+    >>>               max_evaluation=number_of_evaluations,
+    >>>               delta=0.9,
+    >>>               number_of_replacement=1,
+    >>>               number_of_weight_neighborhood=number_of_weight_neighborhood,
+    >>>               weight_file=weight_file,
+    >>>               aggregation_function=Tchebycheff,
+    >>>               )
+    >>>
+    >>> population = moead.run()
+
     """
 
     def __init__(self, problem,
@@ -61,13 +90,34 @@ class MoeadDRA(MoeadDeltaNr):
             self.scores.append([0, 0])
 
     def run(self, checkpoint=None):
+        """
+        Execute the algorithm.
+
+        :param checkpoint: {function} The default value is None. The checkpoint can be used to save data during the process. The function required one parameter of type {:class:`~moead_framework.algorithm.abstract_moead.AbstractMoead`}
+        :return: list<{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}> All non-dominated solutions found by the algorithm
+
+        Example:
+
+                >>> from moead_framework.algorithm.combinatorial import Moead
+                >>> from moead_framework.algorithm import AbstractMoead
+                >>> from moead_framework.tool.result import save_population
+                >>> moead = Moead(...)
+                >>>
+                >>> def checkpoint(moead_algorithm: AbstractMoead):
+                >>>     if moead_algorithm.current_eval % 10 == 0 :
+                >>>     filename = "non_dominated_solutions-eval" + str(moead_algorithm.current_eval) + ".txt"
+                >>>     save_population(file_name=filename, population=moead_algorithm.ep)
+                >>>
+                >>> population = moead.run(checkpoint)
+
+        """
 
         while self.current_eval < self.max_evaluation:
 
             for i in self.get_sub_problems_to_visit():
 
                 if checkpoint is not None:
-                    checkpoint(self.current_eval)
+                    checkpoint(self)
 
                 self.optimize_sub_problem(sub_problem_index=i)
 

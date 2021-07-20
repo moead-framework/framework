@@ -2,6 +2,9 @@ from abc import ABC, abstractmethod
 
 
 class ParentSelector(ABC):
+    """
+    Abstract class to implement a new parent selector
+    """
 
     def __init__(self, algorithm):
         """

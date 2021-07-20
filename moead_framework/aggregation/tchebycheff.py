@@ -19,6 +19,16 @@ class Tchebycheff(AggregationFunction):
         return new_value < old_value
 
     def run(self, solution, number_of_objective, weights, sub_problem, z):
+        """
+        Compute the Tchebycheff value.
+
+        :param solution: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}
+        :param number_of_objective: {integer} number of objective
+        :param weights: {list<list<integer>>} List of weight vectors
+        :param sub_problem: {integer} index of the sub-problem / weight vector
+        :param z: {list<float>} coordinates of the reference point Z*
+        :return: {float} the aggregation value of the solution for the weight vector: weights[sub-problem]
+        """
         max_distance = 0
 
         for i in range(number_of_objective):

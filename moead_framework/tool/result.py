@@ -1,12 +1,15 @@
 import random
 import numpy as np
 
+from moead_framework.algorithm import AbstractMoead
+
 
 def save_population(file_name, population):
     """
-    Save the objective values of each solutions in the population
-    :param file_name:
-    :param population:
+    Save the objective values of each solution in the population
+
+    :param file_name: string
+    :param population: list<{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}>
     :return:
     """
     file = open(file_name, "w")
@@ -24,9 +27,10 @@ def save_population(file_name, population):
 
 def save_population_full(file_name, population):
     """
-    Save the objective values of each solutions in the population with the decision variables of solutions
-    :param file_name:
-    :param population:
+    Save the objective vector and the decision vector of each solution in the population
+
+    :param file_name: string
+    :param population: list<{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}>
     :return:
     """
     file = open(file_name, "w")
@@ -58,7 +62,26 @@ def set_seed(seed):
     np.random.seed(seed)
 
 
+def checkpoint(moead_algorithm: AbstractMoead):
+    """
+    Minimalist checkpoint function to save all non dominated point every 10 evaluations
+
+    :param moead_algorithm: {:class:`~moead_framework.algorithm.abstract_moead.AbstractMoead`} instance of the algorithm that uses the checkpoint
+    :return:
+    """
+    if moead_algorithm.current_eval % 10 == 0 :
+        filename = "non_dominated_solutions-eval" + str(moead_algorithm.current_eval) + ".txt"
+        save_population(file_name=filename, population=moead_algorithm.ep)
+
+
 def compute_hypervolume(solutions, ref_point):
+    """
+    Compute the Hypervolume between the ref_point and objective values of each solution
+
+    :param solutions: list<{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}>
+    :param ref_point: list<float>
+    :return: float : hypervolume value
+    """
     hypervolume_class = HyperVolume(reference_point=ref_point)
 
     x = []

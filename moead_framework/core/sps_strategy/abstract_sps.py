@@ -2,6 +2,9 @@ from abc import ABC, abstractmethod
 
 
 class SpsStrategy(ABC):
+    """
+    Abstract class to implement a new SPS Strategy
+    """
 
     def __init__(self, algorithm_instance):
         """

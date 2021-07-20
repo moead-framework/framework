@@ -7,4 +7,10 @@ class MaxEvaluation(TerminationCriteria):
     """
 
     def test(self):
+        """
+        Test if the algorithm has to be stopped. The algorithm is stopped when the maximum
+        number of evaluation is reached
+
+        :return: {boolean} True: Continue the process. False: Stop the process
+        """
         return self.algorithm.current_eval <= self.algorithm.max_evaluation

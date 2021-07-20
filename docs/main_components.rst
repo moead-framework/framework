@@ -19,6 +19,12 @@ __________________________________________
 
 These algorithms are implemented on the basis of the original papers (:cite:`moead`, :cite:`moead_de`, :cite:`moead_dra`, :cite:`gpruvost_evocop2020`).
 
+.. autosummary::
+   :nosignatures:
+   :toctree: moead_framework
+
+   moead_framework.algorithm.abstract_moead.AbstractMoead
+
 For combinatorial problems
 ---------------------------------
 
@@ -58,4 +64,5 @@ is a required parameter of the algorithm.
 
    moead_framework.aggregation.tchebycheff.Tchebycheff
    moead_framework.aggregation.weighted_sum.WeightedSum
+   moead_framework.aggregation.functions.AggregationFunction
 

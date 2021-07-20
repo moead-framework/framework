@@ -10,6 +10,11 @@ from moead_framework.tool.mop import is_duplicated, get_non_dominated, generate_
 
 
 class AbstractMoead:
+    """
+     Abstract class to implement a new algorithm based on MOEA/D in the framework
+
+     https://moead-framework.github.io/framework/html/tuto.html#implement-your-own-algorithm
+    """
 
     def __init__(self, problem, max_evaluation, number_of_weight_neighborhood,
                  aggregation_function, weight_file,
@@ -92,8 +97,22 @@ class AbstractMoead:
         """
         Execute the algorithm.
 
-        :param checkpoint: {function} The default value is None. The checkpoint can be used to save data during the process
+        :param checkpoint: {function} The default value is None. The checkpoint can be used to save data during the process. The function required one parameter of type {:class:`~moead_framework.algorithm.abstract_moead.AbstractMoead`}
         :return: list<{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}> All non-dominated solutions found by the algorithm
+
+        Example:
+
+        >>> from moead_framework.algorithm.combinatorial import Moead
+        >>> from moead_framework.tool.result import save_population
+        >>> moead = Moead(...)
+        >>>
+        >>> def checkpoint(moead_algorithm: AbstractMoead):
+        >>>     if moead_algorithm.current_eval % 10 == 0 :
+        >>>     filename = "non_dominated_solutions-eval" + str(moead_algorithm.current_eval) + ".txt"
+        >>>     save_population(file_name=filename, population=moead_algorithm.ep)
+        >>>
+        >>> population = moead.run(checkpoint)
+
         """
         while self.termination_criteria.test():
 
@@ -101,7 +120,7 @@ class AbstractMoead:
             for i in self.get_sub_problems_to_visit():
 
                 if checkpoint is not None:
-                    checkpoint()
+                    checkpoint(self)
 
                 self.optimize_sub_problem(sub_problem_index=i)
 

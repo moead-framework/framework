@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 class TerminationCriteria(ABC):
     """
-    Component used to stop the algorithm
+    Abstract class to implement a new Termination Criteria
     """
 
     def __init__(self, algorithm_instance):

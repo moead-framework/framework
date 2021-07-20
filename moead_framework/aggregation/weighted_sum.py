@@ -16,6 +16,16 @@ class WeightedSum(AggregationFunction):
         return new_value < old_value
 
     def run(self, solution, number_of_objective, weights, sub_problem, z):
+        """
+        Compute the WeightedSum value.
+
+        :param solution: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}
+        :param number_of_objective: {integer} number of objective
+        :param weights: {list<list<integer>>} List of weight vectors
+        :param sub_problem: {integer} index of the sub-problem / weight vector
+        :param z: {list<float>} coordinates of the reference point Z*
+        :return: {float} the aggregation value of the solution for the weight vector: weights[sub-problem]
+        """
         res = 0
         for i in range(number_of_objective):
             res += solution.F[i] * weights[sub_problem][i]
