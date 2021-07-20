@@ -17,6 +17,8 @@ moead\_framework.problem.numerical.zdt.Zdt1
       ~Zdt1.evaluate
       ~Zdt1.f
       ~Zdt1.generate_random_solution
+      ~Zdt1.generate_solution
+      ~Zdt1.validate_size
    
    
 

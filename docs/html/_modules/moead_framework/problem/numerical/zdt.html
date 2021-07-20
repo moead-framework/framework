@@ -195,6 +195,9 @@
 <span class="sd">        :param size: {integer} number of variables in a solution</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">size</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">validate_size</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Zdt1.f"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.problem.numerical.zdt.Zdt1.html#moead_framework.problem.numerical.zdt.Zdt1.f">[docs]</a>    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function_id</span><span class="p">,</span> <span class="n">decision_vector</span><span class="p">):</span>
@@ -211,7 +214,27 @@
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">):</span>
             <span class="n">solution</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">solution</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">solution</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">generate_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">OneDimensionSolution</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">number_of_objective</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">evaluate</span><span class="p">:</span>
+                <span class="n">x</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">solution</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">x</span><span class="o">.</span><span class="n">F</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">x</span>
+
+    <span class="k">def</span> <span class="nf">validate_size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">size</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                <span class="k">raise</span>
+            <span class="k">return</span> <span class="n">size</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Size should be a positive integer. Got &#39;</span><span class="si">{size}</span><span class="s2">&#39; instead.&quot;</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">))</span></div>
 </pre></div>
 
            </div>
