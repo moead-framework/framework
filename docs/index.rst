@@ -22,6 +22,7 @@ If you have any questions about the framework or the project, feel free to creat
    :maxdepth: 2
 
    install
+   user_guide
    tuto
    api
    examples
