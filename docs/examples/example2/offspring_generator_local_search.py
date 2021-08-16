@@ -1,3 +1,7 @@
+"""
+The `OffspringGeneratorWithHillClimber` component is a custom `OffspringGenerator`used as an example
+to show the modularity of the framework.
+"""
 import numpy as np
 from moead_framework.core.offspring_generator import OffspringGeneratorGeneric
 

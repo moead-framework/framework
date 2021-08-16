@@ -1,3 +1,7 @@
+"""
+MoeadExample is a custom algorithm used as an example to show how to rewrite the run method to alter the behavior
+of the MOEA/D algorithm.
+"""
 import random
 from moead_framework.algorithm.combinatorial import Moead
 

@@ -1,3 +1,6 @@
+"""
+This complete example shows how to use a custom component as input to the MOEA/D algorithm.
+"""
 from example2.offspring_generator_local_search import OffspringGeneratorWithHillClimber
 from moead_framework.aggregation import Tchebycheff
 from moead_framework.algorithm.combinatorial import Moead
