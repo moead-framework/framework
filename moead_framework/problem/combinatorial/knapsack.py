@@ -1,6 +1,5 @@
 import numpy as np
 from moead_framework.problem.problem import Problem
-from moead_framework.solution.one_dimension_solution import OneDimensionSolution
 
 
 class KnapsackProblem(Problem):
@@ -25,19 +24,41 @@ class KnapsackProblem(Problem):
     >>> # Print all objectives values of the solution
     >>> print(solution.F)
     """
-    def __init__(self, number_of_objective, instance_file):
-        """
-        Constructor of the problem
+    def __init__(self, number_of_objective, instance_file=None, weights=None, profits=None, capacities=None):
+        f"""
+        Constructor of the problem.
+        You can initialize the problem directly by using an instance file or by setting parameters :  weights,
+        profits and capacities.
 
-        :param number_of_objective: {integer}
-        :param instance_file: {string} txt file of the instance: http://www-desir.lip6.fr/~lustt/Research.html#MOKP
+        :param number_of_objective: {int}
+        :param instance_file: {str} txt file of the instance: http://www-desir.lip6.fr/~lustt/Research.html#MOKP
+        :param weights: {list} weights of all objects available in knapsacks
+        :param profits: {list} profits of all objects available in knapsacks
+        :param capacities: {list} capacities of each knapsack
         """
         super().__init__(number_of_objective)
-
-        self.instance_file = instance_file
         self.weights = []
         self.profits = []
         self.capacities = []
+        self.instance_file = None
+
+        if instance_file is not None:
+            self.init_with_instance_file(instance_file=instance_file)
+        elif (weights is not None) & (profits is not None) & (capacities is not None):
+            self.init_with_data(weights=weights, profits=profits, capacities=capacities)
+        else:
+            msg = "The constructor needs either the instance_file parameter or the weights, " \
+                  "profits and capacities parameters"
+            raise ValueError(msg)
+
+        self.number_of_objects = len(self.weights[0])
+
+    def init_with_instance_file(self, instance_file):
+        if isinstance(instance_file, str):
+            self.instance_file = instance_file
+        else:
+            raise TypeError("The instance_file parameter must be a string.")
+
         file = open(self.instance_file, 'r')
         file_content = list(map(str.strip, file.readlines()))
         file_content = file_content[2:]
@@ -45,7 +66,7 @@ class KnapsackProblem(Problem):
         index_to_split_one = file_content.index("=")
         indexes_to_split = [index_to_split_one]
         for i in range(1, self.number_of_objective - 1):
-            indexes_to_split.append(index_to_split_one * (i+1) + 1)
+            indexes_to_split.append(index_to_split_one * (i + 1) + 1)
 
         kps = np.split(np.array(file_content), indexes_to_split)
 
@@ -63,9 +84,16 @@ class KnapsackProblem(Problem):
 
             self.weights.append(w)
             self.profits.append(p)
-
-        self.number_of_objects = len(self.weights[0])
         file.close()
+
+    def init_with_data(self, weights, profits, capacities):
+        if isinstance(weights, list) & isinstance(profits, list) & isinstance(capacities, list):
+            self.weights = weights
+            self.profits = profits
+            self.capacities = capacities
+        else:
+            raise TypeError("The parameters weights, profits and capacities must be list.")
+
 
     def f(self, function_id, decision_vector):
         """
