@@ -28,7 +28,7 @@ class Rmnk(Problem):
     >>> print(solution.F)
     """
 
-    dtype = int
+    dtype = float
 
     def __init__(self, instance_file):
         """
