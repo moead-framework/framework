@@ -1,3 +1,4 @@
+from typing import List
 import random
 import numpy as np
 
@@ -102,11 +103,11 @@ class HyperVolume:
     Minimization is implicitly assumed here!
     """
 
-    def __init__(self, reference_point: [float] = None):
+    def __init__(self, reference_point: List[float]):
         self.referencePoint = reference_point
-        self.list: MultiList = []
+        self.list: MultiList = MultiList(0)
 
-    def compute(self, solutions: np.array):
+    def compute(self, solutions: np.typing.List):
         """Before the HV computation, front and reference point are translated, so that the reference point is [0, ..., 0].
         :return: The hypervolume that is dominated by a non-dominated front.
         """
