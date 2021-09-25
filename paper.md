@@ -46,8 +46,8 @@ The MOEA/D algorithm is now considered as a framework. MOEA/D is the basis of ma
 add new components to improve MOEA/D performance.
 The first version of MOEA/D and its most famous variants [@moead_de; @moead_dra] are implemented in recent multi-objective 
 optimization software such as pymoo [@pymoo], pygmo [@pygmo] and jMetal [@jmetal]. These implementations offer 
-many state-of-the-art algorithms, visualization tools or parallelization abstraction, but they do not enable detailed 
-testing and analysis of the various algorithm's components' behavior.
+many state-of-the-art algorithms, visualization tools or parallelization abstraction, but they are not modular 
+enough to test easily all MOEA/D components.
 The modular R package MOEADr [@Campelo_2020] focuses on MOEA/D and allows the definition of different variants for 
 each component of MOEA/D. While some modular frameworks already exist in Python for evolutionary algorithms 
 such as DEAP [@DEAP_JMLR2012] or ModEA [@vanrijn2016], these do not (easily) support implementing MOEA/D variants. 
