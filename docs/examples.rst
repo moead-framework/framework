@@ -2,10 +2,16 @@
 Examples
 ===========================================
 
-.. toctree::
-    :maxdepth: 2
+Optimise mnk-landscapes with MOEA/D
+--------------------------------------
 
-    example_main
-    example_component
-    example_behavior
+The example requires two files :
+
+- ```instance_file``` is required by the problem. The file is available in the framework in "moead_framework/test/data/instances/" or can be downloaded from https://github.com/moead-framework/data/tree/master/problem/RMNK/Instances
+
+- ```weight_file``` is required by the algorithm. The file is available in the framework in "moead_framework/test/data/weights/" or can be downloaded from https://github.com/moead-framework/data/tree/master/weights
+
+
+.. literalinclude:: examples/example_rmnk_moead.py
+  :language: python
 

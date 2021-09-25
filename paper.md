@@ -55,7 +55,7 @@ Instead, they focus mostly on single-objective optimization and CMA-ES variants 
 
 With the *moead-framework* package, we aim to provide the modularity of the MOEADr package by 
 using the flexibility of Python. Indeed, we want to allow the user to update the behavior of MOEA/D 
-components in their research works without being limited by the package itself. 
+components in their research works without being limited by the software. 
 The package is focused on a modular architecture for easily adding, updating or testing the components of 
 MOEA/D and for customizing how components interact with each other. Indeed, in contrast with other existing implementations, 
 *moead-framework* does not limit the users with a limited number of components available as parameters (8 components are available 

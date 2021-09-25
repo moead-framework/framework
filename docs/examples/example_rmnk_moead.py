@@ -1,8 +1,3 @@
-"""
-This full example shows how to optimize the rmnk problem with the MOEA/D algorithm implemented in the framework.
-You will see how to initialize the optimization problem and the algorithm, how to run the algorithm and finally how to
-interpret the results of the algorithm.
-"""
 from moead_framework.aggregation import Tchebycheff
 from moead_framework.algorithm.combinatorial import Moead
 from moead_framework.problem.combinatorial import Rmnk
