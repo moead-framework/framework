@@ -24,7 +24,7 @@ moead\_framework.solution.one\_dimension\_solution.OneDimensionSolution
    .. autosummary::
    
       ~OneDimensionSolution.F
-      ~OneDimensionSolution.decision_vector
       ~OneDimensionSolution.distance
+      ~OneDimensionSolution.solution
    
    
