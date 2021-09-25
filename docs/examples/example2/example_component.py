@@ -1,12 +1,10 @@
 """
-This full example shows how to optimize the rmnk problem with the MOEA/D algorithm implemented in the framework.
-You will see how to initialize the optimization problem and the algorithm, how to run the algorithm and finally how to
-interpret the results of the algorithm.
+This complete example shows how to use a custom component as input to the MOEA/D algorithm.
 """
+from example2.offspring_generator_local_search import OffspringGeneratorWithHillClimber
 from moead_framework.aggregation import Tchebycheff
 from moead_framework.algorithm.combinatorial import Moead
 from moead_framework.problem.combinatorial import Rmnk
-from moead_framework.tool.result import save_population
 
 
 ###############################
@@ -23,7 +21,7 @@ rmnk = Rmnk(instance_file=instance_file)
 ###############################
 number_of_weight = 10
 number_of_weight_neighborhood = 20
-number_of_evaluations = 1000
+number_of_evaluations = 10000
 # The file is available here : https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws
 # Others weights files are available here : https://github.com/moead-framework/data/tree/master/weights
 weight_file = "SOBOL-" + str(rmnk.number_of_objective) + "objs-" + str(number_of_weight) + "wei.ws"
@@ -37,30 +35,7 @@ moead = Moead(problem=rmnk,
               number_of_weight_neighborhood=number_of_weight_neighborhood,
               weight_file=weight_file,
               aggregation_function=Tchebycheff,
+              offspring_generator=OffspringGeneratorWithHillClimber,
               )
 
 population = moead.run()
-
-
-###############################
-#       Save the result       #
-###############################
-save_file = "moead-rmnk" + str(rmnk.number_of_objective) \
-            + "-N" + str(number_of_weight) \
-            + "-T" + str(number_of_weight_neighborhood) \
-            + "-iter" + str(number_of_evaluations) \
-            + ".txt"
-
-save_population(save_file, population)
-
-
-###############################
-#    Extract the Pareto set   #
-#     and the Pareto front    #
-###############################
-pareto_front = []
-pareto_set = []
-
-for solution_object in population:
-    pareto_front.append(solution_object.F)
-    pareto_set.append(solution_object.decision_vector)

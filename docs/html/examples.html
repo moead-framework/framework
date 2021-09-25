@@ -17,7 +17,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="References" href="references.html" />
+    <link rel="next" title="Optimise mnk-landscapes with MOEA/D" href="example_main.html" />
     <link rel="prev" title="moead_framework.tool.result.checkpoint" href="moead_framework/moead_framework.tool.result.checkpoint.html" /> 
 </head>
 
@@ -41,7 +41,9 @@
 <li class="toctree-l1"><a class="reference internal" href="tuto.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Library Reference</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#optimise-mnk-landscapes-with-moea-d">Optimise mnk-landscapes with MOEA/D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_main.html">Optimise mnk-landscapes with MOEA/D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_component.html">Create your own variant of MOEA/D with the modularity of the framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_behavior.html">Update the behavior of MOEA/D without using inner components</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
@@ -74,76 +76,12 @@
              
   <div class="section" id="examples">
 <h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="optimise-mnk-landscapes-with-moea-d">
-<h2>Optimise mnk-landscapes with MOEA/D<a class="headerlink" href="#optimise-mnk-landscapes-with-moea-d" title="Permalink to this headline">¶</a></h2>
-<p>The example requires two files :</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">`instance_file`</span></code> is required by the problem. The file is available in the framework in “moead_framework/test/data/instances/” or can be downloaded from <a class="reference external" href="https://github.com/moead-framework/data/tree/master/problem/RMNK/Instances">https://github.com/moead-framework/data/tree/master/problem/RMNK/Instances</a></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">`weight_file`</span></code> is required by the algorithm. The file is available in the framework in “moead_framework/test/data/weights/” or can be downloaded from <a class="reference external" href="https://github.com/moead-framework/data/tree/master/weights">https://github.com/moead-framework/data/tree/master/weights</a></p></li>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="example_main.html">Optimise mnk-landscapes with MOEA/D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_component.html">Create your own variant of MOEA/D with the modularity of the framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_behavior.html">Update the behavior of MOEA/D without using inner components</a></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">moead_framework.aggregation</span> <span class="kn">import</span> <span class="n">Tchebycheff</span>
-<span class="kn">from</span> <span class="nn">moead_framework.algorithm.combinatorial</span> <span class="kn">import</span> <span class="n">Moead</span>
-<span class="kn">from</span> <span class="nn">moead_framework.problem.combinatorial</span> <span class="kn">import</span> <span class="n">Rmnk</span>
-<span class="kn">from</span> <span class="nn">moead_framework.tool.result</span> <span class="kn">import</span> <span class="n">save_population</span>
-
-
-<span class="c1">###############################</span>
-<span class="c1">#    Initialize the problem   #</span>
-<span class="c1">###############################</span>
-<span class="c1"># The file is available here : https://github.com/moead-framework/data/blob/master/problem/RMNK/Instances/rmnk_0_2_100_1_0.dat</span>
-<span class="c1"># Others instances are available here : https://github.com/moead-framework/data/tree/master/problem/RMNK/Instances</span>
-<span class="n">instance_file</span> <span class="o">=</span> <span class="s2">&quot;rmnk_0_2_100_1_0.dat&quot;</span>
-<span class="n">rmnk</span> <span class="o">=</span> <span class="n">Rmnk</span><span class="p">(</span><span class="n">instance_file</span><span class="o">=</span><span class="n">instance_file</span><span class="p">)</span>
-
-
-<span class="c1">###############################</span>
-<span class="c1">#  Initialize the algorithm   #</span>
-<span class="c1">###############################</span>
-<span class="n">number_of_weight</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">number_of_weight_neighborhood</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="n">number_of_evaluations</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="c1"># The file is available here : https://github.com/moead-framework/data/blob/master/weights/SOBOL-2objs-10wei.ws</span>
-<span class="c1"># Others weights files are available here : https://github.com/moead-framework/data/tree/master/weights</span>
-<span class="n">weight_file</span> <span class="o">=</span> <span class="s2">&quot;SOBOL-&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rmnk</span><span class="o">.</span><span class="n">number_of_objective</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;objs-&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_weight</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;wei.ws&quot;</span>
-
-
-<span class="c1">###############################</span>
-<span class="c1">#    Execute the algorithm    #</span>
-<span class="c1">###############################</span>
-<span class="n">moead</span> <span class="o">=</span> <span class="n">Moead</span><span class="p">(</span><span class="n">problem</span><span class="o">=</span><span class="n">rmnk</span><span class="p">,</span>
-              <span class="n">max_evaluation</span><span class="o">=</span><span class="n">number_of_evaluations</span><span class="p">,</span>
-              <span class="n">number_of_weight_neighborhood</span><span class="o">=</span><span class="n">number_of_weight_neighborhood</span><span class="p">,</span>
-              <span class="n">weight_file</span><span class="o">=</span><span class="n">weight_file</span><span class="p">,</span>
-              <span class="n">aggregation_function</span><span class="o">=</span><span class="n">Tchebycheff</span><span class="p">,</span>
-              <span class="p">)</span>
-
-<span class="n">population</span> <span class="o">=</span> <span class="n">moead</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-
-
-<span class="c1">###############################</span>
-<span class="c1">#       Save the result       #</span>
-<span class="c1">###############################</span>
-<span class="n">save_file</span> <span class="o">=</span> <span class="s2">&quot;moead-rmnk&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rmnk</span><span class="o">.</span><span class="n">number_of_objective</span><span class="p">)</span> \
-            <span class="o">+</span> <span class="s2">&quot;-N&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_weight</span><span class="p">)</span> \
-            <span class="o">+</span> <span class="s2">&quot;-T&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_weight_neighborhood</span><span class="p">)</span> \
-            <span class="o">+</span> <span class="s2">&quot;-iter&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_evaluations</span><span class="p">)</span> \
-            <span class="o">+</span> <span class="s2">&quot;.txt&quot;</span>
-
-<span class="n">save_population</span><span class="p">(</span><span class="n">save_file</span><span class="p">,</span> <span class="n">population</span><span class="p">)</span>
-
-
-<span class="c1">###############################</span>
-<span class="c1">#    Extract the Pareto set   #</span>
-<span class="c1">#     and the Pareto front    #</span>
-<span class="c1">###############################</span>
-<span class="n">pareto_front</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">pareto_set</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">solution_object</span> <span class="ow">in</span> <span class="n">population</span><span class="p">:</span>
-    <span class="n">pareto_front</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">solution_object</span><span class="o">.</span><span class="n">F</span><span class="p">)</span>
-    <span class="n">pareto_set</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">solution_object</span><span class="o">.</span><span class="n">decision_vector</span><span class="p">)</span>
-</pre></div>
-</div>
 </div>
 </div>
 
@@ -152,7 +90,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="moead_framework/moead_framework.tool.result.checkpoint.html" class="btn btn-neutral float-left" title="moead_framework.tool.result.checkpoint" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="references.html" class="btn btn-neutral float-right" title="References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="example_main.html" class="btn btn-neutral float-right" title="Optimise mnk-landscapes with MOEA/D" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
