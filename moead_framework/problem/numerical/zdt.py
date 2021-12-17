@@ -42,6 +42,19 @@ class Zdt1(Problem):
         super().__init__()
 
     def f(self, function_id, decision_vector):
+        """
+        Evaluate the decision_vector for the objective function_id
+
+        :param function_id: {integer} index of the objective
+        :param decision_vector: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} solution to evaluate
+        :return: {float} fitness value
+        """
+        if not isinstance(function_id, int):
+            raise TypeError("The expected type of `function_id` is `int`")
+
+        if not isinstance(decision_vector, np.ndarray):
+            raise TypeError("The expected type of `decision_vector` is `np.ndarray`")
+
         x = decision_vector[:]
 
         if function_id == 0:
@@ -51,22 +64,16 @@ class Zdt1(Problem):
             return g * (1 - np.power((x[0] / g), 0.5))
 
     def generate_random_solution(self):
+        """
+        Generate a random solution for the current problem
+
+        :return: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}
+        """
         solution = []
         for i in range(0, self.n):
             solution.append(random.random())
 
         return self.evaluate(x=solution)
-
-    def generate_solution(self, array, evaluate=True):
-        x = OneDimensionSolution(array)
-
-        for j in range(self.number_of_objective):
-            if evaluate:
-                x.F.append(self.f(j, x.solution))
-            else:
-                x.F.append(None)
-
-        return x
 
     def validate_size(self, size):
         try:

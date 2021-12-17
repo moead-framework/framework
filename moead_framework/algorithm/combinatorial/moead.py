@@ -69,6 +69,12 @@ class Moead(AbstractMoead):
         :param number_of_objective: Deprecated -- {integer} number of objective in the problem. Deprecated, remove in the next major release.
         """
 
+        if genetic_operator is None:
+            genetic_operator = CrossoverAndMutation
+
+        if parent_selector is None:
+            parent_selector = TwoRandomParentSelector
+
         super().__init__(problem,
                          max_evaluation,
                          number_of_weight_neighborhood,
@@ -82,15 +88,15 @@ class Moead(AbstractMoead):
                          offspring_generator=offspring_generator,
                          weight_file=weight_file,
                          number_of_weight=number_of_weight)
-        self.number_of_crossover_points = number_of_crossover_points
-        self.mutation_probability = mutation_probability
 
-        if genetic_operator is None:
-            self.genetic_operator = CrossoverAndMutation
-        else:
-            self.genetic_operator = genetic_operator
+        if number_of_crossover_points is not None:
+            if isinstance(number_of_crossover_points, int):
+                self.number_of_crossover_points = number_of_crossover_points
+            else:
+                raise TypeError("The expected type of `number_of_crossover_points` is `int`")
 
-        if parent_selector is None:
-            parent_selector = TwoRandomParentSelector
-
-        self.parent_selector = parent_selector(algorithm=self)
+        if mutation_probability is not None:
+            if isinstance(mutation_probability, float):
+                self.mutation_probability = mutation_probability
+            else:
+                raise TypeError("The expected type of `mutation_probability` is `int`")

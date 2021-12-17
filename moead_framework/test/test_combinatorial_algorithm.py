@@ -2,6 +2,7 @@ import unittest
 import os
 from moead_framework.aggregation.tchebycheff import Tchebycheff
 from moead_framework.algorithm.combinatorial import Moead, MoeadDeltaNr, MoeadSPSRandom, MoeadDRA
+from moead_framework.core.offspring_generator.abstract_mating import OffspringGenerator
 from moead_framework.problem.combinatorial import Rmnk
 from moead_framework.tool.result import compute_hypervolume, set_seed
 
