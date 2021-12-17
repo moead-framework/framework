@@ -67,6 +67,14 @@ For example, the *moead-framework* package was used for creating novel sub-probl
 analyzing them [@gpruvost_evocop2020], and for rewriting the component used to generate 
 new candidate (offspring) solutions with a variant based on Walsh surrogates [@gpruvost_gecco2020].
 
+| Software          | Can add a new algorithm | Can modify the components of the algorithms in a modular way | Can add components to algorithms |
+|-------------------|-------------------------|--------------------------------------------------------------|----------------------------------|
+| *moead-framework* | yes                     | yes                                                          | yes                              |
+| MOEADr            | yes                     | yes                                                          | no                               |
+| pymoo             | yes                     | no                                                           | no                               |
+| pygmo             | yes                     | no                                                           | no                               |
+| jMetal            | yes                     | no                                                           | no  
+
 
 # Documentation
 
