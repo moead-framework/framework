@@ -22,19 +22,15 @@ class OffspringGeneratorGeneric(OffspringGenerator):
         for s in parents:
             parents_solutions.append(s.decision_vector)
 
-        if hasattr(self.algorithm, 'number_of_crossover_points'):
-            crossover_point = self.algorithm.number_of_crossover_points
-        else:
-            crossover_point = None
+        params = {"solutions": parents_solutions}
+        proba = 'mutation_probability'
+        
+        if hasattr(self.algorithm, "number_of_crossover_points"):
+            params["crossover_points"] = self.algorithm.number_of_crossover_points
 
-        if hasattr(self.algorithm, 'mutation_probability'):
-            mutation_probability = self.algorithm.mutation_probability
-        else:
-            mutation_probability = None
+        if hasattr(self.algorithm, proba):
+            params[proba] = self.algorithm.mutation_probability
 
-        y_sol = self.algorithm.genetic_operator(solutions=parents_solutions,
-                                                crossover_points=crossover_point,
-                                                mutation_probability=mutation_probability
-                                                ).run()
+        y_sol = self.algorithm.genetic_operator(**params).run()
 
         return self.algorithm.problem.evaluate(x=y_sol)
