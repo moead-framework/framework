@@ -81,5 +81,5 @@ class Zdt1(Problem):
                 raise
             return size
         except Exception:
-            msg = "Size should be a positive integer. Got '{size}' instead."
+            msg = "Size must be strictly greater than 1. Got '{size}' instead."
             raise ValueError(msg.format(size=size))
