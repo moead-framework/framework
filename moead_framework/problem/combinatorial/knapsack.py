@@ -87,7 +87,7 @@ class KnapsackProblem(Problem):
         file.close()
 
     def init_with_data(self, weights, profits, capacities):
-        if isinstance(weights, list) & isinstance(profits, list) & isinstance(capacities, list):
+        if ﻿all((isinstance(x, list) for x in  [weights, profits, capacities]))
             self.weights = weights
             self.profits = profits
             self.capacities = capacities
