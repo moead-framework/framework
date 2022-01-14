@@ -25,7 +25,7 @@ class KnapsackProblem(Problem):
     >>> print(solution.F)
     """
     def __init__(self, number_of_objective, instance_file=None, weights=None, profits=None, capacities=None):
-        f"""
+        """
         Constructor of the problem.
         You can initialize the problem directly by using an instance file or by setting parameters :  weights,
         profits and capacities.
@@ -87,13 +87,18 @@ class KnapsackProblem(Problem):
         file.close()
 
     def init_with_data(self, weights, profits, capacities):
-        if ﻿all((isinstance(x, list) for x in  [weights, profits, capacities]))
-            self.weights = weights
-            self.profits = profits
-            self.capacities = capacities
+        if all((isinstance(x, list) for x in [weights, profits, capacities])):
+            if len(weights) == len(profits):
+                if len(capacities) == self.number_of_objective:
+                    self.weights = weights
+                    self.profits = profits
+                    self.capacities = capacities
+                else:
+                    raise TypeError("The size of capacities must be equal to the number of objectives.")
+            else:
+                raise TypeError("The size of lists weights and profits must be equal.")
         else:
             raise TypeError("The parameters weights, profits and capacities must be list.")
-
 
     def f(self, function_id, decision_vector):
         """
