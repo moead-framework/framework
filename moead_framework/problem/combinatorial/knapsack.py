@@ -44,7 +44,7 @@ class KnapsackProblem(Problem):
 
         if instance_file is not None:
             self.init_with_instance_file(instance_file=instance_file)
-        elif (weights is not None) & (profits is not None) & (capacities is not None):
+        elif None not in [weights, profits, capacities]:
             self.init_with_data(weights=weights, profits=profits, capacities=capacities)
         else:
             msg = "The constructor needs either the instance_file parameter or the weights, " \
