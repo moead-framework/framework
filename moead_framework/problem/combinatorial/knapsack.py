@@ -37,11 +37,13 @@ class KnapsackProblem(Problem):
         :param capacities: {list} capacities of each knapsack
         """
 
-        if not isinstance(instance_file, str):
-            raise TypeError("The expected type of `instance_file` is `str`")
+        if instance_file is not None:
+            if not isinstance(instance_file, str):
+                raise TypeError("The expected type of `instance_file` is `str`")
 
-        if not isinstance(number_of_objective, int):
-            raise TypeError("The expected type of `number_of_objective` is `int`")
+        if number_of_objective is not None:
+            if not isinstance(number_of_objective, int):
+                raise TypeError("The expected type of `number_of_objective` is `int`")
 
         super().__init__(number_of_objective)
         self.weights = []
