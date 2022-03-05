@@ -9,18 +9,17 @@ class BinaryMutation(GeneticOperator):
     Require only one solution. Try to mutate each bit of the decision_vector with a predefined probability.
     """
 
-    def __init__(self, solutions, **kwargs):
+    def __init__(self, solutions, mutation_probability=None):
         """
         Constructor of the Binary Mutation operator
 
         :param solutions: list<list<integer>> list of solution's representation (In algorithms, it is represented by the attribute :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution.decision_vector` of the class :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`)
         :param mutation_probability: {float} the probability (between 0 and 1) to mutate a bit in the decision_vector. The default value is the probability to mutate one bit of the decision_vector
         """
-        super().__init__(solutions, **kwargs)
-        if kwargs.get("mutation_probability") is None:
-            self.mutation_probability = 1 / (len(self.solutions[0]))
-        else:
-            self.mutation_probability = float(kwargs.get("mutation_probability"))
+        super().__init__(solutions)
+        proba = mutation_probability
+        default_proba = 1 / (len(self.solutions[0]))
+        self.mutation_probability = default_proba if proba is None else float(proba)
 
     def run(self):
         """

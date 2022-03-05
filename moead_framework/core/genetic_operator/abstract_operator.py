@@ -6,12 +6,14 @@ class GeneticOperator(ABC):
     Abstract class to implement a new genetic Operator
     """
 
-    def __init__(self, solutions, **kwargs):
+    def __init__(
+        self,
+        solutions,
+    ):
         """
         Constructor of the genetic operator.
 
         :param solutions: list<list<integer>> list of solution's representation (In algorithms, it is represented by the attribute :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution.decision_vector` of the class :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`)
-        :param kwargs: optional arguments for the genetic operator
         """
         self.solutions = solutions
 
