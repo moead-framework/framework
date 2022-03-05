@@ -36,6 +36,13 @@ class KnapsackProblem(Problem):
         :param profits: {list} profits of all objects available in knapsacks
         :param capacities: {list} capacities of each knapsack
         """
+
+        if not isinstance(instance_file, str):
+            raise TypeError("The expected type of `instance_file` is `str`")
+
+        if not isinstance(number_of_objective, int):
+            raise TypeError("The expected type of `number_of_objective` is `int`")
+
         super().__init__(number_of_objective)
         self.weights = []
         self.profits = []
@@ -100,7 +107,7 @@ class KnapsackProblem(Problem):
         else:
             raise TypeError("The parameters weights, profits and capacities must be list.")
 
-    def f(self, function_id, decision_vector):
+    def f(self, function_id: int, decision_vector: np.ndarray):
         """
         Evaluate the decision_vector for the objective function_id
 
@@ -108,6 +115,12 @@ class KnapsackProblem(Problem):
         :param decision_vector: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} solution to evaluate
         :return: {float} fitness value
         """
+
+        if not isinstance(function_id, int):
+            raise TypeError("The expected type of `function_id` is `int`")
+
+        if not isinstance(decision_vector, np.ndarray):
+            raise TypeError("The expected type of `decision_vector` is `np.ndarray`")
 
         function_id = function_id - 1
         weight = self.weight_of_solution(function_id, decision_vector)

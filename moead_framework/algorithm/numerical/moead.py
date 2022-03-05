@@ -65,6 +65,12 @@ class Moead(AbstractMoead):
         :param number_of_objective: Deprecated -- {integer} number of objective in the problem. Deprecated, remove in the next major release.
         """
 
+        if genetic_operator is None:
+            genetic_operator = DifferentialEvolutionCrossover
+
+        if parent_selector is None:
+            parent_selector = TwoRandomAndCurrentParentSelector
+
         super().__init__(problem,
                          max_evaluation,
                          number_of_weight_neighborhood,
@@ -78,14 +84,4 @@ class Moead(AbstractMoead):
                          offspring_generator=offspring_generator,
                          weight_file=weight_file,
                          number_of_weight=number_of_weight)
-
-        if genetic_operator is None:
-            self.genetic_operator = DifferentialEvolutionCrossover
-        else:
-            self.genetic_operator = genetic_operator
-
-        if parent_selector is None:
-            parent_selector = TwoRandomAndCurrentParentSelector
-
-        self.parent_selector = parent_selector(algorithm=self)
 

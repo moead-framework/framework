@@ -10,10 +10,10 @@ class KnapsackTest(unittest.TestCase):
 
     def setUp(self):
         """Init"""
-        project_path = os.path.dirname(os.path.abspath(__file__))
+        self.project_path = os.path.dirname(os.path.abspath(__file__))
         number_of_objective = 2
-        instance = project_path + '/../data/instances/MOKP_250_2.dat'
-        self.problem = KnapsackProblem(number_of_objective=number_of_objective, instance_file=instance)
+        self.instance = self.project_path + '/../data/instances/MOKP_250_2.dat'
+        self.problem = KnapsackProblem(number_of_objective=number_of_objective, instance_file=self.instance)
 
     def test_instance_file(self):
         """Test constructor with instance file"""
@@ -67,3 +67,10 @@ class KnapsackTest(unittest.TestCase):
 
         self.assertEqual(solution.F[0], -75232.5)
         self.assertEqual(solution.F[1], -71644.4)
+
+    def test_sad_path_parameters(self):
+        with self.assertRaises(TypeError):
+            self.problem = KnapsackProblem(number_of_objective="2", instance_file=self.instance)
+
+        with self.assertRaises(TypeError):
+            self.problem = KnapsackProblem(number_of_objective=2, instance_file=2)

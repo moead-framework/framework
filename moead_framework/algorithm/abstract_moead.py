@@ -2,10 +2,18 @@ import random
 
 import numpy as np
 
+from moead_framework.aggregation.functions import AggregationFunction
+from moead_framework.core.genetic_operator import GeneticOperator
+from moead_framework.core.offspring_generator.abstract_mating import OffspringGenerator
 from moead_framework.core.offspring_generator.offspring_generator import OffspringGeneratorGeneric
+from moead_framework.core.parent_selector.abstract_parent_selector import ParentSelector
+from moead_framework.core.selector.abstract_selector import MatingPoolSelector
 from moead_framework.core.selector.closest_neighbors_selector import ClosestNeighborsSelector
+from moead_framework.core.sps_strategy.abstract_sps import SpsStrategy
 from moead_framework.core.sps_strategy.sps_all import SpsAllSubproblems
+from moead_framework.core.termination_criteria.abstract_termination_criteria import TerminationCriteria
 from moead_framework.core.termination_criteria.max_evaluation import MaxEvaluation
+from moead_framework.problem import Problem
 from moead_framework.tool.mop import is_duplicated, get_non_dominated, generate_weight_vectors
 
 
@@ -44,8 +52,18 @@ class AbstractMoead:
         :param number_of_weight: Deprecated -- {integer} number of weight vector used to decompose the problem. Deprecated, remove in the next major release.
         :param number_of_objective: Deprecated -- {integer} number of objective in the problem. Deprecated, remove in the next major release.
         """
-        self.problem = problem
-        self.aggregation_function = aggregation_function()
+        if isinstance(problem, Problem):
+            self.problem = problem
+        else:
+            raise TypeError("The expected type of `problem` is `Problem`")
+
+        if not isinstance(weight_file, str):
+            raise TypeError("The expected type of `weight_file` is `Str`")
+
+        if issubclass(aggregation_function, AggregationFunction):
+            self.aggregation_function = aggregation_function()
+        else:
+            raise TypeError("The expected type of `aggregation_function` is `AggregationFunction`")
 
         if number_of_weight is not None:
             import warnings
@@ -58,11 +76,23 @@ class AbstractMoead:
         if termination_criteria is None:
             self.termination_criteria = MaxEvaluation(algorithm_instance=self)
         else:
-            self.termination_criteria = termination_criteria(algorithm_instance=self)
+            if issubclass(termination_criteria, TerminationCriteria):
+                self.termination_criteria = termination_criteria(algorithm_instance=self)
+            else:
+                raise TypeError("The expected type of `termination_criteria` is `TerminationCriteria`")
 
-        self.max_evaluation = max_evaluation
+        if isinstance(max_evaluation, int):
+            self.max_evaluation = max_evaluation
+        else:
+            raise TypeError("The expected type of `max_evaluation` is `int`")
+
         self.number_of_objective = self.problem.number_of_objective
-        self.t = number_of_weight_neighborhood
+
+        if isinstance(number_of_weight_neighborhood, int):
+            self.t = number_of_weight_neighborhood
+        else:
+            raise TypeError("The expected type of `number_of_weight_neighborhood` is `int`")
+
         self.ep = []
 
         self.weights = generate_weight_vectors(weight_file, shuffle=False)
@@ -78,20 +108,36 @@ class AbstractMoead:
         if sps_strategy is None:
             self.sps_strategy = SpsAllSubproblems(algorithm_instance=self)
         else:
-            self.sps_strategy = sps_strategy(algorithm_instance=self)
+            if issubclass(sps_strategy, SpsStrategy):
+                self.sps_strategy = sps_strategy(algorithm_instance=self)
+            else:
+                raise TypeError("The expected type of `sps_strategy` is `SpsStrategy`")
 
         if mating_pool_selector is None:
             self.mating_pool_selector = ClosestNeighborsSelector(algorithm_instance=self)
         else:
-            self.mating_pool_selector = mating_pool_selector(algorithm_instance=self)
+            if issubclass(mating_pool_selector, MatingPoolSelector):
+                self.mating_pool_selector = mating_pool_selector(algorithm_instance=self)
+            else:
+                raise TypeError("The expected type of `mating_pool_selector` is `MatingPoolSelector`")
 
-        self.genetic_operator = genetic_operator
-        self.parent_selector = parent_selector
+        if issubclass(genetic_operator, GeneticOperator):
+            self.genetic_operator = genetic_operator
+        else:
+            raise TypeError("The expected type of `genetic_operator` is `GeneticOperator`")
+
+        if issubclass(parent_selector, ParentSelector):
+            self.parent_selector = parent_selector(algorithm=self)
+        else:
+            raise TypeError("The expected type of `parent_selector` is `ParentSelector`")
 
         if offspring_generator is None:
             self.offspring_generator = OffspringGeneratorGeneric(algorithm_instance=self)
         else:
-            self.offspring_generator = offspring_generator(algorithm_instance=self)
+            if issubclass(offspring_generator, OffspringGenerator):
+                self.offspring_generator = offspring_generator(algorithm_instance=self)
+            else:
+                raise TypeError("The expected type of `offspring_generator` is `OffspringGenerator`")
 
     def run(self, checkpoint=None):
         """

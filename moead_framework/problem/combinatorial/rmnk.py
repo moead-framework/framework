@@ -52,6 +52,8 @@ class Rmnk(Problem):
         self.instance_file = None
 
         if instance_file is not None:
+            if not isinstance(instance_file, str):
+                raise TypeError("The expected type of `instance_file` is `str`")
             self.init_with_instance_file(instance_file=instance_file)
         elif (rho is not None) & (m is not None) & (n is not None) & (k is not None) & (links is not None) & (
                 tables is not None):
@@ -114,7 +116,7 @@ class Rmnk(Problem):
         else:
             raise TypeError("The parameters links and tables must be list.")
 
-    def f(self, function_id, decision_vector):
+    def f(self, function_id: int, decision_vector: np.ndarray):
         """
         Evaluate the decision_vector for the objective function_id
 
@@ -122,6 +124,11 @@ class Rmnk(Problem):
         :param decision_vector: {:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`} solution to evaluate
         :return: {float} fitness value
         """
+        if not isinstance(function_id, int):
+            raise TypeError("The expected type of `function_id` is `int`")
+
+        if not isinstance(decision_vector, np.ndarray):
+            raise TypeError("The expected type of `decision_vector` is `np.ndarray`")
 
         accu = 0
 
