@@ -57,6 +57,9 @@ class AbstractMoead:
         else:
             raise TypeError("The expected type of `problem` is `Problem`")
 
+        if not isinstance(weight_file, str):
+            raise TypeError("The expected type of `weight_file` is `Str`")
+
         if issubclass(aggregation_function, AggregationFunction):
             self.aggregation_function = aggregation_function()
         else:

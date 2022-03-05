@@ -106,3 +106,70 @@ class AlgorithmsTest(unittest.TestCase):
 
         self.assertEqual(len(non_dominated), 9)  # test the number of non_dominated solutions
         self.assertEqual(compute_hypervolume(non_dominated, [0, 0]), 0.3429102682198655)  # test the hypervolume value
+
+    def test_sad_path_moead(self):
+        """Test MOEA/D algorithm"""
+
+        with self.assertRaises(TypeError):
+            moead = Moead(problem="bad_parameter",
+                          max_evaluation=self.number_of_evaluations,
+                          number_of_weight=self.number_of_weight,
+                          aggregation_function=Tchebycheff,
+                          number_of_weight_neighborhood=self.number_of_weight_neighborhood,
+                          number_of_crossover_points=self.number_of_crossover_points,
+                          weight_file=self.weight_file,
+                          )
+        with self.assertRaises(TypeError):
+            moead = Moead(problem=self.rmnk,
+                          max_evaluation="bad_parameter",
+                          number_of_weight=self.number_of_weight,
+                          aggregation_function=Tchebycheff,
+                          number_of_weight_neighborhood=self.number_of_weight_neighborhood,
+                          number_of_crossover_points=self.number_of_crossover_points,
+                          weight_file=self.weight_file,
+                          )
+        with self.assertRaises(TypeError):
+            moead = Moead(problem=self.rmnk,
+                          max_evaluation=self.number_of_evaluations,
+                          number_of_weight=self.number_of_weight,
+                          aggregation_function="bad_parameter",
+                          number_of_weight_neighborhood=self.number_of_weight_neighborhood,
+                          number_of_crossover_points=self.number_of_crossover_points,
+                          weight_file=self.weight_file,
+                          )
+        with self.assertRaises(TypeError):
+            moead = Moead(problem=self.rmnk,
+                          max_evaluation=self.number_of_evaluations,
+                          number_of_weight=self.number_of_weight,
+                          aggregation_function=Tchebycheff,
+                          number_of_weight_neighborhood="bad_parameter",
+                          number_of_crossover_points=self.number_of_crossover_points,
+                          weight_file=self.weight_file,
+                          )
+        with self.assertRaises(TypeError):
+            moead = Moead(problem=self.rmnk,
+                          max_evaluation=self.number_of_evaluations,
+                          number_of_weight=self.number_of_weight,
+                          aggregation_function=Tchebycheff,
+                          number_of_weight_neighborhood=self.number_of_weight_neighborhood,
+                          number_of_crossover_points="bad_parameter",
+                          weight_file=self.weight_file,
+                          )
+        with self.assertRaises(TypeError):
+            moead = Moead(problem=self.rmnk,
+                          max_evaluation=self.number_of_evaluations,
+                          number_of_weight=self.number_of_weight,
+                          aggregation_function=Tchebycheff,
+                          number_of_weight_neighborhood=self.number_of_weight_neighborhood,
+                          number_of_crossover_points=self.number_of_crossover_points,
+                          weight_file=10,
+                          )
+        with self.assertRaises(FileNotFoundError):
+            moead = Moead(problem=self.rmnk,
+                          max_evaluation=self.number_of_evaluations,
+                          number_of_weight=self.number_of_weight,
+                          aggregation_function=Tchebycheff,
+                          number_of_weight_neighborhood=self.number_of_weight_neighborhood,
+                          number_of_crossover_points=self.number_of_crossover_points,
+                          weight_file="false_path",
+                          )

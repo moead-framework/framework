@@ -10,8 +10,8 @@ class RmnkTest(unittest.TestCase):
 
     def setUp(self):
         """Init"""
-        project_path = os.path.dirname(os.path.abspath(__file__))
-        self.problem = Rmnk(project_path + '/../data/instances/rmnk_0_2_100_1_0.dat')
+        self.project_path = os.path.dirname(os.path.abspath(__file__))
+        self.problem = Rmnk(self.project_path + '/../data/instances/rmnk_0_2_100_1_0.dat')
 
     def test_instance(self):
         """Test parameters"""
@@ -62,6 +62,11 @@ class RmnkTest(unittest.TestCase):
 
         self.assertEqual(solution.F[0], -0.4884468640000001)
         self.assertEqual(solution.F[1], -0.4930223456999998)
+
+    def test_sad_path_parameters(self):
+        with self.assertRaises(TypeError):
+            self.problem = Rmnk(2)
+
 
 
 
