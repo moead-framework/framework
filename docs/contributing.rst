@@ -3,7 +3,9 @@ Contributing
 ===========================================
 
 When contributing to this project, please first discuss the change you wish to make via GitHub discussions,
-email, or any other method with the owners of this repository before making a change. 
+email, or any other method with the owners of this repository before making a change.
+The contribution can be the report of a bug, the request for a new feature or
+modifying the code of the framework to improve it.
 
 Please note we have a code of conduct, please follow it in all your interactions with the project.
 
@@ -30,6 +32,13 @@ help us to understand your request. Share with us the following information:
 - operating system
 - the error raised by your code
 - all steps to reproduce the bug
+
+
+Support
+________________________________
+
+If you have any questions about the project, don't hesitate to create a new discussion with GitHub Discussions (https://github.com/moead-framework/framework/discussions).
+It is the space for our community to have conversations, ask questions and post answers without opening issues.
 
 Code of Conduct
 ________________________________
