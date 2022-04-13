@@ -18,6 +18,13 @@ class Crossover(GeneticOperator):
         :param crossover_points: {integer} the number of points for the crossover
         """
         super().__init__(solutions)
+        if len(self.solutions[0]) <= crossover_points:
+            msg = f"The number of crossover points (crossover_points={crossover_points}) must be strictly smaller than the number of variables in the solution (n={len(self.solutions[0])})."
+            raise ValueError(msg)
+        elif crossover_points == 0:
+            msg = f"The number of crossover points (crossover_points={crossover_points}) must be positive."
+            raise ValueError(msg)
+
         self.crossover_points = int(crossover_points)
 
     def run(self):

@@ -16,6 +16,16 @@ class ToolsTest(unittest.TestCase):
         self.rmnk3D = Rmnk(instance_file=project_path + '/data/instances/rmnk_0_3_100_1_0.dat')
         self.number_of_objective = self.rmnk.number_of_objective
 
+    def test_get_non_dominated(self):
+        solutions = []
+        for i in range(20):
+            solutions.append(self.rmnk.generate_random_solution())
+        with self.assertRaises(TypeError):
+            non_dominated_pop = get_non_dominated(population=1)
+
+        with self.assertRaises(TypeError):
+            non_dominated_pop = get_non_dominated(population=[1,0])
+
     def test_PF(self):
         """Test get Non dominated"""
         solutions = []
@@ -51,6 +61,14 @@ class ToolsTest(unittest.TestCase):
         self.assertEqual(len(population), 12)
         self.assertEqual(population_size_without_duplicate(population=population), 10)
 
+    def test_population_size_without_duplicate2(self):
+        """test the function population_size_without_duplicate"""
+        with self.assertRaises(TypeError):
+            population_size_without_duplicate(population=1)
+
+        with self.assertRaises(TypeError):
+            population_size_without_duplicate(population=[1,2,3])
+
     def test_hypervolume3D(self):
         """test the hypervolume in 3D"""
         population = []
@@ -59,6 +77,25 @@ class ToolsTest(unittest.TestCase):
             population.append(self.rmnk3D.generate_random_solution())
 
         self.assertEqual(compute_hypervolume(population, [0, 0, 0]), 0.16108679722159508)  # test the hypervolume value
+
+    def test_hypervolume3D_2(self):
+        """test the hypervolume in 3D"""
+        population = []
+
+        for i in range(10):
+            population.append(self.rmnk3D.generate_random_solution())
+
+        with self.assertRaises(TypeError):
+            compute_hypervolume(2, [0, 0, 0])
+
+        with self.assertRaises(TypeError):
+            compute_hypervolume([9,8], [0, 0, 0])
+
+        with self.assertRaises(TypeError):
+            compute_hypervolume(population, 1)
+
+        with self.assertRaises(TypeError):
+            compute_hypervolume(population, [1, 1])
 
     def test_compute_crowding_distance(self):
         """test the function compute_crowding_distance"""
@@ -75,6 +112,19 @@ class ToolsTest(unittest.TestCase):
 
         self.assertEqual(population[0].distance, 0.07806191187999945)
         self.assertEqual(pop_with_distance[0].distance, 0.07806191187999945)
+
+    def test_compute_crowding_distance2(self):
+        """test the function compute_crowding_distance"""
+        population = []
+
+        for i in range(10):
+            population.append(self.rmnk.generate_random_solution())
+
+        with self.assertRaises(TypeError):
+            pop_with_distance = compute_crowding_distance(1)
+
+        with self.assertRaises(TypeError):
+            pop_with_distance = compute_crowding_distance([1,2,3])
 
     def test_save_population(self):
         """test the function to save the population"""
@@ -96,6 +146,19 @@ class ToolsTest(unittest.TestCase):
 
         f.close()
         os.remove("test_save_population.txt")
+
+    def test_save_population2(self):
+        """test the function to save the population"""
+        population = []
+
+        for i in range(10):
+            population.append(self.rmnk.generate_random_solution())
+
+        with self.assertRaises(TypeError):
+            save_population("test_save_population.txt", 1)
+
+        with self.assertRaises(TypeError):
+            save_population("test_save_population.txt", [1,2])
 
     def test_save_population_full(self):
         """test the function to save the population with all decision variables"""
@@ -120,3 +183,16 @@ class ToolsTest(unittest.TestCase):
 
         f.close()
         os.remove("test_save_population_full.txt")
+
+    def test_save_population_full2(self):
+        """test the function to save the population with all decision variables"""
+        population = []
+
+        for i in range(10):
+            population.append(self.rmnk.generate_random_solution())
+
+        with self.assertRaises(TypeError):
+            save_population_full("test_save_population_full.txt", 1)
+
+        with self.assertRaises(TypeError):
+            save_population_full("test_save_population_full.txt", [1,2])

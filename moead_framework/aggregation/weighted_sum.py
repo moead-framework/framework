@@ -13,6 +13,7 @@ class WeightedSum(AggregationFunction):
         :param new_value: {float} new aggregation value
         :return: {boolean} True if new_value is better than old_value.
         """
+        super().is_better(old_value, new_value)
         return new_value < old_value
 
     def run(self, solution, number_of_objective, weights, sub_problem, z):
@@ -26,6 +27,8 @@ class WeightedSum(AggregationFunction):
         :param z: {list<float>} coordinates of the reference point Z*
         :return: {float} the aggregation value of the solution for the weight vector: weights[sub-problem]
         """
+        super().run(solution, number_of_objective, weights, sub_problem, z)
+
         res = 0
         for i in range(number_of_objective):
             res += solution.F[i] * weights[sub_problem][i]

@@ -3,6 +3,7 @@ import random
 import numpy as np
 
 from moead_framework.algorithm import AbstractMoead
+from moead_framework.solution.base import Solution
 
 
 def save_population(file_name, population):
@@ -13,9 +14,17 @@ def save_population(file_name, population):
     :param population: list<{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}>
     :return:
     """
+    if type(population) != list:
+        raise TypeError(
+            f"the parameter 'population' of save_population(population) must be a list. Instead, we have {type(population)} ")
+
     file = open(file_name, "w")
     # file.write("Length of the list = " + str(len(population)) + "\n")
     for s in population:
+        if not isinstance(s, Solution):
+            raise TypeError(
+                f"the parameter 'population' of save_population(population) must be a list of Solution. Instead, we have a list of {type(s)} ")
+
         row = ""
         for coordinate in s.F:
             row += str(coordinate) + " "
@@ -34,9 +43,17 @@ def save_population_full(file_name, population):
     :param population: list<{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}>
     :return:
     """
+    if type(population) != list:
+        raise TypeError(
+            f"the parameter 'population' of save_population_full(population) must be a list. Instead, we have {type(population)} ")
+
     file = open(file_name, "w")
     # file.write("Length of the list = " + str(len(population)) + "\n")
     for s in population:
+        if not isinstance(s, Solution):
+            raise TypeError(
+                f"the parameter 'population' of save_population_full(population) must be a list of Solution. Instead, we have a list of {type(s)} ")
+
         row = ""
         x = ""
         for coordinate in s.F:
@@ -83,6 +100,26 @@ def compute_hypervolume(solutions, ref_point):
     :param ref_point: list<float>
     :return: float : hypervolume value
     """
+    if type(solutions) != list:
+        raise TypeError(
+            f"the parameter 'solutions' of compute_hypervolume() must be a list. Instead, we have {type(solutions)} ")
+
+    if type(ref_point) != list:
+        raise TypeError(
+            f"the parameter 'ref_point' of compute_hypervolume() must be a list. Instead, we have {type(solutions)} ")
+
+    arr = []
+    for s in solutions:
+        if isinstance(s, Solution):
+            arr.append(s.F)
+        else:
+            raise TypeError(
+                f"the parameter 'solutions' of compute_hypervolume must be a list of Solution. Instead, we have a list of {type(s)} ")
+
+    if len(ref_point) != len(arr[0]):
+        raise TypeError(
+            f"the number of items in 'ref_point'  must be equal to {len(arr[0])}. Instead, we have a list of size {len(ref_point)}.")
+
     hypervolume_class = HyperVolume(reference_point=ref_point)
 
     x = []

@@ -1,6 +1,9 @@
 import random
 import numpy as np
 
+from moead_framework.solution import OneDimensionSolution
+from moead_framework.solution.base import Solution
+
 
 def is_pareto_efficient(costs, return_mask = True):
     """
@@ -36,9 +39,17 @@ def get_non_dominated(population):
     :param population: list<{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}>
     :return: population: list<{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}>
     """
+    if type(population) != list:
+        raise TypeError(
+            f"the parameter 'population' of get_non_dominated(population) must be a list. Instead, we have {type(population)} ")
+
     arr = []
     for s in population:
-        arr.append(s.F)
+        if isinstance(s, Solution):
+            arr.append(s.F)
+        else:
+            raise TypeError(
+                f"the parameter 'population' of get_non_dominated(population) must be a list of Solution. Instead, we have a list of {type(s)} ")
 
     new_pop = list(population[i] for i in is_pareto_efficient(np.array(arr), return_mask=False))
 
@@ -74,6 +85,18 @@ def population_size_without_duplicate(population):
     :param population: list<{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}>
     :return: integer: the size of the population
     """
+    if type(population) != list:
+        raise TypeError(
+            f"the parameter 'population' of population_size_without_duplicate(population) must be a list. Instead, we have {type(population)} ")
+
+    arr = []
+    for s in population:
+        if isinstance(s, Solution) | isinstance(s, OneDimensionSolution):
+            arr.append(s.F)
+        else:
+            raise TypeError(
+                f"the parameter 'population' of population_size_without_duplicate(population) must be a list of Solution. Instead, we have a list of {type(s)} ")
+
     arr = []
     for ind in population:
         is_dup = False
@@ -94,8 +117,16 @@ def compute_crowding_distance(s):
     :param s: list<{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}>
     :return: population: list<{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}> with computed distances
     """
+    if not isinstance(s, list):
+        raise TypeError(
+            f"the parameter 's' of compute_crowding_distance(s) must be a list of Solution. Instead, we have {type(s)}")
+
     for individual in s:
-        individual.distance = 0
+        if isinstance(individual, Solution):
+            individual.distance = 0
+        else:
+            raise TypeError(
+                f"the parameter 's' of compute_crowding_distance(s) must be a list of Solution. Instead, we have a list of {type(individual)} ")
 
     max_distance = 0
     for m in range(len(s[0].F)):
