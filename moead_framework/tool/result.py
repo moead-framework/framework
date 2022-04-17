@@ -22,6 +22,7 @@ def save_population(file_name, population):
     # file.write("Length of the list = " + str(len(population)) + "\n")
     for s in population:
         if not isinstance(s, Solution):
+            file.close()
             raise TypeError(
                 f"the parameter 'population' of save_population(population) must be a list of Solution. Instead, we have a list of {type(s)} ")
 
@@ -51,6 +52,7 @@ def save_population_full(file_name, population):
     # file.write("Length of the list = " + str(len(population)) + "\n")
     for s in population:
         if not isinstance(s, Solution):
+            file.close()
             raise TypeError(
                 f"the parameter 'population' of save_population_full(population) must be a list of Solution. Instead, we have a list of {type(s)} ")
 

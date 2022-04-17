@@ -20,3 +20,7 @@ class MatingPoolSelector(ABC):
         :param sub_problem: {integer} index of the current sub-problem visited
         :return: {list<integer>}
         """
+        if type(sub_problem) != int:
+            raise TypeError(
+                f"The parameter 'select' of {self.__class__.__name__}.run() must be an integer. Instead, we have {type(sub_problem)}")
+

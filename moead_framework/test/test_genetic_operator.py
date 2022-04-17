@@ -119,3 +119,14 @@ class GeneticOperatorsTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             new_solution_one_point = Crossover(solutions=[array_solution1, array_solution2],
                                                crossover_points=0).run().tolist()
+
+    def test_number_of_solution_is_correct(self):
+        array_solution1 = [1, 2, 3, 4, 5]
+        array_solution2 = [6, 7, 8, 9, 10]
+        crossover = Crossover(solutions=[array_solution1, array_solution2], crossover_points=1)
+
+        crossover.number_of_solution_is_correct(n=2)
+
+        with self.assertRaises(ValueError):
+            crossover.number_of_solution_is_correct(n=3)
+
