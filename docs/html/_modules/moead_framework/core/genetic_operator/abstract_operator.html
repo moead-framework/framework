@@ -36,6 +36,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide.html">User guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tuto.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api.html">Library Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
@@ -68,7 +69,8 @@
            <div itemprop="articleBody">
              
   <h1>Source code for moead_framework.core.genetic_operator.abstract_operator</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
 
 
 <div class="viewcode-block" id="GeneticOperator"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.core.genetic_operator.abstract_operator.GeneticOperator.html#moead_framework.core.genetic_operator.abstract_operator.GeneticOperator">[docs]</a><span class="k">class</span> <span class="nc">GeneticOperator</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
@@ -76,13 +78,33 @@
 <span class="sd">    Abstract class to implement a new genetic Operator</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="GeneticOperator.__init__"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.core.genetic_operator.abstract_operator.GeneticOperator.html#moead_framework.core.genetic_operator.abstract_operator.GeneticOperator.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solutions</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="GeneticOperator.__init__"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.core.genetic_operator.abstract_operator.GeneticOperator.html#moead_framework.core.genetic_operator.abstract_operator.GeneticOperator.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">solutions</span><span class="p">,</span>
+    <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor of the genetic operator.</span>
 
 <span class="sd">        :param solutions: list&lt;list&lt;integer&gt;&gt; list of solution&#39;s representation (In algorithms, it is represented by the attribute :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution.decision_vector` of the class :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`)</span>
-<span class="sd">        :param kwargs: optional arguments for the genetic operator</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">solutions</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">solutions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="nb">list</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">solutions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+                <span class="k">pass</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The type of parameter &#39;solutions&#39; must be list&lt;list&lt;Int&gt;&gt;, received list&lt;{type(solutions[0])}&gt;&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The type of parameter &#39;solutions&#39; must be list&lt;list&lt;Int&gt;&gt;, received {type(solutions)}&gt;&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">solutions</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The parameter solutions of </span><span class="si">{self.__class__.__name__}</span><span class="s2"> can&#39;t be empty.&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">solution</span> <span class="ow">in</span> <span class="n">solutions</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">solution</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;One of solutions in the parameter &#39;solutions&#39; of </span><span class="si">{self.__class__.__name__}</span><span class="s2"> is empty.&quot;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">solution</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;One of variable in </span><span class="si">{solution}</span><span class="s2"> is not a int or float, received {type(variable)} (</span><span class="si">{variable}</span><span class="s2">)&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">solutions</span> <span class="o">=</span> <span class="n">solutions</span></div>
 
 <div class="viewcode-block" id="GeneticOperator.run"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.core.genetic_operator.abstract_operator.GeneticOperator.html#moead_framework.core.genetic_operator.abstract_operator.GeneticOperator.run">[docs]</a>    <span class="nd">@abstractmethod</span>

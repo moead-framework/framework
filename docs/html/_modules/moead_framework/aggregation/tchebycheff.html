@@ -36,6 +36,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide.html">User guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tuto.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api.html">Library Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
@@ -86,6 +87,7 @@
 <span class="sd">        :param new_value: {float} new aggregation value</span>
 <span class="sd">        :return: {boolean} True if new_value is better than old_value.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">is_better</span><span class="p">(</span><span class="n">old_value</span><span class="p">,</span> <span class="n">new_value</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">new_value</span> <span class="o">&lt;</span> <span class="n">old_value</span></div>
 
 <div class="viewcode-block" id="Tchebycheff.run"><a class="viewcode-back" href="../../../moead_framework/moead_framework.aggregation.tchebycheff.Tchebycheff.html#moead_framework.aggregation.tchebycheff.Tchebycheff.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solution</span><span class="p">,</span> <span class="n">number_of_objective</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">sub_problem</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
@@ -99,6 +101,7 @@
 <span class="sd">        :param z: {list&lt;float&gt;} coordinates of the reference point Z*</span>
 <span class="sd">        :return: {float} the aggregation value of the solution for the weight vector: weights[sub-problem]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">solution</span><span class="p">,</span><span class="n">number_of_objective</span><span class="p">,</span><span class="n">weights</span><span class="p">,</span> <span class="n">sub_problem</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
         <span class="n">max_distance</span> <span class="o">=</span> <span class="mi">0</span>
 
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_objective</span><span class="p">):</span>

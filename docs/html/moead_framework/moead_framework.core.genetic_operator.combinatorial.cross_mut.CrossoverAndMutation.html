@@ -38,6 +38,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tuto.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">Library Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../main_components.html">Main components</a></li>
@@ -94,14 +95,14 @@
 <h1>moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation<a class="headerlink" href="#moead-framework-core-genetic-operator-combinatorial-cross-mut-crossoverandmutation" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation">
-<em class="property">class </em><code class="sig-prename descclassname">moead_framework.core.genetic_operator.combinatorial.cross_mut.</code><code class="sig-name descname">CrossoverAndMutation</code><span class="sig-paren">(</span><em class="sig-param">solutions</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/genetic_operator/combinatorial/cross_mut.html#CrossoverAndMutation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">moead_framework.core.genetic_operator.combinatorial.cross_mut.</code><code class="sig-name descname">CrossoverAndMutation</code><span class="sig-paren">(</span><em class="sig-param">solutions</em>, <em class="sig-param">crossover_points=1</em>, <em class="sig-param">mutation_probability=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/genetic_operator/combinatorial/cross_mut.html#CrossoverAndMutation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="moead_framework.core.genetic_operator.abstract_operator.GeneticOperator.html#moead_framework.core.genetic_operator.abstract_operator.GeneticOperator" title="moead_framework.core.genetic_operator.abstract_operator.GeneticOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">moead_framework.core.genetic_operator.abstract_operator.GeneticOperator</span></code></a></p>
 <p>Multi-point crossover combined with the Binary Mutation operator</p>
 <p>Require 2 solutions, run a crossover according to the number of points wanted and
 try to mutate each bit of the decision_vector with the predefined probability.</p>
 <dl class="method">
 <dt id="moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">solutions</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/genetic_operator/combinatorial/cross_mut.html#CrossoverAndMutation.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">solutions</em>, <em class="sig-param">crossover_points=1</em>, <em class="sig-param">mutation_probability=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/genetic_operator/combinatorial/cross_mut.html#CrossoverAndMutation.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructor of the Crossover and Binary Mutation operator</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -121,7 +122,7 @@ try to mutate each bit of the decision_vector with the predefined probability.</
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation.__init__" title="moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(solutions, **kwargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation.__init__" title="moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(solutions[, crossover_points, …])</p></td>
 <td><p>Constructor of the Crossover and Binary Mutation operator</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation.number_of_solution_is_correct" title="moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation.number_of_solution_is_correct"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_solution_is_correct</span></code></a>(n)</p></td>

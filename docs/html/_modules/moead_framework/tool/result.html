@@ -36,6 +36,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide.html">User guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tuto.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api.html">Library Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
@@ -73,6 +74,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">moead_framework.algorithm</span> <span class="kn">import</span> <span class="n">AbstractMoead</span>
+<span class="kn">from</span> <span class="nn">moead_framework.solution.base</span> <span class="kn">import</span> <span class="n">Solution</span>
 
 
 <div class="viewcode-block" id="save_population"><a class="viewcode-back" href="../../../moead_framework/moead_framework.tool.result.save_population.html#moead_framework.tool.result.save_population">[docs]</a><span class="k">def</span> <span class="nf">save_population</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">population</span><span class="p">):</span>
@@ -83,9 +85,18 @@
 <span class="sd">    :param population: list&lt;{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}&gt;</span>
 <span class="sd">    :return:</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">population</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;the parameter &#39;population&#39; of save_population(population) must be a list. Instead, we have {type(population)} &quot;</span><span class="p">)</span>
+
     <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
     <span class="c1"># file.write(&quot;Length of the list = &quot; + str(len(population)) + &quot;\n&quot;)</span>
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">population</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">Solution</span><span class="p">):</span>
+            <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;the parameter &#39;population&#39; of save_population(population) must be a list of Solution. Instead, we have a list of {type(s)} &quot;</span><span class="p">)</span>
+
         <span class="n">row</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="k">for</span> <span class="n">coordinate</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">F</span><span class="p">:</span>
             <span class="n">row</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">coordinate</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span>
@@ -104,9 +115,18 @@
 <span class="sd">    :param population: list&lt;{:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`}&gt;</span>
 <span class="sd">    :return:</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">population</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;the parameter &#39;population&#39; of save_population_full(population) must be a list. Instead, we have {type(population)} &quot;</span><span class="p">)</span>
+
     <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
     <span class="c1"># file.write(&quot;Length of the list = &quot; + str(len(population)) + &quot;\n&quot;)</span>
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">population</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">Solution</span><span class="p">):</span>
+            <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;the parameter &#39;population&#39; of save_population_full(population) must be a list of Solution. Instead, we have a list of {type(s)} &quot;</span><span class="p">)</span>
+
         <span class="n">row</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="k">for</span> <span class="n">coordinate</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">F</span><span class="p">:</span>
@@ -153,6 +173,26 @@
 <span class="sd">    :param ref_point: list&lt;float&gt;</span>
 <span class="sd">    :return: float : hypervolume value</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">solutions</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;the parameter &#39;solutions&#39; of compute_hypervolume() must be a list. Instead, we have {type(solutions)} &quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">ref_point</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;the parameter &#39;ref_point&#39; of compute_hypervolume() must be a list. Instead, we have {type(solutions)} &quot;</span><span class="p">)</span>
+
+    <span class="n">arr</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">solutions</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">Solution</span><span class="p">):</span>
+            <span class="n">arr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">F</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;the parameter &#39;solutions&#39; of compute_hypervolume must be a list of Solution. Instead, we have a list of {type(s)} &quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ref_point</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;the number of items in &#39;ref_point&#39;  must be equal to {len(arr[0])}. Instead, we have a list of size {len(ref_point)}.&quot;</span><span class="p">)</span>
+
     <span class="n">hypervolume_class</span> <span class="o">=</span> <span class="n">HyperVolume</span><span class="p">(</span><span class="n">reference_point</span><span class="o">=</span><span class="n">ref_point</span><span class="p">)</span>
 
     <span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>

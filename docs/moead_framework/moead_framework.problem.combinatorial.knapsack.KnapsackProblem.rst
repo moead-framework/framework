@@ -17,6 +17,8 @@ moead\_framework.problem.combinatorial.knapsack.KnapsackProblem
       ~KnapsackProblem.evaluate
       ~KnapsackProblem.f
       ~KnapsackProblem.generate_random_solution
+      ~KnapsackProblem.init_with_data
+      ~KnapsackProblem.init_with_instance_file
       ~KnapsackProblem.penality
       ~KnapsackProblem.profit_of_solution
       ~KnapsackProblem.weight_of_solution

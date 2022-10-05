@@ -36,6 +36,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide.html">User guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tuto.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api.html">Library Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
@@ -72,10 +73,18 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
+<span class="kn">from</span> <span class="nn">moead_framework.aggregation.functions</span> <span class="kn">import</span> <span class="n">AggregationFunction</span>
+<span class="kn">from</span> <span class="nn">moead_framework.core.genetic_operator</span> <span class="kn">import</span> <span class="n">GeneticOperator</span>
+<span class="kn">from</span> <span class="nn">moead_framework.core.offspring_generator.abstract_mating</span> <span class="kn">import</span> <span class="n">OffspringGenerator</span>
 <span class="kn">from</span> <span class="nn">moead_framework.core.offspring_generator.offspring_generator</span> <span class="kn">import</span> <span class="n">OffspringGeneratorGeneric</span>
+<span class="kn">from</span> <span class="nn">moead_framework.core.parent_selector.abstract_parent_selector</span> <span class="kn">import</span> <span class="n">ParentSelector</span>
+<span class="kn">from</span> <span class="nn">moead_framework.core.selector.abstract_selector</span> <span class="kn">import</span> <span class="n">MatingPoolSelector</span>
 <span class="kn">from</span> <span class="nn">moead_framework.core.selector.closest_neighbors_selector</span> <span class="kn">import</span> <span class="n">ClosestNeighborsSelector</span>
+<span class="kn">from</span> <span class="nn">moead_framework.core.sps_strategy.abstract_sps</span> <span class="kn">import</span> <span class="n">SpsStrategy</span>
 <span class="kn">from</span> <span class="nn">moead_framework.core.sps_strategy.sps_all</span> <span class="kn">import</span> <span class="n">SpsAllSubproblems</span>
+<span class="kn">from</span> <span class="nn">moead_framework.core.termination_criteria.abstract_termination_criteria</span> <span class="kn">import</span> <span class="n">TerminationCriteria</span>
 <span class="kn">from</span> <span class="nn">moead_framework.core.termination_criteria.max_evaluation</span> <span class="kn">import</span> <span class="n">MaxEvaluation</span>
+<span class="kn">from</span> <span class="nn">moead_framework.problem</span> <span class="kn">import</span> <span class="n">Problem</span>
 <span class="kn">from</span> <span class="nn">moead_framework.tool.mop</span> <span class="kn">import</span> <span class="n">is_duplicated</span><span class="p">,</span> <span class="n">get_non_dominated</span><span class="p">,</span> <span class="n">generate_weight_vectors</span>
 
 
@@ -114,8 +123,18 @@
 <span class="sd">        :param number_of_weight: Deprecated -- {integer} number of weight vector used to decompose the problem. Deprecated, remove in the next major release.</span>
 <span class="sd">        :param number_of_objective: Deprecated -- {integer} number of objective in the problem. Deprecated, remove in the next major release.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">problem</span> <span class="o">=</span> <span class="n">problem</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">aggregation_function</span> <span class="o">=</span> <span class="n">aggregation_function</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span> <span class="n">Problem</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">problem</span> <span class="o">=</span> <span class="n">problem</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The expected type of `problem` is `Problem`&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">weight_file</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The expected type of `weight_file` is `Str`&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">aggregation_function</span><span class="p">,</span> <span class="n">AggregationFunction</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">aggregation_function</span> <span class="o">=</span> <span class="n">aggregation_function</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The expected type of `aggregation_function` is `AggregationFunction`&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">number_of_weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="kn">import</span> <span class="nn">warnings</span>
@@ -128,11 +147,23 @@
         <span class="k">if</span> <span class="n">termination_criteria</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">termination_criteria</span> <span class="o">=</span> <span class="n">MaxEvaluation</span><span class="p">(</span><span class="n">algorithm_instance</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">termination_criteria</span> <span class="o">=</span> <span class="n">termination_criteria</span><span class="p">(</span><span class="n">algorithm_instance</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">termination_criteria</span><span class="p">,</span> <span class="n">TerminationCriteria</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">termination_criteria</span> <span class="o">=</span> <span class="n">termination_criteria</span><span class="p">(</span><span class="n">algorithm_instance</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The expected type of `termination_criteria` is `TerminationCriteria`&quot;</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">max_evaluation</span> <span class="o">=</span> <span class="n">max_evaluation</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">max_evaluation</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">max_evaluation</span> <span class="o">=</span> <span class="n">max_evaluation</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The expected type of `max_evaluation` is `int`&quot;</span><span class="p">)</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">number_of_objective</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">number_of_objective</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">number_of_weight_neighborhood</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">number_of_weight_neighborhood</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">number_of_weight_neighborhood</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The expected type of `number_of_weight_neighborhood` is `int`&quot;</span><span class="p">)</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">ep</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="n">generate_weight_vectors</span><span class="p">(</span><span class="n">weight_file</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -148,20 +179,36 @@
         <span class="k">if</span> <span class="n">sps_strategy</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sps_strategy</span> <span class="o">=</span> <span class="n">SpsAllSubproblems</span><span class="p">(</span><span class="n">algorithm_instance</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">sps_strategy</span> <span class="o">=</span> <span class="n">sps_strategy</span><span class="p">(</span><span class="n">algorithm_instance</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">sps_strategy</span><span class="p">,</span> <span class="n">SpsStrategy</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sps_strategy</span> <span class="o">=</span> <span class="n">sps_strategy</span><span class="p">(</span><span class="n">algorithm_instance</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The expected type of `sps_strategy` is `SpsStrategy`&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">mating_pool_selector</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">mating_pool_selector</span> <span class="o">=</span> <span class="n">ClosestNeighborsSelector</span><span class="p">(</span><span class="n">algorithm_instance</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">mating_pool_selector</span> <span class="o">=</span> <span class="n">mating_pool_selector</span><span class="p">(</span><span class="n">algorithm_instance</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">mating_pool_selector</span><span class="p">,</span> <span class="n">MatingPoolSelector</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mating_pool_selector</span> <span class="o">=</span> <span class="n">mating_pool_selector</span><span class="p">(</span><span class="n">algorithm_instance</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The expected type of `mating_pool_selector` is `MatingPoolSelector`&quot;</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">genetic_operator</span> <span class="o">=</span> <span class="n">genetic_operator</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">parent_selector</span> <span class="o">=</span> <span class="n">parent_selector</span>
+        <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">genetic_operator</span><span class="p">,</span> <span class="n">GeneticOperator</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">genetic_operator</span> <span class="o">=</span> <span class="n">genetic_operator</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The expected type of `genetic_operator` is `GeneticOperator`&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">parent_selector</span><span class="p">,</span> <span class="n">ParentSelector</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parent_selector</span> <span class="o">=</span> <span class="n">parent_selector</span><span class="p">(</span><span class="n">algorithm</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The expected type of `parent_selector` is `ParentSelector`&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">offspring_generator</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">offspring_generator</span> <span class="o">=</span> <span class="n">OffspringGeneratorGeneric</span><span class="p">(</span><span class="n">algorithm_instance</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">offspring_generator</span> <span class="o">=</span> <span class="n">offspring_generator</span><span class="p">(</span><span class="n">algorithm_instance</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span></div>
+            <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">offspring_generator</span><span class="p">,</span> <span class="n">OffspringGenerator</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">offspring_generator</span> <span class="o">=</span> <span class="n">offspring_generator</span><span class="p">(</span><span class="n">algorithm_instance</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The expected type of `offspring_generator` is `OffspringGenerator`&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="AbstractMoead.run"><a class="viewcode-back" href="../../../moead_framework/moead_framework.algorithm.abstract_moead.AbstractMoead.html#moead_framework.algorithm.abstract_moead.AbstractMoead.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">checkpoint</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

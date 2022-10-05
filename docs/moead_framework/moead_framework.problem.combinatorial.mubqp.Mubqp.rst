@@ -17,6 +17,8 @@ moead\_framework.problem.combinatorial.mubqp.Mubqp
       ~Mubqp.evaluate
       ~Mubqp.f
       ~Mubqp.generate_random_solution
+      ~Mubqp.init_with_data
+      ~Mubqp.init_with_instance_file
       ~Mubqp.load_qs
    
    

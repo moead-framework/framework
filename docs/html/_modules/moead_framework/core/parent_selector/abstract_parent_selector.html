@@ -36,6 +36,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide.html">User guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tuto.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api.html">Library Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
@@ -70,6 +71,8 @@
   <h1>Source code for moead_framework.core.parent_selector.abstract_parent_selector</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
 
+<span class="kn">from</span> <span class="nn">moead_framework.algorithm</span> <span class="kn">import</span> <span class="n">abstract_moead</span>
+
 
 <div class="viewcode-block" id="ParentSelector"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.core.parent_selector.abstract_parent_selector.ParentSelector.html#moead_framework.core.parent_selector.abstract_parent_selector.ParentSelector">[docs]</a><span class="k">class</span> <span class="nc">ParentSelector</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -80,6 +83,9 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :param algorithm: {:class:`~moead_framework.algorithm.abstract_moead.py.AbstractMoead`} instance of the algorithm</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">algorithm</span><span class="p">,</span> <span class="n">abstract_moead</span><span class="o">.</span><span class="n">AbstractMoead</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The parameter &#39;algorithm&#39; must be a child of the AbstractMoead class. Instead, we have {type(algorithm)}&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span> <span class="o">=</span> <span class="n">algorithm</span></div>
 
 <div class="viewcode-block" id="ParentSelector.select"><a class="viewcode-back" href="../../../../moead_framework/moead_framework.core.parent_selector.abstract_parent_selector.ParentSelector.html#moead_framework.core.parent_selector.abstract_parent_selector.ParentSelector.select">[docs]</a>    <span class="nd">@abstractmethod</span>
@@ -89,7 +95,15 @@
 
 <span class="sd">        :param indexes: {list&lt;integer&gt;} indexes of solutions used to select parents</span>
 <span class="sd">        :return: {list&lt;:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`&gt;} parents used to generate the future offspring</span>
-<span class="sd">        &quot;&quot;&quot;</span></div></div>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">indexes</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">indexes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="nb">int</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;The type of parameter &#39;indexes&#39; in </span><span class="si">{self.__class__.__name__}</span><span class="s2">.select(indexes) must be a list&lt;int&gt;. Instead, we have list&lt;{type(indexes)}&gt;&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The type of parameter &#39;indexes&#39; in </span><span class="si">{self.__class__.__name__}</span><span class="s2">.select(indexes) must be a list&lt;int&gt;. Instead, we have {type(indexes)}&quot;</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

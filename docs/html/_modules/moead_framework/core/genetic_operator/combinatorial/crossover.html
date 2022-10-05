@@ -36,6 +36,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../user_guide.html">User guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../tuto.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../api.html">Library Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../examples.html">Examples</a></li>
@@ -80,18 +81,22 @@
 <span class="sd">    Require 2 solutions, run a crossover according to the number of points wanted.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Crossover.__init__"><a class="viewcode-back" href="../../../../../moead_framework/moead_framework.core.genetic_operator.combinatorial.crossover.Crossover.html#moead_framework.core.genetic_operator.combinatorial.crossover.Crossover.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solutions</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="Crossover.__init__"><a class="viewcode-back" href="../../../../../moead_framework/moead_framework.core.genetic_operator.combinatorial.crossover.Crossover.html#moead_framework.core.genetic_operator.combinatorial.crossover.Crossover.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solutions</span><span class="p">,</span> <span class="n">crossover_points</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor of the Crossover operator</span>
 
 <span class="sd">        :param solutions: list&lt;list&lt;integer&gt;&gt; list of solution&#39;s representation (In algorithms, it is represented by the attribute :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution.decision_vector` of the class :class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`)</span>
 <span class="sd">        :param crossover_points: {integer} the number of points for the crossover</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">solutions</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;crossover_points&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">crossover_points</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">crossover_points</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;crossover_points&quot;</span><span class="p">))</span></div>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">solutions</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solutions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="n">crossover_points</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;The number of crossover points (crossover_points=</span><span class="si">{crossover_points}</span><span class="s2">) must be strictly smaller than the number of variables in the solution (n={len(self.solutions[0])}).&quot;</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">crossover_points</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;The number of crossover points (crossover_points=</span><span class="si">{crossover_points}</span><span class="s2">) must be positive.&quot;</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">crossover_points</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">crossover_points</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Crossover.run"><a class="viewcode-back" href="../../../../../moead_framework/moead_framework.core.genetic_operator.combinatorial.crossover.Crossover.html#moead_framework.core.genetic_operator.combinatorial.crossover.Crossover.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -117,16 +122,16 @@
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">crossover_points</span><span class="p">):</span>
             <span class="n">last_i</span> <span class="o">=</span> <span class="n">i</span>
             <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">child</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">solution1</span><span class="p">[</span><span class="n">current</span><span class="p">:</span><span class="n">list_of_points</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
+                <span class="n">child</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">solution1</span><span class="p">[</span><span class="n">current</span> <span class="p">:</span> <span class="n">list_of_points</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">child</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">solution2</span><span class="p">[</span><span class="n">current</span><span class="p">:</span><span class="n">list_of_points</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
+                <span class="n">child</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">solution2</span><span class="p">[</span><span class="n">current</span> <span class="p">:</span> <span class="n">list_of_points</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
 
             <span class="n">current</span> <span class="o">=</span> <span class="n">list_of_points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 
         <span class="k">if</span> <span class="n">last_i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">child</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">solution2</span><span class="p">[</span><span class="n">list_of_points</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:])</span>
+            <span class="n">child</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">solution2</span><span class="p">[</span><span class="n">list_of_points</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">:])</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">child</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">solution1</span><span class="p">[</span><span class="n">list_of_points</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:])</span>
+            <span class="n">child</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">solution1</span><span class="p">[</span><span class="n">list_of_points</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">:])</span>
 
         <span class="k">return</span> <span class="n">child</span></div></div>
 </pre></div>

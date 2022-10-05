@@ -36,6 +36,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide.html">User guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tuto.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api.html">Library Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
@@ -139,6 +140,12 @@
 <span class="sd">        :param number_of_objective: Deprecated -- {integer} number of objective in the problem. Deprecated, remove in the next major release.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
+        <span class="k">if</span> <span class="n">genetic_operator</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">genetic_operator</span> <span class="o">=</span> <span class="n">CrossoverAndMutation</span>
+
+        <span class="k">if</span> <span class="n">parent_selector</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">parent_selector</span> <span class="o">=</span> <span class="n">TwoRandomParentSelector</span>
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span>
                          <span class="n">max_evaluation</span><span class="p">,</span>
                          <span class="n">number_of_weight_neighborhood</span><span class="p">,</span>
@@ -152,18 +159,18 @@
                          <span class="n">offspring_generator</span><span class="o">=</span><span class="n">offspring_generator</span><span class="p">,</span>
                          <span class="n">weight_file</span><span class="o">=</span><span class="n">weight_file</span><span class="p">,</span>
                          <span class="n">number_of_weight</span><span class="o">=</span><span class="n">number_of_weight</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">number_of_crossover_points</span> <span class="o">=</span> <span class="n">number_of_crossover_points</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mutation_probability</span> <span class="o">=</span> <span class="n">mutation_probability</span>
 
-        <span class="k">if</span> <span class="n">genetic_operator</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">genetic_operator</span> <span class="o">=</span> <span class="n">CrossoverAndMutation</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">genetic_operator</span> <span class="o">=</span> <span class="n">genetic_operator</span>
+        <span class="k">if</span> <span class="n">number_of_crossover_points</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">number_of_crossover_points</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">number_of_crossover_points</span> <span class="o">=</span> <span class="n">number_of_crossover_points</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The expected type of `number_of_crossover_points` is `int`&quot;</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">parent_selector</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">parent_selector</span> <span class="o">=</span> <span class="n">TwoRandomParentSelector</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">parent_selector</span> <span class="o">=</span> <span class="n">parent_selector</span><span class="p">(</span><span class="n">algorithm</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span></div></div>
+        <span class="k">if</span> <span class="n">mutation_probability</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mutation_probability</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mutation_probability</span> <span class="o">=</span> <span class="n">mutation_probability</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The expected type of `mutation_probability` is `int`&quot;</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

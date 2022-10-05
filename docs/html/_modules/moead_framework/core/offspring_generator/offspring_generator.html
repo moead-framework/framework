@@ -36,6 +36,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide.html">User guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tuto.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api.html">Library Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
@@ -92,20 +93,16 @@
         <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">parents</span><span class="p">:</span>
             <span class="n">parents_solutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">decision_vector</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="p">,</span> <span class="s1">&#39;number_of_crossover_points&#39;</span><span class="p">):</span>
-            <span class="n">crossover_point</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">number_of_crossover_points</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">crossover_point</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;solutions&quot;</span><span class="p">:</span> <span class="n">parents_solutions</span><span class="p">}</span>
+        <span class="n">proba</span> <span class="o">=</span> <span class="s1">&#39;mutation_probability&#39;</span>
+        
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="p">,</span> <span class="s2">&quot;number_of_crossover_points&quot;</span><span class="p">):</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;crossover_points&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">number_of_crossover_points</span>
 
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="p">,</span> <span class="s1">&#39;mutation_probability&#39;</span><span class="p">):</span>
-            <span class="n">mutation_probability</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">mutation_probability</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">mutation_probability</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="p">,</span> <span class="n">proba</span><span class="p">):</span>
+            <span class="n">params</span><span class="p">[</span><span class="n">proba</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">mutation_probability</span>
 
-        <span class="n">y_sol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">genetic_operator</span><span class="p">(</span><span class="n">solutions</span><span class="o">=</span><span class="n">parents_solutions</span><span class="p">,</span>
-                                                <span class="n">crossover_points</span><span class="o">=</span><span class="n">crossover_point</span><span class="p">,</span>
-                                                <span class="n">mutation_probability</span><span class="o">=</span><span class="n">mutation_probability</span>
-                                                <span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="n">y_sol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">genetic_operator</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">y_sol</span><span class="p">)</span></div></div>
 </pre></div>

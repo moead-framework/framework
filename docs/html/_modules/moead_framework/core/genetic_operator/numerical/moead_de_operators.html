@@ -36,6 +36,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../user_guide.html">User guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../tuto.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../api.html">Library Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../examples.html">Examples</a></li>
@@ -71,9 +72,12 @@
 <span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">moead_framework.core.genetic_operator.abstract_operator</span> <span class="kn">import</span> <span class="n">GeneticOperator</span>
-<span class="kn">from</span> <span class="nn">moead_framework.core.genetic_operator.numerical.differential_evolution_crossover</span> <span class="kn">import</span> \
-    <span class="n">DifferentialEvolutionCrossover</span>
-<span class="kn">from</span> <span class="nn">moead_framework.core.genetic_operator.numerical.polynomial_mutation</span> <span class="kn">import</span> <span class="n">PolynomialMutation</span>
+<span class="kn">from</span> <span class="nn">moead_framework.core.genetic_operator.numerical.differential_evolution_crossover</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DifferentialEvolutionCrossover</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">moead_framework.core.genetic_operator.numerical.polynomial_mutation</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">PolynomialMutation</span><span class="p">,</span>
+<span class="p">)</span>
 
 
 <div class="viewcode-block" id="MoeadDeOperators"><a class="viewcode-back" href="../../../../../moead_framework/moead_framework.core.genetic_operator.numerical.moead_de_operators.MoeadDeOperators.html#moead_framework.core.genetic_operator.numerical.moead_de_operators.MoeadDeOperators">[docs]</a><span class="k">class</span> <span class="nc">MoeadDeOperators</span><span class="p">(</span><span class="n">GeneticOperator</span><span class="p">):</span>
@@ -95,16 +99,13 @@
         <span class="n">solution2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">solutions</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">solution3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">solutions</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 
-        <span class="n">child_cross</span> <span class="o">=</span> <span class="n">DifferentialEvolutionCrossover</span><span class="p">(</span><span class="n">solutions</span><span class="o">=</span><span class="p">[</span><span class="n">solution1</span><span class="p">,</span>
-                                                                <span class="n">solution2</span><span class="p">,</span>
-                                                                <span class="n">solution3</span><span class="p">])</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="n">child_cross</span> <span class="o">=</span> <span class="n">DifferentialEvolutionCrossover</span><span class="p">(</span>
+            <span class="n">solutions</span><span class="o">=</span><span class="p">[</span><span class="n">solution1</span><span class="p">,</span> <span class="n">solution2</span><span class="p">,</span> <span class="n">solution3</span><span class="p">]</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 
         <span class="n">child_mut</span> <span class="o">=</span> <span class="n">PolynomialMutation</span><span class="p">(</span><span class="n">solutions</span><span class="o">=</span><span class="p">[</span><span class="n">child_cross</span><span class="p">])</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="n">child_mut</span></div></div>
-
-
-
 </pre></div>
 
            </div>

@@ -38,6 +38,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tuto.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">Library Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../main_components.html">Main components</a></li>
@@ -94,19 +95,16 @@
 <h1>moead_framework.core.genetic_operator.abstract_operator.GeneticOperator<a class="headerlink" href="#moead-framework-core-genetic-operator-abstract-operator-geneticoperator" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="moead_framework.core.genetic_operator.abstract_operator.GeneticOperator">
-<em class="property">class </em><code class="sig-prename descclassname">moead_framework.core.genetic_operator.abstract_operator.</code><code class="sig-name descname">GeneticOperator</code><span class="sig-paren">(</span><em class="sig-param">solutions</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/genetic_operator/abstract_operator.html#GeneticOperator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.genetic_operator.abstract_operator.GeneticOperator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">moead_framework.core.genetic_operator.abstract_operator.</code><code class="sig-name descname">GeneticOperator</code><span class="sig-paren">(</span><em class="sig-param">solutions</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/genetic_operator/abstract_operator.html#GeneticOperator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.genetic_operator.abstract_operator.GeneticOperator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <p>Abstract class to implement a new genetic Operator</p>
 <dl class="method">
 <dt id="moead_framework.core.genetic_operator.abstract_operator.GeneticOperator.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">solutions</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/genetic_operator/abstract_operator.html#GeneticOperator.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.genetic_operator.abstract_operator.GeneticOperator.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">solutions</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/moead_framework/core/genetic_operator/abstract_operator.html#GeneticOperator.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#moead_framework.core.genetic_operator.abstract_operator.GeneticOperator.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructor of the genetic operator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>solutions</strong> – list&lt;list&lt;integer&gt;&gt; list of solution’s representation (In algorithms, it is represented by the attribute <code class="xref py py-class docutils literal notranslate"><span class="pre">decision_vector</span></code> of the class <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>)</p></li>
-<li><p><strong>kwargs</strong> – optional arguments for the genetic operator</p></li>
-</ul>
+<dd class="field-odd"><p><strong>solutions</strong> – list&lt;list&lt;integer&gt;&gt; list of solution’s representation (In algorithms, it is represented by the attribute <code class="xref py py-class docutils literal notranslate"><span class="pre">decision_vector</span></code> of the class <a class="reference internal" href="moead_framework.solution.one_dimension_solution.OneDimensionSolution.html#moead_framework.solution.one_dimension_solution.OneDimensionSolution" title="moead_framework.solution.one_dimension_solution.OneDimensionSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneDimensionSolution</span></code></a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -118,7 +116,7 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.core.genetic_operator.abstract_operator.GeneticOperator.__init__" title="moead_framework.core.genetic_operator.abstract_operator.GeneticOperator.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(solutions, **kwargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#moead_framework.core.genetic_operator.abstract_operator.GeneticOperator.__init__" title="moead_framework.core.genetic_operator.abstract_operator.GeneticOperator.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(solutions)</p></td>
 <td><p>Constructor of the genetic operator.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#moead_framework.core.genetic_operator.abstract_operator.GeneticOperator.number_of_solution_is_correct" title="moead_framework.core.genetic_operator.abstract_operator.GeneticOperator.number_of_solution_is_correct"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_solution_is_correct</span></code></a>(n)</p></td>

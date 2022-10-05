@@ -36,6 +36,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../user_guide.html">User guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../tuto.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../api.html">Library Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../examples.html">Examples</a></li>
@@ -80,7 +81,8 @@
 <span class="sd">    Require 2 solutions, run a crossover according to the number of points wanted and</span>
 <span class="sd">    try to mutate each bit of the decision_vector with the predefined probability.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="CrossoverAndMutation.__init__"><a class="viewcode-back" href="../../../../../moead_framework/moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation.html#moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solutions</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CrossoverAndMutation.__init__"><a class="viewcode-back" href="../../../../../moead_framework/moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation.html#moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solutions</span><span class="p">,</span> <span class="n">crossover_points</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">mutation_probability</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor of the Crossover and Binary Mutation operator</span>
 
@@ -88,16 +90,9 @@
 <span class="sd">        :param crossover_points: {integer} the number of points for the crossover</span>
 <span class="sd">        :param mutation_probability: {float} the probability (between 0 and 1) to mutate a bit in the decision_vector. The default value is the probability to mutate one bit of the decision_vector</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">solutions</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;crossover_points&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">crossover_points</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">crossover_points</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;crossover_points&quot;</span><span class="p">))</span>
-
-        <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mutation_probability&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">mutation_probability</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solutions</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">mutation_probability</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mutation_probability&quot;</span><span class="p">))</span></div>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">solutions</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">crossover_points</span> <span class="o">=</span> <span class="n">crossover_points</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mutation_probability</span> <span class="o">=</span> <span class="n">mutation_probability</span></div>
 
 <div class="viewcode-block" id="CrossoverAndMutation.run"><a class="viewcode-back" href="../../../../../moead_framework/moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation.html#moead_framework.core.genetic_operator.combinatorial.cross_mut.CrossoverAndMutation.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -108,8 +103,12 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">number_of_solution_is_correct</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
-        <span class="n">child</span> <span class="o">=</span> <span class="n">Crossover</span><span class="p">(</span><span class="n">solutions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">solutions</span><span class="p">,</span> <span class="n">crossover_points</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">crossover_points</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-        <span class="n">child</span> <span class="o">=</span> <span class="n">BinaryMutation</span><span class="p">(</span><span class="n">solutions</span><span class="o">=</span><span class="p">[</span><span class="n">child</span><span class="p">],</span> <span class="n">mutation_probability</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mutation_probability</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="n">child</span> <span class="o">=</span> <span class="n">Crossover</span><span class="p">(</span>
+            <span class="n">solutions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">solutions</span><span class="p">,</span> <span class="n">crossover_points</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">crossover_points</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="n">child</span> <span class="o">=</span> <span class="n">BinaryMutation</span><span class="p">(</span>
+            <span class="n">solutions</span><span class="o">=</span><span class="p">[</span><span class="n">child</span><span class="p">],</span> <span class="n">mutation_probability</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mutation_probability</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="n">child</span></div></div>
 </pre></div>
