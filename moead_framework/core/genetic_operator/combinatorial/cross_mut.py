@@ -10,7 +10,8 @@ class CrossoverAndMutation(GeneticOperator):
     Require 2 solutions, run a crossover according to the number of points wanted and
     try to mutate each bit of the decision_vector with the predefined probability.
     """
-    def __init__(self, solutions, **kwargs):
+
+    def __init__(self, solutions, crossover_points=1, mutation_probability=None):
         """
         Constructor of the Crossover and Binary Mutation operator
 
@@ -18,16 +19,9 @@ class CrossoverAndMutation(GeneticOperator):
         :param crossover_points: {integer} the number of points for the crossover
         :param mutation_probability: {float} the probability (between 0 and 1) to mutate a bit in the decision_vector. The default value is the probability to mutate one bit of the decision_vector
         """
-        super().__init__(solutions, **kwargs)
-        if kwargs.get("crossover_points") is None:
-            self.crossover_points = 1
-        else:
-            self.crossover_points = int(kwargs.get("crossover_points"))
-
-        if kwargs.get("mutation_probability") is None:
-            self.mutation_probability = 1 / (len(self.solutions[0]))
-        else:
-            self.mutation_probability = float(kwargs.get("mutation_probability"))
+        super().__init__(solutions)
+        self.crossover_points = crossover_points
+        self.mutation_probability = mutation_probability
 
     def run(self):
         """
@@ -38,7 +32,11 @@ class CrossoverAndMutation(GeneticOperator):
 
         self.number_of_solution_is_correct(n=2)
 
-        child = Crossover(solutions=self.solutions, crossover_points=self.crossover_points).run()
-        child = BinaryMutation(solutions=[child], mutation_probability=self.mutation_probability).run()
+        child = Crossover(
+            solutions=self.solutions, crossover_points=self.crossover_points
+        ).run()
+        child = BinaryMutation(
+            solutions=[child], mutation_probability=self.mutation_probability
+        ).run()
 
         return child

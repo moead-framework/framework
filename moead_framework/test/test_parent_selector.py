@@ -41,6 +41,17 @@ class ParentSelectorTest(unittest.TestCase):
                            weight_file=self.weight_file,
                            )
 
+    def test_two_random_param(self):
+        """Test two random parent selector"""
+        with self.assertRaises(TypeError):
+            parent_selector = TwoRandomParentSelector(algorithm=self.rmnk)
+
+    def test_two_random_param2(self):
+        """Test two random parent selector"""
+        with self.assertRaises(TypeError):
+            parent_selector = TwoRandomParentSelector(algorithm=self.moead)
+            parents = parent_selector.select(self.moead.b)
+
     def test_two_random(self):
         """Test two random parent selector"""
         parent_selector = TwoRandomParentSelector(algorithm=self.moead)
@@ -50,6 +61,17 @@ class ParentSelectorTest(unittest.TestCase):
         self.assertEqual(parents[0].F, [-0.48094203549999986, -0.52762151308])
         self.assertEqual(parents[1].F, [-0.5278004935999998, -0.4834306098])
 
+    def test_one_random_and_current_parent_instance(self):
+        """Test one random and current parent selector"""
+        with self.assertRaises(TypeError):
+            parent_selector = OneRandomAndCurrentParentSelector(algorithm=self.rmnk)
+
+    def test_one_random_and_current_parent_instance2(self):
+        """Test one random and current parent selector"""
+        with self.assertRaises(TypeError):
+            parent_selector = OneRandomAndCurrentParentSelector(algorithm=self.moead)
+            parents = parent_selector.select(self.moead)
+
     def test_one_random_and_current_parent(self):
         """Test one random and current parent selector"""
         parent_selector = OneRandomAndCurrentParentSelector(algorithm=self.moead)
@@ -58,6 +80,17 @@ class ParentSelectorTest(unittest.TestCase):
         self.assertEqual(len(parents), 2)
         self.assertEqual(parents[0].F, [-0.4891762861, -0.5095645170000003])
         self.assertEqual(parents[1].F, [-0.48094203549999986, -0.52762151308])
+
+    def test_two_random_and_current_parent_instance(self):
+        """Test two random and current parent selector"""
+        with self.assertRaises(TypeError):
+            parent_selector = TwoRandomAndCurrentParentSelector(algorithm=self.rmnk)
+
+    def test_two_random_and_current_parent_instance2(self):
+        """Test two random and current parent selector"""
+        with self.assertRaises(TypeError):
+            parent_selector = TwoRandomAndCurrentParentSelector(algorithm=self.moead)
+            parents = parent_selector.select(3)
 
     def test_two_random_and_current_parent(self):
         """Test two random and current parent selector"""

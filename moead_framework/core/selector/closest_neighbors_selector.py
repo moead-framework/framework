@@ -13,4 +13,5 @@ class ClosestNeighborsSelector(MatingPoolSelector):
         :param sub_problem: {integer} index of the current sub-problem visited
         :return: {list<integer>}
         """
+        super().select(sub_problem=sub_problem)
         return self.algorithm.b[sub_problem]

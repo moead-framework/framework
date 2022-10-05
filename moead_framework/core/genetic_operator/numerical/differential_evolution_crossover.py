@@ -47,4 +47,3 @@ class DifferentialEvolutionCrossover(GeneticOperator):
         :return:
         """
         return [mini if x < mini else maxi if x > maxi else x for x in s]
-

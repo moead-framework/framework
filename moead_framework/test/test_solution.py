@@ -7,8 +7,8 @@ from moead_framework.problem.combinatorial import Rmnk
 from moead_framework.tool.result import set_seed
 
 
-class RmnkTest(unittest.TestCase):
-    """Test the 'rmnk' problem."""
+class SolutionTest(unittest.TestCase):
+    """Test the Solution class."""
 
     def setUp(self):
         """Init"""

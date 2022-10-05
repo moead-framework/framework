@@ -14,6 +14,8 @@ class TwoRandomAndCurrentParentSelector(ParentSelector):
         :param indexes: {list<integer>} indexes of solutions used to select parents
         :return: {list<:class:`~moead_framework.solution.one_dimension_solution.OneDimensionSolution`>} parents used to generate the future offspring
         """
+        super().select(indexes=indexes)
+
         index2 = indexes[random.randint(0, len(indexes) - 1)]
         index3 = indexes[random.randint(0, len(indexes) - 1)]
 

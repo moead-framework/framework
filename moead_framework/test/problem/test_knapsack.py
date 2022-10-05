@@ -10,15 +10,28 @@ class KnapsackTest(unittest.TestCase):
 
     def setUp(self):
         """Init"""
-        project_path = os.path.dirname(os.path.abspath(__file__))
+        self.project_path = os.path.dirname(os.path.abspath(__file__))
         number_of_objective = 2
-        instance = project_path + '/../data/instances/MOKP_250_2.dat'
-        self.problem = KnapsackProblem(number_of_objective=number_of_objective, instance_file=instance)
+        self.instance = self.project_path + '/../data/instances/MOKP_250_2.dat'
+        self.problem = KnapsackProblem(number_of_objective=number_of_objective, instance_file=self.instance)
 
-    def test_instance(self):
-        """Test parameters"""
-        self.assertEqual(self.problem.number_of_objective, 2)
-        self.assertEqual(self.problem.number_of_objects, 250)
+    def test_instance_file(self):
+        """Test constructor with instance file"""
+        project_path = os.path.dirname(os.path.abspath(__file__))
+
+        problem = KnapsackProblem(number_of_objective=2, instance_file=project_path + '/../data/instances/MOKP_250_2.dat')
+        self.assertEqual(problem.number_of_objective, 2)
+        self.assertEqual(problem.number_of_objects, 250)
+
+    def test_instance_data(self):
+        """Test constructor with data"""
+        weights = [[20, 11, 80, 50], [48, 19, 20, 38]]
+        profits = [[2, 10, 73, 20], [34, 4, 83, 28]]
+        capacities = [110, 90]
+
+        problem = KnapsackProblem(number_of_objective=2, weights=weights, profits=profits, capacities=capacities)
+        self.assertEqual(problem.number_of_objective, 2)
+        self.assertEqual(problem.number_of_objects, 4)
 
     def test_generate_random_solution(self):
         """Test the function 'generate_random_solution'"""
@@ -54,3 +67,10 @@ class KnapsackTest(unittest.TestCase):
 
         self.assertEqual(solution.F[0], -75232.5)
         self.assertEqual(solution.F[1], -71644.4)
+
+    def test_sad_path_parameters(self):
+        with self.assertRaises(TypeError):
+            self.problem = KnapsackProblem(number_of_objective="2", instance_file=self.instance)
+
+        with self.assertRaises(TypeError):
+            self.problem = KnapsackProblem(number_of_objective=2, instance_file=2)

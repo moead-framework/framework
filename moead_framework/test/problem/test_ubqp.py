@@ -44,6 +44,10 @@ class UbqpTest(unittest.TestCase):
         self.assertEqual(solution.F[0], -290.0)
         self.assertEqual(solution.F[1], -856.0)
 
+    def test_sad_path_parameters(self):
+        with self.assertRaises(TypeError):
+            self.problem = Mubqp(2)
+
 
 
 

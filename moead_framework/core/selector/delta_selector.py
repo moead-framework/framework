@@ -28,6 +28,7 @@ class DeltaSelector(MatingPoolSelector):
         :param sub_problem: {integer} index of the current sub-problem visited
         :return: {list<integer>}
         """
+        super().select(sub_problem=sub_problem)
         rand = random.random()
         if rand < self.algorithm.delta:
             return self.algorithm.b[sub_problem]
