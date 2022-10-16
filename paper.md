@@ -1,5 +1,5 @@
 ---
-title: 'Moead-framework : a modular MOEA/D python framework'
+title: 'Moead-framework: a modular MOEA/D Python framework'
 tags:
   - Python
   - optimization
@@ -16,15 +16,8 @@ authors:
 affiliations:
   - name: Univ. Lille, CNRS, Inria, Centrale Lille, UMR 9189 CRIStAL, F-59000 Lille, France
     index: 1
-
-
 date: 1 December 2020
 bibliography: paper.bib
-
-# Optional fields if submitting to a AAS journal too, see this blog post:
-# https://blog.joss.theoj.org/2018/12/a-new-collaboration-with-aas-publishing
-# aas-doi: 10.3847/xxxxx <- update this with the DOI from AAS once you know it.
-# aas-journal: Astrophysical Journal <- The name of the AAS journal.
 ---
 
 # Summary
@@ -36,7 +29,7 @@ single-objective optimization sub-problems and then uses an evolutionary process
 sub-problems simultaneously and cooperatively. MOEA/D is a state-of-the-art algorithm in aggregation-based 
 approaches for multi-objective optimization.
 
-The goal of the *moead-framework* python package is to provide a modular framework for scientists and 
+The goal of the *moead-framework* Python package is to provide a modular framework for scientists and 
 researchers interested in experimenting with MOEA/D and its numerous variants.
 
 
@@ -89,8 +82,8 @@ to experiment with their own multi-objective optimization problem and to impleme
 
 # Acknowledgements
 
-This work was supported by the French national research agency(ANR-16-CE23-0013-01) 
-and the Research Grants Council of HongKong (RGC Project No. A-CityU101/16).
+This work was supported by the French national research agency (ANR-16-CE23-0013-01) 
+and the Research Grants Council of Hong Kong (RGC Project No. A-CityU101/16).
 
 
 # References
